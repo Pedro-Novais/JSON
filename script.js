@@ -2,7 +2,7 @@ const div = document.querySelector('#container')
 
 getJson()
 function getJson(){
-    let requestURL = "actions.json";
+    let requestURL = "actions.json"; 
 
     let request = new XMLHttpRequest()
 
@@ -20,7 +20,7 @@ function getJson(){
 function view(profile){
     let name = document.createTextNode(profile.name)
     console.log(profile)
-    div.appendChild(name)
+    //div.appendChild(name)
 }
 
 

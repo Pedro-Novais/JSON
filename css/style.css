@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans&family=Roboto:wght@300&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Rethink Sans", sans-serif;
 }
 
 body {
@@ -11,9 +13,73 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #26B6C6;
 }
 body #container {
-  background-color: aquamarine;
-  width: 25%;
-  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6ACFC9;
+  min-width: 40%;
+  height: 60vh;
+  padding: 1vw;
+}
+body #container h1 {
+  font-size: 2vw;
+  margin-bottom: 3vw;
+  color: #3C2F80;
+}
+body #container #container-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.25vw;
+  margin-bottom: 2vw;
+  width: 100%;
+  height: 8vh;
+}
+body #container #container-info #task-add {
+  width: 70%;
+  height: 100%;
+  padding: 0.5rem;
+  background-color: #FAEDDA;
+  outline: none;
+  border-style: none;
+  font-size: 1vw;
+  margin-right: 2vw;
+}
+body #container #container-info #btn-add {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: #AEE8CA;
+  text-transform: uppercase;
+  color: #3C2F80;
+  transition: 0.1s;
+}
+body #container #container-info #btn-add:hover {
+  cursor: pointer;
+  background-color: #2fd897;
+  color: #FAEDDA;
+}
+body #container #task-made {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  padding: 0.25vw;
+  width: 100%;
+  height: 32vh;
 }/*# sourceMappingURL=style.css.map */
