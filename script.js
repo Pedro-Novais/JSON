@@ -18,9 +18,9 @@ function getJson(){
 }
 
 function view(profile){
-    let name = document.createTextNode(profile.name)
+    let name = document.createTextNode(profile.task)
     console.log(profile)
-    //div.appendChild(name)
+    div.appendChild(name)
 }
 
 
