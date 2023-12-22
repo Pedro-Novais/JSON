@@ -30,8 +30,8 @@ icon.setAttribute('height', '50px');
 
 //div.appendChild(icon)
 
-let level = document.querySelectorAll('.choose-priority')
-let priorityId;
+const level = document.querySelectorAll('.choose-priority')
+let priorityId = null;
 
 level.forEach(function(level) {
     level.addEventListener('click', function() {
