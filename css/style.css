@@ -43,7 +43,7 @@ body #container {
 body #container h1 {
   font-size: 2vw;
   margin-bottom: 3vw;
-  color: #3C2F80;
+  color: rgb(255, 166, 0);
 }
 body #container #container-info {
   display: flex;
@@ -66,6 +66,17 @@ body #container #container-info #task-add {
   font-size: 1vw;
   margin-right: 2vw;
   border-radius: 1rem;
+  color: rgb(255, 166, 0);
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+}
+body #container #container-info #task-add::-moz-placeholder {
+  color: rgb(255, 166, 0);
+  opacity: 40%;
+}
+body #container #container-info #task-add::placeholder {
+  color: rgb(255, 166, 0);
+  opacity: 40%;
 }
 body #container #container-info #btn-add {
   display: flex;
@@ -78,7 +89,9 @@ body #container #container-info #btn-add {
   border-radius: 0.5rem;
   background-color: #AEE8CA;
   text-transform: uppercase;
-  color: #3C2F80;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  color: rgb(255, 166, 0);
   transition: 0.1s;
 }
 body #container #container-info #btn-add:hover {
@@ -102,9 +115,10 @@ body #container #task-made {
   overflow-y: auto;
 }
 body #container #task-made .task-puted {
-  font-size: 1.2vw;
-  color: #3C2F80;
-  font-weight: 200;
+  font-size: 0.8vw;
+  color: rgb(255, 166, 0);
+  font-weight: 900;
+  letter-spacing: 0.1rem;
 }
 body #container #task-made #container-actions {
   display: flex;
@@ -126,7 +140,7 @@ body #container #task-made .tasks {
   justify-content: space-between;
   background-color: #AEE8CA;
   width: 100%;
-  min-height: 20%;
+  height: 30%;
   margin-bottom: 1rem;
   padding: 1rem 3rem 1rem 3rem;
   border-radius: 2rem;

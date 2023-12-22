@@ -58,6 +58,13 @@ body{
                 font-size: 1vw;
                 margin-right: 2vw;
                 border-radius: 1rem;
+                color: $text;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
+            }
+            #task-add::placeholder{
+                color: $text;
+                opacity: 40%;
             }
             #btn-add{
                 @include container;
@@ -67,6 +74,8 @@ body{
                 border-radius: 0.5rem;
                 background-color: $space_text;
                 text-transform: uppercase;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
                 color: $text;
                 transition: .1s;
             }
@@ -88,10 +97,11 @@ body{
             overflow-x: hidden;
             overflow-y: auto;
             .task-puted{
-                font-size: 1.2vw;
+                font-size: 0.8vw;
                 //text-transform: uppercase;
                 color: $text;
-                font-weight: 200;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
             }
             #container-actions{
                 @include container;
@@ -108,7 +118,7 @@ body{
                 justify-content: space-between;
                 background-color:$space_text;
                 width:100%;
-                min-height:20%;
+                height:30%;
                 margin-bottom: 1rem;
                 padding: 1rem 3rem 1rem 3rem;
                 border-radius: 2rem;
