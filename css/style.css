@@ -11,7 +11,7 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: #6ACFC9;
+  background: #6acfc9;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -34,7 +34,7 @@ body #container {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  background-color: #6ACFC9;
+  background-color: #6acfc9;
   min-width: 40%;
   height: 60vh;
   padding: 1vw;
@@ -43,7 +43,7 @@ body #container {
 body #container h1 {
   font-size: 2vw;
   margin-bottom: 3vw;
-  color: rgb(255, 166, 0);
+  color: #ffa600;
 }
 body #container #container-info {
   display: flex;
@@ -65,16 +65,16 @@ body #container #container-info #task-add {
   border-style: none;
   font-size: 1vw;
   border-radius: 1rem;
-  color: rgb(255, 166, 0);
+  color: #ffa600;
   font-weight: 900;
   letter-spacing: 0.1rem;
 }
 body #container #container-info #task-add::-moz-placeholder {
-  color: rgb(255, 166, 0);
+  color: #ffa600;
   opacity: 40%;
 }
 body #container #container-info #task-add::placeholder {
-  color: rgb(255, 166, 0);
+  color: #ffa600;
   opacity: 40%;
 }
 body #container #container-info #priority {
@@ -88,7 +88,7 @@ body #container #container-info #priority {
   height: 100%;
   padding: 0.1vw;
   border-radius: 0.5rem;
-  color: rgb(255, 166, 0);
+  color: #ffa600;
   background-color: #AEE8CA;
 }
 body #container #container-info #priority p {
@@ -96,7 +96,7 @@ body #container #container-info #priority p {
   font-weight: 900;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
-  color: rgb(255, 166, 0);
+  color: #ffa600;
 }
 body #container #container-info #priority #level {
   display: flex;
@@ -120,7 +120,7 @@ body #container #container-info #btn-add {
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.1rem;
-  color: rgb(255, 166, 0);
+  color: #ffa600;
   transition: 0.1s;
 }
 body #container #container-info #btn-add:hover {
@@ -135,7 +135,7 @@ body #container #task-made {
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #6ACFC9;
+  background-color: #6acfc9;
   padding: 0.5vw;
   width: 100%;
   height: 32vh;
@@ -145,7 +145,7 @@ body #container #task-made {
 }
 body #container #task-made .task-puted {
   font-size: 0.8vw;
-  color: rgb(255, 166, 0);
+  color: #ffa600;
   font-weight: 900;
   letter-spacing: 0.1rem;
 }
@@ -171,7 +171,7 @@ body #container #task-made .priority-task {
 body #container #task-made .priority-task .priority-level {
   width: 1vw;
   height: 0.9vw;
-  background-color: #6ACFC9;
+  background-color: #6acfc9;
   border-radius: 50%;
   transition: 0.1s;
 }
@@ -203,7 +203,7 @@ body #container #task-made .tasks {
 body #container .choose-priority {
   width: 1vw;
   height: 0.9vw;
-  background-color: #6ACFC9;
+  background-color: #6acfc9;
   border-radius: 50%;
   transition: 0.1s;
 }
