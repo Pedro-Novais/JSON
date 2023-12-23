@@ -57,14 +57,13 @@ body #container #container-info {
   height: 8vh;
 }
 body #container #container-info #task-add {
-  width: 70%;
+  width: 60%;
   height: 100%;
   padding: 0.5rem;
   background-color: #FAEDDA;
   outline: none;
   border-style: none;
   font-size: 1vw;
-  margin-right: 2vw;
   border-radius: 1rem;
   color: rgb(255, 166, 0);
   font-weight: 900;
@@ -78,13 +77,43 @@ body #container #container-info #task-add::placeholder {
   color: rgb(255, 166, 0);
   opacity: 40%;
 }
+body #container #container-info #priority {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15%;
+  height: 100%;
+  padding: 0.1vw;
+  border-radius: 0.5rem;
+  color: rgb(255, 166, 0);
+  background-color: #AEE8CA;
+}
+body #container #container-info #priority p {
+  font-size: 80%;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: rgb(255, 166, 0);
+}
+body #container #container-info #priority #level {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
 body #container #container-info #btn-add {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   justify-content: center;
-  width: 20%;
+  width: 15%;
   height: 100%;
   border-radius: 0.5rem;
   background-color: #AEE8CA;
@@ -120,7 +149,33 @@ body #container #task-made .task-puted {
   font-weight: 900;
   letter-spacing: 0.1rem;
 }
-body #container #task-made #container-actions {
+body #container #task-made .priority-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 35%;
+}
+body #container #task-made .priority-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  width: 35%;
+  height: 100%;
+}
+body #container #task-made .priority-task .priority-level {
+  width: 1vw;
+  height: 0.9vw;
+  background-color: #6ACFC9;
+  border-radius: 50%;
+  transition: 0.1s;
+}
+body #container #task-made .container-actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -129,7 +184,7 @@ body #container #task-made #container-actions {
   height: 5vh;
   justify-content: space-around;
 }
-body #container #task-made #container-actions i {
+body #container #task-made .container-actions .actions {
   cursor: pointer;
 }
 body #container #task-made .tasks {
@@ -142,6 +197,17 @@ body #container #task-made .tasks {
   width: 100%;
   height: 30%;
   margin-bottom: 1rem;
-  padding: 1rem 3rem 1rem 3rem;
+  padding: 0rem 1rem 0rem 3rem;
   border-radius: 2rem;
+}
+body #container .choose-priority {
+  width: 1vw;
+  height: 0.9vw;
+  background-color: #6ACFC9;
+  border-radius: 50%;
+  transition: 0.1s;
+}
+body #container .choose-priority:hover {
+  background-color: #d6ac5e;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

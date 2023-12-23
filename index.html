@@ -11,15 +11,33 @@
     <div id="container">
         <h1>List-To-Do</h1>
         <div id="container-info">
-            <input type="text" id="task-add" placeholder="New To-Do">
-            <div id="btn-add">add</div>
+            <input type="text" id="task-add" placeholder="New To-Do" maxlength="35">
+            <div id="priority">
+                <div>
+                    <p>Prioridade</p>
+                </div>
+                <div id="level">
+                    <div class="choose-priority" id="priority-one"></div>
+                    <div class="choose-priority" id="priority-two"></div>
+                    <div class="choose-priority" id="priority-three"></div>
+                </div>
+            </div>
+            <div id="btn-add"><img src="svg/plus-solid.svg" alt="Adicionar task" height="25rem"></div>
         </div>
         <div id="task-made">
             <div class="tasks">
                 <p class="task-puted">Limpar a casa</p> 
-                <div id="container-actions">
-                    <div class="action"><i class="fa-solid fa-check" style="color: green;" id="made-task"></i></div>
-                    <div class="action"><i class="fa-solid fa-x" style="color: red;" id="cancel-task"></i></div>
+                <div class="priority-action">
+                    <div class="priority-task">
+                        <div class="priority-level"></div>
+                        <div class="priority-level"></div>
+                        <div class="priority-level"></div>
+                    </div>
+                    <div class="container-actions">
+                        <img src="svg/check-solid.svg" alt="Feito" height="20px" id="check-1" class="actions">
+                        <img src="svg/xmark-solid.svg" alt="Cancelar" height="20px" id="check-2" class="actions">
+                        <img src="svg/pencil-solid.svg" alt="Cancelar" height="17px" id="check-3" class="actions">
+                    </div>
                 </div>
             </div>
         </div>
