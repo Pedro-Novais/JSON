@@ -1,54 +1,39 @@
 {
   "tasks": [
     {
-      "task": "ok",
-      "priority": "3",
+      "task": "Ir tomar banho",
+      "priority": 3,
       "id": 1
     },
     {
-      "task": "testeee",
-      "priority": 2,
+      "task": "Escolher minha roupa",
+      "priority": 3,
       "id": 2
     },
     {
-      "task": "ta",
+      "task": "Lavar a louça",
       "priority": 1,
+      "id": 3
+    },
+    {
+      "task": "Guardar as roupas",
+      "priority": 2,
       "id": 4
     },
     {
-      "task": "tese",
+      "task": "Organizar minha mochila",
       "priority": 1,
+      "id": 5
+    },
+    {
+      "task": "Fazer o bigode e sobrancelha ",
+      "priority": 3,
       "id": 6
     },
     {
-      "task": "vem",
-      "priority": 1,
+      "task": "Lavar o cabelo",
+      "priority": 3,
       "id": 7
-    },
-    {
-      "task": "organizado",
-      "priority": 3,
-      "id": 8
-    },
-    {
-      "task": "organizado",
-      "priority": 1,
-      "id": 9
-    },
-    {
-      "task": "tese",
-      "priority": 1,
-      "id": 10
-    },
-    {
-      "task": "tese",
-      "priority": 3,
-      "id": 11
-    },
-    {
-      "task": "tudo bem",
-      "priority": 2,
-      "id": 12
     }
   ],
   "config": {

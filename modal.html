@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="modal" id="modal-edit">
+        <h1>Editar Tarefa</h1>
+        <div class="content-modal">
+            <input type="text" id="input-edit" class="input" placeholder="Nova task">
+            <div class="content-priority">
+                <div>
+                    <p>Prioridade</p>
+                </div>
+                <div class="content-level">
+                    <div class="choose-priority" id="priority-one"></div>
+                    <div class="choose-priority" id="priority-two"></div>
+                    <div class="choose-priority" id="priority-three"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content-btn">
+            <button type="button" class="btn-edit" id="btn-edit-cancel">
+                <img src="svg/xmark-solid.svg" alt="Cancelar" height="40px">
+            </button>
+            <button type="button" class="btn-edit" id="btn-edit-edit">
+                <img src="svg/check-solid.svg" alt="Alterar" height="40px">
+            </button>
+        </div>
+    </div>
+</body>
+<script src="scripts/script.js" type="module"></script>
+</html>

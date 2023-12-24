@@ -10,31 +10,12 @@ const apiConfig = 'http://localhost:5000/config'
 let priorityOrderJson = true;
 
 document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
-//document.addEventListener('DOMContentLoaded', loadingTask)
-
-const level = document.querySelectorAll('.choose-priority')
-level.forEach(function(level) {
-  level.addEventListener('click', function() {
-      clearNewClick()
-      priorityId = level.getAttribute('id');
-      if(priorityId == "priority-one"){
-        priorityId = 0
-      }
-      else if(priorityId == "priority-two"){
-        priorityId = 1
-      }
-      else if(priorityId == "priority-three"){
-        priorityId = 2
-      }
-
-      if(priorityId !== null){
-        markNewClick(priorityId)
-      }
-  });
-});
+getPriority()
 
 const btn = document.querySelector('#btn-add')
-btn.addEventListener('click', addTask)
+if(btn){
+  btn.addEventListener('click', addTask)
+}
 
 let priorityId = null;
 function addTask(){
@@ -169,21 +150,10 @@ function createActions(div, priority,i, json){
   })
 
   i_edit.addEventListener('click', () => {
-    updateTask(id)
+    modal()
+    validUpdate(id)
   })
 
-}
-
-function updateTask(id){
-  let inputName = window.prompt('Digite a nova tarefa')
-  let inputPriority = window.prompt('Digite a prioridade')
-
-  let data={
-    task: inputName,
-    priority: inputPriority
-  }
-
-  updateTaskBack(api, id, data)
 }
 
 function markNewClick(index){
@@ -198,4 +168,70 @@ function clearNewClick(){
     for(let i = 0; i < level.length; i++){
         level[i].style.backgroundColor='#6acfc9';
     }
+}
+
+function modal(){
+  let modalEdit = "         <h1>Editar Tarefa</h1>         <div class='content-modal'>             <input type='text' id='input-edit' class='input' placeholder='Nova task'>             <div class='content-priority'>                 <div>                     <p>Prioridade</p>                 </div>                 <div class='content-level'>                     <div class='choose-priority' id='priority-one'></div>                     <div class='choose-priority' id='priority-two'></div>                     <div class='choose-priority' id='priority-three'></div>                 </div>             </div>         </div>         <div class='content-btn'>             <button type='button' class='btn-edit' id='btn-edit-cancel'>                 <img src='svg/xmark-solid.svg' alt='Cancelar' height='40px'>             </button>             <button type='button' class='btn-edit' id='btn-edit-edit'>                 <img src='svg/check-solid.svg' alt='Alterar' height='40px'>             </button>         </div>     ";
+ 
+  let modalDiv = document.createElement('div');
+  modalDiv.setAttribute('class', 'modal')
+  modalDiv.setAttribute('id', 'modal-edit')
+
+  modalDiv.innerHTML = modalEdit;
+
+  let elementOut = document.querySelector('#container');
+
+  elementOut.parentNode.replaceChild(modalDiv, elementOut);
+  getPriority()
+}
+
+function updateTask(id, newTask){
+  console.log(newTask + "upadate")
+  /*let inputName = window.prompt('Digite a nova tarefa')
+  let inputPriority = window.prompt('Digite a prioridade')*/
+
+  let data={
+    task: newTask,
+    priority: priorityId + 1
+  }
+  updateTaskBack(api, id, data)
+}
+
+function validUpdate(id){
+  const btnNewTask = document.querySelector('#btn-edit-edit')
+    btnNewTask.addEventListener('click', function(event){
+
+      const inputTask = document.querySelector('#input-edit').value
+      event.preventDefault()
+     
+      if(inputTask == ""){
+        return false
+      }else{
+        updateTask(id, inputTask)
+      }
+    })
+}
+
+function getPriority(){
+  const level = document.querySelectorAll('.choose-priority')
+  level.forEach(function(level) {
+    level.addEventListener('click', function() {
+        clearNewClick()
+        priorityId = level.getAttribute('id');
+        if(priorityId == "priority-one"){
+          priorityId = 0
+        }
+        else if(priorityId == "priority-two"){
+          priorityId = 1
+        }
+        else if(priorityId == "priority-three"){
+          priorityId = 2
+        }
+
+        if(priorityId !== null){
+          markNewClick(priorityId)
+        }
+        console.log(priorityId)
+    });
+  });
 }

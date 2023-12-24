@@ -19,7 +19,6 @@
 background-color: $space_text;
 border-radius: 20px;
 }
-
 body{
     width: 100%;
     height: 100vh;
@@ -28,6 +27,104 @@ body{
     justify-content: center;
     align-items: center;
     background-color: $background;
+    .modal{
+        @include container;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        //display: none;
+        position: fixed;
+        z-index: 100;
+        //top: 0;
+        //left: 0;
+        margin: 0 auto;
+        min-width: 40%;
+        height: 40vh;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $background_list;
+        color: $text;
+        .content-modal{
+            @include container;
+            justify-content: space-around;
+            width: 100%;
+            height: 8vh;
+            margin-top: 3rem;
+            padding: 0.35vw;
+            .input{
+                width:60%;
+                height: 100%;
+                padding: 0.5rem;
+                background-color: $white;
+                outline: none;
+                border-style: none;
+                font-size: 1vw;
+                border-radius: 1rem;
+                color: $text;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
+            }
+            .input::placeholder{
+                color: $text;
+                opacity: 40%;
+            }
+            .content-priority{
+                @include container;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 15%;
+                height: 100%;
+                padding: 0.1vw;
+                border-radius: 0.5rem;
+                color: $text;
+                background-color: $space_text;
+                p{
+                    font-size: 80%;
+                    font-weight: 900;
+                    letter-spacing: 0.1rem;
+                    text-transform: uppercase;
+                    color: $text;
+                }
+                .content-level{
+                    @include container;
+                    justify-content: space-around;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .content-btn{
+            @include container;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 10vh;
+            padding: 0.25rem;
+            margin-top: 3rem;
+            .btn-edit{
+                @include container;
+                justify-content: center;
+                width:37%;
+                height: 95%;
+                border-radius: 0.5rem;
+                background-color: $space_text;
+                text-transform: uppercase;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
+                color: $text;
+                transition: .1s;
+                border-style: none;
+            }
+            #btn-edit-cancel:hover{
+                cursor: pointer;
+                background-color: rgb(202, 120, 120);
+            }
+            #btn-edit-edit:hover{
+                cursor: pointer;
+                background-color: rgb(109, 243, 83);
+            }
+        }
+    }
     #container{
         @include container;
         flex-direction: column;
@@ -165,16 +262,16 @@ body{
                 border-radius: 2rem;
             }
         }
-        .choose-priority{
-            width: 1vw;
-            height: 0.9vw;
-            background-color: $background_list;
-            border-radius: 50%;
-            transition: .1s;
-        }
-        .choose-priority:hover{
-            background-color: #d6ac5e;
-            cursor: pointer;
-        }
+    }
+    .choose-priority{
+        width: 1vw;
+        height: 0.9vw;
+        background-color: $background_list;
+        border-radius: 50%;
+        transition: .1s;
+    }
+    .choose-priority:hover{
+        background-color: #d6ac5e;
+        cursor: pointer;
     }
 }
