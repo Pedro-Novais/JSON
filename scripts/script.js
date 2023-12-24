@@ -92,6 +92,7 @@ function createPriorityTask(json, div, priority,id){
   const container = document.createElement('div')
   container.setAttribute('class', 'priority-task')
   let level = []
+  let priJson = json[id]["priority"]
   for(let i = 0; i < 3; i++){
     level[i] = document.createElement('div')
     level[i].setAttribute('class', 'priority-level')
@@ -99,12 +100,11 @@ function createPriorityTask(json, div, priority,id){
     container.appendChild(level[i])
     priority.appendChild(container)
   }
-  div.appendChild(priority)
 
-  let priJson = json[id]["priority"]
     for(let i = 0; i < priJson; i++){
         level[i].style.backgroundColor='#d6ac5e';
     }
+    div.appendChild(priority)
 }
 
 function createActions(div, priority,i, json){
