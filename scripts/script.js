@@ -1,16 +1,18 @@
-import createXMLHttprequest from "./createXML.js"
+import getConfig from "./config.js"
 import addTaskBack from "./addXML.js"
 import deleteTask from "./deleteXML.js"
 import updateTaskBack from "./updateXML.js"
+import order from "./orderPriority.js"
 
 const api = 'http://localhost:5000/tasks'
-const btn = document.querySelector('#btn-add')
+const apiConfig = 'http://localhost:5000/config'
+
+let priorityOrderJson = true;
+
+document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
+//document.addEventListener('DOMContentLoaded', loadingTask)
 
 const level = document.querySelectorAll('.choose-priority')
-let priorityId = null;
-
-document.addEventListener('DOMContentLoaded', loadingTask)
-
 level.forEach(function(level) {
   level.addEventListener('click', function() {
       clearNewClick()
@@ -31,8 +33,10 @@ level.forEach(function(level) {
   });
 });
 
+const btn = document.querySelector('#btn-add')
 btn.addEventListener('click', addTask)
 
+let priorityId = null;
 function addTask(){
   let task_put = document.querySelector('#task-add')
   const input = document.querySelector('#task-add').value
@@ -52,13 +56,26 @@ function addTask(){
     addTaskBack(api, data)
 }
 
-function loadingTask(){
-  createXMLHttprequest(api, viewTaskSaved)
-  function viewTaskSaved(data){
-    if(data.length > 0){
-      for(let i = 0; i < data.length; i++){
-        createTask(data, i)
-      }
+function loadingConfig(configs){
+  priorityOrderJson = configs["orderPriority"]
+
+  loadingTask(priorityOrderJson)
+}
+
+function loadingTask(priorityJson){
+  if (priorityJson == true){
+    for(let i = 3; i >= 1; i--){
+      order(api, orderPriority, i)
+    }
+  }else{
+    order(api, orderPriority)
+  }
+}
+
+function orderPriority(order){
+  if(order.length > 0){
+    for(let i = 0; i < order.length; i++){
+      createTask(order, i)
     }
   }
 }

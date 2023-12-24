@@ -1,9 +1,57 @@
 {
   "tasks": [
     {
-      "task": "mudei",
-      "priority": "1",
-      "id": 3
+      "task": "ok",
+      "priority": "3",
+      "id": 1
+    },
+    {
+      "task": "testeee",
+      "priority": 2,
+      "id": 2
+    },
+    {
+      "task": "ta",
+      "priority": 1,
+      "id": 4
+    },
+    {
+      "task": "tese",
+      "priority": 1,
+      "id": 6
+    },
+    {
+      "task": "vem",
+      "priority": 1,
+      "id": 7
+    },
+    {
+      "task": "organizado",
+      "priority": 3,
+      "id": 8
+    },
+    {
+      "task": "organizado",
+      "priority": 1,
+      "id": 9
+    },
+    {
+      "task": "tese",
+      "priority": 1,
+      "id": 10
+    },
+    {
+      "task": "tese",
+      "priority": 3,
+      "id": 11
+    },
+    {
+      "task": "tudo bem",
+      "priority": 2,
+      "id": 12
     }
-  ]
+  ],
+  "config": {
+    "orderPriority": true
+  }
 }

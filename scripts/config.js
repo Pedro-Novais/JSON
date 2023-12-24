@@ -1,6 +1,6 @@
-export default function createXMLHttprequest(url, cb, data = null) {
+export default function getConfig(url, cb){
     const request = new XMLHttpRequest()
-
+    
     request.open('GET', url);
     request.setRequestHeader('Content-Type', 'application/json');
 
@@ -16,5 +16,5 @@ export default function createXMLHttprequest(url, cb, data = null) {
             }
         }
     }
-    request.send(data);
-    }
+    request.send();
+}
