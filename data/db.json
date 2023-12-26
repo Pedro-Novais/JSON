@@ -1,14 +1,34 @@
 {
   "tasks": [
     {
-      "task": "novo 3",
+      "task": "Ir ao mercado",
+      "priority": 3,
+      "id": 1
+    },
+    {
+      "task": "Comprar carne vermelha",
+      "priority": 3,
+      "id": 2
+    },
+    {
+      "task": "Programar ainda hoje",
       "priority": 3,
       "id": 3
     },
     {
-      "task": "novo 2",
+      "task": "Estudar o curso de javascript",
       "priority": 2,
       "id": 4
+    },
+    {
+      "task": "Pega o ônibus engenho novo",
+      "priority": 3,
+      "id": 5
+    },
+    {
+      "task": "Pesquisar novas flores",
+      "priority": 1,
+      "id": 6
     }
   ],
   "config": {

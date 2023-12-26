@@ -158,20 +158,6 @@ function createActions(div, priority,i, json){
 
 }
 
-function markNewClick(index){
-    let level = document.querySelectorAll('.choose-priority')
-    for(let i = 0; i <= index; i++){
-        level[i].style.backgroundColor='#d6ac5e';
-    }
-}
-
-function clearNewClick(){
-    let level = document.querySelectorAll('.choose-priority')
-    for(let i = 0; i < level.length; i++){
-        level[i].style.backgroundColor='#6acfc9';
-    }
-}
-
 function modal(){
   let modalDiv = document.createElement('div');
   modalDiv.setAttribute('class', 'modal')
@@ -261,4 +247,18 @@ function getPriority(){
         console.log(priorityId)
     });
   });
+}
+
+function markNewClick(index){
+  let level = document.querySelectorAll('.choose-priority')
+  for(let i = 0; i <= index; i++){
+      level[i].style.backgroundColor='#d6ac5e';
+  }
+}
+
+function clearNewClick(){
+  let level = document.querySelectorAll('.choose-priority')
+  for(let i = 0; i < level.length; i++){
+      level[i].style.backgroundColor='#6acfc9';
+  }
 }
