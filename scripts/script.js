@@ -3,11 +3,12 @@ import addTaskBack from "./addXML.js"
 import deleteTask from "./deleteXML.js"
 import updateTaskBack from "./updateXML.js"
 import order from "./orderPriority.js"
+import modalEdit from "./modals.js"
 
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
 
-let priorityOrderJson = true;
+//let priorityOrderJson = true;
 
 document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
 getPriority()
@@ -38,7 +39,7 @@ function addTask(){
 }
 
 function loadingConfig(configs){
-  priorityOrderJson = configs["orderPriority"]
+  let priorityOrderJson = configs["orderPriority"]
 
   loadingTask(priorityOrderJson)
 }
@@ -150,8 +151,9 @@ function createActions(div, priority,i, json){
   })
 
   i_edit.addEventListener('click', () => {
-    modal()
-    validUpdate(id)
+    let stateId;
+    stateId = modal()
+    validUpdate(id, stateId)
   })
 
 }
@@ -171,36 +173,35 @@ function clearNewClick(){
 }
 
 function modal(){
-  let modalEdit = "         <h1>Editar Tarefa</h1>         <div class='content-modal'>             <input type='text' id='input-edit' class='input' placeholder='Nova task'>             <div class='content-priority'>                 <div>                     <p>Prioridade</p>                 </div>                 <div class='content-level'>                     <div class='choose-priority' id='priority-one'></div>                     <div class='choose-priority' id='priority-two'></div>                     <div class='choose-priority' id='priority-three'></div>                 </div>             </div>         </div>         <div class='content-btn'>             <button type='button' class='btn-edit' id='btn-edit-cancel'>                 <img src='svg/xmark-solid.svg' alt='Cancelar' height='40px'>             </button>             <button type='button' class='btn-edit' id='btn-edit-edit'>                 <img src='svg/check-solid.svg' alt='Alterar' height='40px'>             </button>         </div>     ";
- 
   let modalDiv = document.createElement('div');
   modalDiv.setAttribute('class', 'modal')
   modalDiv.setAttribute('id', 'modal-edit')
+  const levelPiority = document.querySelectorAll('.choose-priority')
 
+  for(let i = 0; i < levelPiority.length; i++){
+    levelPiority[i].getAttribute('id')
+    levelPiority[i].removeAttribute('id')
+    levelPiority[i].removeAttribute('class')
+    console.log('foi')
+  }
+
+  const body = document.querySelector('body')
+
+  const container = document.querySelector('#container')
+  container.style.display="none"
+ 
   modalDiv.innerHTML = modalEdit;
 
-  let elementOut = document.querySelector('#container');
-
-  elementOut.parentNode.replaceChild(modalDiv, elementOut);
+  body.appendChild(modalDiv)
   getPriority()
-}
 
-function updateTask(id, newTask){
-  console.log(newTask + "upadate")
-  /*let inputName = window.prompt('Digite a nova tarefa')
-  let inputPriority = window.prompt('Digite a prioridade')*/
-
-  let data={
-    task: newTask,
-    priority: priorityId + 1
-  }
-  updateTaskBack(api, id, data)
 }
 
 function validUpdate(id){
   const btnNewTask = document.querySelector('#btn-edit-edit')
-    btnNewTask.addEventListener('click', function(event){
+  const btnCancelNewTask = document.querySelector('#btn-edit-cancel')
 
+    btnNewTask.addEventListener('click', function(event){
       const inputTask = document.querySelector('#input-edit').value
       event.preventDefault()
      
@@ -210,6 +211,32 @@ function validUpdate(id){
         updateTask(id, inputTask)
       }
     })
+
+    btnCancelNewTask.addEventListener('click', changeState)
+}
+
+function changeState(){
+  let priority = ["priority-one", "priority-two", "priority-three"]
+  let divModal = document.querySelector('#modal-edit')
+  divModal.remove();
+
+  const container = document.querySelector('#container')
+  container.style.display="flex"
+
+  const levelPiority = document.querySelectorAll('[mark]')
+
+  for(let i = 0; i < levelPiority.length; i++){
+    levelPiority[i].setAttribute('id', priority[i])
+    levelPiority[i].setAttribute('class', 'choose-priority')
+  }
+}
+
+function updateTask(id, newTask){
+  let data={
+    task: newTask,
+    priority: priorityId + 1
+  }
+  updateTaskBack(api, id, data)
 }
 
 function getPriority(){

@@ -1,39 +1,14 @@
 {
   "tasks": [
     {
-      "task": "Ir tomar banho",
+      "task": "novo 3",
       "priority": 3,
-      "id": 1
-    },
-    {
-      "task": "Escolher minha roupa",
-      "priority": 3,
-      "id": 2
-    },
-    {
-      "task": "Lavar a louça",
-      "priority": 1,
       "id": 3
     },
     {
-      "task": "Guardar as roupas",
+      "task": "novo 2",
       "priority": 2,
       "id": 4
-    },
-    {
-      "task": "Organizar minha mochila",
-      "priority": 1,
-      "id": 5
-    },
-    {
-      "task": "Fazer o bigode e sobrancelha ",
-      "priority": 3,
-      "id": 6
-    },
-    {
-      "task": "Lavar o cabelo",
-      "priority": 3,
-      "id": 7
     }
   ],
   "config": {
