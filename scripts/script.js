@@ -8,25 +8,30 @@ import {modalEdit, modalRemovetext} from "./modals.js"
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
 
-//let priorityOrderJson = true;
-
 document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
 getPriority()
 
 const btn = document.querySelector('#btn-add')
+const task_put = document.querySelector('#task-add')
+
+if(task_put){
+  task_put.addEventListener('click', () =>{
+    task_put.removeAttribute('class', 'watch-out')
+  })
+}
 if(btn){
   btn.addEventListener('click', addTask)
 }
 
 let priorityId = null;
 function addTask(){
-  let task_put = document.querySelector('#task-add')
   const input = document.querySelector('#task-add').value
 
   if(priorityId == null){
     priorityId = 0
   }
   if(input == "" || input == null){
+    task_put.setAttribute('class', 'watch-out')
     return false
   }
   priorityId = priorityId + 1
@@ -226,16 +231,21 @@ function validUpdate(id, determinate, modalType){
 
     btnNewTask.addEventListener('click', function(event){
       if(determinate == 0){
+        const inputTaskElement = document.querySelector('#input-edit')
         const inputTask = document.querySelector('#input-edit').value
         event.preventDefault()
         if(inputTask == ""){
+          inputTaskElement.style.boxShadow = "rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset"
+          inputTaskElement.addEventListener("click", ()=>{
+            inputTaskElement.style.boxShadow="none"
+          })
           return false
         }else{
           updateTask(id, inputTask)
         }
-      }else if(determinate == 1){
-        deleteTask(api, id)
-      }
+        }else if(determinate == 1){
+          deleteTask(api, id)
+        }
     })
 
     btnCancelNewTask.addEventListener('click', ()=>{

@@ -20,7 +20,7 @@
 }
 
 body {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -344,4 +344,13 @@ body .choose-priority {
 body .choose-priority:hover {
   background-color: #d6ac5e;
   cursor: pointer;
+}
+body .watch-out {
+  box-shadow: rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset;
+}
+
+@media (min-width: 768px) {
+  body {
+    width: 768px;
+  }
 }/*# sourceMappingURL=style.css.map */
