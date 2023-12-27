@@ -3,7 +3,7 @@ import addTaskBack from "./addXML.js"
 import deleteTask from "./deleteXML.js"
 import updateTaskBack from "./updateXML.js"
 import order from "./orderPriority.js"
-import modalEdit from "./modals.js"
+import {modalEdit, modalRemovetext} from "./modals.js"
 
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
@@ -142,23 +142,62 @@ function createActions(div, priority,i, json){
   priority.appendChild(div_action)
   div.appendChild(priority)
 
-  i_add.addEventListener('click', function(){
+  i_add.addEventListener('click', () =>{
     deleteTask(api, id)
   })
 
   i_del.addEventListener('click', () => {
-    deleteTask(api, id)
+    modalRemove(json, id)
+    actionButtonsRemove()
+    //deleteTask(api, id)
   })
 
   i_edit.addEventListener('click', () => {
-    let stateId;
-    stateId = modal()
-    validUpdate(id, stateId)
+    modalChange()
+    validUpdate(id)
   })
 
 }
 
-function modal(){
+function modalRemove(json, id){
+  let modalDiv = document.createElement('div');
+  modalDiv.setAttribute('class', 'modal')
+  modalDiv.setAttribute('id', 'modal-remove')
+
+  const body = document.querySelector('body')
+  const container = document.querySelector('#container')
+  container.style.display="none"
+
+  modalDiv.innerHTML = modalRemovetext
+
+  body.appendChild(modalDiv)
+  modalRemovePriority(json, id)
+}
+
+function modalRemovePriority(json, id){
+  const levelMark = document.querySelectorAll('[level]')
+  let nameTask;
+  let levelTask;
+  
+  for(let i = 0; i <= json.length; i++){
+    if(id == json[i]["id"]){
+      nameTask = json[i]["task"]
+      levelTask = json[i]["priority"]
+      break
+    }
+  }
+ 
+  let textTask = document.querySelector('#task-remove-text')
+  let text = document.createTextNode(nameTask)
+
+  textTask.appendChild(text)
+
+  for(let i = 0; i < levelTask; i++){
+    console.log('passou')
+    levelMark[i].style.backgroundColor="#d6ac5e"
+  }
+}
+function modalChange(){
   let modalDiv = document.createElement('div');
   modalDiv.setAttribute('class', 'modal')
   modalDiv.setAttribute('id', 'modal-edit')

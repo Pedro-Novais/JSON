@@ -28,6 +28,22 @@ body {
   align-items: center;
   background-color: #26B6C6;
 }
+body #modal-remove {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 40vh;
+  margin-bottom: 0rem;
+}
+body #modal-remove #task-remove {
+  margin-top: 2rem;
+}
+body #modal-remove #task-remove p {
+  font-size: 1.3rem;
+}
 body .modal {
   display: flex;
   flex-direction: row;
@@ -78,36 +94,6 @@ body .modal .content-modal .input::placeholder {
   color: #ffa600;
   opacity: 40%;
 }
-body .modal .content-modal .content-priority {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 15%;
-  height: 100%;
-  padding: 0.1vw;
-  border-radius: 0.5rem;
-  color: #ffa600;
-  background-color: #AEE8CA;
-}
-body .modal .content-modal .content-priority p {
-  font-size: 80%;
-  font-weight: 900;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  color: #ffa600;
-}
-body .modal .content-modal .content-priority .content-level {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  height: 100%;
-}
 body .modal .content-btn {
   display: flex;
   flex-direction: row;
@@ -128,6 +114,7 @@ body .modal .content-btn .btn-edit {
   justify-content: center;
   width: 37%;
   height: 95%;
+  min-height: 10vh;
   border-radius: 0.5rem;
   background-color: #AEE8CA;
   text-transform: uppercase;
@@ -260,12 +247,6 @@ body #container #task-made {
   overflow-x: hidden;
   overflow-y: auto;
 }
-body #container #task-made .task-puted {
-  font-size: 0.8vw;
-  color: #ffa600;
-  font-weight: 900;
-  letter-spacing: 0.1rem;
-}
 body #container #task-made .priority-action {
   display: flex;
   flex-direction: row;
@@ -285,13 +266,6 @@ body #container #task-made .priority-task {
   width: 35%;
   height: 100%;
 }
-body #container #task-made .priority-task .priority-level {
-  width: 1vw;
-  height: 0.9vw;
-  background-color: #6acfc9;
-  border-radius: 50%;
-  transition: 0.1s;
-}
 body #container #task-made .container-actions {
   display: flex;
   flex-direction: row;
@@ -304,7 +278,44 @@ body #container #task-made .container-actions {
 body #container #task-made .container-actions .actions {
   cursor: pointer;
 }
-body #container #task-made .tasks {
+body .priority-level {
+  width: 1vw;
+  height: 0.9vw;
+  background-color: #6acfc9;
+  border-radius: 50%;
+  transition: 0.1s;
+}
+body .content-priority {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 15%;
+  height: 100%;
+  padding: 0.1vw;
+  border-radius: 0.5rem;
+  color: #ffa600;
+  background-color: #AEE8CA;
+}
+body .content-priority p {
+  font-size: 80%;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #ffa600;
+}
+body .content-priority .content-level {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+body .tasks {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -316,6 +327,12 @@ body #container #task-made .tasks {
   margin-bottom: 1rem;
   padding: 0rem 1rem 0rem 3rem;
   border-radius: 2rem;
+}
+body .task-puted {
+  font-size: 0.8vw;
+  color: #ffa600;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
 }
 body .choose-priority {
   width: 1vw;
