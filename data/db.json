@@ -1,19 +1,9 @@
 {
   "tasks": [
     {
-      "task": "mudança",
+      "task": "Nova task",
       "priority": 3,
-      "id": 1
-    },
-    {
-      "task": "task one",
-      "priority": 1,
-      "id": 2
-    },
-    {
-      "task": "teste 5",
-      "priority": 3,
-      "id": 3
+      "id": 5
     }
   ],
   "config": {

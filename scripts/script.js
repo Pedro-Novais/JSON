@@ -148,13 +148,12 @@ function createActions(div, priority,i, json){
 
   i_del.addEventListener('click', () => {
     modalRemove(json, id)
-    actionButtonsRemove()
-    //deleteTask(api, id)
+    validUpdate(id, 1)
   })
 
   i_edit.addEventListener('click', () => {
     modalChange()
-    validUpdate(id)
+    validUpdate(id, 0)
   })
 
 }
@@ -207,7 +206,6 @@ function modalChange(){
     levelPiority[i].getAttribute('id')
     levelPiority[i].removeAttribute('id')
     levelPiority[i].removeAttribute('class')
-    console.log('foi')
   }
 
   const body = document.querySelector('body')
@@ -222,38 +220,42 @@ function modalChange(){
 
 }
 
-function validUpdate(id){
+function validUpdate(id, determinate, modalType){
   const btnNewTask = document.querySelector('#btn-edit-edit')
   const btnCancelNewTask = document.querySelector('#btn-edit-cancel')
 
     btnNewTask.addEventListener('click', function(event){
-      const inputTask = document.querySelector('#input-edit').value
-      event.preventDefault()
-     
-      if(inputTask == ""){
-        return false
-      }else{
-        updateTask(id, inputTask)
+      if(determinate == 0){
+        const inputTask = document.querySelector('#input-edit').value
+        event.preventDefault()
+        if(inputTask == ""){
+          return false
+        }else{
+          updateTask(id, inputTask)
+        }
+      }else if(determinate == 1){
+        deleteTask(api, id)
       }
     })
 
-    btnCancelNewTask.addEventListener('click', changeState)
-}
+    btnCancelNewTask.addEventListener('click', ()=>{
+      let priority = ["priority-one", "priority-two", "priority-three"]
+      let modalType = ".modal"
+      let divModal = document.querySelector(modalType)
+      divModal.remove();
 
-function changeState(){
-  let priority = ["priority-one", "priority-two", "priority-three"]
-  let divModal = document.querySelector('#modal-edit')
-  divModal.remove();
+      const container = document.querySelector('#container')
+      container.style.display="flex"
 
-  const container = document.querySelector('#container')
-  container.style.display="flex"
+      if(determinate == 0){
+        const levelPiority = document.querySelectorAll('[mark]')
 
-  const levelPiority = document.querySelectorAll('[mark]')
-
-  for(let i = 0; i < levelPiority.length; i++){
-    levelPiority[i].setAttribute('id', priority[i])
-    levelPiority[i].setAttribute('class', 'choose-priority')
-  }
+        for(let i = 0; i < levelPiority.length; i++){
+          levelPiority[i].setAttribute('id', priority[i])
+          levelPiority[i].setAttribute('class', 'choose-priority')
+        }
+      }
+        })
 }
 
 function updateTask(id, newTask){
