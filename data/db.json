@@ -1,11 +1,5 @@
 {
-  "tasks": [
-    {
-      "task": "Nova task",
-      "priority": 3,
-      "id": 5
-    }
-  ],
+  "tasks": [],
   "config": {
     "orderPriority": true
   }
