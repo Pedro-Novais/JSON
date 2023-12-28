@@ -1,5 +1,26 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "task": "teste",
+      "priority": 3,
+      "id": 1
+    },
+    {
+      "task": "qualquer coisa",
+      "priority": 2,
+      "id": 2
+    },
+    {
+      "task": "ordem",
+      "priority": 1,
+      "id": 3
+    },
+    {
+      "task": "change",
+      "priority": 2,
+      "id": 4
+    }
+  ],
   "config": {
     "orderPriority": true
   }

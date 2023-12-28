@@ -139,7 +139,7 @@ body #container {
   align-items: center;
   flex-direction: column;
   background-color: #6acfc9;
-  min-width: 40%;
+  min-width: 70vw;
   height: 60vh;
   padding: 1vw;
   border-radius: 2rem;
@@ -349,27 +349,56 @@ body .watch-out {
   box-shadow: rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset;
 }
 
-@media only screen and (max-width: 500px) {
+/*@media screen and (max-width: 1100px) {
+    body{
+        width: 100%;
+        #container{
+            justify-content: space-around;
+            width: 90%;
+            height: 80vh;
+            #container-info{
+                flex-direction: column;
+                height: 15vh;
+                #task-add{
+                    width:90%;
+                }
+                #priority{
+                    width:90%;
+                    height: 10vh;
+                }
+                #btn-add{
+                    width:90%;
+                }
+            }
+        }
+    }
+  }*/
+@media screen and (max-width: 1100px) {
   body {
     width: 100%;
   }
   body #container {
     justify-content: space-around;
+    width: 70vw;
+  }
+  body #container #task-made {
     width: 90%;
-    height: 80vh;
+    height: 25vh;
   }
   body #container #container-info {
     flex-direction: column;
-    height: 15vh;
+    height: 30vh;
   }
   body #container #container-info #task-add {
     width: 90%;
+    height: 30%;
   }
   body #container #container-info #priority {
     width: 90%;
-    height: 10vh;
+    height: 30%;
   }
   body #container #container-info #btn-add {
     width: 90%;
+    height: 30%;
   }
 }/*# sourceMappingURL=style.css.map */
