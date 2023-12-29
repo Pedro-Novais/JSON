@@ -12,6 +12,8 @@
 
 *::-webkit-scrollbar-track {
   background: #6acfc9;
+  margin-bottom: 1.2rem;
+  margin-top: 0.5vw;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -27,6 +29,12 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #26B6C6;
+  /*header{
+      align-self: flex-start;
+      width: 100%;
+      height: 10vh;
+      background-color: $background-list
+  }*/
 }
 body #modal-remove {
   display: flex;
@@ -55,7 +63,7 @@ body .modal {
   position: fixed;
   z-index: 100;
   margin: 0 auto;
-  min-width: 40%;
+  min-width: 50%;
   height: 40vh;
   padding: 1rem;
   border-radius: 1rem;
@@ -133,13 +141,14 @@ body .modal .content-btn #btn-edit-edit:hover {
   background-color: rgb(109, 243, 83);
 }
 body #container {
+  justify-self: center;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   background-color: #6acfc9;
-  min-width: 70vw;
+  min-width: 50vw;
   height: 60vh;
   padding: 1vw;
   border-radius: 2rem;
@@ -196,7 +205,7 @@ body #container #container-info #priority {
   background-color: #AEE8CA;
 }
 body #container #container-info #priority p {
-  font-size: 90%;
+  font-size: 0.9rem;
   font-weight: 900;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -242,7 +251,7 @@ body #container #task-made {
   background-color: #6acfc9;
   padding: 0.5vw;
   width: 100%;
-  height: 32vh;
+  height: 40vh;
   border-radius: 2rem;
   overflow-x: hidden;
   overflow-y: auto;
@@ -263,7 +272,7 @@ body #container #task-made .priority-task {
   justify-content: flex-start;
   align-items: center;
   justify-content: space-around;
-  width: 35%;
+  width: 40%;
   height: 100%;
 }
 body #container #task-made .container-actions {
@@ -271,7 +280,7 @@ body #container #task-made .container-actions {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 5vw;
+  width: 40%;
   height: 5vh;
   justify-content: space-around;
 }
@@ -279,8 +288,8 @@ body #container #task-made .container-actions .actions {
   cursor: pointer;
 }
 body .priority-level {
-  width: 1vw;
-  height: 0.9vw;
+  width: 20px;
+  height: 20px;
   background-color: #6acfc9;
   border-radius: 50%;
   transition: 0.1s;
@@ -333,10 +342,11 @@ body .task-puted {
   color: #ffa600;
   font-weight: 900;
   letter-spacing: 0.1rem;
+  width: 50%;
 }
 body .choose-priority {
-  width: 1vw;
-  height: 0.9vw;
+  width: 20px;
+  height: 20px;
   background-color: #6acfc9;
   border-radius: 50%;
   transition: 0.1s;
@@ -373,32 +383,188 @@ body .watch-out {
         }
     }
   }*/
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1050px) {
   body {
     width: 100%;
   }
   body #container {
     justify-content: space-around;
-    width: 70vw;
+    width: 60vw;
+    height: 70vh;
   }
   body #container #task-made {
     width: 90%;
-    height: 25vh;
+    height: 35vh;
+  }
+  body #container #task-made .priority-action {
+    width: 40%;
+  }
+  body #container #task-made .priority-action {
+    width: 50%;
+  }
+  body #container #task-made .container-actions {
+    width: 40%;
   }
   body #container #container-info {
     flex-direction: column;
-    height: 30vh;
+    height: 25vh;
   }
   body #container #container-info #task-add {
     width: 90%;
-    height: 30%;
+    height: 25%;
   }
   body #container #container-info #priority {
     width: 90%;
-    height: 30%;
+    height: 25%;
+  }
+  body #container #container-info #priority p {
+    font-size: 1rem;
+  }
+  body #container #container-info #priority #level {
+    width: 25%;
   }
   body #container #container-info #btn-add {
     width: 90%;
+    height: 25%;
+  }
+  body .choose-priority {
+    width: 18px;
+    height: 18px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  body {
+    width: 100%;
+  }
+  body #container {
+    width: 70vw;
+  }
+  body .modal {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body {
+    width: 100%;
+  }
+  body .modal {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 800px) {
+  body {
+    width: 100%;
+  }
+  body #container {
+    width: 90vw;
+  }
+  body .modal {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  body {
+    width: 100%;
+  }
+  body #container {
+    width: 95vw;
+    height: 90vh;
+  }
+  body #container #task-made {
+    height: 40vh;
+    padding-top: 1vw;
+  }
+  body #container #task-made .priority-action {
+    width: 90%;
+  }
+  body #container #task-made .priority-task {
+    width: 40%;
+  }
+  body #container #task-made .container-actions {
+    width: 40%;
+  }
+  body #container #task-made .actions {
+    height: 2.5vh;
+  }
+  body #container .task-puted {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  body #modal-remove #task-remove p {
+    text-align: center;
+  }
+  body .tasks {
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
+    padding-top: 0.5rem;
+    border-radius: 20px;
+  }
+  body .priority-level {
+    width: 25px;
+    height: 25px;
+  }
+  body .content-priority {
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
+  }
+  body .content-priority p {
+    font-size: 0.8rem;
+  }
+  body .modal {
+    min-height: 60%;
+  }
+  body .modal .content-modal {
+    flex-direction: column;
+    height: 25vh;
+  }
+  body .modal .content-modal .input {
+    width: 100%;
+    height: 40%;
+    text-align: center;
+    font-size: 1rem;
+  }
+  body .choose-priority {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media screen and (max-width: 400px) {
+  *::-webkit-scrollbar-track {
+    margin-top: 1rem;
+  }
+  body {
+    width: 100%;
+  }
+  body #container #container-info {
+    height: 35vh;
+  }
+  body #container #container-info #task-add {
+    text-align: center;
+  }
+  body #container #container-info #priority {
     height: 30%;
+  }
+  body #container #container-info #priority #level {
+    width: 90%;
+  }
+  body #container #task-made {
+    padding-top: 1rem;
+  }
+  body #container #task-made .container-actions .actions {
+    height: 3vh;
+  }
+  body #container .task-puted {
+    font-size: 1rem;
+  }
+  body .priority-level {
+    width: 20px;
+    height: 20px;
+  }
+  body .tasks {
+    width: 98%;
+    min-height: 35%;
+    border-radius: 10px;
   }
 }/*# sourceMappingURL=style.css.map */

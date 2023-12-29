@@ -1,24 +1,24 @@
 {
   "tasks": [
     {
-      "task": "teste",
-      "priority": 3,
-      "id": 1
-    },
-    {
-      "task": "qualquer coisa",
-      "priority": 2,
-      "id": 2
-    },
-    {
-      "task": "ordem",
+      "task": "adding",
       "priority": 1,
-      "id": 3
+      "id": 4
     },
     {
-      "task": "change",
+      "task": "teste 2",
       "priority": 2,
-      "id": 4
+      "id": 6
+    },
+    {
+      "task": "again",
+      "priority": 3,
+      "id": 7
+    },
+    {
+      "task": "a",
+      "priority": 3,
+      "id": 8
     }
   ],
   "config": {

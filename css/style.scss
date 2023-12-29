@@ -14,10 +14,13 @@
 }
 *::-webkit-scrollbar-track {
     background: $background-list;
+    //margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    margin-top: 0.5vw;
   }
 *::-webkit-scrollbar-thumb {
-background-color: $space_text;
-border-radius: 20px;
+    background-color: $space_text;
+    border-radius: 20px;
 }
 body{
     width: 100%;
@@ -27,6 +30,12 @@ body{
     justify-content: center;
     align-items: center;
     background-color: $background;
+    /*header{
+        align-self: flex-start;
+        width: 100%;
+        height: 10vh;
+        background-color: $background-list
+    }*/
     #modal-remove{
         @include container;
         flex-direction: column;
@@ -51,7 +60,7 @@ body{
         //top: 0;
         //left: 0;
         margin: 0 auto;
-        min-width: 40%;
+        min-width: 50%;
         height: 40vh;
         padding: 1rem;
         border-radius: 1rem;
@@ -116,10 +125,12 @@ body{
         }
     }
     #container{
+        justify-self: center;
         @include container;
+        //margin-top: 10vh;
         flex-direction: column;
         background-color: $background_list;
-        min-width: 70vw;
+        min-width: 50vw;
         height: 60vh;
         padding: 1vw;
         border-radius: 2rem;
@@ -163,7 +174,7 @@ body{
                 color: $text;
                 background-color: $space_text;
                 p{
-                    font-size: 90%;
+                    font-size: 0.9rem;
                     font-weight: 900;
                     letter-spacing: 0.1rem;
                     text-transform: uppercase;
@@ -202,7 +213,7 @@ body{
             background-color: $background-list;
             padding: 0.5vw;
             width:100%;
-            height: 32vh;
+            height: 40vh;
             border-radius: 2rem;
             overflow-x: hidden;
             overflow-y: auto;
@@ -216,12 +227,12 @@ body{
             .priority-task{
                 @include container;
                 justify-content: space-around;
-                width: 35%;
+                width: 40%;
                 height:100%;
             }
             .container-actions{
                 @include container;
-                width: 5vw;
+                width: 40%;
                 height: 5vh;
                 justify-content: space-around;
                 .actions{
@@ -231,8 +242,8 @@ body{
         }
     }
     .priority-level{
-        width: 1vw;
-        height: 0.9vw;
+        width: 20px;
+        height: 20px;
         background-color: $background_list;
         border-radius: 50%;
         transition: .1s;
@@ -276,10 +287,11 @@ body{
         color: $text;
         font-weight: 900;
         letter-spacing: 0.1rem;
+        width: 50%;
     }
     .choose-priority{
-        width: 1vw;
-        height: 0.9vw;
+        width: 20px;
+        height: 20px;
         background-color: $background_list;
         border-radius: 50%;
         transition: .1s;
@@ -318,32 +330,198 @@ body{
     }
   }*/
 
-  @media screen and (max-width: 1100px){
+  @media screen and (max-width: 1050px){
     body{
         width: 100%;
         #container{
             justify-content: space-around;
-            width: 70vw;
+            width: 60vw;
+            height:70vh;
             #task-made{
                 width: 90%;
-                height: 25vh;
+                height: 35vh;
+                .priority-action{
+                    width: 40%;
+                }
+                .priority-action{
+                    width: 50%;
+                }
+                .container-actions{
+                    width: 40%;
+                }
             }
             #container-info{
                 flex-direction: column;
-                height: 30vh;
+                height: 25vh;
                 #task-add{
                     width: 90%;
-                    height:30%;
+                    height:25%;
                 }
                 #priority{
                     width: 90%;
-                    height: 30%;
+                    height: 25%;
+                    p{
+                        font-size: 1rem;
+                    }
+                    #level{
+                        width: 25%;
+                    }
                 }
                 #btn-add{
                     width: 90%;
-                    height: 30%;
+                    height: 25%;
                 }
             }
+        }
+        .choose-priority{
+               width: 18px;
+               height: 18px;         
+        }
+    }
+  }
+  @media screen and (max-width: 1400px){
+    body{
+        width: 100%;
+        #container{
+            width: 70vw;
+        }
+        .modal{
+            width: 65%;
+        }
+    }
+  }
+  @media screen and (max-width: 1000px){
+    body{
+        width: 100%;
+        .modal{
+            width: 80%;
+        }
+    }
+  }
+  @media screen and (max-width: 800px){
+    body{
+        width: 100%;
+        #container{
+            width: 90vw;
+
+        }
+        .modal{
+            width: 80%;
+        }
+    }
+  }
+  @media screen and (max-width: 600px){
+    body{
+        width: 100%;
+        #container{
+            width: 95vw;
+            height: 90vh;
+            #task-made{
+                height: 40vh;
+                padding-top:1vw;
+                .priority-action{
+                    width: 90%;
+                }
+                .priority-task{
+                    width: 40%;
+                }
+                .container-actions{
+                    width: 40%;
+                }
+                .actions{
+                    height: 2.5vh;
+                }
+            }
+            .task-puted{
+                font-size: 1.3rem;
+                text-align: center;
+            }
+        }
+        #modal-remove{
+            #task-remove{
+                p{
+                    text-align: center;
+                }
+            }
+        }
+        .tasks{
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0;
+            padding-top: 0.5rem;
+            border-radius: 20px;
+        }
+        .priority-level{
+            width: 25px;
+            height: 25px;
+        }
+        .content-priority{
+            flex-direction: column;
+            width: 100%;
+            height: 40%;
+            p{
+                font-size: 0.8rem;
+            }
+        }
+        .modal{
+            min-height: 60%;
+            .content-modal{
+                flex-direction: column;
+                height:25vh;
+                .input{
+                    width: 100%;
+                    height: 40%;
+                    text-align: center;
+                    font-size: 1rem;
+                }
+            }
+        }
+        .choose-priority{
+            width: 20px;
+            height: 20px;
+        }
+    }
+  }
+
+  @media screen and (max-width: 400px){
+    *::-webkit-scrollbar-track {
+        margin-top: 1rem;
+      }
+    body{
+        width: 100%;
+        #container{
+            #container-info{
+                height: 35vh;
+                #task-add{
+                    text-align: center;
+                }
+                #priority{
+                    height:30%;
+                    #level{
+                        width: 90%;
+                    }
+                }
+            }
+            #task-made{
+                padding-top: 1rem;
+                .container-actions{
+                    .actions{
+                        height: 3vh;
+                    }
+                }
+            }
+            .task-puted{
+                font-size: 1rem;
+            }
+        }
+        .priority-level{
+            width: 20px;
+            height:20px;
+        }
+        .tasks{
+            width: 98%;
+            min-height: 35%;
+            border-radius: 10px;
         }
     }
   }
