@@ -3,6 +3,7 @@ import addTaskBack from "./addXML.js"
 import deleteTask from "./deleteXML.js"
 import updateTaskBack from "./updateXML.js"
 import order from "./orderPriority.js"
+import finishTaskBack from "./finishTask.js"
 import {modalEdit, modalRemovetext} from "./modals.js"
 
 const api = 'http://localhost:5000/tasks'
@@ -13,6 +14,11 @@ getPriority()
 
 const btn = document.querySelector('#btn-add')
 const task_put = document.querySelector('#task-add')
+
+const teste = document.querySelector('#container-info')
+const testeTwo = document.querySelector('#task-made')
+//teste.style.display="none";
+//testeTwo.style.height="45vh";
 
 if(task_put){
   task_put.addEventListener('click', () =>{
@@ -148,7 +154,8 @@ function createActions(div, priority,i, json){
   div.appendChild(priority)
 
   i_add.addEventListener('click', () =>{
-    deleteTask(api, id)
+    modalRemove(json, id)
+    validUpdate(id, 2)
   })
 
   i_del.addEventListener('click', () => {
@@ -162,7 +169,6 @@ function createActions(div, priority,i, json){
   })
 
 }
-
 function modalRemove(json, id){
   let modalDiv = document.createElement('div');
   modalDiv.setAttribute('class', 'modal')
@@ -197,7 +203,6 @@ function modalRemovePriority(json, id){
   textTask.appendChild(text)
 
   for(let i = 0; i < levelTask; i++){
-    console.log('passou')
     levelMark[i].style.backgroundColor="#d6ac5e"
   }
 }
@@ -225,7 +230,7 @@ function modalChange(){
 
 }
 
-function validUpdate(id, determinate, modalType){
+function validUpdate(id, determinate){
   const btnNewTask = document.querySelector('#btn-edit-edit')
   const btnCancelNewTask = document.querySelector('#btn-edit-cancel')
 
@@ -245,6 +250,9 @@ function validUpdate(id, determinate, modalType){
         }
         }else if(determinate == 1){
           deleteTask(api, id)
+        }else if(determinate == 2){
+          //finishiTask(api, id)
+          console.log("indo")
         }
     })
 

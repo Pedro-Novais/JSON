@@ -332,7 +332,7 @@ body .tasks {
   justify-content: space-between;
   background-color: #AEE8CA;
   width: 100%;
-  min-height: 30%;
+  min-height: 10vh;
   margin-bottom: 1rem;
   padding: 0rem 1rem 0rem 3rem;
   border-radius: 2rem;
@@ -471,7 +471,7 @@ body .watch-out {
     height: 90vh;
   }
   body #container #task-made {
-    height: 40vh;
+    height: 60vh;
     padding-top: 1vw;
   }
   body #container #task-made .priority-action {
@@ -499,10 +499,11 @@ body .watch-out {
     padding: 0;
     padding-top: 0.5rem;
     border-radius: 20px;
+    min-height: 12vh;
   }
   body .priority-level {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
   }
   body .content-priority {
     flex-direction: column;
@@ -551,6 +552,7 @@ body .watch-out {
   }
   body #container #task-made {
     padding-top: 1rem;
+    margin-bottom: 1rem;
   }
   body #container #task-made .container-actions .actions {
     height: 3vh;
@@ -559,12 +561,12 @@ body .watch-out {
     font-size: 1rem;
   }
   body .priority-level {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   body .tasks {
     width: 98%;
-    min-height: 35%;
+    min-height: 25%;
     border-radius: 10px;
   }
 }/*# sourceMappingURL=style.css.map */

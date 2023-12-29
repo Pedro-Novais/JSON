@@ -1,24 +1,24 @@
 {
   "tasks": [
     {
-      "task": "adding",
-      "priority": 1,
+      "task": "Arrumar a casa",
+      "priority": 3,
+      "id": 1
+    },
+    {
+      "task": "Arrumar minha mala",
+      "priority": 3,
+      "id": 2
+    },
+    {
+      "task": "Descongelar o frango",
+      "priority": 3,
+      "id": 3
+    },
+    {
+      "task": "testee",
+      "priority": 3,
       "id": 4
-    },
-    {
-      "task": "teste 2",
-      "priority": 2,
-      "id": 6
-    },
-    {
-      "task": "again",
-      "priority": 3,
-      "id": 7
-    },
-    {
-      "task": "a",
-      "priority": 3,
-      "id": 8
     }
   ],
   "config": {
