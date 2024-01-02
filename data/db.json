@@ -1,24 +1,44 @@
 {
   "tasks": [
     {
-      "task": "Arrumar a casa",
-      "priority": 3,
-      "id": 1
-    },
-    {
-      "task": "Arrumar minha mala",
-      "priority": 3,
-      "id": 2
-    },
-    {
-      "task": "Descongelar o frango",
-      "priority": 3,
-      "id": 3
-    },
-    {
-      "task": "testee",
+      "task": "change again",
       "priority": 3,
       "id": 4
+    },
+    {
+      "task": "ok",
+      "priority": 1,
+      "id": 6
+    },
+    {
+      "task": "teste",
+      "priority": 1,
+      "id": 7
+    },
+    {
+      "task": "testzin",
+      "priority": 2,
+      "id": 8
+    },
+    {
+      "task": "teste again",
+      "priority": 2,
+      "id": 9
+    },
+    {
+      "task": "keep",
+      "priority": 2,
+      "id": 10
+    },
+    {
+      "task": "beleza",
+      "priority": 1,
+      "id": 11
+    },
+    {
+      "task": "teste",
+      "priority": 2,
+      "id": 12
     }
   ],
   "config": {

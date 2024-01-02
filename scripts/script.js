@@ -3,22 +3,18 @@ import addTaskBack from "./addXML.js"
 import deleteTask from "./deleteXML.js"
 import updateTaskBack from "./updateXML.js"
 import order from "./orderPriority.js"
-import finishTaskBack from "./finishTask.js"
+//import finishTaskBack from "./finishTask.js"
 import {modalEdit, modalRemovetext} from "./modals.js"
 
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
 
-document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
+//document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
+getConfig(apiConfig, loadingConfig)
 getPriority()
 
 const btn = document.querySelector('#btn-add')
 const task_put = document.querySelector('#task-add')
-
-const teste = document.querySelector('#container-info')
-const testeTwo = document.querySelector('#task-made')
-//teste.style.display="none";
-//testeTwo.style.height="45vh";
 
 if(task_put){
   task_put.addEventListener('click', () =>{
@@ -31,6 +27,10 @@ if(btn){
 
 let priorityId = null;
 function addTask(){
+  const agora = new Date();
+  const minutos = agora.getMinutes();
+  const sec = agora.getSeconds();
+  console.log(`${agora.getHours()}:${minutos}:${sec}`)
   const input = document.querySelector('#task-add').value
 
   if(priorityId == null){
