@@ -19,7 +19,7 @@
     margin-top: 0.5vw;
   }
 *::-webkit-scrollbar-thumb {
-    background-color: $space_text;
+    background-color: $background-task;
     border-radius: 20px;
 }
 body{
@@ -64,7 +64,7 @@ body{
         height: 40vh;
         padding: 1rem;
         border-radius: 1rem;
-        background-color: $background_list;
+        background-color: $background-list;
         color: $text;
         .content-modal{
             @include container;
@@ -106,7 +106,7 @@ body{
                 height: 95%;
                 min-height: 10vh;
                 border-radius: 0.5rem;
-                background-color: $space_text;
+                background-color: $background-task;
                 text-transform: uppercase;
                 font-weight: 900;
                 letter-spacing: 0.1rem;
@@ -116,11 +116,11 @@ body{
             }
             #btn-edit-cancel:hover{
                 cursor: pointer;
-                background-color: rgb(202, 120, 120);
+                background-color: $hover-btn-cancel;
             }
             #btn-edit-edit:hover{
                 cursor: pointer;
-                background-color: rgb(109, 243, 83);
+                background-color: $hover-btn-ok;
             }
         }
     }
@@ -129,7 +129,7 @@ body{
         @include container;
         //margin-top: 10vh;
         flex-direction: column;
-        background-color: $background_list;
+        background-color: $background-list;
         min-width: 50vw;
         height: 60vh;
         padding: 1vw;
@@ -172,7 +172,7 @@ body{
                 padding: 0.1vw;
                 border-radius: 0.5rem;
                 color: $text;
-                background-color: $space_text;
+                background-color: $background-task;
                 p{
                     font-size: 0.9rem;
                     font-weight: 900;
@@ -193,7 +193,7 @@ body{
                 width:15%;
                 height: 100%;
                 border-radius: 0.5rem;
-                background-color: $space_text;
+                background-color: $background-task;
                 text-transform: uppercase;
                 font-weight: 900;
                 letter-spacing: 0.1rem;
@@ -202,8 +202,8 @@ body{
             }
             #btn-add:hover{
                 cursor: pointer;
-                background-color: #2fd897;
-                color: $white;
+                background-color: $hover-btn-add;
+                //color: $white;
             }
         }
         #task-made{
@@ -244,7 +244,7 @@ body{
     .priority-level{
         width: 20px;
         height: 20px;
-        background-color: $background_list;
+        background-color: $background-list;
         border-radius: 50%;
         transition: .1s;
     }
@@ -257,7 +257,7 @@ body{
         padding: 0.1vw;
         border-radius: 0.5rem;
         color: $text;
-        background-color: $space_text;
+        background-color: $background-task;
         p{
             font-size: 80%;
             font-weight: 900;
@@ -275,12 +275,12 @@ body{
     .tasks{
         @include container;
         justify-content: space-between;
-        background-color:$space_text;
+        background-color:$background-task;
         width:100%;
         min-height:10vh;
         margin-bottom: 1rem;
         padding: 0rem 1rem 0rem 3rem;
-        border-radius: 2rem;
+        border-radius: 1.3rem;
     }
     .task-puted{
         font-size: 1.2rem;
@@ -292,12 +292,12 @@ body{
     .choose-priority{
         width: 20px;
         height: 20px;
-        background-color: $background_list;
+        background-color: $background-list;
         border-radius: 50%;
         transition: .1s;
     }
     .choose-priority:hover{
-        background-color: #d6ac5e;
+        background-color: $hover-priority;
         cursor: pointer;
     }
     .watch-out{
@@ -388,6 +388,9 @@ body{
         .modal{
             width: 65%;
         }
+        .tasks{
+            border-radius: 1rem;
+        }
     }
   }
   @media screen and (max-width: 1000px){
@@ -395,6 +398,9 @@ body{
         width: 100%;
         .modal{
             width: 80%;
+        }
+        .tasks{
+            border-radius: 1rem;
         }
     }
   }
@@ -407,6 +413,12 @@ body{
         }
         .modal{
             width: 80%;
+        }
+        .content-priority{
+            width: 25%;
+        }
+        .tasks{
+            border-radius: 1rem;
         }
     }
   }
@@ -432,15 +444,22 @@ body{
                     height: 2.5vh;
                 }
             }
+            #container-info{
+                #btn-add{
+                    height: 30%;
+                }
+            }
             .task-puted{
                 font-size: 1.2rem;
                 text-align: center;
+                width: 100%;
             }
         }
         #modal-remove{
             #task-remove{
                 p{
                     text-align: center;
+                    width: 100%;
                 }
             }
         }
@@ -508,7 +527,7 @@ body{
                 margin-bottom: 1rem;
                 .container-actions{
                     .actions{
-                        height: 2.2vh;
+                        height: 2.5vh;
                     }
                 }
             }

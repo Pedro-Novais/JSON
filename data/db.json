@@ -1,44 +1,44 @@
 {
   "tasks": [
     {
-      "task": "change again",
+      "task": "Fazer organização matinal",
+      "priority": 2,
+      "id": 1
+    },
+    {
+      "task": "Estudar",
       "priority": 3,
+      "id": 2
+    },
+    {
+      "task": "Terminar a Aplicação",
+      "priority": 2,
+      "id": 3
+    },
+    {
+      "task": "Fazer um teste aqui só para ver um ",
+      "priority": 1,
       "id": 4
+    }
+  ],
+  "statistic": [
+    {
+      "key": 3,
+      "createdAt": 7,
+      "finishedAt": 7,
+      "canceled": 0
     },
     {
-      "task": "ok",
-      "priority": 1,
-      "id": 6
+      "key": 2,
+      "created": 10,
+      "finished": 7,
+      "canceled": 0
     },
     {
-      "task": "teste",
-      "priority": 1,
-      "id": 7
-    },
-    {
-      "task": "testzin",
-      "priority": 2,
-      "id": 8
-    },
-    {
-      "task": "teste again",
-      "priority": 2,
-      "id": 9
-    },
-    {
-      "task": "keep",
-      "priority": 2,
-      "id": 10
-    },
-    {
-      "task": "beleza",
-      "priority": 1,
-      "id": 11
-    },
-    {
-      "task": "teste",
-      "priority": 2,
-      "id": 12
+      "key": 1,
+      "created": 10,
+      "finished": 7,
+      "canceled": 0
     }
   ],
   "config": {

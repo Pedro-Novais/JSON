@@ -134,11 +134,11 @@ body .modal .content-btn .btn-edit {
 }
 body .modal .content-btn #btn-edit-cancel:hover {
   cursor: pointer;
-  background-color: rgb(202, 120, 120);
+  background-color: #ca7878;
 }
 body .modal .content-btn #btn-edit-edit:hover {
   cursor: pointer;
-  background-color: rgb(109, 243, 83);
+  background-color: #6df353;
 }
 body #container {
   justify-self: center;
@@ -238,8 +238,7 @@ body #container #container-info #btn-add {
 }
 body #container #container-info #btn-add:hover {
   cursor: pointer;
-  background-color: #2fd897;
-  color: #FAEDDA;
+  background-color: rgba(59, 248, 69, 0.5137254902);
 }
 body #container #task-made {
   display: flex;
@@ -335,7 +334,7 @@ body .tasks {
   min-height: 10vh;
   margin-bottom: 1rem;
   padding: 0rem 1rem 0rem 3rem;
-  border-radius: 2rem;
+  border-radius: 1.3rem;
 }
 body .task-puted {
   font-size: 1.2rem;
@@ -442,6 +441,9 @@ body .watch-out {
   body .modal {
     width: 65%;
   }
+  body .tasks {
+    border-radius: 1rem;
+  }
 }
 @media screen and (max-width: 1000px) {
   body {
@@ -449,6 +451,9 @@ body .watch-out {
   }
   body .modal {
     width: 80%;
+  }
+  body .tasks {
+    border-radius: 1rem;
   }
 }
 @media screen and (max-width: 800px) {
@@ -460,6 +465,12 @@ body .watch-out {
   }
   body .modal {
     width: 80%;
+  }
+  body .content-priority {
+    width: 25%;
+  }
+  body .tasks {
+    border-radius: 1rem;
   }
 }
 @media screen and (max-width: 600px) {
@@ -486,12 +497,17 @@ body .watch-out {
   body #container #task-made .actions {
     height: 2.5vh;
   }
+  body #container #container-info #btn-add {
+    height: 30%;
+  }
   body #container .task-puted {
     font-size: 1.2rem;
     text-align: center;
+    width: 100%;
   }
   body #modal-remove #task-remove p {
     text-align: center;
+    width: 100%;
   }
   body .tasks {
     flex-direction: column;
@@ -555,7 +571,7 @@ body .watch-out {
     margin-bottom: 1rem;
   }
   body #container #task-made .container-actions .actions {
-    height: 2.2vh;
+    height: 2.5vh;
   }
   body #container .task-puted {
     font-size: 1rem;
