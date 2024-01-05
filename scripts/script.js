@@ -1,15 +1,19 @@
-import getConfig from "./config.js"
-import addTaskBack from "./addXML.js"
-import deleteTask from "./deleteXML.js"
-import updateTaskBack from "./updateXML.js"
-import order from "./orderPriority.js"
-//import finishTaskBack from "./finishTask.js"
-import { modalEdit, modalRemovetext } from "./modals.js"
+import getConfig from "./utils/config.js"
+import addTaskBack from "./utils/addXML.js"
+import deleteTaskBack from "./utils/deleteXML.js"
+import updateTaskBack from "./utils/updateXML.js"
+import order from "./utils/orderPriority.js"
+import getStatisticsBack from "./utils/getStatistics.js"
+import { modalEdit, modalRemovetext } from "./utils/modals.js"
 
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
+const apiStatistics = "http://localhost:5000/statistic/"
+
+let statistic = null;
 
 //document.addEventListener('DOMContentLoaded', getConfig(apiConfig, loadingConfig))
+getConfig(apiStatistics, getStatistics)
 getConfig(apiConfig, loadingConfig)
 getPriority()
 
@@ -26,6 +30,7 @@ if (btn) {
 }
 
 let priorityId = null;
+
 function addTask() {
   const agora = new Date();
   const minutos = agora.getMinutes();
@@ -46,6 +51,8 @@ function addTask() {
     task: val,
     priority: priorityId
   }
+
+  changeStatistic(priorityId, 0)
   addTaskBack(api, data)
 }
 
@@ -114,11 +121,13 @@ function createPriorityTask(json, div, priority, id) {
   for (let i = 0; i < priJson; i++) {
     level[i].style.backgroundColor = '#d6ac5e';
   }
+
   div.appendChild(priority)
 }
 
 function createActions(div, priority, i, json) {
   let id = json[i]['id']
+  let levelPriority = json[i]['priority']
   const div_action = document.createElement('div')
   div_action.setAttribute('class', 'container-actions')
 
@@ -155,12 +164,12 @@ function createActions(div, priority, i, json) {
 
   i_add.addEventListener('click', () => {
     modalRemove(json, id, 1)
-    validUpdate(id, 2)
+    validUpdate(id, 2, levelPriority)
   })
 
   i_del.addEventListener('click', () => {
     modalRemove(json, id, 0)
-    validUpdate(id, 1)
+    validUpdate(id, 1, levelPriority)
   })
 
   i_edit.addEventListener('click', () => {
@@ -169,6 +178,7 @@ function createActions(div, priority, i, json) {
   })
 
 }
+
 function modalRemove(json, id, determinate) {
   let modalDiv = document.createElement('div');
   modalDiv.setAttribute('class', 'modal')
@@ -217,6 +227,7 @@ function modalRemovePriority(json, id) {
     levelMark[i].style.backgroundColor = "#d6ac5e"
   }
 }
+
 function modalChange() {
   let modalDiv = document.createElement('div');
   modalDiv.setAttribute('class', 'modal')
@@ -241,7 +252,7 @@ function modalChange() {
 
 }
 
-function validUpdate(id, determinate) {
+function validUpdate(id, determinate, level = null) {
   const btnNewTask = document.querySelector('#btn-edit-edit')
   const btnCancelNewTask = document.querySelector('#btn-edit-cancel')
 
@@ -260,9 +271,9 @@ function validUpdate(id, determinate) {
         updateTask(id, inputTask)
       }
     } else if (determinate == 1) {
-      deleteTask(api, id)
+      deleteTask(level, id)
     } else if (determinate == 2) {
-      finishTask(id)
+      finishTask(level, id)
     }
   })
 
@@ -286,8 +297,49 @@ function validUpdate(id, determinate) {
   })
 }
 
-function finishTask(id) {
-  console.log('indo')
+function finishTask(level, id) {
+  changeStatistic(level, 1)
+  deleteTaskBack(api, id)
+}
+
+function deleteTask(level, id) {
+  console.log(level)
+  changeStatistic(level, 2)
+  deleteTaskBack(api, id)
+}
+
+function changeStatistic(priorityId, determinate) {
+
+  if (determinate == 0) {
+    let newCreate = statistic[priorityId - 1]["created"] + 1
+
+    let dataStatistic = {
+      created: newCreate
+    }
+
+    updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
+  }
+
+  else if (determinate == 1) {
+    console.log(priorityId)
+    let newCreate = statistic[priorityId - 1]["finished"] + 1
+
+    let dataStatistic = {
+      finished: newCreate
+    }
+
+    updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
+  }
+
+  else if (determinate == 2) {
+    let newCreate = statistic[priorityId - 1]["canceled"] + 1
+
+    let dataStatistic = {
+      canceled: newCreate
+    }
+
+    updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
+  }
 }
 
 function updateTask(id, newTask) {
@@ -295,7 +347,7 @@ function updateTask(id, newTask) {
     task: newTask,
     priority: priorityId + 1
   }
-  updateTaskBack(api, id, data)
+  updateTaskBack(api, id, data, 1)
 }
 
 function getPriority() {
@@ -320,6 +372,11 @@ function getPriority() {
       console.log(priorityId)
     });
   });
+}
+
+function getStatistics(json) {
+  statistic = json.reverse()
+  console.log(json)
 }
 
 function markNewClick(index) {

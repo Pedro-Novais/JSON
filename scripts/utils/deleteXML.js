@@ -1,18 +1,17 @@
-export default function updateTaskBack(url, id, data, cb=null){
+export default function deleteTaskBack(url, id, cb = null){
     const request = new XMLHttpRequest()
 
-    request.open('PUT', `${url}/${id}`)
+    request.open('DELETE', `${url}/${id}`)
     request.setRequestHeader('Content-Type', 'application/json');
 
-    let newDados = JSON.stringify(data);
     request.onreadystatechange =  ()=>{
         if(request.readyState === 4){
             if (request.status === 200 || request.status === 304) {
                 console.log("Recurso excluído com sucesso!");
             }else{
-                console.error("Falha ao excluir o recurso. Status: " + request.status)
+                console.error("Falha ao excluir o recurso. Status: " + xhr.status)
             }
         }
     }
-    request.send(newDados)
+    request.send()
 }
