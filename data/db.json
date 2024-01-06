@@ -1,29 +1,39 @@
 {
   "tasks": [
     {
-      "task": "Estudar ",
-      "priority": 3,
-      "id": 1
+      "task": "change",
+      "priority": 2,
+      "id": 2
+    },
+    {
+      "task": "change agora em ",
+      "priority": 2,
+      "id": 3
+    },
+    {
+      "task": "Lavar a louça",
+      "priority": 2,
+      "id": 6
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 2,
+      "created": 3,
       "finished": 0,
       "canceled": 1
     },
     {
       "id": 2,
-      "created": 1,
+      "created": 5,
       "finished": 0,
-      "canceled": 3
+      "canceled": 5
     },
     {
       "id": 1,
-      "created": 2,
+      "created": 4,
       "finished": 0,
-      "canceled": 4
+      "canceled": 7
     }
   ],
   "config": {

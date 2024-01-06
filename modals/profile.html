@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <header>
 
@@ -17,14 +19,45 @@
                 <div class="select-box-style">
                     <img src="../svg/user-solid.svg" alt="Profile" height="25rem">
                 </div>
-                <div class="select-box-style"><img src="../svg/chart-simple-solid.svg" alt="Statistic" height="25rem"></div>
+                <div class="select-box-style"><img src="../svg/chart-simple-solid.svg" alt="Statistic" height="25rem">
+                </div>
                 <div class="select-box-style"><img src="../svg/gear-solid.svg" alt="Config" height="25rem"></div>
             </div>
         </div>
-        <div class="view-infos"></div>
+        <div class="view-infos">
+            <div class="container-statistic">
+                <h1>Estatísticas</h1>
+                <div class="box-statistics">
+                    <div class="style-box-statistics">
+                        <p class="name-type-statitic">Tasks Criadas</p>
+                        <p class= "number-statistic" id="statistic-created">17</p>
+                    </div>
+                    <div class="style-box-statistics">
+                        <p class="name-type-statitic">Tasks Finalizadas</p>
+                        <p class= "number-statistic" id="statistic-finished">9</p>
+                    </div>
+                    <div class="style-box-statistics" id="statistic-canceled">
+                        <p class="name-type-statitic">Tasks Canceladas</p>
+                        <p class= "number-statistic" id="statistic-created">5</p>
+                    </div>
+                </div>
+                <div class="container-statistic-bar">
+                    <div class="statistic-bar">
+                        <div id="bar-task-finished"></div>
+                        <div id="bar-task-canceled"></div>
+                    </div>
+                    <!--<div class="statistic-bar-info">
+                        <p>Tasks concluídas: 82%</p>
+                        <p>Tasks canceladas: 18%</p>
+                    </div>-->
+                </div>
+            </div>
+            <div class="teste"></div>
+        </div>
     </div>
     <footer>
 
     </footer>
 </body>
+
 </html>

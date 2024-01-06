@@ -119,7 +119,7 @@ function createPriorityTask(json, div, priority, id) {
   }
 
   for (let i = 0; i < priJson; i++) {
-    level[i].style.backgroundColor = '#d6ac5e';
+    level[i].style.backgroundColor = '#05DBF2';
   }
 
   div.appendChild(priority)
@@ -227,7 +227,7 @@ function modalRemovePriority(json, id) {
   textTask.appendChild(text)
 
   for (let i = 0; i < levelTask; i++) {
-    levelMark[i].style.backgroundColor = "#d6ac5e"
+    levelMark[i].style.backgroundColor = "#05DBF2"
   }
 }
 
@@ -386,13 +386,13 @@ function getStatistics(json) {
 function markNewClick(index) {
   let level = document.querySelectorAll('.choose-priority')
   for (let i = 0; i <= index; i++) {
-    level[i].style.backgroundColor = '#d6ac5e';
+    level[i].style.backgroundColor = '#05DBF2';
   }
 }
 
 function clearNewClick() {
   let level = document.querySelectorAll('.choose-priority')
   for (let i = 0; i < level.length; i++) {
-    level[i].style.backgroundColor = '#6acfc9';
+    level[i].style.backgroundColor = '#0487D9';
   }
 }
