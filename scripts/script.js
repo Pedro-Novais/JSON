@@ -185,12 +185,15 @@ function modalRemove(json, id, determinate) {
   modalDiv.setAttribute('id', 'modal-remove')
 
   const body = document.querySelector('body')
+
+  const main = document.querySelector('main')
   const container = document.querySelector('#container')
   container.style.display = "none"
 
+  //main.style.height="100vh"
   modalDiv.innerHTML = modalRemovetext
 
-  body.appendChild(modalDiv)
+  main.appendChild(modalDiv)
 
   const titleAction = document.querySelector('#title-determinate')
 
@@ -241,13 +244,14 @@ function modalChange() {
   }
 
   const body = document.querySelector('body')
+  const main = document.querySelector('main')
 
   const container = document.querySelector('#container')
   container.style.display = "none"
 
   modalDiv.innerHTML = modalEdit;
 
-  body.appendChild(modalDiv)
+  main.appendChild(modalDiv)
   getPriority()
 
 }

@@ -1,23 +1,29 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "task": "Estudar ",
+      "priority": 3,
+      "id": 1
+    }
+  ],
   "statistic": [
     {
       "id": 3,
-      "created": 4,
-      "finished": 3,
-      "canceled": 3
+      "created": 2,
+      "finished": 0,
+      "canceled": 1
     },
     {
       "id": 2,
-      "created": 3,
-      "finished": 6,
+      "created": 1,
+      "finished": 0,
       "canceled": 3
     },
     {
       "id": 1,
-      "created": 3,
-      "finished": 3,
-      "canceled": 1
+      "created": 2,
+      "finished": 0,
+      "canceled": 4
     }
   ],
   "config": {

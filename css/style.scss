@@ -3,78 +3,145 @@
 @import url('https://fonts.googleapis.com/css2?family=Rethink+Sans&family=Roboto:wght@300&display=swap');
 
 
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'Rethink Sans', sans-serif;
 }
-*::-webkit-scrollbar {
-  width: 0.8rem;
+
+#task-made::-webkit-scrollbar {
+    width: 0.8rem;
 }
-*::-webkit-scrollbar-track {
+
+#task-made::-webkit-scrollbar-track {
     background: $background-list;
     //margin-top: 1rem;
     margin-bottom: 1.2rem;
     margin-top: 0.5vw;
-  }
-*::-webkit-scrollbar-thumb {
+}
+
+#task-made::-webkit-scrollbar-thumb {
     background-color: $background-task;
     border-radius: 20px;
 }
-body{
+
+body {
     width: 100%;
-    height: 100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     background-color: $background;
-    /*header{
-        align-self: flex-start;
+
+    header {
+        //position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 10vh;
+        height: 10%;
         background-color: $background-list
-    }*/
-    #modal-remove{
+    }
+
+    //Style opara página de perfil, estatísticas e configurações
+    #container-profile {
+        @include container;
+        width: 80%;
+        height: 60%;
+        background-color: $white;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    }
+
+    #container-select {
+        @include container;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 90%;
+        height: 40%;
+    }
+
+    .select-page {
+        @include container;
+        flex-direction: column;
+        width: 25%;
+        height: 100%;
+        padding: 1rem;
+        background-color: $background;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        z-index: 10;
+    }
+
+    .select-box-style {
+        @include container;
+        justify-content: center;
+        width: 90%;
+        height: 25%;
+        background-color: #D9D9D9;
+        border-radius: 1rem;
+        text-transform: uppercase;
+        transition: .1s;
+    }
+
+    .select-box-style:hover {
+        cursor: pointer;
+        background-color: #a7e2dec2;
+
+    }
+
+    .view-infos {
+        width: 75%;
+        height: 100%;
+        background-color: $background-list
+    }
+
+    //Fim do estilo
+
+    #modal-remove {
         @include container;
         flex-direction: column;
         justify-content: space-around;
+        width: 50vw;
         height: 40vh;
         margin-bottom: 0rem;
-        #task-remove{
-            margin-top: 2rem;
-            p{
+
+        #task-remove {
+            //margin-top: 2rem;
+
+            p {
                 font-size: 1.3rem;
             }
         }
     }
-    .modal{
+
+    .modal {
         @include container;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-around;
         align-items: center;
         //display: none;
-        position: fixed;
+        position: absolute;
         z-index: 100;
         //top: 0; 
         //left: 0;
         margin: 0 auto;
-        min-width: 50%;
+        width: 50vw;
         height: 40vh;
         padding: 1rem;
         border-radius: 1rem;
         background-color: $background-list;
         color: $text;
-        .content-modal{
+
+        .content-modal {
             @include container;
             justify-content: space-around;
             width: 100%;
             height: 8vh;
-            margin-top: 3rem;
+            //margin-top: 3rem;
             padding: 0.35vw;
-            .input{
-                width:60%;
+
+            .input {
+                width: 70%;
                 height: 100%;
                 padding: 0.5rem;
                 background-color: $white;
@@ -86,23 +153,26 @@ body{
                 font-weight: 900;
                 letter-spacing: 0.1rem;
             }
-            .input::placeholder{
+
+            .input::placeholder {
                 color: $text;
                 opacity: 40%;
             }
         }
-        .content-btn{
+
+        .content-btn {
             @include container;
             justify-content: space-around;
             align-items: center;
             width: 100%;
             height: 10vh;
             padding: 0.25rem;
-            margin-top: 3rem;
-            .btn-edit{
+            //margin-top: 3rem;
+
+            .btn-edit {
                 @include container;
                 justify-content: center;
-                width:37%;
+                width: 37%;
                 height: 95%;
                 min-height: 10vh;
                 border-radius: 0.5rem;
@@ -114,194 +184,232 @@ body{
                 transition: .1s;
                 border-style: none;
             }
-            #btn-edit-cancel:hover{
+
+            #btn-edit-cancel:hover {
                 cursor: pointer;
                 background-color: $hover-btn-cancel;
             }
-            #btn-edit-edit:hover{
+
+            #btn-edit-edit:hover {
                 cursor: pointer;
                 background-color: $hover-btn-ok;
             }
         }
     }
-    #container{
-        justify-self: center;
+
+    main {
         @include container;
-        //margin-top: 10vh;
-        flex-direction: column;
-        background-color: $background-list;
-        min-width: 50vw;
-        height: 60vh;
-        padding: 1vw;
-        border-radius: 2rem;
-        h1{
-            font-size:2rem;
-            margin-bottom: 3vw;
-            color: $text;
-        }
-        #container-info{
-            @include container;
-            justify-content: space-around;
-            padding: 0.25vw;
-            margin-bottom: 2vw;
-            width:100%;
-            height: 8vh;
-            #task-add{
-                width:60%;
-                height: 100%;
-                padding: 0.5rem;
-                background-color: $white;
-                outline: none;
-                border-style: none;
-                font-size: 1rem;
-                border-radius: 1rem;
-                color: $text;
-                font-weight: 900;
-                letter-spacing: 0.1rem;
-            }
-            #task-add::placeholder{
-                color: $text;
-                opacity: 40%;
-            }
-            #priority{
-                @include container;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 15%;
-                height: 100%;
-                padding: 0.1vw;
-                border-radius: 0.5rem;
-                color: $text;
-                background-color: $background-task;
-                p{
-                    font-size: 0.9rem;
-                    font-weight: 900;
-                    letter-spacing: 0.1rem;
-                    text-transform: uppercase;
-                    color: $text;
-                }
-                #level{
-                    @include container;
-                    justify-content: space-around;
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            #btn-add{
-                @include container;
-                justify-content: center;
-                width:15%;
-                height: 100%;
-                border-radius: 0.5rem;
-                background-color: $background-task;
-                text-transform: uppercase;
-                font-weight: 900;
-                letter-spacing: 0.1rem;
-                color: $text;
-                transition: .1s;
-            }
-            #btn-add:hover{
-                cursor: pointer;
-                background-color: $hover-btn-add;
-                //color: $white;
-            }
-        }
-        #task-made{
+        justify-content: center;
+        width: 50%;
+        height: 50%;
+
+        #container {
+            justify-self: center;
             @include container;
             flex-direction: column;
-            justify-content: flex-start;
             background-color: $background-list;
-            padding: 0.5vw;
-            width:100%;
-            height: 40vh;
-            border-radius: 2rem;
-            overflow-x: hidden;
-            overflow-y: auto;
-            .priority-action{
-                @include container;
-                justify-content: space-between;
-                flex-direction: row;
-                justify-content: space-around;
-                width: 35%;
+            width: 100%;
+            height: 100%;
+            padding: 1vw;
+            border-radius: 1rem;
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 3vw;
+                color: $text;
             }
-            .priority-task{
+
+            #container-info {
                 @include container;
                 justify-content: space-around;
-                width: 40%;
-                height:100%;
+                padding: 0.25vw;
+                margin-bottom: 2vw;
+                width: 100%;
+                height: 8vh;
+
+                #task-add {
+                    width: 60%;
+                    height: 100%;
+                    padding: 0.5rem;
+                    background-color: $white;
+                    outline: none;
+                    border-style: none;
+                    font-size: 1rem;
+                    border-radius: 1rem;
+                    color: $text;
+                    font-weight: 900;
+                    letter-spacing: 0.1rem;
+                }
+
+                #task-add::placeholder {
+                    color: $text;
+                    opacity: 40%;
+                }
+
+                #priority {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 15%;
+                    height: 100%;
+                    padding: 0.1vw;
+                    border-radius: 0.5rem;
+                    color: $text;
+                    background-color: $background-task;
+
+                    p {
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        letter-spacing: 0.1rem;
+                        text-transform: uppercase;
+                        color: $text;
+                    }
+
+                    #level {
+                        @include container;
+                        justify-content: space-around;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                #btn-add {
+                    @include container;
+                    justify-content: center;
+                    width: 15%;
+                    height: 100%;
+                    border-radius: 0.5rem;
+                    background-color: $background-task;
+                    text-transform: uppercase;
+                    font-weight: 900;
+                    letter-spacing: 0.1rem;
+                    color: $text;
+                    transition: .1s;
+                }
+
+                #btn-add:hover {
+                    cursor: pointer;
+                    background-color: $hover-btn-add;
+                    //color: $white;
+                }
             }
-            .container-actions{
+
+            #task-made {
                 @include container;
-                width: 40%;
-                height: 5vh;
-                justify-content: space-around;
-                .actions{
-                    cursor:pointer;
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: $background-list;
+                padding: 0.5vw;
+                width: 100%;
+                height: 40vh;
+                border-radius: 2rem;
+                overflow-x: hidden;
+                overflow-y: auto;
+
+                .priority-action {
+                    @include container;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    width: 35%;
+                }
+
+                .priority-task {
+                    @include container;
+                    justify-content: space-around;
+                    width: 40%;
+                    height: 100%;
+                }
+
+                .container-actions {
+                    @include container;
+                    width: 40%;
+                    height: 5vh;
+                    justify-content: space-around;
+
+                    .actions {
+                        cursor: pointer;
+                    }
                 }
             }
         }
     }
-    .priority-level{
+
+    .priority-level {
         width: 20px;
         height: 20px;
         background-color: $background-list;
         border-radius: 50%;
         transition: .1s;
     }
-    .content-priority{
+
+    .content-priority {
         @include container;
         flex-direction: column;
         justify-content: space-around;
-        width: 15%;
+        width: 20%;
         height: 100%;
         padding: 0.1vw;
         border-radius: 0.5rem;
         color: $text;
         background-color: $background-task;
-        p{
+
+        p {
             font-size: 80%;
             font-weight: 900;
             letter-spacing: 0.1rem;
             text-transform: uppercase;
             color: $text;
         }
-        .content-level{
+
+        .content-level {
             @include container;
             justify-content: space-around;
             width: 100%;
             height: 100%;
         }
     }
-    .tasks{
+
+    .tasks {
         @include container;
         justify-content: space-between;
-        background-color:$background-task;
-        width:100%;
-        min-height:10vh;
+        background-color: $background-task;
+        width: 100%;
+        min-height: 10vh;
         margin-bottom: 1rem;
         padding: 0rem 1rem 0rem 3rem;
         border-radius: 1.3rem;
     }
-    .task-puted{
+
+    .task-puted {
         font-size: 1.2rem;
         color: $text;
         font-weight: 900;
         letter-spacing: 0.1rem;
         width: 50%;
     }
-    .choose-priority{
+
+    .choose-priority {
         width: 20px;
         height: 20px;
         background-color: $background-list;
         border-radius: 50%;
         transition: .1s;
     }
-    .choose-priority:hover{
+
+    .choose-priority:hover {
         background-color: $hover-priority;
         cursor: pointer;
     }
-    .watch-out{
+
+    .watch-out {
         box-shadow: rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset;
+    }
+
+    footer {
+        width: 100%;
+        height: 15%;
+        background-color: $background-list;
     }
 }
 
@@ -330,140 +438,229 @@ body{
     }
   }*/
 
-  @media screen and (max-width: 1050px){
-    body{
-        width: 100%;
-        #container{
-            justify-content: space-around;
-            width: 60vw;
-            height:70vh;
-            #task-made{
-                width: 90%;
-                height: 35vh;
-                .priority-action{
-                    width: 40%;
-                }
-                .priority-action{
-                    width: 50%;
-                }
-                .container-actions{
-                    width: 40%;
-                }
-            }
-            #container-info{
-                flex-direction: column;
-                height: 25vh;
-                #task-add{
-                    width: 90%;
-                    height:25%;
-                }
-                #priority{
-                    width: 90%;
-                    height: 25%;
-                    p{
-                        font-size: 1rem;
-                    }
-                    #level{
-                        width: 25%;
-                    }
-                }
-                #btn-add{
-                    width: 90%;
-                    height: 25%;
-                }
-            }
-        }
-        .choose-priority{
-               width: 18px;
-               height: 18px;         
-        }
+@media screen and (max-width: 1350px){
+    #modal-remove{
+        min-width: 70vw;
     }
-  }
-  @media screen and (max-width: 1400px){
-    body{
-        width: 100%;
-        #container{
-            width: 70vw;
-        }
-        .modal{
-            width: 65%;
-        }
-        .tasks{
-            border-radius: 1rem;
-        }
-    }
-  }
-  @media screen and (max-width: 1000px){
-    body{
-        width: 100%;
-        .modal{
-            width: 80%;
-        }
-        .tasks{
-            border-radius: 1rem;
-        }
-    }
-  }
-  @media screen and (max-width: 800px){
-    body{
-        width: 100%;
-        #container{
-            width: 90vw;
+}
 
-        }
-        .modal{
-            width: 80%;
-        }
-        .content-priority{
-            width: 25%;
-        }
-        .tasks{
-            border-radius: 1rem;
-        }
-    }
-  }
-  @media screen and (max-width: 600px){
-    body{
+@media screen and (max-width: 1400px) {
+    body {
         width: 100%;
-        #container{
-            width: 95vw;
-            height: 90vh;
-            #task-made{
-                height: 60vh;
-                padding-top:1vw;
-                .priority-action{
-                    width: 90%;
-                }
-                .priority-task{
-                    width: 40%;
-                }
-                .container-actions{
-                    width: 40%;
-                }
-                .actions{
-                    height: 2.5vh;
-                }
-            }
-            #container-info{
-                #btn-add{
-                    height: 30%;
-                }
-            }
-            .task-puted{
-                font-size: 1.2rem;
-                text-align: center;
+
+        main {
+            width: 70vw;
+
+            #container {
                 width: 100%;
             }
         }
+
+        .modal {
+            width: 65%;
+        }
+
+        .tasks {
+            border-radius: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    body {
+        width: 100%;
+
+        main {
+            width: 70vw;
+            height: 70vh;
+
+            #container {
+                justify-content: space-around;
+                width: 100%;
+                height: 100%;
+
+                #task-made {
+                    width: 90%;
+                    height: 35vh;
+
+                    .priority-action {
+                        width: 40%;
+                    }
+
+                    .priority-action {
+                        width: 50%;
+                    }
+
+                    .container-actions {
+                        width: 40%;
+                    }
+                }
+
+                #container-info {
+                    flex-direction: column;
+                    height: 25vh;
+
+                    #task-add {
+                        width: 90%;
+                        height: 25%;
+                    }
+
+                    #priority {
+                        width: 90%;
+                        height: 25%;
+
+                        p {
+                            font-size: 1rem;
+                        }
+
+                        #level {
+                            width: 25%;
+                        }
+                    }
+
+                    #btn-add {
+                        width: 90%;
+                        height: 25%;
+                    }
+                }
+            }
+        }
+
+        .choose-priority {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        width: 100%;
+
+        .modal {
+            width: 80%;
+        }
+
+        .tasks {
+            border-radius: 1rem;
+        }
+
+        //Style para página Profile
+        #container-profile {
+            flex-direction: column;
+        }
+
+        #container-select {
+            flex-direction: row;
+            height: 100%;
+        }
+
         #modal-remove{
-            #task-remove{
-                p{
+            min-width: 90vw;
+            //min-height: 50vh;
+        }
+        .select-box-style {
+            width: 25%;
+            height: 100%;
+        }
+
+        .select-page {
+            width: 100%;
+            height: 15%;
+        }
+
+        .view-infos {
+            width: 100%;
+            height: 85%;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 100%;
+
+        main {
+            width: 90vw;
+
+            #container {
+                width: 100%;
+            }
+        }
+
+        .modal {
+            width: 80%;
+        }
+
+        .content-priority {
+            width: 25%;
+        }
+
+        .tasks {
+            border-radius: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        width: 100%;
+        height: 150vh;
+
+        main {
+            width: 95vw;
+            height: 90vh;
+
+            #container {
+                width: 100%;
+                height: 100%;
+
+                //margin-top: 10rem;
+                #task-made {
+                    height: 60vh;
+                    padding-top: 1vw;
+
+                    .priority-action {
+                        width: 90%;
+                    }
+
+                    .priority-task {
+                        width: 40%;
+                    }
+
+                    .container-actions {
+                        width: 40%;
+                    }
+
+                    .actions {
+                        height: 2.5vh;
+                    }
+                }
+
+                #container-info {
+                    #btn-add {
+                        height: 30%;
+                    }
+                }
+
+                .task-puted {
+                    font-size: 1.2rem;
                     text-align: center;
                     width: 100%;
                 }
             }
         }
-        .tasks{
+
+        #modal-remove {
+            #task-remove {
+                p {
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+        }
+
+        .tasks {
             flex-direction: column;
             justify-content: space-around;
             padding: 0;
@@ -471,78 +668,107 @@ body{
             border-radius: 20px;
             min-height: 12vh;
         }
-        .priority-level{
+
+        .priority-level {
             width: 20px;
             height: 20px;
         }
-        .content-priority{
+
+        .content-priority {
             flex-direction: column;
             width: 100%;
             height: 40%;
-            p{
+
+            p {
                 font-size: 0.8rem;
             }
         }
-        .modal{
-            min-height: 60%;
-            .content-modal{
+
+        .modal {
+            min-height: 50vh;
+            //width: 90vw;
+
+            .content-modal {
                 flex-direction: column;
-                height:25vh;
-                .input{
+                height: 25vh;
+
+                .input {
                     width: 100%;
-                    height: 40%;
+                    height: 45%;
                     text-align: center;
                     font-size: 1rem;
                 }
             }
+            .content-btn{
+                justify-content: space-between;
+
+                .btn-edit{
+                    width: 45%;
+                }
+            }
         }
-        .choose-priority{
+
+        .choose-priority {
             width: 20px;
             height: 20px;
         }
     }
-  }
+}
 
-  @media screen and (max-width: 400px){
+@media screen and (max-width: 400px) {
     *::-webkit-scrollbar-track {
         margin-top: 1rem;
-      }
-    body{
+    }
+
+    body {
         width: 100%;
-        #container{
-            #container-info{
-                height: 35vh;
-                #task-add{
-                    text-align: center;
-                }
-                #priority{
-                    height:30%;
-                    #level{
-                        width: 90%;
+
+        main {
+            #container {
+                #container-info {
+                    height: 35vh;
+
+                    #task-add {
+                        text-align: center;
+                    }
+
+                    #priority {
+                        height: 30%;
+                        p{
+                            font-size: 0.9rem;
+                        }
+                        #level {
+                            width: 90%;
+                        }
                     }
                 }
-            }
-            #task-made{
-                padding-top: 1rem;
-                margin-bottom: 1rem;
-                .container-actions{
-                    .actions{
-                        height: 2.5vh;
+
+                #task-made {
+                    padding-top: 1rem;
+                    margin-bottom: 1rem;
+
+                    .container-actions {
+                        .actions {
+                            height: 2.5vh;
+                        }
                     }
                 }
-            }
-            .task-puted{
-                font-size: 1rem;
+
+                .task-puted {
+                    font-size: 1.2rem;
+                }
             }
         }
-        .priority-level{
+
+        .priority-level {
             width: 16px;
-            height:16px;
+            height: 16px;
         }
-        .tasks{
+
+        .tasks {
             width: 98%;
-            min-height: 29%;
+            min-height: 35%;
             border-radius: 10px;
         }
     }
-  }
+}

@@ -6,35 +6,91 @@
   font-family: "Rethink Sans", sans-serif;
 }
 
-*::-webkit-scrollbar {
+#task-made::-webkit-scrollbar {
   width: 0.8rem;
 }
 
-*::-webkit-scrollbar-track {
+#task-made::-webkit-scrollbar-track {
   background: #6acfc9;
   margin-bottom: 1.2rem;
   margin-top: 0.5vw;
 }
 
-*::-webkit-scrollbar-thumb {
+#task-made::-webkit-scrollbar-thumb {
   background-color: #AEE8CA;
   border-radius: 20px;
 }
 
 body {
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #26B6C6;
-  /*header{
-      align-self: flex-start;
-      width: 100%;
-      height: 10vh;
-      background-color: $background-list
-  }*/
+}
+body header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #6acfc9;
+}
+body #container-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: 60%;
+  background-color: #FAEDDA;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+body #container-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  height: 40%;
+}
+body .select-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  height: 100%;
+  padding: 1rem;
+  background-color: #26B6C6;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 10;
+}
+body .select-box-style {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 25%;
+  background-color: #D9D9D9;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  transition: 0.1s;
+}
+body .select-box-style:hover {
+  cursor: pointer;
+  background-color: rgba(167, 226, 222, 0.7607843137);
+}
+body .view-infos {
+  width: 75%;
+  height: 100%;
+  background-color: #6acfc9;
 }
 body #modal-remove {
   display: flex;
@@ -43,11 +99,9 @@ body #modal-remove {
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
+  width: 50vw;
   height: 40vh;
   margin-bottom: 0rem;
-}
-body #modal-remove #task-remove {
-  margin-top: 2rem;
 }
 body #modal-remove #task-remove p {
   font-size: 1.3rem;
@@ -58,12 +112,12 @@ body .modal {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
-  position: fixed;
+  position: absolute;
   z-index: 100;
   margin: 0 auto;
-  min-width: 50%;
+  width: 50vw;
   height: 40vh;
   padding: 1rem;
   border-radius: 1rem;
@@ -78,11 +132,10 @@ body .modal .content-modal {
   justify-content: space-around;
   width: 100%;
   height: 8vh;
-  margin-top: 3rem;
   padding: 0.35vw;
 }
 body .modal .content-modal .input {
-  width: 60%;
+  width: 70%;
   height: 100%;
   padding: 0.5rem;
   background-color: #FAEDDA;
@@ -112,7 +165,6 @@ body .modal .content-btn {
   width: 100%;
   height: 10vh;
   padding: 0.25rem;
-  margin-top: 3rem;
 }
 body .modal .content-btn .btn-edit {
   display: flex;
@@ -140,7 +192,16 @@ body .modal .content-btn #btn-edit-edit:hover {
   cursor: pointer;
   background-color: #6df353;
 }
-body #container {
+body main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+}
+body main #container {
   justify-self: center;
   display: flex;
   flex-direction: row;
@@ -148,17 +209,17 @@ body #container {
   align-items: center;
   flex-direction: column;
   background-color: #6acfc9;
-  min-width: 50vw;
-  height: 60vh;
+  width: 100%;
+  height: 100%;
   padding: 1vw;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
-body #container h1 {
+body main #container h1 {
   font-size: 2rem;
   margin-bottom: 3vw;
   color: #ffa600;
 }
-body #container #container-info {
+body main #container #container-info {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -169,7 +230,7 @@ body #container #container-info {
   width: 100%;
   height: 8vh;
 }
-body #container #container-info #task-add {
+body main #container #container-info #task-add {
   width: 60%;
   height: 100%;
   padding: 0.5rem;
@@ -182,15 +243,15 @@ body #container #container-info #task-add {
   font-weight: 900;
   letter-spacing: 0.1rem;
 }
-body #container #container-info #task-add::-moz-placeholder {
+body main #container #container-info #task-add::-moz-placeholder {
   color: #ffa600;
   opacity: 40%;
 }
-body #container #container-info #task-add::placeholder {
+body main #container #container-info #task-add::placeholder {
   color: #ffa600;
   opacity: 40%;
 }
-body #container #container-info #priority {
+body main #container #container-info #priority {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -204,14 +265,14 @@ body #container #container-info #priority {
   color: #ffa600;
   background-color: #AEE8CA;
 }
-body #container #container-info #priority p {
+body main #container #container-info #priority p {
   font-size: 0.9rem;
   font-weight: 900;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   color: #ffa600;
 }
-body #container #container-info #priority #level {
+body main #container #container-info #priority #level {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -220,7 +281,7 @@ body #container #container-info #priority #level {
   width: 100%;
   height: 100%;
 }
-body #container #container-info #btn-add {
+body main #container #container-info #btn-add {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -236,11 +297,11 @@ body #container #container-info #btn-add {
   color: #ffa600;
   transition: 0.1s;
 }
-body #container #container-info #btn-add:hover {
+body main #container #container-info #btn-add:hover {
   cursor: pointer;
   background-color: rgba(59, 248, 69, 0.5137254902);
 }
-body #container #task-made {
+body main #container #task-made {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -255,7 +316,7 @@ body #container #task-made {
   overflow-x: hidden;
   overflow-y: auto;
 }
-body #container #task-made .priority-action {
+body main #container #task-made .priority-action {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -265,7 +326,7 @@ body #container #task-made .priority-action {
   justify-content: space-around;
   width: 35%;
 }
-body #container #task-made .priority-task {
+body main #container #task-made .priority-task {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -274,7 +335,7 @@ body #container #task-made .priority-task {
   width: 40%;
   height: 100%;
 }
-body #container #task-made .container-actions {
+body main #container #task-made .container-actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -283,7 +344,7 @@ body #container #task-made .container-actions {
   height: 5vh;
   justify-content: space-around;
 }
-body #container #task-made .container-actions .actions {
+body main #container #task-made .container-actions .actions {
   cursor: pointer;
 }
 body .priority-level {
@@ -300,7 +361,7 @@ body .content-priority {
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  width: 15%;
+  width: 20%;
   height: 100%;
   padding: 0.1vw;
   border-radius: 0.5rem;
@@ -357,6 +418,11 @@ body .choose-priority:hover {
 body .watch-out {
   box-shadow: rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset;
 }
+body footer {
+  width: 100%;
+  height: 15%;
+  background-color: #6acfc9;
+}
 
 /*@media screen and (max-width: 1100px) {
     body{
@@ -382,67 +448,79 @@ body .watch-out {
         }
     }
   }*/
-@media screen and (max-width: 1050px) {
-  body {
-    width: 100%;
-  }
-  body #container {
-    justify-content: space-around;
-    width: 60vw;
-    height: 70vh;
-  }
-  body #container #task-made {
-    width: 90%;
-    height: 35vh;
-  }
-  body #container #task-made .priority-action {
-    width: 40%;
-  }
-  body #container #task-made .priority-action {
-    width: 50%;
-  }
-  body #container #task-made .container-actions {
-    width: 40%;
-  }
-  body #container #container-info {
-    flex-direction: column;
-    height: 25vh;
-  }
-  body #container #container-info #task-add {
-    width: 90%;
-    height: 25%;
-  }
-  body #container #container-info #priority {
-    width: 90%;
-    height: 25%;
-  }
-  body #container #container-info #priority p {
-    font-size: 1rem;
-  }
-  body #container #container-info #priority #level {
-    width: 25%;
-  }
-  body #container #container-info #btn-add {
-    width: 90%;
-    height: 25%;
-  }
-  body .choose-priority {
-    width: 18px;
-    height: 18px;
+@media screen and (max-width: 1350px) {
+  #modal-remove {
+    min-width: 70vw;
   }
 }
 @media screen and (max-width: 1400px) {
   body {
     width: 100%;
   }
-  body #container {
+  body main {
     width: 70vw;
+  }
+  body main #container {
+    width: 100%;
   }
   body .modal {
     width: 65%;
   }
   body .tasks {
     border-radius: 1rem;
+  }
+}
+@media screen and (max-width: 1050px) {
+  body {
+    width: 100%;
+  }
+  body main {
+    width: 70vw;
+    height: 70vh;
+  }
+  body main #container {
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+  }
+  body main #container #task-made {
+    width: 90%;
+    height: 35vh;
+  }
+  body main #container #task-made .priority-action {
+    width: 40%;
+  }
+  body main #container #task-made .priority-action {
+    width: 50%;
+  }
+  body main #container #task-made .container-actions {
+    width: 40%;
+  }
+  body main #container #container-info {
+    flex-direction: column;
+    height: 25vh;
+  }
+  body main #container #container-info #task-add {
+    width: 90%;
+    height: 25%;
+  }
+  body main #container #container-info #priority {
+    width: 90%;
+    height: 25%;
+  }
+  body main #container #container-info #priority p {
+    font-size: 1rem;
+  }
+  body main #container #container-info #priority #level {
+    width: 25%;
+  }
+  body main #container #container-info #btn-add {
+    width: 90%;
+    height: 25%;
+  }
+  body .choose-priority {
+    width: 18px;
+    height: 18px;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -455,13 +533,38 @@ body .watch-out {
   body .tasks {
     border-radius: 1rem;
   }
+  body #container-profile {
+    flex-direction: column;
+  }
+  body #container-select {
+    flex-direction: row;
+    height: 100%;
+  }
+  body #modal-remove {
+    min-width: 90vw;
+  }
+  body .select-box-style {
+    width: 25%;
+    height: 100%;
+  }
+  body .select-page {
+    width: 100%;
+    height: 15%;
+  }
+  body .view-infos {
+    width: 100%;
+    height: 85%;
+  }
 }
 @media screen and (max-width: 800px) {
   body {
     width: 100%;
   }
-  body #container {
+  body main {
     width: 90vw;
+  }
+  body main #container {
+    width: 100%;
   }
   body .modal {
     width: 80%;
@@ -476,31 +579,36 @@ body .watch-out {
 @media screen and (max-width: 600px) {
   body {
     width: 100%;
+    height: 150vh;
   }
-  body #container {
+  body main {
     width: 95vw;
     height: 90vh;
   }
-  body #container #task-made {
+  body main #container {
+    width: 100%;
+    height: 100%;
+  }
+  body main #container #task-made {
     height: 60vh;
     padding-top: 1vw;
   }
-  body #container #task-made .priority-action {
+  body main #container #task-made .priority-action {
     width: 90%;
   }
-  body #container #task-made .priority-task {
+  body main #container #task-made .priority-task {
     width: 40%;
   }
-  body #container #task-made .container-actions {
+  body main #container #task-made .container-actions {
     width: 40%;
   }
-  body #container #task-made .actions {
+  body main #container #task-made .actions {
     height: 2.5vh;
   }
-  body #container #container-info #btn-add {
+  body main #container #container-info #btn-add {
     height: 30%;
   }
-  body #container .task-puted {
+  body main #container .task-puted {
     font-size: 1.2rem;
     text-align: center;
     width: 100%;
@@ -530,7 +638,7 @@ body .watch-out {
     font-size: 0.8rem;
   }
   body .modal {
-    min-height: 60%;
+    min-height: 50vh;
   }
   body .modal .content-modal {
     flex-direction: column;
@@ -538,9 +646,15 @@ body .watch-out {
   }
   body .modal .content-modal .input {
     width: 100%;
-    height: 40%;
+    height: 45%;
     text-align: center;
     font-size: 1rem;
+  }
+  body .modal .content-btn {
+    justify-content: space-between;
+  }
+  body .modal .content-btn .btn-edit {
+    width: 45%;
   }
   body .choose-priority {
     width: 20px;
@@ -554,27 +668,30 @@ body .watch-out {
   body {
     width: 100%;
   }
-  body #container #container-info {
+  body main #container #container-info {
     height: 35vh;
   }
-  body #container #container-info #task-add {
+  body main #container #container-info #task-add {
     text-align: center;
   }
-  body #container #container-info #priority {
+  body main #container #container-info #priority {
     height: 30%;
   }
-  body #container #container-info #priority #level {
+  body main #container #container-info #priority p {
+    font-size: 0.9rem;
+  }
+  body main #container #container-info #priority #level {
     width: 90%;
   }
-  body #container #task-made {
+  body main #container #task-made {
     padding-top: 1rem;
     margin-bottom: 1rem;
   }
-  body #container #task-made .container-actions .actions {
+  body main #container #task-made .container-actions .actions {
     height: 2.5vh;
   }
-  body #container .task-puted {
-    font-size: 1rem;
+  body main #container .task-puted {
+    font-size: 1.2rem;
   }
   body .priority-level {
     width: 16px;
@@ -582,7 +699,7 @@ body .watch-out {
   }
   body .tasks {
     width: 98%;
-    min-height: 29%;
+    min-height: 35%;
     border-radius: 10px;
   }
 }/*# sourceMappingURL=style.css.map */
