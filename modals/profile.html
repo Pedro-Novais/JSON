@@ -13,19 +13,22 @@
     <header>
 
     </header>
-    <div id="container-profile">
-        <div class="select-page">
-            <div id="container-select">
-                <div class="select-box-style">
-                    <img src="../svg/user-solid.svg" alt="Profile" height="25rem">
+    <div id="main-profile">
+        <div id="container-profile">
+            <div class="select-page">
+                <div id="container-select">
+                    <div class="select-box-style" id="section-profile">
+                        <img src="../svg/user-solid.svg" alt="Profile" height="25rem">
+                    </div>
+                    <div class="select-box-style" id="section-statistic"><img src="../svg/chart-simple-solid.svg"
+                            alt="Statistic" height="25rem">
+                    </div>
+                    <div class="select-box-style" id="section-config"><img src="../svg/gear-solid.svg" alt="Config"
+                            height="25rem"></div>
                 </div>
-                <div class="select-box-style"><img src="../svg/chart-simple-solid.svg" alt="Statistic" height="25rem">
-                </div>
-                <div class="select-box-style"><img src="../svg/gear-solid.svg" alt="Config" height="25rem"></div>
             </div>
-        </div>
-        <div class="view-infos">
-            <div class="container-statistic">
+            <div class="view-infos" id="view-infos-unique">
+                <!--<div class="container-statistic">
                 <h1>Estatísticas</h1>
                 <div class="box-statistics">
                     <div class="style-box-statistics">
@@ -46,18 +49,19 @@
                         <div id="bar-task-finished"></div>
                         <div id="bar-task-canceled"></div>
                     </div>
-                    <!--<div class="statistic-bar-info">
+                    <div class="statistic-bar-info">
                         <p>Tasks concluídas: 82%</p>
                         <p>Tasks canceladas: 18%</p>
-                    </div>-->
+                    </div>
                 </div>
+            </div>-->
             </div>
-            <div class="teste"></div>
         </div>
     </div>
     <footer>
 
     </footer>
 </body>
+<script src="../scripts/scriptProfile.js" type="module"></script>
 
 </html>

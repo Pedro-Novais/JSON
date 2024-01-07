@@ -11,7 +11,6 @@
 }
 
 #task-made::-webkit-scrollbar-track {
-  background: #034AA6;
   margin-bottom: 1.2rem;
   margin-top: 0.5vw;
 }
@@ -26,27 +25,138 @@ body {
   height: 120vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   background: linear-gradient(to right, #011140, #034AA6);
 }
-body header {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10%;
-}
-body #container-profile {
+body .style-bar-options {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 80%;
-  height: 60%;
-  background-color: #D9D9D9;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #011140, #010A26);
+  padding: 1rem;
+  transition: 2s;
+}
+body .style-bar-options .container-name-symbol {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+body .style-bar-options .container-name-symbol h1 {
+  color: #D9D9D9;
+}
+body .style-bar-options .container-name-symbol img {
+  height: 30px;
+}
+body .style-bar-options .container-name-symbol img:hover {
+  cursor: pointer;
+}
+body .style-bar-options .container-bars {
+  width: 100%;
+  height: 50vh;
+  margin-top: 4rem;
+}
+body .style-bar-options .container-bars .seeing-options-bar {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  height: 15%;
+  background-color: #021c6b;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 0.2s;
+}
+body .style-bar-options .container-bars .seeing-options-bar a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #D9D9D9;
+  font-size: 1.1rem;
+  font-weight: 550;
+}
+body .style-bar-options .container-bars .seeing-options-bar:hover {
+  cursor: pointer;
+  background-color: #0487D9;
+}
+body header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 10%;
+  padding: 1rem;
+}
+body header #bar-view-options {
+  position: absolute;
+  left: 15px;
+}
+body header #bar-view-options:hover {
+  cursor: pointer;
+}
+body header .symbol-nav {
+  height: 25px;
+}
+body header .name-symbol {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 5rem;
+}
+body header .name-symbol h1 {
+  color: #D9D9D9;
+  font-weight: 900;
+  margin-left: 1rem;
+}
+body header nav {
+  width: 40%;
+}
+body header nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+}
+body header nav ul li {
+  text-transform: uppercase;
+}
+body header nav ul li a {
+  text-decoration: none;
+  color: #D9D9D9;
+  font-weight: 400;
+}
+body #main-profile {
+  width: 90%;
+  height: 80vh;
+}
+body #main-profile #container-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
-body #container-select {
+body #main-profile #container-select {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -56,7 +166,7 @@ body #container-select {
   width: 90%;
   height: 40%;
 }
-body .select-page {
+body #main-profile .select-page {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -69,7 +179,7 @@ body .select-page {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 10;
 }
-body .select-box-style {
+body #main-profile .select-box-style {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -82,31 +192,29 @@ body .select-box-style {
   text-transform: uppercase;
   transition: 0.1s;
 }
-body .select-box-style:hover {
+body #main-profile .select-box-style:hover {
   cursor: pointer;
   background-color: rgba(167, 226, 222, 0.7607843137);
 }
-body .view-infos::-webkit-scrollbar {
+body #main-profile .view-infos::-webkit-scrollbar {
   width: 0.8rem;
 }
-body .view-infos::-webkit-scrollbar-track {
-  background: #034AA6;
+body #main-profile .view-infos::-webkit-scrollbar-track {
   margin-bottom: 1.2rem;
   margin-top: 0.5vw;
 }
-body .view-infos::-webkit-scrollbar-thumb {
+body #main-profile .view-infos::-webkit-scrollbar-thumb {
   background-color: #05DBF2;
   border-radius: 20px;
 }
-body .view-infos {
+body #main-profile .view-infos {
   width: 75%;
   height: 100%;
   padding: 1rem;
-  background-color: #6acfc9;
   overflow-y: auto;
   overflow-x: hidden;
 }
-body .view-infos .container-statistic {
+body #main-profile .view-infos .container-statistic {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -116,12 +224,13 @@ body .view-infos .container-statistic {
   width: 100%;
   min-height: 70vh;
 }
-body .view-infos .container-statistic h1 {
+body #main-profile .view-infos .container-statistic h1 {
+  color: #D9D9D9;
   text-transform: uppercase;
   font-size: 2.5rem;
   font-weight: 900;
 }
-body .view-infos .container-statistic .box-statistics {
+body #main-profile .view-infos .container-statistic .box-statistics {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -130,7 +239,7 @@ body .view-infos .container-statistic .box-statistics {
   width: 100%;
   height: 40%;
 }
-body .view-infos .container-statistic .box-statistics .style-box-statistics {
+body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -142,16 +251,16 @@ body .view-infos .container-statistic .box-statistics .style-box-statistics {
   border-radius: 1rem;
   padding: 0.5rem;
 }
-body .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
+body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
   font-size: 1.3vw;
   text-transform: uppercase;
   font-weight: 700;
 }
-body .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
+body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
   margin: auto;
   font-size: 5.5vw;
 }
-body .view-infos .container-statistic .container-statistic-bar {
+body #main-profile .view-infos .container-statistic .container-statistic-bar {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -161,7 +270,7 @@ body .view-infos .container-statistic .container-statistic-bar {
   width: 100%;
   height: 15vh;
 }
-body .view-infos .container-statistic .container-statistic-bar .statistic-bar {
+body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -173,7 +282,7 @@ body .view-infos .container-statistic .container-statistic-bar .statistic-bar {
   background-color: #D9D9D9;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
 }
-body .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-finished {
+body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-finished {
   height: 100%;
   width: 78%;
   background-color: #5eeb27;
@@ -181,7 +290,7 @@ body .view-infos .container-statistic .container-statistic-bar .statistic-bar #b
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
-body .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-canceled {
+body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-canceled {
   height: 100%;
   width: 22%;
   background-color: #ec530c;
@@ -189,7 +298,7 @@ body .view-infos .container-statistic .container-statistic-bar .statistic-bar #b
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
-body .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
+body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -197,21 +306,17 @@ body .view-infos .container-statistic .container-statistic-bar .statistic-bar-in
   justify-content: space-around;
   background-color: #AEE8CA;
   opacity: 40%;
-  width: 50%;
+  width: 70%;
   height: 20%;
+  padding: 10px;
   border-radius: 0.5rem;
   margin-top: 2rem;
   text-transform: uppercase;
   font-weight: 600;
   transition: 0.8s;
 }
-body .view-infos .container-statistic .container-statistic-bar .statistic-bar-info:hover {
+body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info:hover {
   opacity: 100%;
-}
-body .view-infos .teste {
-  background-color: red;
-  width: 100%;
-  height: 60vh;
 }
 body #modal-remove {
   display: flex;
@@ -318,6 +423,7 @@ body main {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 50%;
   height: 50%;
@@ -334,6 +440,7 @@ body main #container {
   padding: 1vw;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  margin-top: 7rem;
 }
 body main #container h1 {
   font-size: 2rem;
@@ -542,30 +649,6 @@ body footer {
   height: 15%;
 }
 
-/*@media screen and (max-width: 1100px) {
-    body{
-        width: 100%;
-        #container{
-            justify-content: space-around;
-            width: 90%;
-            height: 80vh;
-            #container-info{
-                flex-direction: column;
-                height: 15vh;
-                #task-add{
-                    width:90%;
-                }
-                #priority{
-                    width:90%;
-                    height: 10vh;
-                }
-                #btn-add{
-                    width:90%;
-                }
-            }
-        }
-    }
-  }*/
 @media screen and (max-width: 1350px) {
   #modal-remove {
     min-width: 70vw;
@@ -586,6 +669,14 @@ body footer {
   }
   body .tasks {
     border-radius: 1rem;
+  }
+}
+@media screen and (max-width: 1250px) {
+  body header nav {
+    width: 50%;
+  }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
+    width: 80%;
   }
 }
 @media screen and (max-width: 1050px) {
@@ -645,48 +736,61 @@ body footer {
   body {
     width: 100%;
   }
+  body header nav {
+    width: 60%;
+  }
   body .modal {
     width: 80%;
   }
   body .tasks {
     border-radius: 1rem;
   }
-  body #container-profile {
+  body #main-profile #container-profile {
     flex-direction: column;
   }
-  body #container-select {
+  body #main-profile #container-select {
     flex-direction: row;
     height: 100%;
   }
-  body #modal-remove {
+  body #main-profile #modal-remove {
     min-width: 90vw;
   }
-  body .select-box-style {
+  body #main-profile .select-box-style {
     width: 25%;
     height: 100%;
   }
-  body .select-page {
+  body #main-profile .select-page {
     width: 100%;
     height: 15%;
   }
-  body .view-infos {
+  body #main-profile .view-infos {
     width: 100%;
     height: 85%;
     padding-top: 2rem;
   }
-  body .view-infos .container-statistic {
+  body #main-profile .view-infos .container-statistic {
     min-height: 60vh;
   }
-  body .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
+  body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
     font-size: 2vw;
   }
-  body .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
+  body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
     font-size: 7vw;
   }
 }
 @media screen and (max-width: 800px) {
   body {
     width: 100%;
+  }
+  body header {
+    justify-content: center;
+    width: 100%;
+  }
+  body header nav {
+    display: none;
+  }
+  body header .name-symbol {
+    margin: 0;
   }
   body main {
     width: 90vw;
@@ -706,27 +810,32 @@ body footer {
   body .tasks {
     border-radius: 1rem;
   }
-  body .view-infos .container-statistic {
+  body #main-profile .view-infos .container-statistic {
     min-height: 110vh;
   }
-  body .view-infos .container-statistic .box-statistics {
+  body #main-profile .view-infos .container-statistic .box-statistics {
     flex-direction: column;
     height: 80vh;
   }
-  body .view-infos .container-statistic .box-statistics .style-box-statistics {
+  body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics {
     width: 60%;
   }
-  body .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
+  body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
     font-size: 4vw;
   }
-  body .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
+  body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
     font-size: 15vw;
+  }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
+    width: 90%;
   }
 }
 @media screen and (max-width: 600px) {
   body {
     width: 100%;
-    height: 150vh;
+    height: 130vh;
+    background: none;
+    background-color: #011140;
   }
   body main {
     width: 95vw;
@@ -735,6 +844,7 @@ body footer {
   body main #container {
     width: 100%;
     height: 100%;
+    background-color: #021c6b;
   }
   body main #container #task-made {
     height: 60vh;
@@ -786,6 +896,7 @@ body footer {
   }
   body .modal {
     min-height: 50vh;
+    min-width: 90vw;
   }
   body .modal .content-modal {
     flex-direction: column;
@@ -806,6 +917,11 @@ body footer {
   body .choose-priority {
     width: 20px;
     height: 20px;
+  }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
+    flex-direction: column;
+    width: 80%;
+    height: 60%;
   }
 }
 @media screen and (max-width: 400px) {

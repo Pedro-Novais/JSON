@@ -1,38 +1,48 @@
 {
   "tasks": [
     {
-      "task": "change",
-      "priority": 2,
-      "id": 2
-    },
-    {
-      "task": "change agora em ",
+      "task": "teste",
       "priority": 2,
       "id": 3
     },
     {
-      "task": "Lavar a louça",
-      "priority": 2,
+      "task": "teste",
+      "priority": 1,
+      "id": 4
+    },
+    {
+      "task": "teste",
+      "priority": 1,
+      "id": 5
+    },
+    {
+      "task": "teste",
+      "priority": 1,
       "id": 6
+    },
+    {
+      "task": "changed",
+      "priority": 1,
+      "id": 7
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 3,
-      "finished": 0,
-      "canceled": 1
+      "created": 7,
+      "finished": 1,
+      "canceled": 3
     },
     {
       "id": 2,
-      "created": 5,
-      "finished": 0,
-      "canceled": 5
+      "created": 7,
+      "finished": 2,
+      "canceled": 8
     },
     {
       "id": 1,
-      "created": 4,
-      "finished": 0,
+      "created": 10,
+      "finished": 2,
       "canceled": 7
     }
   ],
