@@ -174,7 +174,7 @@ body {
         width: 85%;
         height: 75vh;
 
-        #container-statistic {
+        #container-profile {
             @include container;
             width: 100%;
             height: 100%;
@@ -807,7 +807,7 @@ body {
 
         //Style para página Profile
         #main-profile {
-            #container-statistic {
+            #container-profile {
                 flex-direction: column;
             }
 
@@ -883,7 +883,7 @@ body {
             }
         }
 
-        #container-statistic {
+        #container-profile {
             width: 95%;
         }
 

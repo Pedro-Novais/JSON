@@ -165,7 +165,7 @@ body #main-profile {
   width: 85%;
   height: 75vh;
 }
-body #main-profile #container-statistic {
+body #main-profile #container-profile {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -763,7 +763,7 @@ body footer {
   body .tasks {
     border-radius: 1rem;
   }
-  body #main-profile #container-statistic {
+  body #main-profile #container-profile {
     flex-direction: column;
   }
   body #main-profile #container-select {
@@ -816,7 +816,7 @@ body footer {
   body main #container {
     width: 100%;
   }
-  body #container-statistic {
+  body #container-profile {
     width: 95%;
   }
   body .modal {
