@@ -1,36 +1,55 @@
-import { profile } from "./utils/modals.js"
-import { pageStatistic } from "./utils/modals.js"
+import { profile, listToDo } from "./utils/modals.js"
+import { interactorProfile } from "./scriptProfile.js"
+import { interactorList } from "./script.js"
 
+const div = document.createElement('div')
+
+const linkToDo = document.querySelector('#visit-list')
 const linkProfile = document.querySelector('#visit-profile')
+const linkAbout = document.querySelector('#visit-about')
+
+//const containerToDo = document.querySelector('#container')
 
 const body = document.querySelector('body')
 const main = document.querySelector('main')
 
+linkProfile.addEventListener('click', callPageProfile)
 
+initial()
 
-linkProfile.addEventListener('click', () => {
-    let div = document.createElement('div')
-    div.setAttribute('id', 'container-profile')
-    
+function callPageList() {
+    div.remove()
+    div.setAttribute('id', 'container')
+
+    div.innerHTML = listToDo
+    //containerToDo.remove()
+    main.appendChild(div)
+
+    interactorList()
+
+    linkToDo.removeEventListener('click', callPageList)
+    linkProfile.addEventListener('click', callPageProfile)
+}
+
+function callPageProfile() {
+    div.setAttribute('id', 'main-profile')
+
     div.innerHTML = profile
-    main.remove()
-    body.appendChild(div)
+    //containerToDo.remove()
+    main.appendChild(div)
 
-    const profileStatistic = document.querySelector('#section-profile')
-    profileStatistic.addEventListener('click', viewProfile)
-})
+    interactorProfile()
 
-function viewProfile() {
-    //div.remove()
+    linkProfile.removeEventListener('click', callPageProfile)
+    linkToDo.addEventListener('click', callPageList)
+}
 
-    console.log('profile foi')
-    div.setAttribute('class', 'container-statistic')
+function initial(){
+    div.setAttribute('id', 'container')
 
-    div.innerHTML = pageStatistic;
+    div.innerHTML = listToDo
+    //containerToDo.remove()
+    main.appendChild(div)
 
-    viewPage.appendChild(div)
-
-    profile.removeEventListener('click', viewProfile)
-    statistic.addEventListener('click', viewStatistic)
-    pageConfig.addEventListener('click', viewConfig)
+    interactorList()
 }

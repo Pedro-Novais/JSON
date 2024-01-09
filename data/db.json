@@ -1,29 +1,9 @@
 {
   "tasks": [
     {
-      "task": "teste",
+      "task": "teste again",
       "priority": 2,
-      "id": 3
-    },
-    {
-      "task": "teste",
-      "priority": 1,
-      "id": 4
-    },
-    {
-      "task": "teste",
-      "priority": 1,
-      "id": 5
-    },
-    {
-      "task": "teste",
-      "priority": 1,
-      "id": 6
-    },
-    {
-      "task": "changed",
-      "priority": 1,
-      "id": 7
+      "id": 1
     }
   ],
   "statistic": [
@@ -35,15 +15,15 @@
     },
     {
       "id": 2,
-      "created": 7,
+      "created": 8,
       "finished": 2,
-      "canceled": 8
+      "canceled": 10
     },
     {
       "id": 1,
-      "created": 10,
-      "finished": 2,
-      "canceled": 7
+      "created": 15,
+      "finished": 4,
+      "canceled": 13
     }
   ],
   "config": {

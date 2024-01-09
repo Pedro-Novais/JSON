@@ -6,9 +6,6 @@ const header = document.querySelector('header')
 const main = document.querySelector('main')
 const footer = document.querySelector('footer')
 
-const nameSymbol = document.querySelector('.name-symbol')
-const remSymbolTask = document.querySelector('#symbol-tasks')
-
 let img = document.createElement('img')
 let determinate = 0;
 
@@ -52,7 +49,6 @@ function barView() {
     main.style.display = "none";
     footer.style.display = "none";
 
-    //clearInterval(intervalId)
     div.innerHTML = viewBarsCode;
 
     body.appendChild(div)

@@ -1,56 +1,66 @@
 import { pageStatistic } from "./utils/modals.js"
 
-const viewPage = document.querySelector('#view-infos-unique')
-const profile = document.querySelector('#section-profile')
-const statistic = document.querySelector('#section-statistic')
-const pageConfig = document.querySelector('#section-config')
+export function interactorProfile() {
+    const viewPage = document.querySelector('#view-infos-unique')
+    const profile = document.querySelector('#section-profile')
+    const statistic = document.querySelector('#section-statistic')
+    const pageConfig = document.querySelector('#section-config')
+    const div = document.createElement('div')
 
-profile.addEventListener('click', viewProfile)
-statistic.addEventListener('click', viewStatistic)
-pageConfig.addEventListener('click', viewConfig)
+    initial()
 
-let div = document.createElement('div')
+    function viewProfile() {
+        div.remove()
 
-function viewProfile() {
-    div.remove()
+        console.log('profile foi')
+        div.setAttribute('class', 'container-statistic')
 
-    console.log('profile foi')
-    div.setAttribute('class', 'container-statistic')
+        div.innerHTML = pageStatistic;
 
-    div.innerHTML = pageStatistic;
+        viewPage.appendChild(div)
 
-    viewPage.appendChild(div)
+        profile.removeEventListener('click', viewProfile)
+        statistic.addEventListener('click', viewStatistic)
+        pageConfig.addEventListener('click', viewConfig)
+    }
 
-    profile.removeEventListener('click', viewProfile)
-    statistic.addEventListener('click', viewStatistic)
-    pageConfig.addEventListener('click', viewConfig)
-}
+    function viewStatistic() {
+        div.remove()
 
-function viewStatistic() {
-    div.remove()
+        console.log('statistic foi')
+        div.setAttribute('class', 'container-statistic')
 
-    console.log('statistic foi')
-    div.setAttribute('class', 'container-statistic')
+        div.innerHTML = pageStatistic;
 
-    div.innerHTML = pageStatistic;
+        viewPage.appendChild(div)
 
-    viewPage.appendChild(div)
+        statistic.removeEventListener('click', viewStatistic)
+        profile.addEventListener('click', viewProfile)
+        pageConfig.addEventListener('click', viewConfig)
+    }
 
-    statistic.removeEventListener('click', viewStatistic)
-    profile.addEventListener('click', viewProfile)
-    pageConfig.addEventListener('click', viewConfig)
-}
+    function viewConfig() {
+        div.remove()
+        console.log('config foi')
+        div.setAttribute('class', 'container-statistic')
 
-function viewConfig() {
-    div.remove()
-    console.log('config foi')
-    div.setAttribute('class', 'container-statistic')
+        div.innerHTML = pageStatistic;
 
-    div.innerHTML = pageStatistic;
+        viewPage.appendChild(div)
 
-    viewPage.appendChild(div)
+        pageConfig.removeEventListener('click', viewConfig)
+        profile.addEventListener('click', viewProfile)
+        statistic.addEventListener('click', viewStatistic)
+    }
 
-    pageConfig.removeEventListener('click', viewConfig)
-    profile.addEventListener('click', viewProfile)
-    statistic.addEventListener('click', viewStatistic)
+    function initial(){
+        div.setAttribute('class', 'container-statistic')
+    
+        div.innerHTML = pageStatistic;
+    
+        viewPage.appendChild(div)
+    
+        profile.addEventListener('click', viewProfile)
+        pageConfig.addEventListener('click', viewConfig)
+    }
 }
