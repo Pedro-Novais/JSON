@@ -10,10 +10,10 @@ const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
 const apiStatistics = "http://localhost:5000/statistic/"
 
-
+let statistic = null;
+let priorityId = null;
 
 export function interactorList() {
-  let statistic = null;
   getConfig(apiStatistics, getStatistics)
   getConfig(apiConfig, loadingConfig)
   getPriority()
@@ -21,16 +21,12 @@ export function interactorList() {
   const btn = document.querySelector('#btn-add')
   const task_put = document.querySelector('#task-add')
 
-  if (task_put) {
-    task_put.addEventListener('click', () => {
-      task_put.removeAttribute('class', 'watch-out')
-    })
-  }
-  if (btn) {
-    btn.addEventListener('click', addTask)
-  }
+  
+  task_put.addEventListener('click', () => {
+    task_put.removeAttribute('class', 'watch-out')
+  })
 
-  let priorityId = null;
+  btn.addEventListener('click', addTask)
 
   function addTask() {
     const agora = new Date();

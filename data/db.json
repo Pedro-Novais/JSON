@@ -1,27 +1,42 @@
 {
   "tasks": [
     {
-      "task": "teste again",
+      "task": "Programar quando chegar em casa",
+      "priority": 3,
+      "id": 3
+    },
+    {
+      "task": "Aprender a utilizar o shot cut",
       "priority": 2,
-      "id": 1
+      "id": 4
+    },
+    {
+      "task": "Escrever um roteiro do vídeo",
+      "priority": 1,
+      "id": 5
+    },
+    {
+      "task": "Limpar a casa",
+      "priority": 2,
+      "id": 6
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 7,
-      "finished": 1,
+      "created": 8,
+      "finished": 2,
       "canceled": 3
     },
     {
       "id": 2,
-      "created": 8,
+      "created": 10,
       "finished": 2,
-      "canceled": 10
+      "canceled": 11
     },
     {
       "id": 1,
-      "created": 15,
+      "created": 17,
       "finished": 4,
       "canceled": 13
     }

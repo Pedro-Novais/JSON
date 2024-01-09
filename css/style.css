@@ -126,6 +126,7 @@ body header .name-symbol h1 {
 }
 body header nav {
   width: 40%;
+  height: 60%;
 }
 body header nav ul {
   display: flex;
@@ -134,16 +135,28 @@ body header nav ul {
   align-items: center;
   justify-content: space-around;
   list-style: none;
+  height: 100%;
 }
 body header nav ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
   text-transform: uppercase;
+  background-color: #034AA6;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+  transition: 0.1s;
 }
 body header nav ul li p {
-  text-decoration: none;
   color: #D9D9D9;
-  font-weight: 400;
+  font-weight: 500;
 }
-body header nav ul li p:hover {
+body header nav ul li:hover {
+  background-color: #0487D9;
   cursor: pointer;
 }
 body #main-profile {
@@ -152,7 +165,7 @@ body #main-profile {
   width: 85%;
   height: 75vh;
 }
-body #main-profile #container-profile {
+body #main-profile #container-statistic {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -750,7 +763,7 @@ body footer {
   body .tasks {
     border-radius: 1rem;
   }
-  body #main-profile #container-profile {
+  body #main-profile #container-statistic {
     flex-direction: column;
   }
   body #main-profile #container-select {
@@ -803,7 +816,7 @@ body footer {
   body main #container {
     width: 100%;
   }
-  body #container-profile {
+  body #container-statistic {
     width: 95%;
   }
   body .modal {

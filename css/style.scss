@@ -135,205 +135,216 @@ body {
 
         nav {
             width: 40%;
+            height: 60%;
 
             ul {
                 @include container;
                 justify-content: space-around;
                 list-style: none;
+                height: 100%;
 
                 li {
+                    @include container;
+                    justify-content: center;
+                    width: 25%;
+                    height: 100%;
                     text-transform: uppercase;
+                    background-color: $details;
+                    border-radius: 0.5rem;
+                    box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+                    transition: .1s;
 
                     p {
-                        text-decoration: none;
                         color: $white;
-                        font-weight: 400;
+                        font-weight: 500;
                     }
-
-                    p:hover{
-                        cursor: pointer;
-                    }
+                }
+                li:hover {
+                    background-color: $priority;
+                    cursor: pointer;
                 }
             }
         }
     }
 
     //Style opara página de perfil, estatísticas e configurações
-    #main-profile{
+    #main-profile {
         position: absolute;
         top: 10rem;
         width: 85%;
         height: 75vh;
-    #container-profile {
-        @include container;
-        width: 100%;
-        height: 100%;
-        //background-color: $white;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    }
 
-    #container-select {
-        @include container;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 90%;
-        height: 40%;
-    }
+        #container-statistic {
+            @include container;
+            width: 100%;
+            height: 100%;
+            //background-color: $white;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        }
 
-    .select-page {
-        @include container;
-        flex-direction: column;
-        width: 25%;
-        height: 100%;
-        padding: 1rem;
-        background-color: $background-one;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        z-index: 10;
-    }
-
-    .select-box-style {
-        @include container;
-        justify-content: center;
-        width: 90%;
-        height: 25%;
-        background-color: $white;
-        border-radius: 1rem;
-        text-transform: uppercase;
-        transition: .1s;
-    }
-
-    .select-box-style:hover {
-        cursor: pointer;
-        background-color: #a7e2dec2;
-
-    }
-
-    .view-infos::-webkit-scrollbar {
-        width: 0.8rem;
-    }
-
-    .view-infos::-webkit-scrollbar-track {
-        //background: $details;
-        //margin-top: 1rem;
-        margin-bottom: 1.2rem;
-        margin-top: 0.5vw;
-    }
-
-    .view-infos::-webkit-scrollbar-thumb {
-        background-color: $color-light;
-        border-radius: 20px;
-    }
-
-    .view-infos {
-        width: 75%;
-        height: 100%;
-        padding: 1rem;
-        //background-color: $background-list;
-        overflow-y: auto;
-        overflow-x: hidden;
-
-        .container-statistic {
+        #container-select {
             @include container;
             flex-direction: column;
             justify-content: space-between;
-            width: 100%;
-            min-height: 70vh;
+            width: 90%;
+            height: 40%;
+        }
 
-            h1 {
-                color: $white;
-                text-transform: uppercase;
-                font-size: 2.5rem;
-                font-weight: 900;
-                //letter-spacing: .1rem;
-            }
+        .select-page {
+            @include container;
+            flex-direction: column;
+            width: 25%;
+            height: 100%;
+            padding: 1rem;
+            background-color: $background-one;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            z-index: 10;
+        }
 
-            .box-statistics {
-                @include container;
-                justify-content: space-around;
-                width: 100%;
-                height: 40%;
+        .select-box-style {
+            @include container;
+            justify-content: center;
+            width: 90%;
+            height: 25%;
+            background-color: $white;
+            border-radius: 1rem;
+            text-transform: uppercase;
+            transition: .1s;
+        }
 
-                .style-box-statistics {
-                    @include container;
-                    flex-direction: column;
-                    background-color: $white;
-                    width: 30%;
-                    height: 25vh;
-                    border-radius: 1rem;
-                    padding: 0.5rem;
+        .select-box-style:hover {
+            cursor: pointer;
+            background-color: #a7e2dec2;
 
-                    .name-type-statitic {
-                        font-size: 1.3vw;
-                        text-transform: uppercase;
-                        font-weight: 700;
-                    }
+        }
 
-                    .number-statistic {
-                        //margin-top: 25%;
-                        margin: auto;
-                        font-size: 5.5vw;
-                    }
-                }
-            }
+        .view-infos::-webkit-scrollbar {
+            width: 0.8rem;
+        }
 
-            .container-statistic-bar {
+        .view-infos::-webkit-scrollbar-track {
+            //background: $details;
+            //margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 0.5vw;
+        }
+
+        .view-infos::-webkit-scrollbar-thumb {
+            background-color: $color-light;
+            border-radius: 20px;
+        }
+
+        .view-infos {
+            width: 75%;
+            height: 100%;
+            padding: 1rem;
+            //background-color: $background-list;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            .container-statistic {
                 @include container;
                 flex-direction: column;
-                justify-content: flex-start;
+                justify-content: space-between;
                 width: 100%;
-                height: 15vh;
+                min-height: 70vh;
 
-                //background-color: red;
-                .statistic-bar {
-                    @include container;
-                    flex-direction: row;
-                    width: 100%;
-                    height: 30%;
-                    border-radius: 0.5rem;
-                    background-color: $white;
-                    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
-
-                    #bar-task-finished {
-                        height: 100%;
-                        width: 78%;
-                        background-color: $bar-finished;
-                        background: linear-gradient(to right, #5eeb27, #4ab41f);
-                        border-top-left-radius: .5rem;
-                        border-bottom-left-radius: .5rem;
-                    }
-
-                    #bar-task-canceled {
-                        height: 100%;
-                        width: 22%;
-                        background-color: $bar-canceled;
-                        background: linear-gradient(to right, #ec530c, #f06424);
-                        border-top-right-radius: .5rem;
-                        border-bottom-right-radius: .5rem;
-                    }
+                h1 {
+                    color: $white;
+                    text-transform: uppercase;
+                    font-size: 2.5rem;
+                    font-weight: 900;
+                    //letter-spacing: .1rem;
                 }
 
-                .statistic-bar-info {
+                .box-statistics {
                     @include container;
                     justify-content: space-around;
-                    background-color: $background-task;
-                    opacity: 40%;
-                    width: 70%;
-                    height: 20%;
-                    padding: 10px;
-                    border-radius: 0.5rem;
-                    margin-top: 2rem;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                    transition: .8s;
+                    width: 100%;
+                    height: 40%;
+
+                    .style-box-statistics {
+                        @include container;
+                        flex-direction: column;
+                        background-color: $white;
+                        width: 30%;
+                        height: 25vh;
+                        border-radius: 1rem;
+                        padding: 0.5rem;
+
+                        .name-type-statitic {
+                            font-size: 1.3vw;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                        }
+
+                        .number-statistic {
+                            //margin-top: 25%;
+                            margin: auto;
+                            font-size: 5.5vw;
+                        }
+                    }
                 }
 
-                .statistic-bar-info:hover {
-                    opacity: 100%;
+                .container-statistic-bar {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    width: 100%;
+                    height: 15vh;
+
+                    //background-color: red;
+                    .statistic-bar {
+                        @include container;
+                        flex-direction: row;
+                        width: 100%;
+                        height: 30%;
+                        border-radius: 0.5rem;
+                        background-color: $white;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+
+                        #bar-task-finished {
+                            height: 100%;
+                            width: 78%;
+                            background-color: $bar-finished;
+                            background: linear-gradient(to right, #5eeb27, #4ab41f);
+                            border-top-left-radius: .5rem;
+                            border-bottom-left-radius: .5rem;
+                        }
+
+                        #bar-task-canceled {
+                            height: 100%;
+                            width: 22%;
+                            background-color: $bar-canceled;
+                            background: linear-gradient(to right, #ec530c, #f06424);
+                            border-top-right-radius: .5rem;
+                            border-bottom-right-radius: .5rem;
+                        }
+                    }
+
+                    .statistic-bar-info {
+                        @include container;
+                        justify-content: space-around;
+                        background-color: $background-task;
+                        opacity: 40%;
+                        width: 70%;
+                        height: 20%;
+                        padding: 10px;
+                        border-radius: 0.5rem;
+                        margin-top: 2rem;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        transition: .8s;
+                    }
+
+                    .statistic-bar-info:hover {
+                        opacity: 100%;
+                    }
                 }
             }
         }
     }
-    }
+
     //Fim do estilo
 
     #modal-remove {
@@ -657,8 +668,8 @@ body {
 }
 
 @media screen and (max-width: 1350px) {
-    body{
-        .modal{
+    body {
+        .modal {
             min-width: 70vw;
         }
     }
@@ -694,7 +705,7 @@ body {
             }
         }
 
-        #main-profile{
+        #main-profile {
 
             .view-infos {
                 .container-statistic {
@@ -795,46 +806,46 @@ body {
         }
 
         //Style para página Profile
-        #main-profile{
-            #container-profile {
+        #main-profile {
+            #container-statistic {
                 flex-direction: column;
             }
-    
+
             #container-select {
                 flex-direction: row;
                 height: 100%;
             }
-    
+
             #modal-remove {
                 min-width: 90vw;
                 //min-height: 50vh;
             }
-    
+
             .select-box-style {
                 width: 25%;
                 height: 100%;
             }
-    
+
             .select-page {
                 width: 100%;
                 height: 15%;
             }
-    
+
             .view-infos {
                 width: 100%;
                 height: 85%;
                 padding-top: 2rem;
-    
+
                 .container-statistic {
                     min-height: 60vh;
-    
+
                     .box-statistics {
-    
+
                         .style-box-statistics {
                             .name-type-statitic {
                                 font-size: 2vw;
                             }
-    
+
                             .number-statistic {
                                 font-size: 7vw;
                             }
@@ -871,7 +882,8 @@ body {
                 width: 100%;
             }
         }
-        #container-profile {
+
+        #container-statistic {
             width: 95%;
         }
 
@@ -888,34 +900,34 @@ body {
         }
 
         //Style para página Profile
-        #main-profile{
+        #main-profile {
             .view-infos {
                 .container-statistic {
                     min-height: 110vh;
-    
+
                     .box-statistics {
                         flex-direction: column;
                         height: 80vh;
-    
+
                         .style-box-statistics {
                             width: 60%;
-    
+
                             .name-type-statitic {
                                 font-size: 4vw;
                             }
-    
+
                             .number-statistic {
                                 font-size: 15vw;
                             }
                         }
                     }
-    
+
                     .container-statistic-bar {
                         .statistic-bar-info {
                             width: 90%;
                         }
                     }
-    
+
                 }
             }
         }
@@ -1036,12 +1048,13 @@ body {
             width: 20px;
             height: 20px;
         }
-        #main-profile{
+
+        #main-profile {
             .view-infos {
                 .container-statistic {
                     .container-statistic-bar {
                         .statistic-bar-info {
-                            flex-direction:column ;
+                            flex-direction: column;
                             width: 80%;
                             height: 60%;
                         }
