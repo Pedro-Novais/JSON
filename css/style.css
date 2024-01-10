@@ -143,7 +143,7 @@ body header nav ul li {
   justify-content: flex-start;
   align-items: center;
   justify-content: center;
-  width: 25%;
+  min-width: 30%;
   height: 100%;
   text-transform: uppercase;
   background-color: #034AA6;
@@ -154,6 +154,7 @@ body header nav ul li {
 body header nav ul li p {
   color: #D9D9D9;
   font-weight: 500;
+  font-size: 0.8rem;
 }
 body header nav ul li:hover {
   background-color: #0487D9;
@@ -232,6 +233,12 @@ body #main-profile .view-infos {
   overflow-y: auto;
   overflow-x: hidden;
 }
+body #main-profile .view-infos .style-to-title {
+  color: #D9D9D9;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
 body #main-profile .view-infos .container-statistic {
   display: flex;
   flex-direction: row;
@@ -241,12 +248,6 @@ body #main-profile .view-infos .container-statistic {
   justify-content: space-between;
   width: 100%;
   min-height: 70vh;
-}
-body #main-profile .view-infos .container-statistic h1 {
-  color: #D9D9D9;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  font-weight: 900;
 }
 body #main-profile .view-infos .container-statistic .box-statistics {
   display: flex;
@@ -335,6 +336,72 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info:hover {
   opacity: 100%;
+}
+body #main-profile .view-infos .container-config {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+}
+body #main-profile .view-infos .container-config .box-configs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #034AA6;
+  border-radius: 1rem;
+  width: 80%;
+  height: 60%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+body #main-profile .view-infos .container-config .box-configs .box-configurations {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+}
+body #main-profile .view-infos .container-config .box-configs .box-configurations .ball-option {
+  width: 19px;
+  height: 19px;
+  padding: 3px;
+  border: solid 3px #D9D9D9;
+  border-radius: 50%;
+}
+body #main-profile .view-infos .container-config .box-configs .box-configurations .ball-option .active-order-priority {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #034AA6;
+}
+body #main-profile .view-infos .container-config .btn-configs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  height: 10%;
+  margin-top: 2.5rem;
+  background: linear-gradient(to right, #034AA6, #0487D9);
+  border-radius: 1rem;
+  color: #D9D9D9;
+  font-weight: 400;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+body #main-profile .view-infos .container-config .style-to-name-config {
+  color: #D9D9D9;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-right: 0.5em;
 }
 body #modal-remove {
   display: flex;
@@ -935,6 +1002,12 @@ body footer {
   body .choose-priority {
     width: 20px;
     height: 20px;
+  }
+  body #main-profile .view-infos .style-to-title {
+    color: #D9D9D9;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 900;
   }
   body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
     flex-direction: column;
