@@ -12,16 +12,20 @@ const apiStatistics = "http://localhost:5000/statistic/"
 
 let statistic = null;
 let priorityId = null;
+let activeHover = null;
 
 export function interactorList() {
+
   getConfig(apiStatistics, getStatistics)
   getConfig(apiConfig, loadingConfig)
+  
   getPriority()
+  hoverPriority()
 
   const btn = document.querySelector('#btn-add')
   const task_put = document.querySelector('#task-add')
 
-  
+
   task_put.addEventListener('click', () => {
     task_put.removeAttribute('class', 'watch-out')
   })
@@ -353,18 +357,24 @@ export function interactorList() {
 
   function getPriority() {
     const level = document.querySelectorAll('.choose-priority')
-    level.forEach(function (level) {
-      level.addEventListener('click', function () {
+    level.forEach(function (lvl) {
+      lvl.addEventListener('click', function () {
         clearNewClick()
-        priorityId = level.getAttribute('id');
+        priorityId = lvl.getAttribute('id');
         if (priorityId == "priority-one") {
           priorityId = 0
+          activeHover = 0
+
         }
         else if (priorityId == "priority-two") {
           priorityId = 1
+          activeHover = 1
+
         }
         else if (priorityId == "priority-three") {
           priorityId = 2
+          activeHover = 2
+
         }
 
         if (priorityId !== null) {
@@ -383,14 +393,75 @@ export function interactorList() {
   function markNewClick(index) {
     let level = document.querySelectorAll('.choose-priority')
     for (let i = 0; i <= index; i++) {
+      level[i].removeEventListener('mouseleave', outHover)
       level[i].style.backgroundColor = '#05DBF2';
     }
+    console.log("mark")
   }
 
   function clearNewClick() {
     let level = document.querySelectorAll('.choose-priority')
     for (let i = 0; i < level.length; i++) {
       level[i].style.backgroundColor = '#0487D9';
+    }
+  }
+
+  function hoverPriority() {
+    console.log(activeHover)
+
+    let levelHover;
+    const level = document.querySelectorAll('.choose-priority')
+
+    level.forEach(function (lvl) {
+      lvl.addEventListener('mouseenter', function () {
+
+        levelHover = lvl.getAttribute('id')
+
+        if (activeHover !== 0) {
+          if (levelHover == "priority-one") {
+            console.log('priority one hover')
+
+            level[0].style.backgroundColor = "#05DBF2"
+
+            level[0].addEventListener('mouseleave', outHover)
+
+          }
+        }
+
+        if (levelHover == "priority-two") {
+          console.log('priority two hover')
+
+          for (let i = 0; i < 2; i++) {
+            level[i].style.backgroundColor = "#05DBF2"
+          }
+          level[1].addEventListener('mouseleave', outHover)
+        }
+
+        if (levelHover == "priority-three") {
+          console.log('priority two hover')
+
+          for (let i = 0; i < 3; i++) {
+            level[i].style.backgroundColor = "#05DBF2"
+          }
+
+          level[2].addEventListener('mouseleave', outHover)
+        }
+      })
+    })
+  }
+}
+
+function outHover() {
+  const level = document.querySelectorAll('.choose-priority')
+  
+  for (let i = 0; i <= 3; i++) {
+    level[i].style.backgroundColor = "#0487d9"
+
+    if (activeHover !== null) {
+
+      for (let i = 0; i <= activeHover; i++) {
+        level[i].style.backgroundColor = "#05DBF2"
+      }
     }
   }
 }

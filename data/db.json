@@ -1,8 +1,8 @@
 {
   "tasks": [
     {
-      "task": "Change",
-      "priority": 1,
+      "task": "Aprender a utilizar o Shot Cut",
+      "priority": 3,
       "id": 3
     },
     {
@@ -11,34 +11,34 @@
       "id": 5
     },
     {
-      "task": "Limpar a casa",
-      "priority": 2,
-      "id": 6
-    },
-    {
       "task": "Jantar",
       "priority": 3,
       "id": 8
+    },
+    {
+      "task": "Assistir filme",
+      "priority": 3,
+      "id": 9
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 10,
+      "created": 13,
       "finished": 2,
-      "canceled": 4
+      "canceled": 5
     },
     {
       "id": 2,
-      "created": 10,
-      "finished": 3,
-      "canceled": 11
+      "created": 12,
+      "finished": 4,
+      "canceled": 13
     },
     {
       "id": 1,
-      "created": 17,
+      "created": 18,
       "finished": 4,
-      "canceled": 13
+      "canceled": 15
     }
   ],
   "config": {

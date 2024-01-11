@@ -72,7 +72,7 @@ body .style-bar-options .container-bars .seeing-options-bar {
   justify-content: center;
   width: 75%;
   height: 15%;
-  background-color: #021c6b;
+  background-color: #082783;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
@@ -935,10 +935,14 @@ body footer {
     width: 95vw;
     height: 90vh;
   }
+  body main #main-profile {
+    position: unset;
+    height: 100%;
+  }
   body main #container {
     width: 100%;
     height: 100%;
-    background-color: #021c6b;
+    background-color: #082783;
   }
   body main #container #task-made {
     height: 60vh;
@@ -1058,8 +1062,6 @@ body footer {
   }
   body #main-profile {
     width: 95%;
-    height: 90%;
-    position: unset;
   }
   body #main-profile #container-statistic {
     padding-bottom: 1em;
