@@ -6,11 +6,6 @@
       "id": 3
     },
     {
-      "task": "Aprender a utilizar o shot cut",
-      "priority": 2,
-      "id": 4
-    },
-    {
       "task": "Escrever um roteiro do vídeo",
       "priority": 1,
       "id": 5
@@ -19,19 +14,24 @@
       "task": "Limpar a casa",
       "priority": 2,
       "id": 6
+    },
+    {
+      "task": "Jantar",
+      "priority": 3,
+      "id": 8
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 8,
+      "created": 10,
       "finished": 2,
-      "canceled": 3
+      "canceled": 4
     },
     {
       "id": 2,
       "created": 10,
-      "finished": 2,
+      "finished": 3,
       "canceled": 11
     },
     {
