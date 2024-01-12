@@ -1,38 +1,33 @@
 {
   "tasks": [
     {
-      "task": "Aprender a utilizar o Shot Cut",
+      "task": "Escrever roteiro de um vídeo ",
       "priority": 3,
-      "id": 3
-    },
-    {
-      "task": "Escrever um roteiro do vídeo",
-      "priority": 1,
       "id": 5
     },
     {
-      "task": "Jantar",
+      "task": "Transar",
       "priority": 3,
-      "id": 8
+      "id": 11
     },
     {
-      "task": "Assistir filme",
+      "task": "Assistir Jogos Vorazes",
       "priority": 3,
-      "id": 9
+      "id": 12
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 13,
+      "created": 16,
       "finished": 2,
-      "canceled": 5
+      "canceled": 8
     },
     {
       "id": 2,
       "created": 12,
       "finished": 4,
-      "canceled": 13
+      "canceled": 14
     },
     {
       "id": 1,

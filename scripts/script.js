@@ -18,7 +18,7 @@ export function interactorList() {
 
   getConfig(apiStatistics, getStatistics)
   getConfig(apiConfig, loadingConfig)
-  
+
   getPriority()
   hoverPriority()
 
@@ -48,6 +48,7 @@ export function interactorList() {
     }
     priorityId = priorityId + 1
     let val = task_put.value
+    
     let data = {
       task: val,
       priority: priorityId
@@ -184,8 +185,6 @@ export function interactorList() {
     let modalDiv = document.createElement('div');
     modalDiv.setAttribute('class', 'modal')
     modalDiv.setAttribute('id', 'modal-remove')
-
-    const body = document.querySelector('body')
 
     const main = document.querySelector('main')
     const container = document.querySelector('#container')
