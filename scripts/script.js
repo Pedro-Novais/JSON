@@ -448,19 +448,20 @@ export function interactorList() {
       })
     })
   }
-}
 
-function outHover() {
-  const level = document.querySelectorAll('.choose-priority')
+  function outHover() {
+    const level = document.querySelectorAll('.choose-priority')
+    
+    for (let i = 0; i <= 3; i++) {
+      level[i].style.backgroundColor = "#0487d9"
   
-  for (let i = 0; i <= 3; i++) {
-    level[i].style.backgroundColor = "#0487d9"
-
-    if (activeHover !== null) {
-
-      for (let i = 0; i <= activeHover; i++) {
-        level[i].style.backgroundColor = "#05DBF2"
+      if (activeHover !== null) {
+  
+        for (let i = 0; i <= activeHover; i++) {
+          level[i].style.backgroundColor = "#05DBF2"
+        }
       }
     }
   }
+  
 }
