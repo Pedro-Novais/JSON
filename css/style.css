@@ -380,27 +380,37 @@ body #main-profile .view-infos .container-config .box-configs .box-configuration
   justify-content: flex-start;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
   padding: 1rem;
-  width: 50%;
-  height: 5vh;
+  width: 100%;
   border-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
-body #main-profile .view-infos .container-config .box-configs .box-configurations .ball-option {
+body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  width: 100%;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+}
+body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config .ball-option {
   width: 40px;
   height: 20px;
   border: solid 2px #D9D9D9;
   border-radius: 10px;
   background-color: #034AA6;
 }
-body #main-profile .view-infos .container-config .box-configs .box-configurations .ball-option .active-order-priority {
+body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config .ball-option .active-order-priority {
   position: relative;
   width: 55%;
   height: 100%;
   border-radius: 20px;
   background-color: #D9D9D9;
 }
-body #main-profile .view-infos .container-config .box-configs .box-configurations .ball-option:hover {
+body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config .ball-option:hover {
   cursor: pointer;
 }
 body #main-profile .view-infos .container-config .btn-configs {
@@ -409,8 +419,8 @@ body #main-profile .view-infos .container-config .btn-configs {
   justify-content: flex-start;
   align-items: center;
   justify-content: center;
-  width: 10%;
-  height: 10%;
+  width: 8rem;
+  height: 8vh;
   margin-top: 2.5rem;
   background: linear-gradient(to right, #034AA6, #0487D9);
   border-radius: 1rem;
@@ -789,6 +799,9 @@ body footer {
   body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
     width: 80%;
   }
+  body #main-profile .view-infos .container-config .box-configs {
+    width: 90%;
+  }
 }
 @media screen and (max-width: 1050px) {
   body {
@@ -826,7 +839,7 @@ body footer {
   }
   body main #container #container-info #priority {
     width: 90%;
-    height: 25%;
+    height: 30%;
   }
   body main #container #container-info #priority p {
     font-size: 1rem;
@@ -891,6 +904,9 @@ body footer {
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
     font-size: 7vw;
   }
+  body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config {
+    border-radius: 1rem;
+  }
 }
 @media screen and (max-width: 800px) {
   body {
@@ -942,6 +958,12 @@ body footer {
   }
   body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
     width: 90%;
+  }
+  body #main-profile .view-infos .container-config .box-configs {
+    width: 100%;
+  }
+  body #main-profile .view-infos .container-config .style-to-name-config {
+    font-size: 1rem;
   }
 }
 @media screen and (max-width: 600px) {
@@ -1051,6 +1073,24 @@ body footer {
     flex-direction: column;
     width: 80%;
     height: 60%;
+  }
+  body #main-profile .view-infos .container-config .box-configs {
+    padding: 0;
+    background-color: unset;
+    box-shadow: unset;
+  }
+  body #main-profile .view-infos .container-config .box-configs .box-configurations {
+    padding: 0;
+  }
+  body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 15vh;
+    background-color: #034AA6;
+    padding: 0.6em;
+  }
+  body #main-profile .view-infos .container-config .style-to-name-config {
+    text-align: center;
   }
 }
 @media screen and (max-width: 400px) {

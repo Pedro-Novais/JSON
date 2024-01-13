@@ -384,32 +384,41 @@ body {
                     .box-configurations {
                         @include container;
                         justify-content: flex-start;
+                        flex-direction: column;
                         padding: 1rem;
-                        width: 50%;
-                        height: 5vh;
+                        width: 100%;
                         //background-color: $priority;
                         border-radius: .5rem;
-                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                        //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
-                        .ball-option {
-                            width: 40px;
-                            height: 20px;
-                            border: solid 2px $white;
-                            border-radius: 10px;
-                            background-color: $details;
+                        .line-config {
+                            @include container;
+                            justify-content: space-between;
+                            padding: 1em;
+                            width: 100%;
+                            margin-bottom: 1rem;
+                            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+                            
+                            .ball-option {
+                                width: 40px;
+                                height: 20px;
+                                border: solid 2px $white;
+                                border-radius: 10px;
+                                background-color: $details;
 
-                            .active-order-priority {
-                                position: relative;
-                                //left: 44.8%;
-                                width: 55%;
-                                height: 100%;
-                                border-radius: 20px;
-                                background-color: $white;
+                                .active-order-priority {
+                                    position: relative;
+                                    //left: 44.8%;
+                                    width: 55%;
+                                    height: 100%;
+                                    border-radius: 20px;
+                                    background-color: $white;
+                                }
                             }
-                        }
-                        
-                        .ball-option:hover{
-                            cursor: pointer;
+
+                            .ball-option:hover {
+                                cursor: pointer;
+                            }
                         }
                     }
                 }
@@ -418,8 +427,8 @@ body {
                     //align-self: flex-end;
                     @include container;
                     justify-content: center;
-                    width: 10%;
-                    height: 10%;
+                    width: 8rem;
+                    height: 8vh;
                     margin-top: 2.5rem;
                     background: linear-gradient(to right, $details, $priority);
                     border-radius: 1rem;
@@ -428,7 +437,7 @@ body {
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
                 }
 
-                .btn-configs:hover{
+                .btn-configs:hover {
                     cursor: pointer;
                     background: linear-gradient(to left, $details, $priority);
                 }
@@ -814,6 +823,12 @@ body {
                         }
                     }
                 }
+
+                .container-config{
+                    .box-configs{
+                        width: 90%;
+                    }
+                } 
             }
         }
     }
@@ -860,7 +875,7 @@ body {
 
                     #priority {
                         width: 90%;
-                        height: 25%;
+                        height: 30%;
 
                         p {
                             font-size: 1rem;
@@ -954,6 +969,15 @@ body {
                         }
                     }
                 }
+                .container-config{
+                    .box-configs{
+                        .box-configurations{
+                            .line-config{
+                                border-radius: 1rem;
+                            }
+                        }
+                    }
+                } 
             }
         }
     }
@@ -1031,6 +1055,15 @@ body {
                     }
 
                 }
+                .container-config{
+                    .box-configs{
+                        width: 100%;
+                    }
+
+                    .style-to-name-config{
+                        font-size: 1rem;
+                    }
+                } 
             }
         }
     }
@@ -1053,6 +1086,7 @@ body {
                 height: 100%;
                 background-color: $color-resposive;
                 border-radius: 1rem;
+
                 .select-page {
                     box-shadow: unset;
                     background-color: $details;
@@ -1087,6 +1121,7 @@ body {
                 }
 
                 #container-info {
+                    
                     #btn-add {
                         height: 30%;
                     }
@@ -1181,6 +1216,26 @@ body {
                             height: 60%;
                         }
                     }
+                }
+                .container-config {
+                    .box-configs{
+                        padding: 0;
+                        background-color: unset;
+                        box-shadow: unset;
+                        .box-configurations{
+                            padding: 0;
+                            .line-config{
+                                flex-direction: column;
+                                justify-content: space-around;
+                                height: 15vh;
+                                background-color: $details;
+                                padding: 0.6em;
+                            }
+                        } 
+                    }
+                    .style-to-name-config{
+                        text-align: center;
+                    } 
                 }
             }
         }

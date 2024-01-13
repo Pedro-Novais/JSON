@@ -3,8 +3,10 @@ export default function updateTaskBack(url, id, data, determinate, cb=null){
 
     if(determinate == 1){
         request.open('PUT', `${url}/${id}`)
-    }else{
+    }else if(determinate == 0){
         request.open('PATCH', `${url}/${id}`)
+    }else if(determinate == 2){
+        request.open('PATCH', `${url}`)
     }
     request.setRequestHeader('Content-Type', 'application/json');
 

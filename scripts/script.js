@@ -25,11 +25,6 @@ export function interactorList() {
   const btn = document.querySelector('#btn-add')
   const task_put = document.querySelector('#task-add')
 
-
-  task_put.addEventListener('click', () => {
-    task_put.removeAttribute('class', 'watch-out')
-  })
-
   btn.addEventListener('click', addTask)
 
   function addTask() {
@@ -37,6 +32,7 @@ export function interactorList() {
     const minutos = agora.getMinutes();
     const sec = agora.getSeconds();
     console.log(`${agora.getHours()}:${minutos}:${sec}`)
+
     const input = document.querySelector('#task-add').value
 
     if (priorityId == null) {
@@ -44,11 +40,16 @@ export function interactorList() {
     }
     if (input == "" || input == null) {
       task_put.setAttribute('class', 'watch-out')
+
+      task_put.addEventListener('click', () => {
+        task_put.removeAttribute('class', 'watch-out')
+      })
+      
       return false
     }
     priorityId = priorityId + 1
     let val = task_put.value
-    
+
     let data = {
       task: val,
       priority: priorityId
@@ -307,7 +308,6 @@ export function interactorList() {
   }
 
   function deleteTask(level, id) {
-    console.log(level)
     changeStatistic(level, 2)
     deleteTaskBack(api, id)
   }

@@ -1,42 +1,43 @@
 {
   "tasks": [
     {
-      "task": "Escrever roteiro de um vídeo ",
-      "priority": 3,
-      "id": 5
+      "task": "teste",
+      "priority": 2,
+      "id": 13
     },
     {
-      "task": "Transar",
+      "task": "beleza",
       "priority": 3,
-      "id": 11
+      "id": 15
     },
     {
-      "task": "Assistir Jogos Vorazes",
+      "task": "mudança",
       "priority": 3,
-      "id": 12
+      "id": 16
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 16,
+      "created": 18,
       "finished": 2,
-      "canceled": 8
+      "canceled": 11
     },
     {
       "id": 2,
-      "created": 12,
+      "created": 13,
       "finished": 4,
-      "canceled": 14
+      "canceled": 15
     },
     {
       "id": 1,
-      "created": 18,
-      "finished": 4,
-      "canceled": 15
+      "created": 21,
+      "finished": 5,
+      "canceled": 16
     }
   ],
   "config": {
-    "orderPriority": true
+    "orderPriority": true,
+    "usersCanViewProfile": false
   }
 }
