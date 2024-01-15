@@ -461,8 +461,8 @@ body {
         justify-content: space-around;
         width: 50vw;
         height: 40vh;
-        position: absolute;
-        top: 12rem;
+        position: relative;
+        //top: 12rem;
 
         #task-remove {
 
@@ -478,17 +478,14 @@ body {
         justify-content: space-around;
         align-items: center;
         //display: none;
-        position: absolute;
-        top: 12rem;
+        position: relative;
+        //top: 12rem;
         z-index: 100;
-        //top: 0; 
-        //left: 0;
         margin: 0 auto;
         width: 50vw;
         height: 40vh;
         padding: 1rem;
         border-radius: 1rem;
-        //background-color: $background-list;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         color: $text;
 
@@ -497,7 +494,6 @@ body {
             justify-content: space-around;
             width: 100%;
             height: 8vh;
-            //margin-top: 3rem;
             padding: 0.35vw;
 
             .input {
@@ -527,7 +523,6 @@ body {
             width: 100%;
             height: 10vh;
             padding: 0.25rem;
-            //margin-top: 3rem;
 
             .btn-edit {
                 @include container;
@@ -563,7 +558,6 @@ body {
         justify-content: center;
         width: 50%;
         height: 50%;
-        //display: none;
 
         #container {
             justify-self: center;

@@ -1,33 +1,28 @@
 {
   "tasks": [
     {
-      "task": "teste",
+      "task": "Realizar a verificação dos tickets",
+      "priority": 3,
+      "id": 1
+    },
+    {
+      "task": "Desenvolver a animação",
       "priority": 2,
-      "id": 13
-    },
-    {
-      "task": "beleza",
-      "priority": 3,
-      "id": 15
-    },
-    {
-      "task": "mudança",
-      "priority": 3,
-      "id": 16
+      "id": 2
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 18,
+      "created": 19,
       "finished": 2,
-      "canceled": 11
+      "canceled": 13
     },
     {
       "id": 2,
-      "created": 13,
+      "created": 14,
       "finished": 4,
-      "canceled": 15
+      "canceled": 16
     },
     {
       "id": 1,

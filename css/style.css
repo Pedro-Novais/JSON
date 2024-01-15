@@ -447,8 +447,7 @@ body #modal-remove {
   justify-content: space-around;
   width: 50vw;
   height: 40vh;
-  position: absolute;
-  top: 12rem;
+  position: relative;
 }
 body #modal-remove #task-remove p {
   font-size: 1.3rem;
@@ -461,8 +460,7 @@ body .modal {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
-  top: 12rem;
+  position: relative;
   z-index: 100;
   margin: 0 auto;
   width: 50vw;
