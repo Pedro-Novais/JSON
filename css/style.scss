@@ -274,6 +274,28 @@ body {
                 width: 100%;
                 min-height: 70vh;
 
+                .choose-priority-view{
+                    position: absolute;
+                    align-self: flex-start;
+                    @include container;
+                    margin-left: 2rem;
+                    ///background-color: #4ab41f;
+                    top: 8rem;
+
+                    h2{
+                        text-transform: uppercase;
+                        color: $white;
+                    }
+
+                    .select-priority{
+                        list-style: none;
+                    }
+
+                    option{
+                        background-color: red;
+                    }
+                }
+
                 .box-statistics {
                     @include container;
                     justify-content: space-around;
