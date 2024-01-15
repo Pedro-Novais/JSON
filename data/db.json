@@ -1,47 +1,43 @@
 {
   "tasks": [
     {
-      "task": "Programar quando chegar em casa",
+      "task": "teste",
+      "priority": 2,
+      "id": 13
+    },
+    {
+      "task": "beleza",
       "priority": 3,
-      "id": 3
+      "id": 15
     },
     {
-      "task": "Aprender a utilizar o shot cut",
-      "priority": 2,
-      "id": 4
-    },
-    {
-      "task": "Escrever um roteiro do vídeo",
-      "priority": 1,
-      "id": 5
-    },
-    {
-      "task": "Limpar a casa",
-      "priority": 2,
-      "id": 6
+      "task": "mudança",
+      "priority": 3,
+      "id": 16
     }
   ],
   "statistic": [
     {
       "id": 3,
-      "created": 8,
-      "finished": 2,
-      "canceled": 3
-    },
-    {
-      "id": 2,
-      "created": 10,
+      "created": 18,
       "finished": 2,
       "canceled": 11
     },
     {
-      "id": 1,
-      "created": 17,
+      "id": 2,
+      "created": 13,
       "finished": 4,
-      "canceled": 13
+      "canceled": 15
+    },
+    {
+      "id": 1,
+      "created": 21,
+      "finished": 5,
+      "canceled": 16
     }
   ],
   "config": {
-    "orderPriority": true
+    "orderPriority": true,
+    "usersCanViewProfile": false
   }
 }

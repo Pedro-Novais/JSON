@@ -8,48 +8,92 @@ const linkToDo = document.querySelector('#visit-list')
 const linkProfile = document.querySelector('#visit-profile')
 const linkAbout = document.querySelector('#visit-about')
 
-//const containerToDo = document.querySelector('#container')
-
-const body = document.querySelector('body')
+const header = document.querySelector('header')
 const main = document.querySelector('main')
+const footer = document.querySelector('footer')
 
 linkProfile.addEventListener('click', callPageProfile)
 
 initial()
 
 function callPageList() {
-    div.remove()
-    div.setAttribute('id', 'container')
+     
+    let width = window.innerWidth
 
-    div.innerHTML = listToDo
-    //containerToDo.remove()
-    main.appendChild(div)
+    if (width <= 800) { 
 
-    interactorList()
+    header.style.display = "flex";
+    main.style.display = "flex";
+    footer.style.display = "flex";
 
-    linkToDo.removeEventListener('click', callPageList)
-    linkProfile.addEventListener('click', callPageProfile)
+    let divOptions = document.querySelector('#bar-options')
+    divOptions.remove()
+
+}
+
+if (linkProfile.className == 'li-visits') {
+
+    linkProfile.removeAttribute('class', 'li-visits')
+}
+
+linkToDo.setAttribute('class', 'li-visits')
+
+div.remove()
+div.setAttribute('id', 'container')
+
+div.innerHTML = listToDo
+main.appendChild(div)
+
+interactorList()
+
+linkToDo.removeEventListener('click', callPageList)
+linkProfile.addEventListener('click', callPageProfile)
 }
 
 function callPageProfile() {
+
+    let width = window.innerWidth
+
+    if (width <= 800) {
+
+        header.style.display = "flex";
+        main.style.display = "flex";
+        footer.style.display = "flex";
+
+        let divOptions = document.querySelector('#bar-options')
+        divOptions.remove()
+
+    }
+
+    if (linkToDo.className == 'li-visits') {
+
+        linkToDo.removeAttribute('class', 'li-visits')
+    }
+
+    linkProfile.setAttribute('class', 'li-visits')
+
     div.setAttribute('id', 'main-profile')
 
     div.innerHTML = profile
-    //containerToDo.remove()
     main.appendChild(div)
 
     interactorProfile()
+
+    console.log("indo")
 
     linkProfile.removeEventListener('click', callPageProfile)
     linkToDo.addEventListener('click', callPageList)
 }
 
-function initial(){
+function initial() {
+
     div.setAttribute('id', 'container')
+    linkToDo.setAttribute('class', 'li-visits')
 
     div.innerHTML = listToDo
-    //containerToDo.remove()
     main.appendChild(div)
 
     interactorList()
 }
+
+export { callPageList, callPageProfile }

@@ -1,4 +1,5 @@
 import { viewBarsCode } from "./utils/modals.js"
+import { callPageList, callPageProfile } from "./changeView.js";
 
 window.addEventListener('resize', getWidth);
 const body = document.querySelector('body')
@@ -52,6 +53,13 @@ function barView() {
     div.innerHTML = viewBarsCode;
 
     body.appendChild(div)
+
+    const linkToDoResponsive = document.querySelector('#visit-list-responsive')
+    const linkProfileResponsive = document.querySelector('#visit-profile-responsive')
+    const linkAbout = document.querySelector('#visit-about-responsive')
+
+    linkToDoResponsive.addEventListener('click', callPageList)
+    linkProfileResponsive.addEventListener('click', callPageProfile)
 
     const cancelBar = document.querySelector('#cancel-bar')
     if (cancelBar != null) {

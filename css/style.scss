@@ -41,7 +41,7 @@ body {
         flex-direction: column;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, $background-one, $background-dark);
+        //background: linear-gradient(to right, $background-one, $background-dark);
         padding: 1rem;
         transition: 2s;
         //display: none;
@@ -79,14 +79,13 @@ body {
                 background-color: $color-resposive;
                 margin-bottom: 2rem;
                 border-radius: 0.5rem;
-                box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
                 transition: 0.2s;
 
-                a {
-                    text-decoration: none;
+                p {
                     text-transform: uppercase;
                     color: $white;
-                    font-size: 1.1rem;
+                    font-size: 1rem;
                     font-weight: 550;
                 }
             }
@@ -143,10 +142,10 @@ body {
                 list-style: none;
                 height: 100%;
 
-                li {
+                .li-visits {
                     @include container;
                     justify-content: center;
-                    width: 25%;
+                    min-width: 30%;
                     height: 100%;
                     text-transform: uppercase;
                     background-color: $details;
@@ -154,13 +153,30 @@ body {
                     box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     transition: .1s;
 
+                }
+
+                li {
+                    @include container;
+                    justify-content: center;
+                    min-width: 30%;
+                    height: 100%;
+                    text-transform: uppercase;
+                    //background-color: $details;
+                    border-radius: 0.5rem;
+                    //box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+                    transition: .1s;
+
                     p {
                         color: $white;
                         font-weight: 500;
+                        font-size: .8rem;
                     }
+
                 }
+
                 li:hover {
-                    background-color: $priority;
+                    background-color: $details;
+                    box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     cursor: pointer;
                 }
             }
@@ -171,15 +187,15 @@ body {
     #main-profile {
         position: absolute;
         top: 10rem;
-        width: 85%;
+        width: 95%;
         height: 75vh;
 
         #container-profile {
             @include container;
             width: 100%;
             height: 100%;
-            //background-color: $white;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border-radius: 1rem
         }
 
         #container-select {
@@ -197,8 +213,10 @@ body {
             height: 100%;
             padding: 1rem;
             background-color: $background-one;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            //box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             z-index: 10;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem
         }
 
         .select-box-style {
@@ -242,20 +260,19 @@ body {
             overflow-y: auto;
             overflow-x: hidden;
 
+            .style-to-title {
+                color: $white;
+                text-transform: uppercase;
+                font-size: 2.5rem;
+                font-weight: 900;
+            }
+
             .container-statistic {
                 @include container;
                 flex-direction: column;
                 justify-content: space-between;
                 width: 100%;
                 min-height: 70vh;
-
-                h1 {
-                    color: $white;
-                    text-transform: uppercase;
-                    font-size: 2.5rem;
-                    font-weight: 900;
-                    //letter-spacing: .1rem;
-                }
 
                 .box-statistics {
                     @include container;
@@ -342,6 +359,97 @@ body {
                     }
                 }
             }
+
+            //Estilo para página de configurações
+
+            .container-config {
+                @include container;
+                flex-direction: column;
+                width: 100%;
+                height: 90%;
+                //background-color: #4ab41f;
+
+                .box-configs {
+                    @include container;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-top: 2rem;
+                    padding: 1rem;
+                    background-color: $details;
+                    border-radius: 1rem;
+                    width: 80%;
+                    height: 60%;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                    .box-configurations {
+                        @include container;
+                        justify-content: flex-start;
+                        flex-direction: column;
+                        padding: 1rem;
+                        width: 100%;
+                        //background-color: $priority;
+                        border-radius: .5rem;
+                        //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                        .line-config {
+                            @include container;
+                            justify-content: space-between;
+                            padding: 1em;
+                            width: 100%;
+                            margin-bottom: 1rem;
+                            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+                            
+                            .ball-option {
+                                width: 40px;
+                                height: 20px;
+                                border: solid 2px $white;
+                                border-radius: 10px;
+                                background-color: $details;
+
+                                .active-order-priority {
+                                    position: relative;
+                                    //left: 44.8%;
+                                    width: 55%;
+                                    height: 100%;
+                                    border-radius: 20px;
+                                    background-color: $white;
+                                }
+                            }
+
+                            .ball-option:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .btn-configs {
+                    //align-self: flex-end;
+                    @include container;
+                    justify-content: center;
+                    width: 8rem;
+                    height: 8vh;
+                    margin-top: 2.5rem;
+                    background: linear-gradient(to right, $details, $priority);
+                    border-radius: 1rem;
+                    color: $white;
+                    font-weight: 400;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+                }
+
+                .btn-configs:hover {
+                    cursor: pointer;
+                    background: linear-gradient(to left, $details, $priority);
+                }
+
+                .style-to-name-config {
+                    color: $white;
+                    //text-transform: uppercase;
+                    font-size: 1.2rem;
+                    font-weight: 580;
+                    margin-right: 0.5em;
+                }
+            }
         }
     }
 
@@ -353,10 +461,10 @@ body {
         justify-content: space-around;
         width: 50vw;
         height: 40vh;
-        margin-bottom: 0rem;
+        position: absolute;
+        top: 12rem;
 
         #task-remove {
-            //margin-top: 2rem;
 
             p {
                 font-size: 1.3rem;
@@ -371,6 +479,7 @@ body {
         align-items: center;
         //display: none;
         position: absolute;
+        top: 12rem;
         z-index: 100;
         //top: 0; 
         //left: 0;
@@ -489,7 +598,7 @@ body {
                     outline: none;
                     border-style: none;
                     font-size: 1rem;
-                    border-radius: 1rem;
+                    border-radius: 0.5rem;
                     color: $text;
                     font-weight: 900;
                     letter-spacing: 0.1rem;
@@ -629,7 +738,7 @@ body {
         justify-content: space-between;
         background-color: $details;
         width: 100%;
-        min-height: 10vh;
+        min-height: 30%;
         margin-bottom: 1rem;
         padding: 0rem 1rem 0rem 3rem;
         border-radius: 1.3rem;
@@ -648,7 +757,7 @@ body {
         height: 20px;
         background-color: $priority;
         border-radius: 50%;
-        transition: .1s;
+        transition: .3s;
     }
 
     .choose-priority:hover {
@@ -663,7 +772,6 @@ body {
     footer {
         width: 100%;
         height: 15%;
-        background-color: $priority;
     }
 }
 
@@ -715,6 +823,12 @@ body {
                         }
                     }
                 }
+
+                .container-config{
+                    .box-configs{
+                        width: 90%;
+                    }
+                } 
             }
         }
     }
@@ -756,12 +870,12 @@ body {
 
                     #task-add {
                         width: 90%;
-                        height: 25%;
+                        height: 30%;
                     }
 
                     #priority {
                         width: 90%;
-                        height: 25%;
+                        height: 30%;
 
                         p {
                             font-size: 1rem;
@@ -829,6 +943,9 @@ body {
             .select-page {
                 width: 100%;
                 height: 15%;
+                border-top-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 0;
             }
 
             .view-infos {
@@ -852,6 +969,15 @@ body {
                         }
                     }
                 }
+                .container-config{
+                    .box-configs{
+                        .box-configurations{
+                            .line-config{
+                                border-radius: 1rem;
+                            }
+                        }
+                    }
+                } 
             }
         }
     }
@@ -929,6 +1055,15 @@ body {
                     }
 
                 }
+                .container-config{
+                    .box-configs{
+                        width: 100%;
+                    }
+
+                    .style-to-name-config{
+                        font-size: 1rem;
+                    }
+                } 
             }
         }
     }
@@ -938,17 +1073,30 @@ body {
     body {
         width: 100%;
         height: 130vh;
-        background: none;
-        background-color: $background-one;
+        //background: none;
+        //background-color: $background-one;
 
 
         main {
             width: 95vw;
             height: 90vh;
 
+            #main-profile {
+                position: unset;
+                height: 100%;
+                background-color: $color-resposive;
+                border-radius: 1rem;
+
+                .select-page {
+                    box-shadow: unset;
+                    background-color: $details;
+                }
+
+            }
+
             #container {
                 width: 100%;
-                height: 100%;
+                height: 90%;
                 background-color: $color-resposive;
 
                 #task-made {
@@ -973,13 +1121,14 @@ body {
                 }
 
                 #container-info {
+                    
                     #btn-add {
                         height: 30%;
                     }
                 }
 
                 .task-puted {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     text-align: center;
                     width: 100%;
                 }
@@ -991,6 +1140,7 @@ body {
                 p {
                     text-align: center;
                     width: 100%;
+                    font-size: 1rem;
                 }
             }
         }
@@ -1001,7 +1151,7 @@ body {
             padding: 0;
             padding-top: 0.5rem;
             border-radius: 20px;
-            min-height: 12vh;
+            min-height: 31%;
         }
 
         .priority-level {
@@ -1051,6 +1201,13 @@ body {
 
         #main-profile {
             .view-infos {
+                .style-to-title {
+                    color: $white;
+                    text-transform: uppercase;
+                    font-size: 2rem;
+                    font-weight: 900;
+                }
+
                 .container-statistic {
                     .container-statistic-bar {
                         .statistic-bar-info {
@@ -1059,6 +1216,26 @@ body {
                             height: 60%;
                         }
                     }
+                }
+                .container-config {
+                    .box-configs{
+                        padding: 0;
+                        background-color: unset;
+                        box-shadow: unset;
+                        .box-configurations{
+                            padding: 0;
+                            .line-config{
+                                flex-direction: column;
+                                justify-content: space-around;
+                                height: 15vh;
+                                background-color: $details;
+                                padding: 0.6em;
+                            }
+                        } 
+                    }
+                    .style-to-name-config{
+                        text-align: center;
+                    } 
                 }
             }
         }
@@ -1107,8 +1284,16 @@ body {
                 }
 
                 .task-puted {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
+            }
+        }
+
+        #main-profile {
+            width: 100%;
+
+            #container-statistic {
+                padding-bottom: 1em;
             }
         }
 
@@ -1119,7 +1304,7 @@ body {
 
         .tasks {
             width: 98%;
-            min-height: 35%;
+            min-height: 47%;
             border-radius: 10px;
         }
     }
