@@ -1,33 +1,28 @@
 {
   "tasks": [
     {
-      "task": "teste",
-      "priority": 2,
-      "id": 13
-    },
-    {
-      "task": "beleza",
-      "priority": 3,
-      "id": 15
-    },
-    {
       "task": "mudança",
       "priority": 3,
       "id": 16
+    },
+    {
+      "task": "teste",
+      "priority": 2,
+      "id": 17
     }
   ],
   "statistic": [
     {
       "id": 3,
       "created": 18,
-      "finished": 2,
+      "finished": 3,
       "canceled": 11
     },
     {
       "id": 2,
-      "created": 13,
+      "created": 14,
       "finished": 4,
-      "canceled": 15
+      "canceled": 16
     },
     {
       "id": 1,

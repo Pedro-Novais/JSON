@@ -1,6 +1,7 @@
 import { profile, listToDo } from "./utils/modals.js"
 import { interactorProfile } from "./scriptProfile.js"
 import { interactorList } from "./script.js"
+import { interactorResponsive } from "./scriptResponsive.js"
 
 const div = document.createElement('div')
 
@@ -15,6 +16,7 @@ const footer = document.querySelector('footer')
 linkProfile.addEventListener('click', callPageProfile)
 
 initial()
+interactorResponsive()
 
 function callPageList() {
      
