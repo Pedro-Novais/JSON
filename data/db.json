@@ -37,7 +37,7 @@
     }
   ],
   "config": {
-    "orderPriority": false,
+    "orderPriority": true,
     "usersCanViewProfile": false
   }
 }
