@@ -7,11 +7,22 @@ import updateTaskBack from "./utils/updateXML.js"
 
 export function interactorProfile() {
 
+    let statisticData;
+
+    let statisticAll ={
+        created: 0,
+        finished: 0,
+        canceled: 0
+    };
+
     let config;
     let nameConfig = ["orderPriority", "usersCanViewProfile"]
 
     const apiConfig = 'http://localhost:5000/config'
+    const apiStatistic = 'http://localhost:5000/statistic'
+
     getConfig(apiConfig, getInfoConfig)
+    getConfig(apiStatistic, getInfoStatistic)
 
     const viewPage = document.querySelector('#view-infos-unique')
     const profile = document.querySelector('#section-profile')
@@ -47,6 +58,13 @@ export function interactorProfile() {
 
         viewPage.appendChild(div)
 
+        //
+
+
+
+        //
+
+        
         statistic.removeEventListener('click', viewStatistic)
         profile.addEventListener('click', viewProfile)
         pageConfig.addEventListener('click', viewConfig)
@@ -154,5 +172,27 @@ export function interactorProfile() {
 
     function getInfoConfig(json) {
         config = json
+    }
+
+    function getInfoStatistic(json){
+        statisticData = json
+        getAllInfo()
+    }
+
+    function getAllInfo(){
+        let numberBase;
+        for(let i = 0; i < statisticData.length; i++){
+
+            numberBase = statisticAll.created;
+            statisticAll.created = statisticData[i]["created"] + numberBase
+
+            numberBase = statisticAll.finished
+            statisticAll.finished = statisticData[i]["finished"] + numberBase
+
+            numberBase = statisticAll.canceled
+            statisticAll.canceled = statisticData[i]["canceled"] + numberBase
+        }
+
+        console.log(statisticAll)
     }
 }

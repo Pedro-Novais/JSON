@@ -1,6 +1,7 @@
 {
   "tasks": [
     {
+<<<<<<< HEAD
       "task": "mudança",
       "priority": 3,
       "id": 16
@@ -9,14 +10,35 @@
       "task": "teste",
       "priority": 2,
       "id": 17
+=======
+      "task": "Realizar a verificação dos tickets",
+      "priority": 3,
+      "id": 1
+    },
+    {
+      "task": "Desenvolver a animação",
+      "priority": 2,
+      "id": 2
+    },
+    {
+      "task": "teste",
+      "priority": 3,
+      "id": 3
+>>>>>>> 669c1b0a8bb013b6bc453430c76a9e0687cde0c7
     }
   ],
   "statistic": [
     {
       "id": 3,
+<<<<<<< HEAD
       "created": 18,
       "finished": 3,
       "canceled": 11
+=======
+      "created": 20,
+      "finished": 2,
+      "canceled": 13
+>>>>>>> 669c1b0a8bb013b6bc453430c76a9e0687cde0c7
     },
     {
       "id": 2,

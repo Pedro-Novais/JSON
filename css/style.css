@@ -177,7 +177,7 @@ body #main-profile {
   width: 95%;
   height: 75vh;
 }
-body #main-profile #container-statistic {
+body #main-profile #container-profile {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -261,6 +261,26 @@ body #main-profile .view-infos .container-statistic {
   justify-content: space-between;
   width: 100%;
   min-height: 70vh;
+}
+body #main-profile .view-infos .container-statistic .choose-priority-view {
+  position: absolute;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 2rem;
+  top: 8rem;
+}
+body #main-profile .view-infos .container-statistic .choose-priority-view h2 {
+  text-transform: uppercase;
+  color: #D9D9D9;
+}
+body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
+  list-style: none;
+}
+body #main-profile .view-infos .container-statistic .choose-priority-view option {
+  background-color: red;
 }
 body #main-profile .view-infos .container-statistic .box-statistics {
   display: flex;
@@ -447,8 +467,7 @@ body #modal-remove {
   justify-content: space-around;
   width: 50vw;
   height: 40vh;
-  position: absolute;
-  top: 12rem;
+  position: relative;
 }
 body #modal-remove #task-remove p {
   font-size: 1.3rem;
@@ -461,8 +480,7 @@ body .modal {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
-  top: 12rem;
+  position: relative;
   z-index: 100;
   margin: 0 auto;
   width: 50vw;
@@ -869,7 +887,7 @@ body footer {
   body .tasks {
     border-radius: 1rem;
   }
-  body #main-profile #container-statistic {
+  body #main-profile #container-profile {
     flex-direction: column;
   }
   body #main-profile #container-select {
@@ -928,7 +946,7 @@ body footer {
   body main #container {
     width: 100%;
   }
-  body #container-statistic {
+  body #container-profile {
     width: 95%;
   }
   body .modal {

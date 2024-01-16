@@ -15,7 +15,7 @@
     </header>
     <main>
         <div id="main-profile">
-            <div id="container-statistic">
+            <div id="container-profile">
                 <div class="select-page">
                     <div id="container-select">
                         <div class="select-box-style" id="section-profile">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="view-infos" id="view-infos-unique">
-                    <div class="container-config">
+                    <!--<div class="container-config">
                         <h1 class='style-to-title'>Configurações</h1>
                         <div class="box-configs">
                             <div class="box-configurations">
@@ -48,9 +48,20 @@
                             </div>
                         </div>
                         <div id="btn-save-configs" class="btn-configs">Salvar</div>
-                    </div>
-                    <!--<div class="container-statistic">
+                    </div>-->
+                    <div class="container-statistic">
                         <h1 class='style-to-title'>Estatísticas</h1>
+                        <div class="choose-priority-view">
+                            <label for="level-priority-view">
+                                <h2>Tasks de prioridade:</h2>
+                            </label>
+                            <select name="level-priority-view" id="level-priority-view" class="select-priority">
+                                <option value="all-priority">Todos</option>
+                                <option value="one-priority">Prioridade 1</option>
+                                <option value="two-priority">Prioridade 2</option>
+                                <option value="three-priority">Prioridade 3</option>
+                            </select>
+                        </div>
                         <div class="box-statistics">
                             <div class="style-box-statistics">
                                 <p class="name-type-statitic">Tasks Criadas</p>
@@ -75,7 +86,7 @@
                                 <p>Tasks canceladas: 18%</p>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>
