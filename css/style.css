@@ -264,23 +264,51 @@ body #main-profile .view-infos .container-statistic {
 }
 body #main-profile .view-infos .container-statistic .choose-priority-view {
   position: absolute;
-  align-self: flex-start;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 2rem;
-  top: 8rem;
-}
-body #main-profile .view-infos .container-statistic .choose-priority-view h2 {
-  text-transform: uppercase;
-  color: #D9D9D9;
+  justify-content: space-between;
+  top: 7rem;
+  padding: 0.2em;
+  /*h2{
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: $white;
+      margin-right: .5em;
+  }
+
+  .select-priority{
+      //appearance: none;
+      border-style: none;
+      width: 7rem;
+      height: 2.5vh;
+      //box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+      text-transform: uppercase;
+      font-weight: 500;
+      //border-radius: .5em;
+  }
+
+  .select-priority:hover{
+      cursor: pointer;
+  }
+
+  option{
+      //background-color: red;
+  }*/
 }
 body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
-  list-style: none;
-}
-body #main-profile .view-infos .container-statistic .choose-priority-view option {
-  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  width: 9vw;
+  height: 6vh;
+  padding: 0.1vw;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #034AA6;
 }
 body #main-profile .view-infos .container-statistic .box-statistics {
   display: flex;

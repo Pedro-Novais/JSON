@@ -275,25 +275,51 @@ body {
                 min-height: 70vh;
 
                 .choose-priority-view{
+                    //min-width:23%;
                     position: absolute;
-                    align-self: flex-start;
+                    //align-self: flex-start;
                     @include container;
-                    margin-left: 2rem;
-                    ///background-color: #4ab41f;
-                    top: 8rem;
+                    justify-content: space-between;
+                    //margin-left: 2rem;
+                    top: 7rem;
+                    padding: .2em;
 
-                    h2{
+                    .select-priority{
+                        @include container;
+                        justify-content: space-between;
+                        width: 9vw;
+                        height: 6vh;
+                        padding: 0.1vw;
+                        border-radius: 0.5rem;
+                        color: $text;
+                        background-color: $details;
+                    }   
+            
+                    /*h2{
+                        font-size: 1.4rem;
                         text-transform: uppercase;
                         color: $white;
+                        margin-right: .5em;
                     }
 
                     .select-priority{
-                        list-style: none;
+                        //appearance: none;
+                        border-style: none;
+                        width: 7rem;
+                        height: 2.5vh;
+                        //box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        //border-radius: .5em;
+                    }
+
+                    .select-priority:hover{
+                        cursor: pointer;
                     }
 
                     option{
-                        background-color: red;
-                    }
+                        //background-color: red;
+                    }*/
                 }
 
                 .box-statistics {

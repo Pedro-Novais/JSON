@@ -31,7 +31,7 @@ export function interactorProfile() {
 
     const div = document.createElement('div')
 
-    initial()
+    setTimeout(initial, 100)
 
     function viewProfile() {
         div.remove()
@@ -60,7 +60,7 @@ export function interactorProfile() {
 
         //
 
-
+        insertStatistic()
 
         //
 
@@ -107,9 +107,23 @@ export function interactorProfile() {
         div.innerHTML = pageStatistic;
 
         viewPage.appendChild(div)
+        console.log(statisticAll)
+        insertStatistic()
 
         profile.addEventListener('click', viewProfile)
         pageConfig.addEventListener('click', viewConfig)
+    }
+
+    function insertStatistic(){
+
+        let numberCreate = document.querySelector('#statistic-created')
+        let numberFinished = document.querySelector('#statistic-finished')
+        let numberCanceled = document.querySelector('#statistic-canceled')
+
+        numberCreate.innerHTML = statisticAll.created
+        numberFinished.innerHTML = statisticAll.finished
+        numberCanceled.innerHTML = statisticAll.canceled
+
     }
 
     function viewConfigChange() {
