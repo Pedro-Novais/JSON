@@ -1,16 +1,22 @@
-export default function addTaskBack(url, data, cb = null){
-    const request = new XMLHttpRequest();
+export default async function addTaskBack(url, data){
+    try{
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(data)
+        })
 
-    request.open('POST', url);
-    request.setRequestHeader('Content-Type', 'application/json');
-    
-    request.onreadystatechange = ()=>{
-        if(request.readyState === 4){
-            if (request.status === 200 && request.status === 304) {
-                const json = JSON.parse(request.responseText);
-                console.log(json);
-            }
+        if(!response.ok){
+            throw new Error(`Erro de rede: ${response.status}`);
         }
+
+        const responseData = await response.json()
+        
+        return responseData
+    }catch(err){
+        throw err
     }
-    request.send(JSON.stringify(data));
+    
 }

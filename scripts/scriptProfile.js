@@ -30,7 +30,7 @@ export function interactorProfile() {
     const pageConfig = document.querySelector('#section-config')
 
     const div = document.createElement('div')
-
+ 
     setTimeout(initial, 100)
 
     function viewProfile() {

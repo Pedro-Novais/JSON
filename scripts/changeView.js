@@ -20,7 +20,7 @@ interactorResponsive()
 
 function callPageList() {
      
-    let width = window.innerWidth
+    let width = window.innerWidth 
 
     if (width <= 800) { 
 

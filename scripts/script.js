@@ -3,7 +3,6 @@ import addTaskBack from "./utils/addXML.js"
 import deleteTaskBack from "./utils/deleteXML.js"
 import updateTaskBack from "./utils/updateXML.js"
 import order from "./utils/orderPriority.js"
-import getStatisticsBack from "./utils/getStatistics.js"
 import { modalEdit, modalRemovetext } from "./utils/modals.js"
 
 const api = 'http://localhost:5000/tasks'
@@ -16,8 +15,8 @@ let activeHover = null;
 
 export function interactorList() {
 
-  getConfig(apiStatistics, getStatistics)
-  getConfig(apiConfig, loadingConfig)
+
+  getStatisticAndConfig()
 
   getPriority()
   hoverPriority()
@@ -27,26 +26,39 @@ export function interactorList() {
 
   btn.addEventListener('click', addTask)
 
-  function addTask() {
-    const agora = new Date();
+  //Call the functions to get the infos in endpoint about statistic and config
+  async function getStatisticAndConfig() {
+    let StatisticJson = await getConfig(apiStatistics)
+    getStatistics(StatisticJson)
+
+    let configJson = await getConfig(apiConfig)
+    loadingConfig(configJson)
+  }
+
+  //Function that make the verification and add new tasks from user
+  async function addTask() {
+
+    /*const agora = new Date();
     const minutos = agora.getMinutes();
     const sec = agora.getSeconds();
-    console.log(`${agora.getHours()}:${minutos}:${sec}`)
+    console.log(`${agora.getHours()}:${minutos}:${sec}`)*/
 
     const input = document.querySelector('#task-add').value
 
-    if (priorityId == null) {
-      priorityId = 0
-    }
     if (input == "" || input == null) {
       task_put.setAttribute('class', 'watch-out')
 
       task_put.addEventListener('click', () => {
         task_put.removeAttribute('class', 'watch-out')
       })
-      
+
       return false
     }
+
+    if (priorityId == null) {
+      priorityId = 0
+    }
+
     priorityId = priorityId + 1
     let val = task_put.value
 
@@ -55,8 +67,13 @@ export function interactorList() {
       priority: priorityId
     }
 
-    changeStatistic(priorityId, 0)
-    addTaskBack(api, data)
+    try {
+      const resultStatistic = await changeStatistic(priorityId, 0)
+      const resultAdding = await addTaskBack(api, data)
+    } catch (err) {
+      console.log(err)
+    }
+
   }
 
   function loadingConfig(configs) {
@@ -65,13 +82,23 @@ export function interactorList() {
     loadingTask(priorityOrderJson)
   }
 
-  function loadingTask(priorityJson) {
-    if (priorityJson == true) {
-      for (let i = 3; i >= 1; i--) {
-        order(api, orderPriority, i)
+  async function loadingTask(priorityJson) {
+    let data;
+
+    try {
+      if (priorityJson == true) {
+        for (let i = 3; i >= 1; i--) {
+          data = await order(api, i)
+          orderPriority(data)
+
+        }
       }
-    } else {
-      order(api, orderPriority)
+      else {
+        data = await order(api)
+        orderPriority(data)
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -191,7 +218,6 @@ export function interactorList() {
     const container = document.querySelector('#container')
     container.style.display = "none"
 
-    //main.style.height="100vh"
     modalDiv.innerHTML = modalRemovetext
 
     main.appendChild(modalDiv)
@@ -266,19 +292,24 @@ export function interactorList() {
         const inputTaskElement = document.querySelector('#input-edit')
         const inputTask = document.querySelector('#input-edit').value
         event.preventDefault()
+
         if (inputTask == "") {
           inputTaskElement.style.boxShadow = "rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset"
           inputTaskElement.addEventListener("click", () => {
             inputTaskElement.style.boxShadow = "none"
+
           })
           return false
+
         } else {
           updateTask(id, inputTask)
         }
       } else if (determinate == 1) {
         deleteTask(level, id)
+
       } else if (determinate == 2) {
         finishTask(level, id)
+
       }
     })
 
@@ -312,46 +343,54 @@ export function interactorList() {
     deleteTaskBack(api, id)
   }
 
-  function changeStatistic(priorityId, determinate) {
+  async function changeStatistic(priorityId, determinate) {
+    try {
+      let responseUpdateStatistic;
+      if (determinate == 0) {
+        let newCreate = statistic[priorityId - 1]["created"] + 1
 
-    if (determinate == 0) {
-      let newCreate = statistic[priorityId - 1]["created"] + 1
+        let dataStatistic = {
+          created: newCreate
+        }
 
-      let dataStatistic = {
-        created: newCreate
+        responseUpdateStatistic = await updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
       }
 
-      updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
-    }
+      else if (determinate == 1) {
+        console.log(priorityId)
+        let newCreate = statistic[priorityId - 1]["finished"] + 1
 
-    else if (determinate == 1) {
-      console.log(priorityId)
-      let newCreate = statistic[priorityId - 1]["finished"] + 1
+        let dataStatistic = {
+          finished: newCreate
+        }
 
-      let dataStatistic = {
-        finished: newCreate
+        responseUpdateStatistic = await updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
       }
 
-      updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
-    }
+      else if (determinate == 2) {
+        let newCreate = statistic[priorityId - 1]["canceled"] + 1
 
-    else if (determinate == 2) {
-      let newCreate = statistic[priorityId - 1]["canceled"] + 1
+        let dataStatistic = {
+          canceled: newCreate
+        }
 
-      let dataStatistic = {
-        canceled: newCreate
+        responseUpdateStatistic = await updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
       }
-
-      updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
+    } catch (err) {
+      console.log(err)
     }
   }
 
-  function updateTask(id, newTask) {
-    let data = {
-      task: newTask,
-      priority: priorityId + 1
+  async function updateTask(id, newTask) {
+    try {
+      let data = {
+        task: newTask,
+        priority: priorityId + 1
+      }
+      const responseUpdateTask = await updateTaskBack(api, id, data, 1)
+    }catch(err){
+      console.log(err)
     }
-    updateTaskBack(api, id, data, 1)
   }
 
   function getPriority() {
@@ -406,7 +445,6 @@ export function interactorList() {
   }
 
   function hoverPriority() {
-    console.log(activeHover)
 
     let levelHover;
     const level = document.querySelectorAll('.choose-priority')
@@ -451,17 +489,17 @@ export function interactorList() {
 
   function outHover() {
     const level = document.querySelectorAll('.choose-priority')
-    
+
     for (let i = 0; i <= 3; i++) {
       level[i].style.backgroundColor = "#0487d9"
-  
+
       if (activeHover !== null) {
-  
+
         for (let i = 0; i <= activeHover; i++) {
           level[i].style.backgroundColor = "#05DBF2"
         }
       }
     }
   }
-  
+
 }
