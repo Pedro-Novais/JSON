@@ -1,8 +1,4 @@
-import getConfig from "./utils/config.js"
-import addTaskBack from "./utils/addXML.js"
-import deleteTaskBack from "./utils/deleteXML.js"
-import updateTaskBack from "./utils/updateXML.js"
-import order from "./utils/orderPriority.js"
+import {getConfig, addTaskBack, deleteTaskBack, updateTaskBack, order} from "./utils/functionsReq.js"
 import { modalEdit, modalRemovetext } from "./utils/modals.js"
 
 const api = 'http://localhost:5000/tasks'
@@ -333,14 +329,24 @@ export function interactorList() {
     })
   }
 
-  function finishTask(level, id) {
+  async function finishTask(level, id) {
+    try{
     changeStatistic(level, 1)
-    deleteTaskBack(api, id)
+    let responseDelete = await deleteTaskBack(api, id)
+
+    }catch(err){
+      console.log(err)
+    }
   }
 
-  function deleteTask(level, id) {
+  async function deleteTask(level, id) {
+    try{
     changeStatistic(level, 2)
-    deleteTaskBack(api, id)
+    let responseDelete = await deleteTaskBack(api, id)
+
+    }catch(err){
+      console.log(err)
+    }
   }
 
   async function changeStatistic(priorityId, determinate) {

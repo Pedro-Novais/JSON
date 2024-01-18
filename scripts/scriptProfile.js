@@ -1,6 +1,5 @@
 import { pageStatistic, pageConfigText } from "./utils/modals.js"
-import getConfig from "./utils/config.js"
-import updateTaskBack from "./utils/updateXML.js"
+import { getConfig, updateTaskBack } from "./utils/functionsReq.js"
 
 //não esquecer de tirar esse código, apenas para teste da page config 
 //interactorProfile()
@@ -21,8 +20,7 @@ export function interactorProfile() {
     const apiConfig = 'http://localhost:5000/config'
     const apiStatistic = 'http://localhost:5000/statistic'
 
-    getConfig(apiConfig, getInfoConfig)
-    getConfig(apiStatistic, getInfoStatistic)
+    getStatisticAndConfig()
 
     const viewPage = document.querySelector('#view-infos-unique')
     const profile = document.querySelector('#section-profile')
@@ -30,8 +28,15 @@ export function interactorProfile() {
     const pageConfig = document.querySelector('#section-config')
 
     const div = document.createElement('div')
- 
-    setTimeout(initial, 100)
+
+    setTimeout(initial,50)
+
+    async function getStatisticAndConfig() {
+        let StatisticJson = await getConfig(apiStatistic)
+        getInfoStatistic(StatisticJson)
+        let configJson = await getConfig(apiConfig)
+        getInfoConfig(configJson)
+    }
 
     function viewProfile() {
         div.remove()
@@ -58,13 +63,8 @@ export function interactorProfile() {
 
         viewPage.appendChild(div)
 
-        //
-
         insertStatistic()
 
-        //
-
-        
         statistic.removeEventListener('click', viewStatistic)
         profile.addEventListener('click', viewProfile)
         pageConfig.addEventListener('click', viewConfig)
@@ -107,7 +107,6 @@ export function interactorProfile() {
         div.innerHTML = pageStatistic;
 
         viewPage.appendChild(div)
-        console.log(statisticAll)
         insertStatistic()
 
         profile.addEventListener('click', viewProfile)
@@ -163,7 +162,7 @@ export function interactorProfile() {
         }
     }
 
-    function sendConfigInfo() {
+    async function sendConfigInfo() {
         let changeStateConfig = document.querySelectorAll('.ball-option')
         let state = [];
 
@@ -181,7 +180,11 @@ export function interactorProfile() {
             orderPriority: state[0],
             usersCanViewProfile: state[1]
         }
-        updateTaskBack(apiConfig, null, data, 2)
+        try{
+        const responseUpdate = await updateTaskBack(apiConfig, null, data, 2)
+        }catch(err){
+            console.log(err)
+        }
     }
 
     function getInfoConfig(json) {
@@ -208,5 +211,6 @@ export function interactorProfile() {
         }
 
         console.log(statisticAll)
+        console.log(statisticData[1])
     }
 }
