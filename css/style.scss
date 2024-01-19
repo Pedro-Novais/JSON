@@ -274,52 +274,63 @@ body {
                 width: 100%;
                 min-height: 70vh;
 
-                .choose-priority-view{
-                    //min-width:23%;
-                    position: absolute;
-                    //align-self: flex-start;
+                .choose-priority-view {
                     @include container;
-                    justify-content: space-between;
-                    //margin-left: 2rem;
-                    top: 7rem;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    width:18vw;
+                    height: 8vh;
+                    position: relative;
                     padding: .2em;
 
-                    .select-priority{
+                    .select-priority {
                         @include container;
-                        justify-content: space-between;
-                        width: 9vw;
-                        height: 6vh;
-                        padding: 0.1vw;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        width: 50%;
+                        height: 100%;
+                        padding: 0.3vw;
                         border-radius: 0.5rem;
                         color: $text;
                         background-color: $details;
-                    }   
-            
-                    /*h2{
-                        font-size: 1.4rem;
-                        text-transform: uppercase;
-                        color: $white;
-                        margin-right: .5em;
-                    }
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
 
-                    .select-priority{
-                        //appearance: none;
-                        border-style: none;
-                        width: 7rem;
-                        height: 2.5vh;
-                        //box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
-                        text-transform: uppercase;
-                        font-weight: 500;
-                        //border-radius: .5em;
-                    }
+                        p{
+                            font-size: 0.9em;
+                            text-transform: uppercase;
+                            letter-spacing: .1em;
+                            font-weight: 600;
+                            color: $white;
+                        }
 
-                    .select-priority:hover{
-                        cursor: pointer;
-                    }
+                        .box-priority-statistic{
+                            @include container;
+                            justify-content: space-around;
+                            width: 100%;
+                            height: 100%;
 
-                    option{
-                        //background-color: red;
-                    }*/
+                            .choose-priority-statistic{
+                                width: 22px;
+                                height: 22px;
+                                border-radius: 50%;
+                                background-color: $priority;
+                            }
+
+                            .choose-priority-statistic:hover{
+                                cursor: pointer;
+                            }
+
+                            #priority-all{
+                                @include container;
+                                justify-content: center;
+                                background-color: $priority;
+
+                                /*p{
+                                    color: $details;
+                                }*/
+                            }
+                        }
+                    }
                 }
 
                 .box-statistics {
@@ -446,7 +457,7 @@ body {
                             width: 100%;
                             margin-bottom: 1rem;
                             box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
-                            
+
                             .ball-option {
                                 width: 40px;
                                 height: 20px;
@@ -799,7 +810,7 @@ body {
         height: 20px;
         background-color: $priority;
         border-radius: 50%;
-        transition: .3s;
+        transition: .2s;
     }
 
     .choose-priority:hover {
@@ -866,11 +877,11 @@ body {
                     }
                 }
 
-                .container-config{
-                    .box-configs{
+                .container-config {
+                    .box-configs {
                         width: 90%;
                     }
-                } 
+                }
             }
         }
     }
@@ -1011,15 +1022,16 @@ body {
                         }
                     }
                 }
-                .container-config{
-                    .box-configs{
-                        .box-configurations{
-                            .line-config{
+
+                .container-config {
+                    .box-configs {
+                        .box-configurations {
+                            .line-config {
                                 border-radius: 1rem;
                             }
                         }
                     }
-                } 
+                }
             }
         }
     }
@@ -1097,15 +1109,16 @@ body {
                     }
 
                 }
-                .container-config{
-                    .box-configs{
+
+                .container-config {
+                    .box-configs {
                         width: 100%;
                     }
 
-                    .style-to-name-config{
+                    .style-to-name-config {
                         font-size: 1rem;
                     }
-                } 
+                }
             }
         }
     }
@@ -1163,7 +1176,7 @@ body {
                 }
 
                 #container-info {
-                    
+
                     #btn-add {
                         height: 30%;
                     }
@@ -1259,25 +1272,29 @@ body {
                         }
                     }
                 }
+
                 .container-config {
-                    .box-configs{
+                    .box-configs {
                         padding: 0;
                         background-color: unset;
                         box-shadow: unset;
-                        .box-configurations{
+
+                        .box-configurations {
                             padding: 0;
-                            .line-config{
+
+                            .line-config {
                                 flex-direction: column;
                                 justify-content: space-around;
                                 height: 15vh;
                                 background-color: $details;
                                 padding: 0.6em;
                             }
-                        } 
+                        }
                     }
-                    .style-to-name-config{
+
+                    .style-to-name-config {
                         text-align: center;
-                    } 
+                    }
                 }
             }
         }

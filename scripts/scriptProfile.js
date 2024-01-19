@@ -6,9 +6,12 @@ import { getConfig, updateTaskBack } from "./utils/functionsReq.js"
 
 export function interactorProfile() {
 
+    let activeHover;
+
+    let arrayStatistic = [];
     let statisticData;
 
-    let statisticAll ={
+    let statisticAll = {
         created: 0,
         finished: 0,
         canceled: 0
@@ -29,7 +32,7 @@ export function interactorProfile() {
 
     const div = document.createElement('div')
 
-    setTimeout(initial,50)
+    setTimeout(initial, 50)
 
     async function getStatisticAndConfig() {
         let StatisticJson = await getConfig(apiStatistic)
@@ -63,7 +66,9 @@ export function interactorProfile() {
 
         viewPage.appendChild(div)
 
-        insertStatistic()
+        insertStatistic(3)
+        getPriorityStatistic()
+        hoverPriority()
 
         statistic.removeEventListener('click', viewStatistic)
         profile.addEventListener('click', viewProfile)
@@ -107,32 +112,34 @@ export function interactorProfile() {
         div.innerHTML = pageStatistic;
 
         viewPage.appendChild(div)
-        insertStatistic()
+        insertStatistic(3)
+        getPriorityStatistic()
+        hoverPriority()
 
         profile.addEventListener('click', viewProfile)
         pageConfig.addEventListener('click', viewConfig)
     }
 
-    function insertStatistic(){
+    function insertStatistic(priority) {
 
         let numberCreate = document.querySelector('#statistic-created')
         let numberFinished = document.querySelector('#statistic-finished')
         let numberCanceled = document.querySelector('#statistic-canceled')
 
-        numberCreate.innerHTML = statisticAll.created
-        numberFinished.innerHTML = statisticAll.finished
-        numberCanceled.innerHTML = statisticAll.canceled
+        numberCreate.innerHTML = arrayStatistic[priority].created
+        numberFinished.innerHTML = arrayStatistic[priority].finished
+        numberCanceled.innerHTML = arrayStatistic[priority].canceled
 
     }
 
     function viewConfigChange() {
         let changeStateConfig = document.querySelectorAll('.ball-option')
 
-        for(let i = 0; i<2; i++){
+        for (let i = 0; i < 2; i++) {
             let idConfig = changeStateConfig[i].getAttribute('id')
             if (config[nameConfig[i]] == true) {
                 changeStateConfig[i].setAttribute('state', '0')
-    
+
             } else if (config[nameConfig[i]] == false) {
                 changeStateConfig[i].setAttribute('state', '1')
             }
@@ -149,16 +156,16 @@ export function interactorProfile() {
 
 
         if (stateActual == 0) {
-            
+
             childChange.style.left = "44.8%"
             stateChange.setAttribute('state', "1")
-            stateChange.style.backgroundColor="green"
+            stateChange.style.backgroundColor = "green"
         }
-        else if(stateActual == 1) {
-            
+        else if (stateActual == 1) {
+
             childChange.style.left = "unset"
             stateChange.setAttribute('state', "0")
-            stateChange.style.backgroundColor="red"
+            stateChange.style.backgroundColor = "red"
         }
     }
 
@@ -166,23 +173,23 @@ export function interactorProfile() {
         let changeStateConfig = document.querySelectorAll('.ball-option')
         let state = [];
 
-        for(let i = 0; i < changeStateConfig.length; i++){
-           let stateFormatation = changeStateConfig[i].getAttribute('state')
+        for (let i = 0; i < changeStateConfig.length; i++) {
+            let stateFormatation = changeStateConfig[i].getAttribute('state')
 
-           if(stateFormatation == 0){
-            state[i] = false
-           }else if(stateFormatation == 1){
-            state[i] = true
-           }
+            if (stateFormatation == 0) {
+                state[i] = false
+            } else if (stateFormatation == 1) {
+                state[i] = true
+            }
         }
-        console.log(state)
+        //console.log(state)
         let data = {
             orderPriority: state[0],
             usersCanViewProfile: state[1]
         }
-        try{
-        const responseUpdate = await updateTaskBack(apiConfig, null, data, 2)
-        }catch(err){
+        try {
+            const responseUpdate = await updateTaskBack(apiConfig, null, data, 2)
+        } catch (err) {
             console.log(err)
         }
     }
@@ -191,14 +198,14 @@ export function interactorProfile() {
         config = json
     }
 
-    function getInfoStatistic(json){
+    function getInfoStatistic(json) {
         statisticData = json
         getAllInfo()
     }
 
-    function getAllInfo(){
+    function getAllInfo() {
         let numberBase;
-        for(let i = 0; i < statisticData.length; i++){
+        for (let i = 0; i < statisticData.length; i++) {
 
             numberBase = statisticAll.created;
             statisticAll.created = statisticData[i]["created"] + numberBase
@@ -210,7 +217,75 @@ export function interactorProfile() {
             statisticAll.canceled = statisticData[i]["canceled"] + numberBase
         }
 
-        console.log(statisticAll)
-        console.log(statisticData[1])
+        for(let i = 0; i < 4; i++){
+            if(i == 3){
+                arrayStatistic.push(statisticAll)
+                break
+            }
+            arrayStatistic.push(statisticData[i])
+        }
+    }
+
+    function getPriorityStatistic(){
+        const level = document.querySelectorAll('.choose-priority-statistic')
+
+        level.forEach(function (lvl) {
+          lvl.addEventListener('click', function () {
+            //clearNewClick()
+            let priorityId = lvl.getAttribute('id');
+            if (priorityId == "priority-one") {
+              priorityId = 0
+              activeHover = 0
+    
+            }
+            else if (priorityId == "priority-two") {
+              priorityId = 1
+              activeHover = 1
+    
+            }
+            else if (priorityId == "priority-three") {
+              priorityId = 2
+              activeHover = 2
+    
+            }
+            else if(priorityId == "priority-all"){
+                priorityId = 3
+                activeHover = 3
+            }
+    
+            /*if (priorityId !== null) {
+              //markNewClick(priorityId)
+            }*/
+            insertStatistic(priorityId)
+          });
+        });
+    }
+
+    function hoverPriority() {
+        const level = document.querySelectorAll('.choose-priority-statistic')
+
+        level.forEach(function (lvl) {
+            lvl.addEventListener('mouseenter', function () {
+                //console.log('indo')
+
+                //lvl.addEventListener('mouseleave', outHover)
+
+            })
+        })
+    }
+
+    function outHover() {
+        const level = document.querySelectorAll('.choose-priority-satistic')
+
+        for (let i = 0; i < 3; i++) {
+            level[i].style.backgroundColor = "#0487d9"
+
+            if (activeHover !== null) {
+
+                for (let i = 0; i <= activeHover; i++) {
+                    level[i].style.backgroundColor = "#05DBF2"
+                }
+            }
+        }
     }
 }
