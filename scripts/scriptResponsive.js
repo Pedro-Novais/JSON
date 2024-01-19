@@ -16,7 +16,6 @@ export function interactorResponsive() {
 
     function getWidth() {
         let width = window.innerWidth; 
-        console.log(width)
         if (width <= 800) {
             createSvg("bars", "bar-view-options", header)
             const btnBarView = document.querySelector('#bar-view-options')

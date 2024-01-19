@@ -3,7 +3,7 @@ import { modalEdit, modalRemovetext } from "./utils/modals.js"
 
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
-const apiStatistics = "http://localhost:5000/statistic/"
+const apiStatistics = 'http://localhost:5000/statistic'
 
 let statistic = null;
 let priorityId = null;
@@ -24,20 +24,19 @@ export function interactorList() {
 
   //Call the functions to get the infos in endpoint about statistic and config
   async function getStatisticAndConfig() {
+    try{
     let StatisticJson = await getConfig(apiStatistics)
     getStatistics(StatisticJson)
 
     let configJson = await getConfig(apiConfig)
     loadingConfig(configJson)
+    }catch(err){
+      console.log(err)
+    }
   }
 
   //Function that make the verification and add new tasks from user
   async function addTask() {
-
-    /*const agora = new Date();
-    const minutos = agora.getMinutes();
-    const sec = agora.getSeconds();
-    console.log(`${agora.getHours()}:${minutos}:${sec}`)*/
 
     const input = document.querySelector('#task-add').value
 
@@ -165,9 +164,9 @@ export function interactorList() {
     i_del.setAttribute('class', 'actions')
     i_edit.setAttribute('class', 'actions')
 
-    i_add.setAttribute('id', `add-${id}`)
+    /*i_add.setAttribute('id', `add-${id}`)
     i_del.setAttribute('id', `del-${id}`)
-    i_edit.setAttribute('id', `edit-${id}`)
+    i_edit.setAttribute('id', `edit-${id}`)*/
 
     i_add.setAttribute('src', './svg/check-solid.svg')
     i_del.setAttribute('src', './svg/xmark-solid.svg')
@@ -276,6 +275,7 @@ export function interactorList() {
 
     main.appendChild(modalDiv)
     getPriority()
+    hoverPriority()
 
   }
 
@@ -349,6 +349,18 @@ export function interactorList() {
     }
   }
 
+  async function updateTask(id, newTask) {
+    try {
+      let data = {
+        task: newTask,
+        priority: priorityId + 1
+      }
+      const responseUpdateTask = await updateTaskBack(api, id, data, 1)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   async function changeStatistic(priorityId, determinate) {
     try {
       let responseUpdateStatistic;
@@ -387,18 +399,6 @@ export function interactorList() {
     }
   }
 
-  async function updateTask(id, newTask) {
-    try {
-      let data = {
-        task: newTask,
-        priority: priorityId + 1
-      }
-      const responseUpdateTask = await updateTaskBack(api, id, data, 1)
-    }catch(err){
-      console.log(err)
-    }
-  }
-
   function getPriority() {
     const level = document.querySelectorAll('.choose-priority')
     level.forEach(function (lvl) {
@@ -431,7 +431,6 @@ export function interactorList() {
 
   function getStatistics(json) {
     statistic = json.reverse()
-    console.log(json)
   }
 
   function markNewClick(index) {
@@ -462,7 +461,6 @@ export function interactorList() {
 
         if (activeHover !== 0) {
           if (levelHover == "priority-one") {
-            console.log('priority one hover')
 
             level[0].style.backgroundColor = "#05DBF2"
 
@@ -472,7 +470,6 @@ export function interactorList() {
         }
 
         if (levelHover == "priority-two") {
-          console.log('priority two hover')
 
           for (let i = 0; i < 2; i++) {
             level[i].style.backgroundColor = "#05DBF2"
@@ -481,7 +478,6 @@ export function interactorList() {
         }
 
         if (levelHover == "priority-three") {
-          console.log('priority two hover')
 
           for (let i = 0; i < 3; i++) {
             level[i].style.backgroundColor = "#05DBF2"
@@ -496,7 +492,7 @@ export function interactorList() {
   function outHover() {
     const level = document.querySelectorAll('.choose-priority')
 
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i < 3; i++) {
       level[i].style.backgroundColor = "#0487d9"
 
       if (activeHover !== null) {
