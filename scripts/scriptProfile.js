@@ -6,7 +6,7 @@ import { getConfig, updateTaskBack } from "./utils/functionsReq.js"
 
 export function interactorProfile() {
 
-    let activeHover;
+    let activeHover = null;
 
     let arrayStatistic = [];
     let statisticData;
@@ -114,6 +114,7 @@ export function interactorProfile() {
         viewPage.appendChild(div)
         insertStatistic(3)
         getPriorityStatistic()
+        clickPriorityStatistic(3)
         hoverPriority()
 
         profile.addEventListener('click', viewProfile)
@@ -217,8 +218,8 @@ export function interactorProfile() {
             statisticAll.canceled = statisticData[i]["canceled"] + numberBase
         }
 
-        for(let i = 0; i < 4; i++){
-            if(i == 3){
+        for (let i = 0; i < 4; i++) {
+            if (i == 3) {
                 arrayStatistic.push(statisticAll)
                 break
             }
@@ -226,61 +227,105 @@ export function interactorProfile() {
         }
     }
 
-    function getPriorityStatistic(){
+    function getPriorityStatistic() {
         const level = document.querySelectorAll('.choose-priority-statistic')
 
         level.forEach(function (lvl) {
-          lvl.addEventListener('click', function () {
-            //clearNewClick()
-            let priorityId = lvl.getAttribute('id');
-            if (priorityId == "priority-one") {
-              priorityId = 0
-              activeHover = 0
-    
-            }
-            else if (priorityId == "priority-two") {
-              priorityId = 1
-              activeHover = 1
-    
-            }
-            else if (priorityId == "priority-three") {
-              priorityId = 2
-              activeHover = 2
-    
-            }
-            else if(priorityId == "priority-all"){
-                priorityId = 3
-                activeHover = 3
-            }
-    
-            /*if (priorityId !== null) {
-              //markNewClick(priorityId)
-            }*/
-            insertStatistic(priorityId)
-          });
+            lvl.addEventListener('click', function () {
+                clearNewClickStatistic()
+                let priorityId = lvl.getAttribute('id');
+                if (priorityId == "priority-one") {
+                    priorityId = 0
+                    activeHover = 0
+
+                }
+                else if (priorityId == "priority-two") {
+                    priorityId = 1
+                    activeHover = 1
+
+                }
+                else if (priorityId == "priority-three") {
+                    priorityId = 2
+                    activeHover = 2
+
+                }
+                else if (priorityId == "priority-all") {
+                    priorityId = 3
+                    activeHover = 3
+                }
+
+                insertStatistic(priorityId)
+                clickPriorityStatistic(priorityId)
+
+            });
         });
+    }
+
+    function clickPriorityStatistic(priority) {
+        const level = document.querySelectorAll('.choose-priority-statistic')
+        if (priority !== 3) {
+            for (let i = 0; i <= priority; i++) {
+                level[i].style.backgroundColor = "#05DBF2"
+            }
+        } else {
+            level[3].style.backgroundColor = "#05DBF2"
+            console.log('cliquei', activeHover)
+        }
+    }
+
+    function clearNewClickStatistic() {
+        const level = document.querySelectorAll('.choose-priority-statistic')
+        for (let i = 0; i < level.length; i++) {
+            level[i].style.backgroundColor = '#0487D9';
+        }
     }
 
     function hoverPriority() {
         const level = document.querySelectorAll('.choose-priority-statistic')
+        let levelHover;
 
         level.forEach(function (lvl) {
             lvl.addEventListener('mouseenter', function () {
-                //console.log('indo')
+                levelHover = lvl.getAttribute('id')
+                console.log('indo')
+                if (levelHover !== "priority-all") {
 
-                //lvl.addEventListener('mouseleave', outHover)
+                    if (levelHover == "priority-one") {
+                        console.log(levelHover)
+                        level[0].style.backgroundColor = '#05DBF2';
+                        level[0].addEventListener('mouseleave', outHover)
+        
+                    }
 
+                    if (levelHover == "priority-two") {
+                        for(let i = 0; i < 2; i++){
+
+                            level[i].style.backgroundColor = '#05DBF2';
+                            
+                        }
+                        level[1].addEventListener('mouseleave', outHover)
+                    }
+
+                    if (levelHover == "priority-three") {
+                        for(let i = 0; i < 3; i++){
+
+                            level[i].style.backgroundColor = '#05DBF2';
+                            
+                        }
+                        level[2].addEventListener('mouseleave', outHover)
+                    }
+                }
             })
         })
     }
 
     function outHover() {
-        const level = document.querySelectorAll('.choose-priority-satistic')
+        const level = document.querySelectorAll('.choose-priority-statistic')
 
         for (let i = 0; i < 3; i++) {
             level[i].style.backgroundColor = "#0487d9"
 
-            if (activeHover !== null) {
+            if (activeHover !== null && activeHover !== 3) {
 
                 for (let i = 0; i <= activeHover; i++) {
                     level[i].style.backgroundColor = "#05DBF2"

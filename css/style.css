@@ -321,9 +321,9 @@ body #main-profile .view-infos .container-statistic .choose-priority-view .selec
   align-items: center;
   justify-content: center;
   background-color: #0487D9;
-  /*p{
-      color: $details;
-  }*/
+}
+body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority .box-priority-statistic #priority-all p {
+  color: #010A26;
 }
 body #main-profile .view-infos .container-statistic .box-statistics {
   display: flex;
