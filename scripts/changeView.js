@@ -81,8 +81,6 @@ function callPageProfile() {
 
     interactorProfile()
 
-    console.log("indo")
-
     linkProfile.removeEventListener('click', callPageProfile)
     linkToDo.addEventListener('click', callPageList)
 }

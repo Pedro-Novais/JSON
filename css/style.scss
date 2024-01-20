@@ -278,7 +278,7 @@ body {
                     @include container;
                     flex-direction: row;
                     justify-content: space-around;
-                    width:18vw;
+                    width:22vw;
                     height: 8vh;
                     position: relative;
                     padding: .2em;
@@ -314,6 +314,7 @@ body {
                                 height: 22px;
                                 border-radius: 50%;
                                 background-color: $priority;
+                                transition: .2s;
                             }
 
                             .choose-priority-statistic:hover{
@@ -349,7 +350,7 @@ body {
                         padding: 0.5rem;
 
                         .name-type-statitic {
-                            font-size: 1.3vw;
+                            font-size: 1.2rem;
                             text-transform: uppercase;
                             font-weight: 700;
                         }
@@ -357,7 +358,7 @@ body {
                         .number-statistic {
                             //margin-top: 25%;
                             margin: auto;
-                            font-size: 5.5vw;
+                            font-size: 6rem;
                         }
                     }
                 }
@@ -830,6 +831,17 @@ body {
 
 @media screen and (max-width: 1350px) {
     body {
+         #main-profile {
+            .view-infos {
+                .container-statistic {
+                    .choose-priority-view {
+                        .select-priority{
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+        }
         .modal {
             min-width: 70vw;
         }
@@ -1013,13 +1025,22 @@ body {
 
                         .style-box-statistics {
                             .name-type-statitic {
-                                font-size: 2vw;
+                                font-size: 1.2rem;
                             }
 
                             .number-statistic {
-                                font-size: 7vw;
+                                font-size: 5rem;
                             }
                         }
+                    }
+
+                    .choose-priority-view{
+                        margin: 2em 0px 2em;
+                        width: 28vw;
+                    }
+
+                    .container-statistic-bar{
+                        margin-top: 4.4rem;
                     }
                 }
 
@@ -1093,11 +1114,12 @@ body {
                             width: 60%;
 
                             .name-type-statitic {
-                                font-size: 4vw;
+                                letter-spacing: .1em;
+                                font-size: 1.4rem;
                             }
 
                             .number-statistic {
-                                font-size: 15vw;
+                                font-size: 4.5rem;
                             }
                         }
                     }
@@ -1106,6 +1128,10 @@ body {
                         .statistic-bar-info {
                             width: 90%;
                         }
+                    }
+
+                    .choose-priority-view{
+                        width: 58vw;
                     }
 
                 }
@@ -1227,6 +1253,7 @@ body {
         .modal {
             min-height: 50vh;
             min-width: 90vw;
+            background-color: $color-resposive;
 
             .content-modal {
                 flex-direction: column;
@@ -1265,10 +1292,31 @@ body {
 
                 .container-statistic {
                     .container-statistic-bar {
+                        height: 18vh;
+                        margin-top: 2rem;
+                        .statistic-bar{
+                            height: 10vh;
+                        }
+
                         .statistic-bar-info {
                             flex-direction: column;
                             width: 80%;
                             height: 60%;
+                        }
+                    }
+
+                    .choose-priority-view{
+                        margin: 2em 0 1em 0;
+                        width: 50vw;
+                        height: 10vh;
+                    }
+
+                    .box-statistics{
+                        .style-box-statistics{
+                            .name-type-statitic{
+                                font-size: 1.2rem;
+                                text-align: center;
+                            }
                         }
                     }
                 }

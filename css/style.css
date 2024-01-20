@@ -269,7 +269,7 @@ body #main-profile .view-infos .container-statistic .choose-priority-view {
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
-  width: 18vw;
+  width: 22vw;
   height: 8vh;
   position: relative;
   padding: 0.2em;
@@ -310,6 +310,7 @@ body #main-profile .view-infos .container-statistic .choose-priority-view .selec
   height: 22px;
   border-radius: 50%;
   background-color: #0487D9;
+  transition: 0.2s;
 }
 body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority .box-priority-statistic .choose-priority-statistic:hover {
   cursor: pointer;
@@ -347,13 +348,13 @@ body #main-profile .view-infos .container-statistic .box-statistics .style-box-s
   padding: 0.5rem;
 }
 body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
-  font-size: 1.3vw;
+  font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 700;
 }
 body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
   margin: auto;
-  font-size: 5.5vw;
+  font-size: 6rem;
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar {
   display: flex;
@@ -832,6 +833,9 @@ body footer {
 }
 
 @media screen and (max-width: 1350px) {
+  body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
+    width: 90%;
+  }
   body .modal {
     min-width: 70vw;
   }
@@ -960,10 +964,17 @@ body footer {
     min-height: 60vh;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
-    font-size: 2vw;
+    font-size: 1.2rem;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
-    font-size: 7vw;
+    font-size: 5rem;
+  }
+  body #main-profile .view-infos .container-statistic .choose-priority-view {
+    margin: 2em 0px 2em;
+    width: 28vw;
+  }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar {
+    margin-top: 4.4rem;
   }
   body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config {
     border-radius: 1rem;
@@ -1012,13 +1023,17 @@ body footer {
     width: 60%;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
-    font-size: 4vw;
+    letter-spacing: 0.1em;
+    font-size: 1.4rem;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
-    font-size: 15vw;
+    font-size: 4.5rem;
   }
   body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
     width: 90%;
+  }
+  body #main-profile .view-infos .container-statistic .choose-priority-view {
+    width: 58vw;
   }
   body #main-profile .view-infos .container-config .box-configs {
     width: 100%;
@@ -1103,6 +1118,7 @@ body footer {
   body .modal {
     min-height: 50vh;
     min-width: 90vw;
+    background-color: #082783;
   }
   body .modal .content-modal {
     flex-direction: column;
@@ -1130,10 +1146,26 @@ body footer {
     font-size: 2rem;
     font-weight: 900;
   }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar {
+    height: 18vh;
+    margin-top: 2rem;
+  }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar {
+    height: 10vh;
+  }
   body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
     flex-direction: column;
     width: 80%;
     height: 60%;
+  }
+  body #main-profile .view-infos .container-statistic .choose-priority-view {
+    margin: 2em 0 1em 0;
+    width: 50vw;
+    height: 10vh;
+  }
+  body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
+    font-size: 1.2rem;
+    text-align: center;
   }
   body #main-profile .view-infos .container-config .box-configs {
     padding: 0;

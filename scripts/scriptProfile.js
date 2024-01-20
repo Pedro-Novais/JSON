@@ -68,6 +68,7 @@ export function interactorProfile() {
 
         insertStatistic(3)
         getPriorityStatistic()
+        clickPriorityStatistic(3)
         hoverPriority()
 
         statistic.removeEventListener('click', viewStatistic)
@@ -131,6 +132,29 @@ export function interactorProfile() {
         numberFinished.innerHTML = arrayStatistic[priority].finished
         numberCanceled.innerHTML = arrayStatistic[priority].canceled
 
+        insertStatisticBars(priority)
+    }
+
+    function insertStatisticBars(priority){
+        const barFinished = document.querySelector('#bar-task-finished')
+        const barCanceled = document.querySelector('#bar-task-canceled')
+        
+        const numberFinished = document.querySelector('#number-finished')
+        const numberCanceled = document.querySelector('#number-canceled')
+
+        let tasksFinished = arrayStatistic[priority].finished
+        let tasksCanceled = arrayStatistic[priority].canceled
+        let allTasks = tasksFinished + tasksCanceled
+
+        tasksFinished = (tasksFinished / allTasks) * 100
+        tasksCanceled = (tasksCanceled / allTasks) * 100
+
+       barFinished.style.width = `${tasksFinished.toFixed(2)}%`
+       barCanceled.style.width = `${tasksCanceled.toFixed(2)}%`
+
+       numberFinished.innerHTML = `Tasks Concluídas: ${tasksFinished.toFixed(0)}%`
+       numberCanceled.innerHTML = `Tasks Canceladas: ${tasksCanceled.toFixed(0)}%`
+
     }
 
     function viewConfigChange() {
@@ -183,7 +207,7 @@ export function interactorProfile() {
                 state[i] = true
             }
         }
-        //console.log(state)
+  
         let data = {
             orderPriority: state[0],
             usersCanViewProfile: state[1]
