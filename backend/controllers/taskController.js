@@ -14,7 +14,7 @@ const taskController = {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
-            console.log('Recebimento da requisição:', req.body)
+           
             const newTask = {
                 task: req.body.task,
                 priority: req.body.priority,
@@ -53,7 +53,7 @@ const taskController = {
 
             const tasks = user.tasks
             let tasksFromUser = [];
-            console.log(tasks[0])
+        
             for(let i = 0; i < tasks.length; i++){
 
                 tasksFromUser[i]= await TaskModel.findById(tasks[i])
@@ -116,7 +116,7 @@ const taskController = {
             const updateTask = await TaskModel.findByIdAndUpdate(taskId, newTask)
 
             if (!updateTask) {
-                res.status(404).json({ msg: "Usúario não encontrado" })
+                res.status(404).json({ msg: "Tarefa não encontrado" })
                 return
             }
 

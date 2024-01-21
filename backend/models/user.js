@@ -26,7 +26,8 @@ const userSchema = new Schema({
         ref: 'Task'
     },
     configurations: {
-       type: [configSchema]
+       type: [mongoose.Schema.Types.ObjectId], 
+        ref: 'Configuration'
     }
 },
     { timestamps: true }
