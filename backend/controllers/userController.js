@@ -44,6 +44,7 @@ const userController = {
                 return
             }
 
+            console.log(user.tasks)
             res.json(user)
         } catch (error) {
             console.log(error)

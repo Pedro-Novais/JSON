@@ -22,7 +22,8 @@ const userSchema = new Schema({
         type: String
     },
     tasks: {
-        type: [taskSchema]
+        type: [mongoose.Schema.Types.ObjectId], 
+        ref: 'Task'
     },
     configurations: {
        type: [configSchema]
