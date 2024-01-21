@@ -2,7 +2,7 @@ const { User: UserModel } = require('../models/user')
 const { Config: ConfigModel } = require('../models/config')
 
 const configController = {
-    create: async (req, res) => {
+    /*create: async (req, res) => {
         try {
             const userId = req.params.userId
 
@@ -33,7 +33,7 @@ const configController = {
         } catch (error) {
             console.log(error)
         }
-    },
+    },*/
 
     getAll: async (req, res) => {
         try {

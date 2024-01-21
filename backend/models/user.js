@@ -4,6 +4,7 @@ const { Schema } = mongoose
 
 const { taskSchema } = require('./tasks')
 const { configSchema } = require('./config')
+const { statisticSchema } = require('./statistic')
 
 const userSchema = new Schema({
     name: {
@@ -26,8 +27,14 @@ const userSchema = new Schema({
         ref: 'Task'
     },
     configurations: {
-       type: [mongoose.Schema.Types.ObjectId], 
-        ref: 'Configuration'
+        type: configSchema, 
+        required: true,
+        _id: false
+    },
+    statistic: {
+        type: statisticSchema,
+        required: true,
+        _id: false
     }
 },
     { timestamps: true }

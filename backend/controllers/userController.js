@@ -4,10 +4,35 @@ const userController = {
 
     create: async (req, res) => {
         try {
+            const statisticDefault = {
+                priorityOne: {
+                    created: 0,
+                    finished: 0,
+                    canceled: 0
+                },
+                priorityTwo: {
+                    created: 0,
+                    finished: 0,
+                    canceled: 0
+                },
+                priorityThree: {
+                    created: 0,
+                    finished: 0,
+                    canceled: 0
+                }
+            }
+
+            const configurations = {
+                orderPriority: false,
+                usersCanViewStatistic: false
+            }
+
             const newUser = {
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                statistic: statisticDefault,
+                configurations: configurations
             }
 
             const response = await UserModel.create(newUser)
