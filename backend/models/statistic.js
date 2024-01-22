@@ -20,17 +20,14 @@ const statisticSchemaDefault = new mongoose.Schema({
 const statisticSchema = new mongoose.Schema({
     priorityOne: {
         type: statisticSchemaDefault,
-        required: true,
         _id: false
     },
     priorityTwo: {
         type: statisticSchemaDefault,
-        required: true,
         _id: false
     },
     priorityThree: {
         type: statisticSchemaDefault,
-        required: true,
         _id: false
     }
 })

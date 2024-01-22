@@ -7,7 +7,7 @@ router
     .get((req, res) => statisticController.get(req, res))
 
 router
-    .route('/user/:userId/statistic')
+    .route('/user/:userId/statistic/:priority')
     .put((req, res) => statisticController.update(req, res))
 
 module.exports = router

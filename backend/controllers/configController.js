@@ -46,7 +46,7 @@ const configController = {
                 return
             }
 
-            const config = await ConfigModel.findById(user.configurations)
+            const config = user.configurations
 
             res.json(config)
 
@@ -66,14 +66,14 @@ const configController = {
                 return
             }
 
-            //const configActual = user.configurations
-
             const newConfig = {
                 orderPriority: req.body.orderPriority,
                 usersCanViewStatistic: req.body.usersCanViewStatistic
             }
 
-            await ConfigModel.findByIdAndUpdate(user.configurations, newConfig)
+            user.configurations = newConfig
+
+            await user.save();
 
             res
                 .status(200)
