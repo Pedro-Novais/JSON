@@ -224,7 +224,7 @@ export function interactorProfile() {
     }
 
     function getInfoStatistic(json) {
-        statisticData = json
+        statisticData = json.reverse()
         getAllInfo()
     }
 
