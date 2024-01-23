@@ -5,4 +5,4 @@ const statisticController = {
 
 }
 
-module.exports = statisticController
+module.exports = statisticController 
