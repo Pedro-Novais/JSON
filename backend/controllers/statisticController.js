@@ -32,7 +32,7 @@ const statisticController = {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
-            console.log(user.statistic[priority])
+    
             const newStatistic = req.body[priority]
 
             user.statistic[priority] = newStatistic
@@ -41,7 +41,7 @@ const statisticController = {
 
             res
                 .status(200)
-                .json({ newStatistic, msg: "estatística alterada com sucesso" })
+                .json( { msg: "estatística alterada com sucesso" })
 
         } catch (error) {
             console.log(error)
