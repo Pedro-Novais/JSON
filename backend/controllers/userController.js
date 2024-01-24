@@ -1,8 +1,9 @@
 const { User: UserModel } = require('../models/user')
+const { Task: TaskModel } = require('../models/tasks')
 
 const userController = {
 
-    create: async (req, res) => {
+    /*create: async (req, res) => {
         try {
             const statisticDefault = {
                 priorityOne: {
@@ -44,7 +45,7 @@ const userController = {
         } catch (error) {
             console.log(error)
         }
-    },
+    },*/
 
     getAll: async (req, res) => {
         try {
@@ -87,8 +88,19 @@ const userController = {
                 return
             }
 
-            const deleteUser = await UserModel.findByIdAndDelete(id)
+            const taskToDelete = user.tasks
 
+            if(taskToDelete.length > 0){
+                for(let i = 0; i < taskToDelete.length; i++){
+                    console.log("id da task:", taskToDelete[i])
+                    await TaskModel.findByIdAndDelete(taskToDelete[i])
+    
+                }
+                
+            }
+
+            const deleteUser = await UserModel.findByIdAndDelete(id)
+           
             res
                 .status(200)
                 .json({ deleteUser, msg: "Usúario excluido com sucesso" })

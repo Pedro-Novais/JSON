@@ -3,9 +3,9 @@ const router = require('express').Router()
 const userController = require('../controllers/userController')
 
 // Requisição POST dos Usúarios
-router
+/*router
     .route('/user')
-    .post((req, res) => userController.create(req, res))
+    .post((req, res) => userController.create(req, res))*/
 
 // Requisição GET para todos os usúarios
 router

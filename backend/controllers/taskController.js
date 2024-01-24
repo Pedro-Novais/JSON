@@ -122,7 +122,7 @@ const taskController = {
 
             res
                 .status(200)
-                .json({ updateTask, msg: "Tarefa Alterada com sucesso" })
+                .json({ newTask, msg: "Tarefa Alterada com sucesso" })
 
         } catch (error) {
             console.log(error)

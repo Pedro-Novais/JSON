@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose
 
@@ -13,6 +14,7 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
+        unique: true,
         required: true
     },
     password: {
@@ -39,6 +41,11 @@ const userSchema = new Schema({
 },
     { timestamps: true }
 )
+
+// Método para verificar a senha
+userSchema.methods.comparePassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+  };
 
 const User = mongoose.model('User', userSchema)
 
