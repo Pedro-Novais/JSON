@@ -31,6 +31,7 @@ export function interactorProfile() {
     const pageConfig = document.querySelector('#section-config')
 
     const div = document.createElement('div')
+    //div.style.animation="slideBar .5s ease"
 
     setTimeout(initial, 50)
 
@@ -44,11 +45,9 @@ export function interactorProfile() {
     function viewProfile() {
         div.remove()
 
-        console.log('profile foi')
         div.setAttribute('class', 'container-statistic')
 
         div.innerHTML = "Será Adicionada em Breve";
-
         viewPage.appendChild(div)
 
         profile.removeEventListener('click', viewProfile)
@@ -59,7 +58,6 @@ export function interactorProfile() {
     function viewStatistic() {
         div.remove()
 
-        console.log('statistic foi')
         div.setAttribute('class', 'container-statistic')
 
         div.innerHTML = pageStatistic;
@@ -79,7 +77,6 @@ export function interactorProfile() {
     function viewConfig() {
 
         div.remove()
-        console.log('config foi')
         div.setAttribute('class', 'container-config')
 
         div.innerHTML = pageConfigText;
@@ -95,7 +92,6 @@ export function interactorProfile() {
             btn.addEventListener('click', function () {
 
                 let idConfig = btn.getAttribute('id')
-                console.log("btn", idConfig)
                 activeConfig(idConfig)
             })
         })
@@ -176,7 +172,6 @@ export function interactorProfile() {
     function activeConfig(id) {
 
         let stateChange = document.querySelector(`#${id}`)
-        console.log(stateChange)
         let stateActual = stateChange.getAttribute('state')
         let childChange = stateChange.querySelector(":first-child");
 
@@ -295,7 +290,6 @@ export function interactorProfile() {
             }
         } else {
             level[3].style.backgroundColor = "#05DBF2"
-            console.log('cliquei', activeHover)
         }
     }
 
@@ -313,11 +307,10 @@ export function interactorProfile() {
         level.forEach(function (lvl) {
             lvl.addEventListener('mouseenter', function () {
                 levelHover = lvl.getAttribute('id')
-                console.log('indo')
+               
                 if (levelHover !== "priority-all") {
 
                     if (levelHover == "priority-one") {
-                        console.log(levelHover)
                         level[0].style.backgroundColor = '#05DBF2';
                         level[0].addEventListener('mouseleave', outHover)
         

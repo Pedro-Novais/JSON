@@ -20,6 +20,30 @@
   border-radius: 20px;
 }
 
+@keyframes slideBoxStatistic {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes slidePagesProfile {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+@keyframes slideTask {
+  from {
+    height: 25%;
+  }
+  to {
+    height: 100%;
+  }
+}
 @keyframes slideProfile {
   from {
     height: 0;
@@ -129,7 +153,7 @@ body .style-bar-options .container-bars .seeing-options-bar {
 body .style-bar-options .container-bars .seeing-options-bar p {
   text-transform: uppercase;
   color: #D9D9D9;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 550;
   white-space: nowrap;
 }
@@ -394,6 +418,7 @@ body #main-profile .view-infos .container-statistic .box-statistics {
   justify-content: space-around;
   width: 100%;
   height: 40%;
+  animation: slideBoxStatistic 0.5s ease;
 }
 body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics {
   display: flex;
@@ -406,11 +431,13 @@ body #main-profile .view-infos .container-statistic .box-statistics .style-box-s
   height: 25vh;
   border-radius: 1rem;
   padding: 0.5rem;
+  overflow: hidden;
 }
 body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 700;
+  white-space: nowrap;
 }
 body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .number-statistic {
   margin: auto;
@@ -445,6 +472,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
   background: linear-gradient(to right, #5eeb27, #4ab41f);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  transition: 1s;
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-canceled {
   height: 100%;
@@ -453,6 +481,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
   background: linear-gradient(to right, #ec530c, #f06424);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+  transition: 1s;
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
   display: flex;
@@ -461,7 +490,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
   align-items: center;
   justify-content: space-around;
   background-color: #AEE8CA;
-  opacity: 40%;
+  opacity: 60%;
   width: 70%;
   height: 20%;
   padding: 10px;
@@ -470,9 +499,6 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
   text-transform: uppercase;
   font-weight: 600;
   transition: 0.8s;
-}
-body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info:hover {
-  opacity: 100%;
 }
 body #main-profile .view-infos .container-config {
   display: flex;
@@ -684,11 +710,14 @@ body main #container {
   padding: 1vw;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  animation: slideTask 0.5s ease;
+  overflow: hidden;
 }
 body main #container h1 {
   font-size: 2rem;
   margin-bottom: 3vw;
   color: white;
+  white-space: nowrap;
 }
 body main #container #container-info {
   display: flex;
@@ -970,7 +999,7 @@ body footer {
     font-size: 1rem;
   }
   body main #container #container-info #priority #level {
-    width: 25%;
+    width: 90%;
   }
   body main #container #container-info #btn-add {
     width: 90%;
@@ -996,6 +1025,7 @@ body footer {
   }
   body #main-profile #container-profile {
     flex-direction: column;
+    animation: none;
   }
   body #main-profile #container-select {
     flex-direction: row;
@@ -1059,6 +1089,7 @@ body footer {
   }
   body main #container {
     width: 100%;
+    animation: none;
   }
   body #container-profile {
     width: 95%;

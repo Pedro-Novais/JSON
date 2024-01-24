@@ -376,7 +376,6 @@ export function interactorList() {
       }
 
       else if (determinate == 1) {
-        console.log(priorityId)
         let newCreate = statistic[priorityId - 1]["finished"] + 1
 
         let dataStatistic = {
@@ -425,7 +424,6 @@ export function interactorList() {
         if (priorityId !== null) {
           markNewClick(priorityId)
         }
-        console.log(priorityId)
       });
     });
   }
@@ -440,7 +438,6 @@ export function interactorList() {
       level[i].removeEventListener('mouseleave', outHover)
       level[i].style.backgroundColor = '#05DBF2';
     }
-    console.log("mark")
   }
 
   function clearNewClick() {
