@@ -92,7 +92,7 @@ const userController = {
 
             if(taskToDelete.length > 0){
                 for(let i = 0; i < taskToDelete.length; i++){
-                    console.log("id da task:", taskToDelete[i])
+                 
                     await TaskModel.findByIdAndDelete(taskToDelete[i])
     
                 }
