@@ -20,6 +20,14 @@
   border-radius: 20px;
 }
 
+@keyframes slideProfile {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
 @keyframes slideIn {
   from {
     min-height: 15%;
@@ -42,6 +50,14 @@
   }
   to {
     width: 0;
+  }
+}
+@keyframes slideStatistic {
+  from {
+    width: 0;
+  }
+  to {
+    width: 30%;
   }
 }
 body {
@@ -219,6 +235,7 @@ body #main-profile #container-profile {
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 1rem;
+  animation: slideProfile 0.5s ease;
 }
 body #main-profile #container-select {
   display: flex;

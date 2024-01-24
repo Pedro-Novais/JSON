@@ -26,6 +26,15 @@
     border-radius: 20px;
 }
 
+@keyframes slideProfile {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+  }
+
 @keyframes slideIn {
     from {
         min-height: 15%;
@@ -52,6 +61,16 @@
         width: 0;
     }
   }
+
+  @keyframes slideStatistic {
+    from {
+        width: 0;
+    }
+    to {
+        width: 30%;
+    }
+  }
+
 
 body {
     width: 100%;
@@ -194,9 +213,7 @@ body {
                     min-width: 30%;
                     height: 100%;
                     text-transform: uppercase;
-                    //background-color: $details;
                     border-radius: 0.5rem;
-                    //box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     transition: .1s;
 
                     p {
@@ -228,7 +245,8 @@ body {
             width: 100%;
             height: 100%;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-            border-radius: 1rem
+            border-radius: 1rem;
+            animation: slideProfile .5s ease;
         }
 
         #container-select {
@@ -246,7 +264,6 @@ body {
             height: 100%;
             padding: 1rem;
             background-color: $background-one;
-            //box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             z-index: 10;
             border-top-left-radius: 1rem;
             border-bottom-left-radius: 1rem
@@ -266,7 +283,6 @@ body {
         .select-box-style:hover {
             cursor: pointer;
             background-color: #a7e2dec2;
-            //background-color: $priority;
 
         }
 
@@ -290,7 +306,6 @@ body {
             width: 75%;
             height: 100%;
             padding: 1rem;
-            //background-color: $background-list;
             overflow-y: auto;
             overflow-x: hidden;
 

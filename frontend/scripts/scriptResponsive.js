@@ -84,6 +84,6 @@ export function interactorResponsive() {
         div.style.animation = "closeBar .3s ease-out"
         setTimeout(() => {
             div.remove()
-        }, 300)
+        }, 250)
     }
 }

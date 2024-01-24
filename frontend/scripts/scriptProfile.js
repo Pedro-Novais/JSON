@@ -136,6 +136,7 @@ export function interactorProfile() {
     }
 
     function insertStatisticBars(priority){
+
         const barFinished = document.querySelector('#bar-task-finished')
         const barCanceled = document.querySelector('#bar-task-canceled')
         
@@ -287,6 +288,7 @@ export function interactorProfile() {
 
     function clickPriorityStatistic(priority) {
         const level = document.querySelectorAll('.choose-priority-statistic')
+
         if (priority !== 3) {
             for (let i = 0; i <= priority; i++) {
                 level[i].style.backgroundColor = "#05DBF2"
