@@ -117,7 +117,8 @@ export function interactorList() {
     createNameTask(taskJson, index, div)
     createPriorityTask(taskJson, div, priorityAction, index)
     createActions(div, priorityAction, index, taskJson)
-    container.appendChild(div) 
+    container.appendChild(div)
+    
   }
 
   function createNameTask(json, i, div) {

@@ -15,7 +15,7 @@ export function interactorResponsive() {
     getWidth()
 
     function getWidth() {
-        let width = window.innerWidth; 
+        let width = window.innerWidth;
         if (width <= 800) {
             createSvg("bars", "bar-view-options", header)
             const btnBarView = document.querySelector('#bar-view-options')
@@ -34,7 +34,6 @@ export function interactorResponsive() {
 
     function createSvg(type, id, element) {
         img.setAttribute('src', `./svg/${type}-solid.svg`)
-        //img.setAttribute('alt', "Bars options")
         img.setAttribute('class', 'symbol-nav')
         img.setAttribute('id', id)
 
@@ -47,10 +46,11 @@ export function interactorResponsive() {
         div.setAttribute('id', 'bar-options')
         div.setAttribute('class', 'style-bar-options')
 
-        header.style.display = "none";
-        main.style.display = "none";
-        footer.style.display = "none";
+        //header.style.display = "none";
+        //main.style.display = "none";
+        //footer.style.display = "none";
 
+        div.style.animation = "slideBar .3s ease-out"
         div.innerHTML = viewBarsCode;
 
         body.appendChild(div)
@@ -59,8 +59,17 @@ export function interactorResponsive() {
         const linkProfileResponsive = document.querySelector('#visit-profile-responsive')
         const linkAbout = document.querySelector('#visit-about-responsive')
 
-        linkToDoResponsive.addEventListener('click', callPageList)
-        linkProfileResponsive.addEventListener('click', callPageProfile)
+        linkToDoResponsive.addEventListener('click', () => {
+            div.style.animation = "closeBar .3s ease-out"
+
+            setTimeout(callPageList, 250)
+        })
+        linkProfileResponsive.addEventListener('click', () => {
+
+            div.style.animation = "closeBar .3s ease-out"
+
+            setTimeout(callPageProfile, 250)
+        })
 
         const cancelBar = document.querySelector('#cancel-bar')
         if (cancelBar != null) {
@@ -69,10 +78,12 @@ export function interactorResponsive() {
     }
 
     function outBar() {
-        header.style.display = "flex";
         main.style.display = "flex";
-        footer.style.display = "flex";
-
-        div.remove()
+        //header.style.display = "flex";
+        //footer.style.display = "flex";
+        div.style.animation = "closeBar .3s ease-out"
+        setTimeout(() => {
+            div.remove()
+        }, 300)
     }
 }
