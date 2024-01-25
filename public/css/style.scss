@@ -596,6 +596,7 @@ body {
         width: 50vw;
         height: 40vh;
         position: relative;
+        top: 12%;
 
         #task-remove {
 
@@ -612,7 +613,7 @@ body {
         align-items: center;
         position: relative;
         z-index: 100;
-        margin: 0 auto;
+        top: 12%;
         width: 50vw;
         height: 40vh;
         padding: 1rem;
@@ -679,6 +680,116 @@ body {
             #btn-edit-edit:hover {
                 cursor: pointer;
                 background-color: $hover-btn-ok;
+            }
+        }
+    }
+
+    // Estilo para a página de login e sign-up
+    #main-enter{
+        @include container;
+        align-items: flex-start;
+        justify-content: center;
+        width: 35rem;
+        height: 65%;
+
+         .conatiner-credentials{
+            @include container;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: .7em;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+            h1{
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 700;
+                letter-spacing: .1em;
+                margin-top: 1rem;
+            }
+
+            .box-credentials{
+                @include container;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-around;
+                width: 90%;
+                min-height: 35%;
+                padding: .5em;
+                margin-top: 1rem;
+
+                #forget-password{
+                    color: $white;
+                    align-self: flex-end;
+                    transition: .3s;
+                }
+
+                #forget-password:hover{
+                    cursor: pointer;
+                    color: $color-light;
+                }
+
+                .box-inputs{
+                    @include container;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                    //background-color: #4ab41f;
+                    width: 100%;
+                    height: 35%;
+                }
+
+                .title-input{
+                    font-size: 1.2rem;
+                    color: $white;
+                    //text-transform: uppercase;
+                    font-weight: 900;
+                }
+
+                .inputs-credentials{
+                    background-color: transparent;
+                    width: 100%;
+                    height: 4vh;
+                    border-style: none;
+                    outline: none;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    border-bottom: solid 2px $priority; 
+                    color: $white;
+                    padding: .2em;
+                    transition: .3s;
+                }
+
+                .inputs-credentials::placeholder{
+                    color: $white;
+                    opacity: .9;
+                }
+
+                .inputs-credentials:focus{
+                    border-bottom: solid 2px $white;
+                }
+            }
+
+            .btn-sign{
+                margin-top: 2em;
+                width: 80%;
+                height: 5vh;
+                border-radius: 1em;
+                border-style: none;
+                font-size: 1rem;
+                font-weight: 700;
+                letter-spacing: .2em;
+                color: $white;
+                text-transform: uppercase;
+                background-color: $priority;
+                opacity: .7;
+                transition: .2s;
+            }
+
+            .btn-sign:hover{
+                cursor: pointer;
+                opacity: 1;
             }
         }
     }
@@ -897,6 +1008,7 @@ body {
     }
 
     footer {
+        background-color: $color-light;
         width: 100%;
         height: 15%;
     }
@@ -1221,6 +1333,7 @@ body {
                 }
             }
         }
+
     }
 }
 
@@ -1288,6 +1401,35 @@ body {
                     font-size: 1rem;
                     text-align: center;
                     width: 100%;
+                }
+            }
+        }
+
+        //Estilo para a página de login
+
+        #main-enter{
+            width: 90vw;
+
+            .conatiner-credentials{
+
+                .box-credentials{
+
+                    .title-input{
+                        font-size:1rem ;
+                    }
+
+                    .inputs-credentials{
+                        font-size: .9rem;
+                    }
+
+                    #forget-password{
+                        font-size: .9rem;
+                    }
+                }
+
+                .btn-sign{
+                    height: 7vh;
+                    opacity: 1;
                 }
             }
         }

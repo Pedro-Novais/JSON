@@ -1,5 +1,5 @@
 node_modules/
-views/
+views-test/
 *.json
 data/
 .env
