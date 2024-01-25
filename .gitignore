@@ -3,3 +3,4 @@ views/
 *.json
 data/
 .env
+keep/

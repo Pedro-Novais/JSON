@@ -1,0 +1,1498 @@
+@import '_colors';
+@import '_mixin';
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans&family=Roboto:wght@300&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Rethink Sans', sans-serif;
+}
+
+#task-made::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+#task-made::-webkit-scrollbar-track {
+    //background: $details;
+    //margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    margin-top: 0.5vw;
+}
+
+#task-made::-webkit-scrollbar-thumb {
+    background-color: $color-light;
+    border-radius: 20px;
+}
+
+@keyframes slideBoxStatistic{
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes slidePagesProfile{
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+  }
+
+
+@keyframes slideTask {
+    from {
+        height: 25%;
+    }
+    to {
+        height: 100%;
+    }
+  }
+
+@keyframes slideProfile {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+  }
+
+@keyframes slideIn {
+    from {
+        min-height: 15%;
+    }
+    to {
+        min-height: 30%;
+    }
+  }
+
+  @keyframes slideBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 90%;
+    }
+  }
+
+  @keyframes closeBar {
+    from {
+        width: 90%;
+    }
+    to {
+        width: 0;
+    }
+  }
+
+  @keyframes slideStatistic {
+    from {
+        width: 0;
+    }
+    to {
+        width: 30%;
+    }
+  }
+
+
+body {
+    width: 100%;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, $background-one, $details);
+
+    .style-bar-options {
+        align-self: flex-start;
+        @include container;
+        flex-direction: column;
+        width: 90%;
+        height: 100%;
+        padding: 1rem;
+        transition: 2s;
+        overflow: hidden;
+        background: linear-gradient(to right, $background-one, $background-one);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 7px;
+        position: fixed;
+        z-index: 100;
+
+        .container-name-symbol {
+            align-self: flex-end;
+            @include container;
+            justify-content: space-between;
+            width: 100%;
+
+            h1 {
+                color: $white;
+                white-space: nowrap;
+            }
+
+            img {
+                height: 30px;
+            }
+
+            img:hover {
+                cursor: pointer;
+            }
+        }
+
+        .container-bars {
+            width: 100%;
+            height: 50vh;
+            margin-top: 4rem;
+
+            .seeing-options-bar {
+                align-self: flex-start;
+                @include container;
+                justify-content: center;
+                width: 75%;
+                height: 15%;
+                background-color: $color-resposive;
+                margin-bottom: 2rem;
+                border-radius: 0.5rem;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+                transition: 0.2s;
+                overflow: hidden;
+
+                p {
+                    text-transform: uppercase;
+                    color: $white;
+                    font-size: 1rem;
+                    font-weight: 550;
+                    white-space: nowrap;
+                }
+            }
+
+            .seeing-options-bar:hover {
+                cursor: pointer;
+                background-color: $priority;
+            }
+        }
+    }
+
+    header {
+        @include container;
+        justify-content: space-between;
+        width: 100%;
+        height: 10%;
+        padding: 1rem;
+        //background-color: $background-dark;
+        //display: none;
+
+        #bar-view-options {
+            position: absolute;
+            left: 15px;
+        }
+
+        #bar-view-options:hover {
+            cursor: pointer;
+        }
+
+        .symbol-nav {
+            height: 25px;
+        }
+
+        .name-symbol {
+            @include container;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-left: 5rem;
+
+            h1 {
+                color: $white;
+                font-weight: 900;
+                margin-left: 1rem;
+            }
+        }
+
+        nav {
+            width: 40%;
+            height: 60%;
+
+            ul {
+                @include container;
+                justify-content: space-around;
+                list-style: none;
+                height: 100%;
+
+                .li-visits {
+                    @include container;
+                    justify-content: center;
+                    min-width: 30%;
+                    height: 100%;
+                    text-transform: uppercase;
+                    background-color: $details;
+                    border-radius: 0.5rem;
+                    box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+                    transition: .1s;
+
+                }
+
+                li {
+                    @include container;
+                    justify-content: center;
+                    min-width: 30%;
+                    height: 100%;
+                    text-transform: uppercase;
+                    border-radius: 0.5rem;
+                    transition: .1s;
+
+                    p {
+                        color: $white;
+                        font-weight: 500;
+                        font-size: .8rem;
+                    }
+
+                }
+
+                li:hover {
+                    background-color: $details;
+                    box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    //Style opara página de perfil, estatísticas e configurações
+    #main-profile {
+        position: absolute;
+        top: 10rem;
+        width: 95%;
+        height: 75vh;
+
+        #container-profile {
+            @include container;
+            width: 100%;
+            height: 100%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border-radius: 1rem;
+            animation: slideProfile .5s ease;
+        }
+
+        #container-select {
+            @include container;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+            height: 40%;
+        }
+
+        .select-page {
+            @include container;
+            flex-direction: column;
+            width: 25%;
+            height: 100%;
+            padding: 1rem;
+            background-color: $background-one;
+            z-index: 10;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem
+        }
+
+        .select-box-style {
+            @include container;
+            justify-content: center;
+            width: 90%;
+            height: 25%;
+            background-color: $white;
+            border-radius: 1rem;
+            text-transform: uppercase;
+            transition: .1s;
+        }
+
+        .select-box-style:hover {
+            cursor: pointer;
+            background-color: #a7e2dec2;
+
+        }
+
+        .view-infos::-webkit-scrollbar {
+            width: 0.8rem;
+        }
+
+        .view-infos::-webkit-scrollbar-track {
+            //background: $details;
+            //margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 0.5vw;
+        }
+
+        .view-infos::-webkit-scrollbar-thumb {
+            background-color: $color-light;
+            border-radius: 20px;
+        }
+
+        .view-infos {
+            width: 75%;
+            height: 100%;
+            padding: 1rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            //animation: slidePagesProfile .5s ease;
+
+            .style-to-title {
+                color: $white;
+                text-transform: uppercase;
+                font-size: 2.5rem;
+                font-weight: 900;
+            }
+
+            .container-profile {
+                @include container;
+                flex-direction: column;
+                justify-content: flex-start;
+                width: 100%;
+                min-height: 70vh;
+            }
+            //Container para a página de estatísticas
+
+            .container-statistic {
+                @include container;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+                min-height: 70vh;
+
+                .choose-priority-view {
+                    @include container;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    width:22vw;
+                    height: 8vh;
+                    position: relative;
+                    padding: .2em;
+
+                    .select-priority {
+                        @include container;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        width: 50%;
+                        height: 100%;
+                        padding: 0.3vw;
+                        border-radius: 0.5rem;
+                        color: $text;
+                        background-color: $details;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+
+                        p{
+                            font-size: 0.9em;
+                            text-transform: uppercase;
+                            letter-spacing: .1em;
+                            font-weight: 600;
+                            color: $white;
+                        }
+
+                        .box-priority-statistic{
+                            @include container;
+                            justify-content: space-around;
+                            width: 100%;
+                            height: 100%;
+
+                            .choose-priority-statistic{
+                                width: 22px;
+                                height: 22px;
+                                border-radius: 50%;
+                                background-color: $priority;
+                                transition: .2s;
+                            }
+
+                            .choose-priority-statistic:hover{
+                                cursor: pointer;
+                            }
+
+                            #priority-all{
+                                @include container;
+                                justify-content: center;
+                                background-color: $priority;
+
+                                p{
+                                    color: $background-dark;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .box-statistics {
+                    @include container;
+                    justify-content: space-around;
+                    width: 100%;
+                    height: 40%;
+                    animation: slideBoxStatistic .5s ease;
+
+                    .style-box-statistics {
+                        @include container;
+                        flex-direction: column;
+                        background-color: $white;
+                        width: 30%;
+                        height: 25vh;
+                        border-radius: 1rem;
+                        padding: 0.5rem;
+                        overflow: hidden;
+
+                        .name-type-statitic {
+                            font-size: 1.2rem;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                            white-space: nowrap;
+                        }
+
+                        .number-statistic {
+                            margin: auto;
+                            font-size: 6rem;
+                        }
+                    }
+                }
+
+                .container-statistic-bar {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    width: 100%;
+                    height: 15vh;
+
+                    .statistic-bar {
+                        @include container;
+                        flex-direction: row;
+                        width: 100%;
+                        height: 30%;
+                        border-radius: 0.5rem;
+                        background-color: $white;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+
+                        #bar-task-finished {
+                            height: 100%;
+                            width: 78%;
+                            background-color: $bar-finished;
+                            background: linear-gradient(to right, #5eeb27, #4ab41f);
+                            border-top-left-radius: .5rem;
+                            border-bottom-left-radius: .5rem;
+                            transition: 1s;
+                        }
+
+                        #bar-task-canceled {
+                            height: 100%;
+                            width: 22%;
+                            background-color: $bar-canceled;
+                            background: linear-gradient(to right, #ec530c, #f06424);
+                            border-top-right-radius: .5rem;
+                            border-bottom-right-radius: .5rem;
+                            transition: 1s;
+                        }
+                    }
+
+                    .statistic-bar-info {
+                        @include container;
+                        justify-content: space-around;
+                        background-color: $background-task;
+                        opacity: 60%;
+                        width: 70%;
+                        height: 20%;
+                        padding: 10px;
+                        border-radius: 0.5rem;
+                        margin-top: 2rem;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        transition: .8s;
+                    }
+                }
+            }
+
+            //Estilo para página de configurações
+
+            .container-config {
+                @include container;
+                flex-direction: column;
+                width: 100%;
+                height: 90%;
+
+                .box-configs {
+                    @include container;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-top: 2rem;
+                    padding: 1rem;
+                    background-color: $details;
+                    border-radius: 1rem;
+                    width: 80%;
+                    height: 60%;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                    .box-configurations {
+                        @include container;
+                        justify-content: flex-start;
+                        flex-direction: column;
+                        padding: 1rem;
+                        width: 100%;
+                        border-radius: .5rem;
+
+                        .line-config {
+                            @include container;
+                            justify-content: space-between;
+                            padding: 1em;
+                            width: 100%;
+                            margin-bottom: 1rem;
+                            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+
+                            .ball-option {
+                                width: 40px;
+                                height: 20px;
+                                border: solid 2px $white;
+                                border-radius: 10px;
+                                background-color: $details;
+
+                                .active-order-priority {
+                                    position: relative;
+                                    width: 55%;
+                                    height: 100%;
+                                    border-radius: 20px;
+                                    background-color: $white;
+                                }
+                            }
+
+                            .ball-option:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .btn-configs {
+                    @include container;
+                    justify-content: center;
+                    width: 8rem;
+                    height: 8vh;
+                    margin-top: 2.5rem;
+                    background: linear-gradient(to right, $details, $priority);
+                    border-radius: 1rem;
+                    color: $white;
+                    font-weight: 400;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+                }
+
+                .btn-configs:hover {
+                    cursor: pointer;
+                    background: linear-gradient(to left, $details, $priority);
+                }
+
+                .style-to-name-config {
+                    color: $white;
+                    font-size: 1.2rem;
+                    font-weight: 580;
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    //Fim do estilo
+
+    #modal-remove {
+        @include container;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 50vw;
+        height: 40vh;
+        position: relative;
+
+        #task-remove {
+
+            p {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .modal {
+        @include container;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+        margin: 0 auto;
+        width: 50vw;
+        height: 40vh;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        color: $text;
+
+        .content-modal {
+            @include container;
+            justify-content: space-around;
+            width: 100%;
+            height: 8vh;
+            padding: 0.35vw;
+
+            .input {
+                width: 70%;
+                height: 100%;
+                padding: 0.5rem;
+                background-color: $details;
+                outline: none;
+                border-style: none;
+                font-size: 1vw;
+                border-radius: 1rem;
+                color: $text;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
+            }
+
+            .input::placeholder {
+                color: $text;
+                opacity: 40%;
+            }
+        }
+
+        .content-btn {
+            @include container;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 10vh;
+            padding: 0.25rem;
+
+            .btn-edit {
+                @include container;
+                justify-content: center;
+                width: 37%;
+                height: 95%;
+                min-height: 10vh;
+                border-radius: 0.5rem;
+                background-color: $details;
+                text-transform: uppercase;
+                font-weight: 900;
+                letter-spacing: 0.1rem;
+                color: $text;
+                transition: .1s;
+                border-style: none;
+            }
+
+            #btn-edit-cancel:hover {
+                cursor: pointer;
+                background-color: $hover-btn-cancel;
+            }
+
+            #btn-edit-edit:hover {
+                cursor: pointer;
+                background-color: $hover-btn-ok;
+            }
+        }
+    }
+
+    main {
+        @include container;
+        align-items: flex-start;
+        justify-content: center;
+        width: 50%;
+        height: 50%;
+
+        #container {
+            justify-self: center;
+            @include container;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 1vw;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            animation: slideTask .5s ease;
+            overflow: hidden;
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 3vw;
+                color: $text;
+                white-space: nowrap;
+            }
+
+            #container-info {
+                @include container;
+                justify-content: space-around;
+                padding: 0.25vw;
+                margin-bottom: 2vw;
+                width: 100%;
+                height: 8vh;
+
+                #task-add {
+                    width: 60%;
+                    height: 100%;
+                    padding: 0.5rem;
+                    background-color: $details;
+                    outline: none;
+                    border-style: none;
+                    font-size: 1rem;
+                    border-radius: 0.5rem;
+                    color: $text;
+                    font-weight: 900;
+                    letter-spacing: 0.1rem;
+                }
+
+                #task-add::placeholder {
+                    color: $text;
+                    opacity: 40%;
+                }
+
+                #priority {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 15%;
+                    height: 100%;
+                    padding: 0.1vw;
+                    border-radius: 0.5rem;
+                    color: $text;
+                    background-color: $details;
+
+                    p {
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        letter-spacing: 0.1rem;
+                        text-transform: uppercase;
+                        color: $text;
+                    }
+
+                    #level {
+                        @include container;
+                        justify-content: space-around;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                #btn-add {
+                    @include container;
+                    justify-content: center;
+                    width: 15%;
+                    height: 100%;
+                    border-radius: 0.5rem;
+                    background-color: $details;
+                    text-transform: uppercase;
+                    font-weight: 900;
+                    letter-spacing: 0.1rem;
+                    color: $text;
+                    transition: .1s;
+                }
+
+                #btn-add:hover {
+                    cursor: pointer;
+                    background-color: $hover-btn-add;
+                }
+            }
+
+            #task-made {
+                @include container;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 0.5vw;
+                width: 100%;
+                height: 40vh;
+                border-radius: .5rem;
+                overflow-x: hidden;
+                overflow-y: auto;
+
+                .priority-action {
+                    @include container;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    width: 35%;
+                }
+
+                .priority-task {
+                    @include container;
+                    justify-content: space-around;
+                    width: 40%;
+                    height: 100%;
+                }
+
+                .container-actions {
+                    @include container;
+                    width: 40%;
+                    height: 5vh;
+                    justify-content: space-around;
+
+                    .actions {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .priority-level {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: .1s;
+    }
+
+    .content-priority {
+        @include container;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 20%;
+        height: 100%;
+        padding: 0.1vw;
+        border-radius: 0.5rem;
+        color: $text;
+        background-color: $details;
+
+        p {
+            font-size: 80%;
+            font-weight: 900;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            color: $text;
+        }
+
+        .content-level {
+            @include container;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .tasks {
+        @include container;
+        justify-content: space-between;
+        background-color: $details;
+        width: 100%;
+        min-height: 30%;
+        margin-bottom: 1rem;
+        padding: 0rem 1rem 0rem 3rem;
+        border-radius: 1.3rem;
+        //animation: slideIn .5s ease-out;
+    }
+
+    .task-puted {
+        font-size: 1.2rem;
+        color: $text;
+        font-weight: 900;
+        letter-spacing: 0.1rem;
+        width: 50%;
+    }
+
+    .choose-priority {
+        width: 20px;
+        height: 20px;
+        background-color: $priority;
+        border-radius: 50%;
+        transition: .2s;
+    }
+
+    .choose-priority:hover {
+        background-color: $color-light;
+        cursor: pointer;
+    }
+
+    .watch-out {
+        box-shadow: rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset;
+    }
+
+    footer {
+        width: 100%;
+        height: 15%;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    body {
+         #main-profile {
+            .view-infos {
+                .container-statistic {
+                    .choose-priority-view {
+                        .select-priority{
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+        }
+        .modal {
+            min-width: 70vw;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    body {
+        width: 100%;
+
+        main {
+            width: 70vw;
+
+            #container {
+                width: 100%;
+            }
+        }
+
+        .modal {
+            width: 65%;
+        }
+
+        .tasks {
+            border-radius: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    body {
+        header {
+            nav {
+                width: 50%;
+            }
+        }
+
+        #main-profile {
+
+            .view-infos {
+                .container-statistic {
+                    .container-statistic-bar {
+                        .statistic-bar-info {
+                            width: 80%;
+                        }
+                    }
+                }
+
+                .container-config {
+                    .box-configs {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    body {
+        width: 100%;
+
+        main {
+            width: 70vw;
+            height: 70vh;
+
+            #container {
+                justify-content: space-around;
+                width: 100%;
+                height: 100%;
+
+                #task-made {
+                    width: 90%;
+                    height: 35vh;
+
+                    .priority-action {
+                        width: 40%;
+                    }
+
+                    .priority-action {
+                        width: 50%;
+                    }
+
+                    .container-actions {
+                        width: 40%;
+                    }
+                }
+
+                #container-info {
+                    flex-direction: column;
+                    height: 25vh;
+
+                    #task-add {
+                        width: 90%;
+                        height: 30%;
+                    }
+
+                    #priority {
+                        width: 90%;
+                        height: 30%;
+
+                        p {
+                            font-size: 1rem;
+                        }
+
+                        #level {
+                            width: 90%;
+                        }
+                    }
+
+                    #btn-add {
+                        width: 90%;
+                        height: 25%;
+                    }
+                }
+            }
+        }
+
+        .choose-priority {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        width: 100%;
+
+        header {
+            nav {
+                width: 60%;
+            }
+        }
+
+        .modal {
+            width: 80%;
+        }
+
+        .tasks {
+            border-radius: 1rem;
+        }
+
+        // Estilo para página de Perfil Responsiva
+
+        #main-profile {
+            #container-profile {
+                flex-direction: column;
+                animation: none;
+            }
+
+            #container-select {
+                flex-direction: row;
+                height: 100%;
+            }
+
+            #modal-remove {
+                min-width: 90vw;
+            }
+
+            .select-box-style {
+                width: 25%;
+                height: 100%;
+            }
+
+            .select-page {
+                width: 100%;
+                height: 15%;
+                border-top-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 0;
+            }
+
+            .view-infos {
+                width: 100%;
+                height: 85%;
+                padding-top: 2rem;
+
+                .container-statistic {
+                    min-height: 60vh;
+
+                    .box-statistics {
+
+                        .style-box-statistics {
+                            .name-type-statitic {
+                                font-size: 1.2rem;
+                            }
+
+                            .number-statistic {
+                                font-size: 5rem;
+                            }
+                        }
+                    }
+
+                    .choose-priority-view{
+                        margin: 2em 0px 2em;
+                        width: 28vw;
+                    }
+
+                    .container-statistic-bar{
+                        margin-top: 4.4rem;
+                    }
+                }
+
+                .container-config {
+                    .box-configs {
+                        .box-configurations {
+                            .line-config {
+                                border-radius: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 100%;
+
+        header {
+            justify-content: center;
+            width: 100%;
+
+            nav {
+                display: none;
+            }
+
+            .name-symbol {
+                margin: 0;
+            }
+        }
+
+        main {
+            width: 90vw;
+
+            #container {
+                width: 100%;
+                animation: none;
+            }
+        }
+
+        #container-profile {
+            width: 95%;
+        }
+
+        .modal {
+            width: 80%;
+        }
+
+        .content-priority {
+            width: 25%;
+        }
+
+        .tasks {
+            border-radius: 1rem;
+        }
+
+        //Style para página Profile
+        #main-profile {
+            .view-infos {
+                .container-statistic {
+                    min-height: 110vh;
+
+                    .box-statistics {
+                        flex-direction: column;
+                        height: 80vh;
+
+                        .style-box-statistics {
+                            width: 60%;
+
+                            .name-type-statitic {
+                                letter-spacing: .1em;
+                                font-size: 1.4rem;
+                            }
+
+                            .number-statistic {
+                                font-size: 4rem;
+                            }
+                        }
+                    }
+
+                    .container-statistic-bar {
+                        .statistic-bar-info {
+                            width: 90%;
+                        }
+                    }
+
+                    .choose-priority-view{
+                        width: 58vw;
+                    }
+
+                }
+
+                .container-config {
+                    .box-configs {
+                        width: 100%;
+                    }
+
+                    .style-to-name-config {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        width: 100%;
+        height: 130vh;
+        //background: none;
+        //background-color: $color-resposive;
+
+
+        main {
+            width: 95vw;
+            height: 90vh;
+
+            #main-profile {
+                position: unset;
+                height: 100%;
+                background-color: $color-resposive;
+                border-radius: 1rem;
+                width: 95%;
+
+                .select-page {
+                    box-shadow: unset;
+                    background-color: $details;
+                }
+
+            }
+
+            #container {
+                width: 95%;
+                height: 100%;
+                background-color: $color-resposive;
+                //background: linear-gradient(to right, #032ea6, #020a50);
+
+                #task-made {
+                    height: 60vh;
+                    padding-top: 1vw;
+
+                    .priority-action {
+                        width: 90%;
+                    }
+
+                    .priority-task {
+                        width: 40%;
+                    }
+
+                    .container-actions {
+                        width: 40%;
+                    }
+
+                    .actions {
+                        height: 2.5vh;
+                    }
+                }
+
+                #container-info {
+
+                    #btn-add {
+                        height: 30%;
+                    }
+                }
+
+                .task-puted {
+                    font-size: 1rem;
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+        }
+
+        #modal-remove {
+            #task-remove {
+                p {
+                    text-align: center;
+                    width: 100%;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .tasks {
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0;
+            padding-top: 0.5rem;
+            border-radius: 20px;
+            min-height: 31%;
+        }
+
+        .priority-level {
+            width: 20px;
+            height: 20px;
+        }
+
+        .content-priority {
+            flex-direction: column;
+            width: 100%;
+            height: 40%;
+
+            p {
+                font-size: 0.8rem;
+            }
+        }
+
+        .modal {
+            min-height: 50vh;
+            min-width: 90vw;
+            background-color: $color-resposive;
+
+            .content-modal {
+                flex-direction: column;
+                height: 25vh;
+
+                .input {
+                    width: 100%;
+                    height: 45%;
+                    text-align: center;
+                    font-size: 1rem;
+                }
+            }
+
+            .content-btn {
+                justify-content: space-between;
+
+                .btn-edit {
+                    width: 45%;
+                }
+            }
+        }
+
+        .choose-priority {
+            width: 20px;
+            height: 20px;
+        }
+
+        #main-profile {
+            .view-infos {
+                .style-to-title {
+                    color: $white;
+                    text-transform: uppercase;
+                    font-size: 2rem;
+                    font-weight: 900;
+                }
+
+                .container-statistic {
+                    .container-statistic-bar {
+                        height: 18vh;
+                        margin-top: 2rem;
+                        .statistic-bar{
+                            height: 10vh;
+                        }
+
+                        .statistic-bar-info {
+                            flex-direction: column;
+                            width: 80%;
+                            height: 60%;
+                        }
+                    }
+
+                    .choose-priority-view{
+                        margin: 2em 0 1em 0;
+                        width: 50vw;
+                        height: 10vh;
+                    }
+
+                    .box-statistics{
+                        .style-box-statistics{
+                            .name-type-statitic{
+                                font-size: .9rem;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+
+                .container-config {
+                    .box-configs {
+                        padding: 0;
+                        background-color: unset;
+                        box-shadow: unset;
+
+                        .box-configurations {
+                            padding: 0;
+
+                            .line-config {
+                                flex-direction: column;
+                                justify-content: space-around;
+                                height: 15vh;
+                                background-color: $details;
+                                padding: 0.6em;
+                            }
+                        }
+                    }
+
+                    .style-to-name-config {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    *::-webkit-scrollbar-track {
+        margin-top: 1rem;
+    }
+
+    body {
+        width: 100%;
+
+        main {
+            #container {
+                #container-info {
+                    height: 35vh;
+
+                    #task-add {
+                        text-align: center;
+                    }
+
+                    #priority {
+                        height: 30%;
+
+                        p {
+                            font-size: 0.9rem;
+                        }
+
+                        #level {
+                            width: 90%;
+                        }
+                    }
+                }
+
+                #task-made {
+                    padding-top: 1rem;
+                    margin-bottom: 1rem;
+
+                    .container-actions {
+                        .actions {
+                            height: 2.5vh;
+                        }
+                    }
+                }
+
+                .task-puted {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        #main-profile {
+            width: 100%;
+
+            #container-statistic {
+                padding-bottom: 1em;
+            }
+        }
+
+        .priority-level {
+            width: 16px;
+            height: 16px;
+        }
+
+        .tasks {
+            width: 98%;
+            min-height: 47%;
+            border-radius: 10px;
+        }
+    }
+}
