@@ -9,7 +9,7 @@ let statistic = null;
 let priorityId = null;
 let activeHover = null;
 
-export function interactorList() {
+export function interactorList() { 
 
 
   getStatisticAndConfig()
@@ -83,7 +83,7 @@ export function interactorList() {
     try {
       if (priorityJson == true) {
         for (let i = 3; i >= 1; i--) {
-          data = await order("api", i)
+          data = await order(api, i)
           orderPriority(data)
 
         }
