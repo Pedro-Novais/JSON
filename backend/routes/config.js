@@ -1,14 +1,15 @@
 const router = require('express').Router()
+const {checkToken} = require('../controllers/utils/checkToken')
 
 const configController = require('../controllers/configController')
 
 router
     .route('/user/:userId/config')
-    .get((req, res) => configController.getAll(req, res))
+    .get(checkToken, (req, res) => configController.getAll(req, res))
 
 router
     .route('/user/:userId/config')
-    .put((req, res) => configController.update(req, res))
+    .put(checkToken, (req, res) => configController.update(req, res))
 
 
 module.exports = router;

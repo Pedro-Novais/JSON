@@ -1,13 +1,14 @@
 const router = require('express').Router()
+const {checkToken} = require('../controllers/utils/checkToken')
 
 const statisticController = require('../controllers/statisticController')
 
 router
     .route('/user/:userId/statistic')
-    .get((req, res) => statisticController.get(req, res))
+    .get(checkToken, (req, res) => statisticController.get(req, res))
 
 router
     .route('/user/:userId/statistic/:priority')
-    .put((req, res) => statisticController.update(req, res))
+    .put(checkToken, (req, res) => statisticController.update(req, res))
 
 module.exports = router

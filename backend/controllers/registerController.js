@@ -53,6 +53,8 @@ const registerController = {
 
             const response = await UserModel.create(newUser)
 
+            response.password = undefined
+
             res
                 .status(201)
                 .json({ response, msg: "Usúario criado com sucesso" })

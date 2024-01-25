@@ -2,3 +2,4 @@ node_modules/
 views/
 *.json
 data/
+.env
