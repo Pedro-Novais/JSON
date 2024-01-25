@@ -211,6 +211,7 @@ export function interactorList() {
     modalDiv.setAttribute('id', 'modal-remove')
 
     const main = document.querySelector('main')
+    const header = document.querySelector('header')
     const container = document.querySelector('#container')
     container.style.display = "none"
 
@@ -229,6 +230,8 @@ export function interactorList() {
       titleAction.appendChild(title)
     }
     modalRemovePriority(json, id)
+
+    header.style.pointerEvents = 'none';
   }
 
   function modalRemovePriority(json, id) {
@@ -275,6 +278,14 @@ export function interactorList() {
     modalDiv.innerHTML = modalEdit;
 
     main.appendChild(modalDiv)
+
+    if(activeHover !== null){
+      activeHover = null
+    }
+
+    const header = document.querySelector('header')
+    header.style.pointerEvents = 'none';
+
     getPriority()
     hoverPriority()
 
@@ -315,6 +326,9 @@ export function interactorList() {
       let modalType = ".modal"
       let divModal = document.querySelector(modalType)
       divModal.remove();
+
+      const header = document.querySelector('header')
+      header.style.pointerEvents = 'auto';
 
       const container = document.querySelector('#container')
       container.style.display = "flex"
@@ -463,7 +477,7 @@ export function interactorList() {
             level[0].style.backgroundColor = "#05DBF2"
 
             level[0].addEventListener('mouseleave', outHover)
-
+            console.log("priority one")
           }
         }
 
@@ -473,6 +487,7 @@ export function interactorList() {
             level[i].style.backgroundColor = "#05DBF2"
           }
           level[1].addEventListener('mouseleave', outHover)
+          console.log("priority two")
         }
 
         if (levelHover == "priority-three") {
@@ -482,6 +497,7 @@ export function interactorList() {
           }
 
           level[2].addEventListener('mouseleave', outHover)
+          console.log("priority three")
         }
       })
     })

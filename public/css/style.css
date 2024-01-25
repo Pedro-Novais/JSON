@@ -28,20 +28,12 @@
     width: 100%;
   }
 }
-@keyframes slidePagesProfile {
-  from {
-    width: 0;
-  }
-  to {
-    width: 80%;
-  }
-}
 @keyframes slideTask {
   from {
-    height: 25%;
+    width: 20%;
   }
   to {
-    height: 100%;
+    width: 100%;
   }
 }
 @keyframes slideProfile {
@@ -508,6 +500,7 @@ body #main-profile .view-infos .container-config {
   flex-direction: column;
   width: 100%;
   height: 90%;
+  animation: slideBoxStatistic 0.5s ease;
 }
 body #main-profile .view-infos .container-config .box-configs {
   display: flex;
@@ -523,6 +516,7 @@ body #main-profile .view-infos .container-config .box-configs {
   width: 80%;
   height: 60%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  overflow: hidden;
 }
 body #main-profile .view-infos .container-config .box-configs .box-configurations {
   display: flex;
@@ -545,6 +539,7 @@ body #main-profile .view-infos .container-config .box-configs .box-configuration
   width: 100%;
   margin-bottom: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+  overflow: hidden;
 }
 body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config .ball-option {
   width: 40px;
@@ -587,6 +582,7 @@ body #main-profile .view-infos .container-config .style-to-name-config {
   font-size: 1.2rem;
   font-weight: 580;
   margin-right: 0.5em;
+  white-space: nowrap;
 }
 body #modal-remove {
   display: flex;
@@ -764,9 +760,10 @@ body main #container #container-info #priority {
   border-radius: 0.5rem;
   color: white;
   background-color: #034AA6;
+  overflow: hidden;
 }
 body main #container #container-info #priority p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 900;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -901,6 +898,7 @@ body .task-puted {
   font-weight: 900;
   letter-spacing: 0.1rem;
   width: 50%;
+  white-space: nowrap;
 }
 body .choose-priority {
   width: 20px;
