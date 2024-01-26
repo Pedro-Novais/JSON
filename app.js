@@ -8,7 +8,9 @@ app.use(cors())
 
 app.use(express.json())
 
-// Configurar o middleware para servir arquivos estáticos
+// Configuração do mecanismo de template
+app.set('view engine', 'ejs');
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // DB Conection
@@ -18,7 +20,9 @@ conn()
 
 // Routes
 const routes = require ('./backend/routes/router')
+const routesPage = require('./backend/routes/routerPage')
 
+app.use('/', routesPage)
 app.use('/api', routes)
 
 app.use(express.json())

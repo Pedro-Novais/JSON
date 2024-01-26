@@ -258,6 +258,7 @@ export function interactorList() {
   }
 
   function modalChange() {
+
     let modalDiv = document.createElement('div');
     modalDiv.setAttribute('class', 'modal')
     modalDiv.setAttribute('id', 'modal-edit')
@@ -285,7 +286,7 @@ export function interactorList() {
 
     const header = document.querySelector('header')
     header.style.pointerEvents = 'none';
-
+  
     getPriority()
     hoverPriority()
 
@@ -322,6 +323,7 @@ export function interactorList() {
     })
 
     btnCancelNewTask.addEventListener('click', () => {
+  
       let priority = ["priority-one", "priority-two", "priority-three"]
       let modalType = ".modal"
       let divModal = document.querySelector(modalType)
