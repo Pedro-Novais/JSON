@@ -8,10 +8,12 @@ app.use(cors())
 
 app.use(express.json())
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Configuração do mecanismo de template
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 // DB Conection
 const conn = require('./backend/db/conn')

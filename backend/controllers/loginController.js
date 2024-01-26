@@ -32,7 +32,9 @@ const loginController = {
                 secret
             )
 
-            res.status(200).json({ token, msg: 'Login bem-sucedido' });
+            const userLoged = user._id
+
+            res.status(200).json({ token, userLoged, msg: 'Login bem-sucedido' });
             
         } catch (error) {
             console.log(error)

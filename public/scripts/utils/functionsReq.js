@@ -72,6 +72,76 @@ async function addTaskBack(url, data) {
 
 }
 
+async function get(url, token){
+    try {
+        
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        return response
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function getUser(url, id, token){
+
+    try {
+        
+        const urlApi = `${url}/${id}`
+        const response = await fetch(urlApi, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        if (!response.ok) {
+            throw new Error(`Erro de rede: ${response.status}`);
+        }
+
+        const responseData = await response.json()
+
+        return responseData
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function post(url, data){
+
+    try {
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        if (!response.ok) {
+            throw new Error(`Erro de rede: ${response.status}`);
+        }
+
+        const responseData = await response.json()
+
+        return responseData
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 async function updateTaskBack(url, id, data, determinate) {
     try {
         let methodUpdate;
@@ -135,4 +205,4 @@ async function deleteTaskBack(url, id) {
     }
 }
 
-export { deleteTaskBack, updateTaskBack, addTaskBack, getConfig, order }
+export { deleteTaskBack, updateTaskBack, addTaskBack, getConfig, order, getUser, post, get }

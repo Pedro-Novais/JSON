@@ -1,3 +1,9 @@
+import { get, getUser, post } from "./utils/functionsReq.js"
+
+const urlLogin = "/api/login"
+const getInfoUser = "/api/user"
+const urlList = "/list-to-do"
+
 const email = document.querySelector('#value-email')
 const password = document.querySelector('#value-password')
 
@@ -7,14 +13,35 @@ btnSend.addEventListener('click', makeLogin)
 
 removePlaceholder()
 
-function makeLogin(){
-    if(email.value == "" || password.value == ""){
+async function makeLogin(){
+    /*if(email.value == "" || password.value == ""){
         return console.log('Preencha todos os dados para realizar o login')
     }
 
     if(!validEmail(email.value)){
         return console.log('Formato de email inválido')
+    }*/
+
+    email.value = "lista@gmail.com"
+    password.value = "Lista"
+
+    let data = {
+        email: email.value,
+        password: password.value
     }
+
+    const loginResult = await post(urlLogin, data)
+
+    if(loginResult.token){
+
+        const responseInfoUser = await getUser(getInfoUser, loginResult.userLoged, loginResult.token)
+
+        const responseToDo = await get(urlList, loginResult.token)
+
+        console.log(responseToDo)
+        window.location.href = responseToDo.url
+    }
+
 }
 
 function validEmail(email) {
