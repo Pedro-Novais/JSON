@@ -6,13 +6,17 @@ const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
 const apiStatistics = 'http://localhost:5000/statistic'
 
+const apiTask = '/api/user/tasks'
+
 let statistic = null;
 let priorityId = null;
 let activeHover = null;
 
 export async function interactorList() { 
-  
   const responseVerificationUser = await verifyUser()
+  const configJson = responseVerificationUser.responseData.configurations
+  const taskJson = responseVerificationUser.responseData.tasks
+  console.log(taskJson)
 
   statusUser(responseVerificationUser)
   
@@ -29,18 +33,16 @@ export async function interactorList() {
   //Call the functions to get the infos in endpoint about statistic and config
   async function getStatisticAndConfig() {
     try{
-    let StatisticJson = await getConfig(apiStatistics)
-    getStatistics(StatisticJson)
-
-    let configJson = await getConfig(apiConfig)
+   
+    //getStatistics(StatisticJson)
     loadingConfig(configJson)
+
     }catch(err){
       console.log(err)
     }
   }
 
   function statusUser(user){
-
     if(!user.ok){
     
       window.location.href = "/login"
@@ -52,7 +54,7 @@ export async function interactorList() {
   
   //Function that make the verification and add new tasks from user
   async function addTask() {
-
+    const token  = localStorage.getItem('token')
     const input = document.querySelector('#task-add').value
 
     if (input == "" || input == null) {
@@ -78,8 +80,13 @@ export async function interactorList() {
     }
 
     try {
-      const resultStatistic = await changeStatistic(priorityId, 0)
-      const resultAdding = await addTaskBack(api, data)
+      //const resultStatistic = await changeStatistic(priorityId, 0)
+      const resultAdding = await addTaskBack(apiTask, data, token)
+      
+      if(resultAdding.ok){
+        loadingTask(null, 1)
+      }
+    
     } catch (err) {
       console.log(err)
     }
@@ -89,24 +96,38 @@ export async function interactorList() {
   function loadingConfig(configs) {
     let priorityOrderJson = configs["orderPriority"]
 
-    loadingTask(priorityOrderJson)
+    loadingTask(priorityOrderJson, 0)
   }
 
-  async function loadingTask(priorityJson) {
+  async function loadingTask(priorityJson = null, determinate) {
     let data;
 
     try {
-      if (priorityJson == true) {
+      /*if (priorityJson == true) {
         for (let i = 3; i >= 1; i--) {
           data = await order(api, i)
           orderPriority(data)
 
         }
       }
-      else {
-        data = await order(api)
-        orderPriority(data)
-      }
+      else {}*/
+        const token  = localStorage.getItem('token')
+
+        const tasks = await order(apiTask, token)
+       
+        if(determinate == 0){
+          orderPriority(tasks)
+
+        }
+
+        if(determinate == 1){
+          const size = tasks.length - 1
+          createTask(tasks, size)
+          cleanValues()
+          clearNewClick()
+          activeHover = null
+        }
+    
     } catch (error) {
       console.log(error)
     }
@@ -121,10 +142,12 @@ export async function interactorList() {
   }
 
   function createTask(taskJson, index) {
+    const idTask = taskJson[index]['_id']
     const container = document.querySelector('#task-made')
 
     const div = document.createElement('div')
     div.setAttribute('class', 'tasks')
+    div.setAttribute('id', `_${idTask}`)
 
     const priorityAction = document.createElement('div')
     priorityAction.setAttribute('class', 'priority-action')
@@ -168,6 +191,7 @@ export async function interactorList() {
 
   function createActions(div, priority, i, json) {
     let id = json[i]['id']
+    let idTask = json[i]['_id']
     let levelPriority = json[i]['priority']
     const div_action = document.createElement('div')
     div_action.setAttribute('class', 'container-actions')
@@ -180,9 +204,9 @@ export async function interactorList() {
     i_del.setAttribute('class', 'actions')
     i_edit.setAttribute('class', 'actions')
 
-    /*i_add.setAttribute('id', `add-${id}`)
-    i_del.setAttribute('id', `del-${id}`)
-    i_edit.setAttribute('id', `edit-${id}`)*/
+    i_add.setAttribute('id', `add-${idTask}`)
+    i_del.setAttribute('id', `del-${idTask}`)
+    i_edit.setAttribute('id', `edit-${idTask}`)
 
     i_add.setAttribute('src', './svg/check-solid.svg')
     i_del.setAttribute('src', './svg/xmark-solid.svg')
@@ -205,12 +229,12 @@ export async function interactorList() {
 
     i_add.addEventListener('click', () => {
       modalRemove(json, id, 1)
-      validUpdate(id, 2, levelPriority)
+      validUpdate(idTask, 2, levelPriority)
     })
 
     i_del.addEventListener('click', () => {
       modalRemove(json, id, 0)
-      validUpdate(id, 1, levelPriority)
+      validUpdate(idTask, 1, levelPriority)
     })
 
     i_edit.addEventListener('click', () => {
@@ -363,8 +387,16 @@ export async function interactorList() {
 
   async function finishTask(level, id) {
     try{
-    changeStatistic(level, 1)
-    let responseDelete = await deleteTaskBack(api, id)
+    //changeStatistic(level, 1)
+    const token  = localStorage.getItem('token')
+    let responseDelete = await deleteTaskBack(apiTask, id, token)
+    console.log(responseDelete)
+    if(responseDelete.ok){
+      removeTaskFront(responseDelete.responseData.taskId)
+      cleanValues()
+      clearNewClick()
+      activeHover = null
+    }
 
     }catch(err){
       console.log(err)
@@ -373,19 +405,50 @@ export async function interactorList() {
 
   async function deleteTask(level, id) {
     try{
-    changeStatistic(level, 2)
-    let responseDelete = await deleteTaskBack(api, id)
+    //changeStatistic(level, 2)
+    const token  = localStorage.getItem('token')
+    let responseDelete = await deleteTaskBack(apiTask, id, token)
+
+    if(responseDelete.ok){
+      removeTaskFront(responseDelete.responseData.taskId)
+      cleanValues()
+      clearNewClick()
+      activeHover = null
+    }
 
     }catch(err){
       console.log(err)
     }
   }
 
+  function cleanValues(){
+    const input = document.querySelector('#task-add')
+
+    input.value = ""
+  }
+
+  function removeTaskFront(task){
+    const div = document.querySelector('.modal')
+    const header = document.querySelector('header')
+    const container = document.querySelector('#container')
+
+    div.remove()
+    header.style.pointerEvents = 'auto';
+    container.style.display = "flex"
+
+    const taskRemoved = document.querySelector(`#_${task}`)
+  
+    taskRemoved.remove();
+   
+    }
+
   async function updateTask(id, newTask) {
     try {
       let data = {
-        task: newTask,
-        priority: priorityId + 1
+        taskEdit:{
+          task: newTask,
+          priority: priorityId + 1
+        }
       }
       const responseUpdateTask = await updateTaskBack(api, id, data, 1)
     }catch(err){
@@ -494,7 +557,7 @@ export async function interactorList() {
             level[0].style.backgroundColor = "#05DBF2"
 
             level[0].addEventListener('mouseleave', outHover)
-            console.log("priority one")
+      
           }
         }
 
@@ -504,7 +567,7 @@ export async function interactorList() {
             level[i].style.backgroundColor = "#05DBF2"
           }
           level[1].addEventListener('mouseleave', outHover)
-          console.log("priority two")
+     
         }
 
         if (levelHover == "priority-three") {
@@ -514,7 +577,7 @@ export async function interactorList() {
           }
 
           level[2].addEventListener('mouseleave', outHover)
-          console.log("priority three")
+    
         }
       })
     })

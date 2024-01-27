@@ -1,25 +1,22 @@
-async function order(url, id = null) {
+async function order(url, token) {
     try {
-        let way;
 
-        if (id !== null) {
-            way = `${url}/?priority=${id}`;
-        } else {
-            way = url;
-        }
-
-        const response = await fetch(way, {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         });
         if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
+            return { 
+                status: response.status, 
+                ok: response.ok
+            }
         }
 
         const json = await response.json();
-
+       
         return json;
 
     } catch (err) {
@@ -27,7 +24,7 @@ async function order(url, id = null) {
     }
 }
 
-async function getConfig(url, idUser, token) {
+async function getConfig(url, token) {
     try {
 
         const response = await fetch(url, {
@@ -51,23 +48,27 @@ async function getConfig(url, idUser, token) {
     }
 }
 
-async function addTaskBack(url, data) {
+async function addTaskBack(url, data, token) {
     try {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
-
+       
         if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
+            return {
+                status: response.status, 
+                ok: response.ok
+            }
         }
 
         const responseData = await response.json()
-
-        return responseData
+        
+        return { responseData, status: response.status, ok: response.ok }
     } catch (err) {
         throw err
     }
@@ -190,13 +191,14 @@ async function updateTaskBack(url, id, data, determinate) {
     }
 }
 
-async function deleteTaskBack(url, id) {
+async function deleteTaskBack(url, id, token) {
     try {
         let way = `${url}/${id}`
         const response = await fetch(way, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
 
@@ -205,8 +207,8 @@ async function deleteTaskBack(url, id) {
         }
 
         const responseData = await response.json()
-
-        return responseData
+        
+        return { responseData, status: response.status, ok: response.ok } 
 
     } catch (err) {
         throw err

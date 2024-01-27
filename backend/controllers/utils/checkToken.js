@@ -25,7 +25,6 @@ function checkToken(req, res, next) {
         const id = decodedTokenId.id;
 
         req.userId = id;
-        console.log("exibe")
 
         jwt.verify(token, secret)
 

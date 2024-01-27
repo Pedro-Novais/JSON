@@ -63,7 +63,7 @@ const userController = {
         try {
             const id = req.userId
 
-            const user = await UserModel.findById(id)
+            const user = await UserModel.findById(id).select('-_id')
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })

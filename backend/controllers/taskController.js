@@ -14,10 +14,13 @@ const taskController = {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
-           
+            let priorityTry = req.body.priority;
+            if(priorityTry > 3) {
+                priorityTry = 3
+            }
             const newTask = {
                 task: req.body.task,
-                priority: req.body.priority,
+                priority: priorityTry,
                 userId: id
             }
             

@@ -37,10 +37,10 @@
 
 @keyframes slideTask {
     from {
-        width: 20%;
+        height: 85%;
     }
     to {
-        width: 100%;
+        height: 100%;
     }
   }
 
@@ -55,10 +55,10 @@
 
 @keyframes slideIn {
     from {
-        min-height: 15%;
+        opacity: .3;
     }
     to {
-        min-height: 30%;
+        opacity: 1;
     }
   }
 
@@ -978,7 +978,7 @@ body {
         margin-bottom: 1rem;
         padding: 0rem 1rem 0rem 3rem;
         border-radius: 1.3rem;
-        //animation: slideIn .5s ease-out;
+        animation: slideIn .5s ease
     }
 
     .task-puted {
