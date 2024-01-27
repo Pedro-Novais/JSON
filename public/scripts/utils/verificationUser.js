@@ -4,10 +4,9 @@ export async function verifyUser(){
 
     const getInfoUser = "/api/user"
 
-    const idUser = localStorage.getItem('id') 
     const token = localStorage.getItem('token')
 
-    const responseInfoUser = await getUser(getInfoUser, idUser, token)
+    const responseInfoUser = await getUser(getInfoUser, token)
 
     return  responseInfoUser
 

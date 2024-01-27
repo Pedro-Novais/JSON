@@ -6,9 +6,9 @@ const taskController = {
     create: async (req, res) => {
         try {
 
-            const userId = req.params.id
+            const id = req.userId
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })
@@ -18,7 +18,7 @@ const taskController = {
             const newTask = {
                 task: req.body.task,
                 priority: req.body.priority,
-                userId: userId
+                userId: id
             }
             
             // Utilizando o método create para criar e salvar a nova tarefa
@@ -42,7 +42,7 @@ const taskController = {
 
     getAll: async (req, res) => {
         try {
-            const id = req.params.userId
+            const id = req.userId
 
             const user = await UserModel.findById(id)
 
@@ -69,10 +69,10 @@ const taskController = {
 
     delete: async (req, res) =>{
         try {
-            const userId = req.params.userId
+            const id = req.userId
             const taskId = req.params.taskId
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })
@@ -102,11 +102,11 @@ const taskController = {
 
     update: async (req, res) =>{
         try {
-            const userId = req.params.userId
+            const id = req.userId
             const taskId = req.params.taskId
             const newTask = req.body.taskEdit
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })

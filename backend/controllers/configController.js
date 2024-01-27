@@ -37,9 +37,9 @@ const configController = {
 
     getAll: async (req, res) => {
         try {
-            const userId = req.params.userId
+            const id = req.userId
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })
@@ -57,9 +57,9 @@ const configController = {
 
     update: async (req, res) => {
         try {
-            const userId = req.params.userId
+            const id = req.userId
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })

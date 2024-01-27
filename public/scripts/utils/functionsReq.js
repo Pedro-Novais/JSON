@@ -27,12 +27,14 @@ async function order(url, id = null) {
     }
 }
 
-async function getConfig(url) {
+async function getConfig(url, idUser, token) {
     try {
+
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -83,6 +85,7 @@ async function get(url, token){
             }
         })
 
+        console.log(response)
         return response
 
     } catch (error) {
@@ -90,12 +93,11 @@ async function get(url, token){
     }
 }
 
-async function getUser(url, id, token){
+async function getUser(url, token){
 
     try {
         
-        const urlApi = `${url}/${id}`
-        const response = await fetch(urlApi, {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

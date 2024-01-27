@@ -11,7 +11,7 @@ let priorityId = null;
 let activeHover = null;
 
 export async function interactorList() { 
-
+  
   const responseVerificationUser = await verifyUser()
 
   statusUser(responseVerificationUser)
@@ -42,7 +42,7 @@ export async function interactorList() {
   function statusUser(user){
 
     if(!user.ok){
-  
+    
       window.location.href = "/login"
     }else if(user.ok){
       

@@ -5,9 +5,9 @@ const statisticController = {
     get: async (req, res) => {
         try {
 
-            const userId = req.params.userId
+            const id = req.userId
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })
@@ -23,10 +23,10 @@ const statisticController = {
 
     update: async (req, res) => {
         try {
-            const userId = req.params.userId
+            const id = req.userId
             const priority = req.params.priority
 
-            const user = await UserModel.findById(userId)
+            const user = await UserModel.findById(id)
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })

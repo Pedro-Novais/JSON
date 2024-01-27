@@ -1,5 +1,6 @@
 const { User: UserModel } = require('../models/user')
 const { Task: TaskModel } = require('../models/tasks')
+const jwt = require('jsonwebtoken')
 
 const userController = {
 
@@ -60,8 +61,7 @@ const userController = {
 
     get: async (req, res) => {
         try {
-
-            const id = req.params.id;
+            const id = req.userId
 
             const user = await UserModel.findById(id)
 
@@ -69,9 +69,9 @@ const userController = {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
-           
+
             //return res.status(404).json({ msg: "Usúario não encontrado" })
-            
+
             res.status(201).json(user)
         } catch (error) {
             console.log(error)
@@ -80,8 +80,7 @@ const userController = {
 
     delete: async (req, res) => {
         try {
-
-            const id = req.params.id
+            const id = req.userId
 
             const user = await UserModel.findById(id)
 
@@ -92,17 +91,17 @@ const userController = {
 
             const taskToDelete = user.tasks
 
-            if(taskToDelete.length > 0){
-                for(let i = 0; i < taskToDelete.length; i++){
-                 
+            if (taskToDelete.length > 0) {
+                for (let i = 0; i < taskToDelete.length; i++) {
+
                     await TaskModel.findByIdAndDelete(taskToDelete[i])
-    
+
                 }
-                
+
             }
 
             const deleteUser = await UserModel.findByIdAndDelete(id)
-           
+
             res
                 .status(200)
                 .json({ deleteUser, msg: "Usúario excluido com sucesso" })
@@ -115,12 +114,12 @@ const userController = {
     update: async (req, res) => {
         try {
 
-            const id = req.params.id
+            const id = req.userId
             let updatePatch = {};
-           
+
             if (req.body.name) {
                 updatePatch.name = req.body.name
-            } 
+            }
             if (req.body.email) {
                 updatePatch.email = req.body.email
             }
