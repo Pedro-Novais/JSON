@@ -1,5 +1,6 @@
-import {getConfig, addTaskBack, deleteTaskBack, updateTaskBack, order} from "./utils/functionsReq.js"
+import { getConfig, addTaskBack, deleteTaskBack, updateTaskBack, order } from "./utils/functionsReq.js"
 import { modalEdit, modalRemovetext } from "./utils/modals.js"
+import { verifyUser } from "./utils/verificationUser.js"
 
 const api = 'http://localhost:5000/tasks'
 const apiConfig = 'http://localhost:5000/config'
@@ -9,9 +10,12 @@ let statistic = null;
 let priorityId = null;
 let activeHover = null;
 
-export function interactorList() { 
+export async function interactorList() { 
 
+  const responseVerificationUser = await verifyUser()
 
+  statusUser(responseVerificationUser)
+  
   getStatisticAndConfig()
 
   getPriority()
@@ -35,6 +39,17 @@ export function interactorList() {
     }
   }
 
+  function statusUser(user){
+
+    if(!user.ok){
+  
+      window.location.href = "/login"
+    }else if(user.ok){
+      
+      return true
+    }
+  }
+  
   //Function that make the verification and add new tasks from user
   async function addTask() {
 

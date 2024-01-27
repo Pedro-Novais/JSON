@@ -69,8 +69,10 @@ const userController = {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
-
-            res.json(user)
+           
+            //return res.status(404).json({ msg: "Usúario não encontrado" })
+            
+            res.status(201).json(user)
         } catch (error) {
             console.log(error)
         }

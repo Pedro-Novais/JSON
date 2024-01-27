@@ -1,7 +1,6 @@
 import { get, getUser, post } from "./utils/functionsReq.js"
 
 const urlLogin = "/api/login"
-const getInfoUser = "/api/user"
 const urlList = "/list-to-do"
 
 const email = document.querySelector('#value-email')
@@ -23,7 +22,7 @@ async function makeLogin(){
     }*/
 
     email.value = "lista@gmail.com"
-    password.value = "Lista"
+    //password.value = "Lista"
 
     let data = {
         email: email.value,
@@ -32,14 +31,17 @@ async function makeLogin(){
 
     const loginResult = await post(urlLogin, data)
 
-    if(loginResult.token){
+    if(loginResult.ok){
 
-        const responseInfoUser = await getUser(getInfoUser, loginResult.userLoged, loginResult.token)
+        const responseToDo = await get(urlList, loginResult.responseData.token)
 
-        const responseToDo = await get(urlList, loginResult.token)
+        localStorage.setItem('token', loginResult.responseData.token);
+        localStorage.setItem('id', loginResult.responseData.userLoged);
 
-        console.log(responseToDo)
         window.location.href = responseToDo.url
+    }else{
+
+        console.log(loginResult)
     }
 
 }

@@ -104,12 +104,15 @@ async function getUser(url, id, token){
         })
 
         if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
+            return { 
+                status: response.status, 
+                ok: response.ok
+            }
         }
 
         const responseData = await response.json()
-
-        return responseData
+       
+        return { responseData, status: response.status, ok: response.ok }
 
     } catch (error) {
         console.log(error)
@@ -129,12 +132,15 @@ async function post(url, data){
         })
 
         if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
+            return { 
+                status: response.status, 
+                ok: response.ok
+            }
         }
 
         const responseData = await response.json()
-
-        return responseData
+    
+        return { responseData, status: response.status, ok: response.ok }
         
     } catch (error) {
         console.log(error)

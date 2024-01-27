@@ -18,7 +18,7 @@ const loginController = {
             }
 
             const isPasswordValid = await bcrypt.compare(password, user.password);
-            
+     
             if (!isPasswordValid) {
                 return res.status(401).json({ msg: 'Credenciais inválidas' });
             }
@@ -33,7 +33,7 @@ const loginController = {
             )
 
             const userLoged = user._id
-
+            
             res.status(200).json({ token, userLoged, msg: 'Login bem-sucedido' });
             
         } catch (error) {
