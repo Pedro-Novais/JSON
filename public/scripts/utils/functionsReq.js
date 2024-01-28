@@ -151,7 +151,7 @@ async function post(url, data){
 
 }
 
-async function updateTaskBack(url, id, data, determinate) {
+async function updateTaskBack(url, id, data, determinate, token) {
     try {
         let methodUpdate;
         let way;
@@ -173,18 +173,22 @@ async function updateTaskBack(url, id, data, determinate) {
         const response = await fetch(way, {
             method: methodUpdate,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
 
         if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
+            return {
+                status: response.status, 
+                ok: response.ok
+            }
         }
 
         const responseData = await response.json()
 
-        return responseData
+        return { responseData, status: response.status, ok: response.ok }
 
     } catch (err) {
         throw err

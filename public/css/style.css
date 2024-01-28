@@ -22,7 +22,7 @@
 
 @keyframes slideBoxStatistic {
   from {
-    width: 0;
+    width: 85%;
   }
   to {
     width: 100%;
@@ -38,7 +38,7 @@
 }
 @keyframes slideProfile {
   from {
-    height: 0;
+    height: 70%;
   }
   to {
     height: 100%;
@@ -93,7 +93,7 @@ body .style-bar-options {
   align-items: center;
   flex-direction: column;
   width: 90%;
-  height: 100%;
+  height: 100vh;
   padding: 1rem;
   transition: 2s;
   overflow: hidden;
@@ -1280,7 +1280,7 @@ body footer {
     width: 40%;
   }
   body main #container #task-made .container-actions {
-    width: 40%;
+    width: 50%;
   }
   body main #container #task-made .actions {
     height: 2.5vh;
@@ -1432,7 +1432,7 @@ body footer {
     margin-bottom: 1rem;
   }
   body main #container #task-made .container-actions .actions {
-    height: 2.5vh;
+    height: 2.7vh;
   }
   body main #container .task-puted {
     font-size: 1rem;

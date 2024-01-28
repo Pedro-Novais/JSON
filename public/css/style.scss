@@ -28,7 +28,7 @@
 
 @keyframes slideBoxStatistic{
     from {
-        width: 0;
+        width: 85%;
     }
     to {
         width: 100%;
@@ -46,7 +46,7 @@
 
 @keyframes slideProfile {
     from {
-        height: 0;
+        height: 70%;
     }
     to {
         height: 100%;
@@ -104,7 +104,7 @@ body {
         @include container;
         flex-direction: column;
         width: 90%;
-        height: 100%;
+        height: 100vh;
         padding: 1rem;
         transition: 2s;
         overflow: hidden;
@@ -1382,7 +1382,7 @@ body {
                     }
 
                     .container-actions {
-                        width: 40%;
+                        width: 50%;
                     }
 
                     .actions {
@@ -1603,7 +1603,7 @@ body {
 
                     .container-actions {
                         .actions {
-                            height: 2.5vh;
+                            height: 2.7vh;
                         }
                     }
                 }
