@@ -23,8 +23,6 @@ export async function interactorList() {
 
   const arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
 
-  console.log(arrayStatistic)
-
   loadingTask(null, 0)
 
   getPriority()
@@ -91,7 +89,6 @@ export async function interactorList() {
     try {
       const token = localStorage.getItem('token')
       const tasks = await order(apiTask, token)
-      console.log(tasks)
       //configJson.orderPriority = false
 
       if (determinate != null) {
@@ -247,7 +244,7 @@ export async function interactorList() {
     div.appendChild(priority)
 
     i_add.addEventListener('click', () => {
-      console.log(levelPriority)
+      
       modalRemove(json, idTask, 1)
       validUpdate(idTask, 2, levelPriority)
     })
@@ -519,7 +516,7 @@ export async function interactorList() {
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
-        console.log(responseUpdateStatistic)
+     
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created + 1,
@@ -540,7 +537,7 @@ export async function interactorList() {
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
-        console.log(responseUpdateStatistic)
+    
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created,
@@ -560,7 +557,7 @@ export async function interactorList() {
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
-        console.log(responseUpdateStatistic)
+      
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created,

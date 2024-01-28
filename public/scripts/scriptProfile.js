@@ -1,10 +1,11 @@
 import { pageStatistic, pageConfigText } from "./utils/modals.js"
 import { getConfig, updateTaskBack } from "./utils/functionsReq.js"
+import { verifyUser } from "./utils/verificationUser.js"
 
 //não esquecer de tirar esse código, apenas para teste da page config 
 //interactorProfile()
 
-export function interactorProfile() {
+export async function interactorProfile() {
 
     let activeHover = null;
 
@@ -23,6 +24,8 @@ export function interactorProfile() {
     const apiConfig = 'http://localhost:5000/config'
     const apiStatistic = 'http://localhost:5000/statistic'
 
+    const responseVerificationUser = await verifyUser()
+    console.log(responseVerificationUser)
     getStatisticAndConfig()
 
     const viewPage = document.querySelector('#view-infos-unique')
