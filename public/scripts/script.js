@@ -7,19 +7,25 @@ const apiConfig = 'http://localhost:5000/config'
 const apiStatistics = 'http://localhost:5000/statistic'
 
 const apiTask = '/api/user/tasks'
+const apiStatistic = '/api/user/statistic'
 
-let statistic = null;
+//let statistic = null;
 let priorityId = null;
 let activeHover = null;
 
 export async function interactorList() {
+
   const responseVerificationUser = await verifyUser()
-  const configJson = responseVerificationUser.responseData.configurations
-  const taskJson = responseVerificationUser.responseData.tasks
 
   statusUser(responseVerificationUser)
+  const configJson = responseVerificationUser.responseData.configurations
+  const statistic = responseVerificationUser.responseData.statistic
 
-  getStatisticAndConfig()
+  const arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
+
+  console.log(arrayStatistic)
+
+  loadingTask(null, 0)
 
   getPriority()
   hoverPriority()
@@ -28,17 +34,6 @@ export async function interactorList() {
   const task_put = document.querySelector('#task-add')
 
   btn.addEventListener('click', addTask)
-
-  //Call the functions to get the infos in endpoint about statistic and config
-  async function getStatisticAndConfig() {
-    try {
-
-      loadingTask(null, 0)
-
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   function statusUser(user) {
     if (!user.ok) {
@@ -71,14 +66,14 @@ export async function interactorList() {
 
     priorityId = priorityId + 1
     let val = task_put.value
-    
+
     let data = {
       task: val,
       priority: priorityId
     }
 
     try {
-      //const resultStatistic = await changeStatistic(priorityId, 0)
+      const resultStatistic = await changeStatistic(priorityId, 0)
       const resultAdding = await addTaskBack(apiTask, data, token)
 
       if (resultAdding.ok) {
@@ -96,14 +91,15 @@ export async function interactorList() {
     try {
       const token = localStorage.getItem('token')
       const tasks = await order(apiTask, token)
+      console.log(tasks)
       //configJson.orderPriority = false
 
       if (determinate != null) {
         const tasksElement = document.querySelectorAll('.tasks')
         for (let i = 0; i < tasksElement.length; i++) {
-  
+
           tasksElement[i].remove()
-          
+
         }
         cleanValues()
         clearNewClick()
@@ -111,41 +107,43 @@ export async function interactorList() {
 
       }
 
-      if (configJson.orderPriority == true) {
+      if (tasks.length != 0) {
+        if (configJson.orderPriority == true) {
 
-        let taskOrderPriority = []
-        let state = 3;
+          let taskOrderPriority = []
+          let state = 3;
 
-        for (let i = 0; i <= tasks.length; i++) {
-          if (i == tasks.length) {
-            i = 0;
-            state = state - 1
-          }
-          if (state == 0) {
-            break
-          }
-          if (state == 3) {
-            if (tasks[i].priority == 3) {
-              taskOrderPriority.push(tasks[i])
+          for (let i = 0; i <= tasks.length; i++) {
+            if (i == tasks.length) {
+              i = 0;
+              state = state - 1
             }
-          } else if (state == 2) {
-            if (tasks[i].priority == 2) {
-              taskOrderPriority.push(tasks[i])
+            if (state == 0) {
+              break
             }
-          } else if (state == 1) {
-            if (tasks[i].priority == 1) {
-              taskOrderPriority.push(tasks[i])
+            if (state == 3) {
+              if (tasks[i].priority == 3) {
+                taskOrderPriority.push(tasks[i])
+              }
+            } else if (state == 2) {
+              if (tasks[i].priority == 2) {
+                taskOrderPriority.push(tasks[i])
+              }
+            } else if (state == 1) {
+              if (tasks[i].priority == 1) {
+                taskOrderPriority.push(tasks[i])
+              }
             }
           }
+
+          orderPriority(taskOrderPriority)
+
         }
-       
-        orderPriority(taskOrderPriority)
-
-      }
-      else {
+        else {
 
           orderPriority(tasks)
 
+        }
       }
 
     } catch (error) {
@@ -163,7 +161,7 @@ export async function interactorList() {
 
   function createTask(taskJson, index) {
     const idTask = taskJson[index]['_id']
-    
+
     const container = document.querySelector('#task-made')
 
     const div = document.createElement('div')
@@ -249,6 +247,7 @@ export async function interactorList() {
     div.appendChild(priority)
 
     i_add.addEventListener('click', () => {
+      console.log(levelPriority)
       modalRemove(json, idTask, 1)
       validUpdate(idTask, 2, levelPriority)
     })
@@ -396,19 +395,19 @@ export async function interactorList() {
       let priority = ["priority-one", "priority-two", "priority-three"]
       let modalType = ".modal"
       let divModal = document.querySelector(modalType)
-      
-      
+
+
       divModal.remove();
-      
+
       const header = document.querySelector('header')
       header.style.pointerEvents = 'auto';
-      
+
       const container = document.querySelector('#container')
       container.style.display = "flex"
-      
+
       if (determinate == 0) {
         const levelPiority = document.querySelectorAll('[mark]')
-        
+
         for (let i = 0; i < levelPiority.length; i++) {
           levelPiority[i].setAttribute('id', priority[i])
           levelPiority[i].setAttribute('class', 'choose-priority')
@@ -422,10 +421,11 @@ export async function interactorList() {
 
   async function finishTask(level, id) {
     try {
-      //changeStatistic(level, 1)
+
+      changeStatistic(level, 1)
       const token = localStorage.getItem('token')
       let responseDelete = await deleteTaskBack(apiTask, id, token)
-      console.log(responseDelete)
+
       if (responseDelete.ok) {
         removeTaskFront(responseDelete.responseData.taskId, 0)
         cleanValues()
@@ -440,7 +440,7 @@ export async function interactorList() {
 
   async function deleteTask(level, id) {
     try {
-      //changeStatistic(level, 2)
+      changeStatistic(level, 2)
       const token = localStorage.getItem('token')
       let responseDelete = await deleteTaskBack(apiTask, id, token)
 
@@ -513,38 +513,91 @@ export async function interactorList() {
 
   async function changeStatistic(priorityId, determinate) {
     try {
-      let responseUpdateStatistic;
+      const token = localStorage.getItem('token')
+      let responseUpdateStatistic = [];
       if (determinate == 0) {
-        let newCreate = statistic[priorityId - 1]["created"] + 1
+        const endStatistic = priorityName(priorityId)
 
+        responseUpdateStatistic = arrayStatistic[priorityId - 1]
+        console.log(responseUpdateStatistic)
         let dataStatistic = {
-          created: newCreate
+          [endStatistic]: {
+            created: responseUpdateStatistic.created + 1,
+            finished: responseUpdateStatistic.finished,
+            canceled: responseUpdateStatistic.canceled
+          }
+        }
+      
+        const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
+
+        if(!responseUpdate.ok){
+          console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
         }
 
-        responseUpdateStatistic = await updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
       }
 
       else if (determinate == 1) {
-        let newCreate = statistic[priorityId - 1]["finished"] + 1
+        const endStatistic = priorityName(priorityId)
 
+        responseUpdateStatistic = arrayStatistic[priorityId - 1]
+        console.log(responseUpdateStatistic)
         let dataStatistic = {
-          finished: newCreate
+          [endStatistic]: {
+            created: responseUpdateStatistic.created,
+            finished: responseUpdateStatistic.finished + 1,
+            canceled: responseUpdateStatistic.canceled
+          }
         }
+        
+        const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
-        responseUpdateStatistic = await updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
+        if(!responseUpdate.ok){
+          console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
+        }
       }
 
       else if (determinate == 2) {
-        let newCreate = statistic[priorityId - 1]["canceled"] + 1
+        const endStatistic = priorityName(priorityId)
 
+        responseUpdateStatistic = arrayStatistic[priorityId - 1]
+        console.log(responseUpdateStatistic)
         let dataStatistic = {
-          canceled: newCreate
+          [endStatistic]: {
+            created: responseUpdateStatistic.created,
+            finished: responseUpdateStatistic.finished,
+            canceled: responseUpdateStatistic.canceled + 1
+          }
         }
+       
+        const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
-        responseUpdateStatistic = await updateTaskBack(apiStatistics, priorityId, dataStatistic, 0)
+        if(!responseUpdate.ok){
+          console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
+        }
       }
     } catch (err) {
       console.log(err)
+    }
+  }
+
+  function priorityName(priority) {
+    let priorityName
+
+    if (priority == null) {
+      priorityName = "priorityOne"
+      return priorityName
+    }
+    else if (priority == 1) {
+      priorityName = "priorityOne"
+      return priorityName
+    }
+    else if (priority == 2) {
+      priorityName = "priorityTwo"
+      return priorityName
+    }
+    else if (priority == 3) {
+      priorityName = "priorityThree"
+      return priorityName
     }
   }
 

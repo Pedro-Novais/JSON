@@ -34,7 +34,7 @@ const statisticController = {
             }
     
             const newStatistic = req.body[priority]
-
+       
             user.statistic[priority] = newStatistic
 
             await user.save()

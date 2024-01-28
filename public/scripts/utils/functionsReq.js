@@ -187,8 +187,8 @@ async function updateTaskBack(url, id, data, determinate, token) {
         }
 
         const responseData = await response.json()
-
-        return { responseData, status: response.status, ok: response.ok }
+    
+        return { responseData, status: response.status, ok: response.ok}
 
     } catch (err) {
         throw err
