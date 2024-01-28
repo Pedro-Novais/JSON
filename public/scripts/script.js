@@ -16,7 +16,6 @@ export async function interactorList() {
   const responseVerificationUser = await verifyUser()
   const configJson = responseVerificationUser.responseData.configurations
   const taskJson = responseVerificationUser.responseData.tasks
-  console.log(taskJson)
 
   statusUser(responseVerificationUser)
 
@@ -72,7 +71,7 @@ export async function interactorList() {
 
     priorityId = priorityId + 1
     let val = task_put.value
-
+    
     let data = {
       task: val,
       priority: priorityId
@@ -84,6 +83,7 @@ export async function interactorList() {
 
       if (resultAdding.ok) {
         loadingTask(null, 1)
+        priorityId = null
       }
 
     } catch (err) {
@@ -92,40 +92,60 @@ export async function interactorList() {
 
   }
 
-  async function loadingTask(priorityJson = null, determinate) {
+  async function loadingTask(priorityJson = null, determinate = null) {
     try {
       const token = localStorage.getItem('token')
-      configJson.orderPriority = false
-      if (configJson.orderPriority == true) {
-        console.log('chegou')
-        for (let i = 3; i >= 1; i--) {
-          let data = await order(apiTask, token)
-          console.log(data)
-          //orderPriority(data)
+      const tasks = await order(apiTask, token)
+      //configJson.orderPriority = false
 
+      if (determinate != null) {
+        const tasksElement = document.querySelectorAll('.tasks')
+        for (let i = 0; i < tasksElement.length; i++) {
+  
+          tasksElement[i].remove()
+          
         }
+        cleanValues()
+        clearNewClick()
+        activeHover = null
+
+      }
+
+      if (configJson.orderPriority == true) {
+
+        let taskOrderPriority = []
+        let state = 3;
+
+        for (let i = 0; i <= tasks.length; i++) {
+          if (i == tasks.length) {
+            i = 0;
+            state = state - 1
+          }
+          if (state == 0) {
+            break
+          }
+          if (state == 3) {
+            if (tasks[i].priority == 3) {
+              taskOrderPriority.push(tasks[i])
+            }
+          } else if (state == 2) {
+            if (tasks[i].priority == 2) {
+              taskOrderPriority.push(tasks[i])
+            }
+          } else if (state == 1) {
+            if (tasks[i].priority == 1) {
+              taskOrderPriority.push(tasks[i])
+            }
+          }
+        }
+       
+        orderPriority(taskOrderPriority)
+
       }
       else {
-        const token  = localStorage.getItem('token')
 
-        const tasks = await order(apiTask, token)
-        if (determinate == 0) {
           orderPriority(tasks)
 
-        }
-
-        if (determinate == 1) {
-          const tasksElement = document.querySelectorAll('.tasks')
-          for (let i = 0; i < tasksElement.length; i++) {
-
-            tasksElement[i].remove()
-
-          }
-          orderPriority(tasks)
-          cleanValues()
-          clearNewClick()
-          activeHover = null
-        }
       }
 
     } catch (error) {
@@ -143,6 +163,7 @@ export async function interactorList() {
 
   function createTask(taskJson, index) {
     const idTask = taskJson[index]['_id']
+    
     const container = document.querySelector('#task-made')
 
     const div = document.createElement('div')
@@ -190,7 +211,7 @@ export async function interactorList() {
   }
 
   function createActions(div, priority, i, json) {
-    let id = json[i]['id']
+    //let id = json[i]['id']
     let idTask = json[i]['_id']
     let levelPriority = json[i]['priority']
     const div_action = document.createElement('div')
@@ -228,12 +249,12 @@ export async function interactorList() {
     div.appendChild(priority)
 
     i_add.addEventListener('click', () => {
-      modalRemove(json, id, 1)
+      modalRemove(json, idTask, 1)
       validUpdate(idTask, 2, levelPriority)
     })
 
     i_del.addEventListener('click', () => {
-      modalRemove(json, id, 0)
+      modalRemove(json, idTask, 0)
       validUpdate(idTask, 1, levelPriority)
     })
 
@@ -279,7 +300,7 @@ export async function interactorList() {
     let levelTask;
 
     for (let i = 0; i <= json.length; i++) {
-      if (id == json[i]["id"]) {
+      if (id == json[i]["_id"]) {
         nameTask = json[i]["task"]
         levelTask = json[i]["priority"]
         break
@@ -375,22 +396,27 @@ export async function interactorList() {
       let priority = ["priority-one", "priority-two", "priority-three"]
       let modalType = ".modal"
       let divModal = document.querySelector(modalType)
+      
+      
       divModal.remove();
-
+      
       const header = document.querySelector('header')
       header.style.pointerEvents = 'auto';
-
+      
       const container = document.querySelector('#container')
       container.style.display = "flex"
-
+      
       if (determinate == 0) {
         const levelPiority = document.querySelectorAll('[mark]')
-
+        
         for (let i = 0; i < levelPiority.length; i++) {
           levelPiority[i].setAttribute('id', priority[i])
           levelPiority[i].setAttribute('class', 'choose-priority')
         }
       }
+      activeHover = null
+      cleanValues()
+      clearNewClick()
     })
   }
 
