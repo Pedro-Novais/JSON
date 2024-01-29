@@ -95,7 +95,6 @@ body .style-bar-options {
   width: 90%;
   height: 100vh;
   padding: 1rem;
-  transition: 2s;
   overflow: hidden;
   background: linear-gradient(to right, #011140, #011140);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 7px;
@@ -1137,6 +1136,7 @@ body footer {
   body #main-profile #container-profile {
     flex-direction: column;
     animation: none;
+    padding-bottom: 0.2em;
   }
   body #main-profile #container-select {
     flex-direction: row;
@@ -1451,5 +1451,44 @@ body footer {
     width: 98%;
     min-height: 47%;
     border-radius: 10px;
+  }
+}
+@media screen and (max-height: 600px) {
+  body {
+    height: 160vh;
+  }
+  body main {
+    height: 110vh;
+  }
+  body main #container #task-made .container-actions .actions {
+    height: 3.6vh;
+  }
+  body main #container .task-puted {
+    font-size: 1.2rem;
+  }
+  body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
+    height: 12vh;
+  }
+  body #main-profile .view-infos .container-statistic .container-statistic-bar {
+    height: 25vh;
+  }
+  body #modal-remove {
+    height: 60vh;
+  }
+  body .modal {
+    min-height: 60vh;
+  }
+  body .modal .content-btn {
+    height: 15vh;
+  }
+  body .content-priority {
+    height: 45%;
+  }
+  body .priority-level {
+    width: 20px;
+    height: 20px;
+  }
+  body .style-bar-options .container-bars .seeing-options-bar {
+    height: 10vh;
   }
 }/*# sourceMappingURL=style.css.map */

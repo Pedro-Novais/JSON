@@ -26,10 +26,11 @@
     border-radius: 20px;
 }
 
-@keyframes slideBoxStatistic{
+@keyframes slideBoxStatistic {
     from {
         width: 85%;
     }
+
     to {
         width: 100%;
     }
@@ -39,55 +40,61 @@
     from {
         height: 85%;
     }
+
     to {
         height: 100%;
     }
-  }
+}
 
 @keyframes slideProfile {
     from {
         height: 70%;
     }
+
     to {
         height: 100%;
     }
-  }
+}
 
 @keyframes slideIn {
     from {
         opacity: .3;
     }
+
     to {
         opacity: 1;
     }
-  }
+}
 
-  @keyframes slideBar {
+@keyframes slideBar {
     from {
         width: 0;
     }
+
     to {
         width: 90%;
     }
-  }
+}
 
-  @keyframes closeBar {
+@keyframes closeBar {
     from {
         width: 90%;
     }
+
     to {
         width: 0;
     }
-  }
+}
 
-  @keyframes slideStatistic {
+@keyframes slideStatistic {
     from {
         width: 0;
     }
+
     to {
         width: 30%;
     }
-  }
+}
 
 
 body {
@@ -106,7 +113,7 @@ body {
         width: 90%;
         height: 100vh;
         padding: 1rem;
-        transition: 2s;
+        //transition: 2s;
         overflow: hidden;
         background: linear-gradient(to right, $background-one, $background-one);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 7px;
@@ -342,6 +349,7 @@ body {
                 width: 100%;
                 min-height: 70vh;
             }
+
             //Container para a página de estatísticas
 
             .container-statistic {
@@ -355,7 +363,7 @@ body {
                     @include container;
                     flex-direction: row;
                     justify-content: space-around;
-                    width:22vw;
+                    width: 22vw;
                     height: 8vh;
                     position: relative;
                     padding: .2em;
@@ -372,7 +380,7 @@ body {
                         background-color: $details;
                         box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
 
-                        p{
+                        p {
                             font-size: 0.9em;
                             text-transform: uppercase;
                             letter-spacing: .1em;
@@ -380,13 +388,13 @@ body {
                             color: $white;
                         }
 
-                        .box-priority-statistic{
+                        .box-priority-statistic {
                             @include container;
                             justify-content: space-around;
                             width: 100%;
                             height: 100%;
 
-                            .choose-priority-statistic{
+                            .choose-priority-statistic {
                                 width: 22px;
                                 height: 22px;
                                 border-radius: 50%;
@@ -394,16 +402,16 @@ body {
                                 transition: .2s;
                             }
 
-                            .choose-priority-statistic:hover{
+                            .choose-priority-statistic:hover {
                                 cursor: pointer;
                             }
 
-                            #priority-all{
+                            #priority-all {
                                 @include container;
                                 justify-content: center;
                                 background-color: $priority;
 
-                                p{
+                                p {
                                     color: $background-dark;
                                 }
                             }
@@ -685,14 +693,14 @@ body {
     }
 
     // Estilo para a página de login e sign-up
-    #main-enter{
+    #main-enter {
         @include container;
         align-items: flex-start;
         justify-content: center;
         width: 35rem;
         height: 65%;
 
-         .conatiner-credentials{
+        .conatiner-credentials {
             @include container;
             flex-direction: column;
             width: 100%;
@@ -701,7 +709,7 @@ body {
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
-            h1{
+            h1 {
                 color: $white;
                 text-transform: uppercase;
                 font-weight: 700;
@@ -709,7 +717,7 @@ body {
                 margin-top: 1rem;
             }
 
-            .box-credentials{
+            .box-credentials {
                 @include container;
                 flex-direction: column;
                 align-items: flex-start;
@@ -719,18 +727,18 @@ body {
                 padding: .5em;
                 margin-top: 1rem;
 
-                #forget-password{
+                #forget-password {
                     color: $white;
                     align-self: flex-end;
                     transition: .3s;
                 }
 
-                #forget-password:hover{
+                #forget-password:hover {
                     cursor: pointer;
                     color: $color-light;
                 }
 
-                .box-inputs{
+                .box-inputs {
                     @include container;
                     flex-direction: column;
                     align-items: flex-start;
@@ -740,14 +748,14 @@ body {
                     height: 35%;
                 }
 
-                .title-input{
+                .title-input {
                     font-size: 1.2rem;
                     color: $white;
                     //text-transform: uppercase;
                     font-weight: 900;
                 }
 
-                .inputs-credentials{
+                .inputs-credentials {
                     background-color: transparent;
                     width: 100%;
                     height: 4vh;
@@ -755,23 +763,23 @@ body {
                     outline: none;
                     font-size: 1.1rem;
                     font-weight: 500;
-                    border-bottom: solid 2px $priority; 
+                    border-bottom: solid 2px $priority;
                     color: $white;
                     padding: .2em;
                     transition: .2s;
                 }
 
-                .inputs-credentials::placeholder{
+                .inputs-credentials::placeholder {
                     color: $white;
                     opacity: .9;
                 }
 
-                .inputs-credentials:focus{
+                .inputs-credentials:focus {
                     border-bottom: solid 2px $white;
                 }
             }
 
-            .btn-sign{
+            .btn-sign {
                 margin-top: 2em;
                 width: 80%;
                 height: 5vh;
@@ -787,7 +795,7 @@ body {
                 transition: .2s;
             }
 
-            .btn-sign:hover{
+            .btn-sign:hover {
                 cursor: pointer;
                 opacity: 1;
             }
@@ -1016,17 +1024,18 @@ body {
 
 @media screen and (max-width: 1350px) {
     body {
-         #main-profile {
+        #main-profile {
             .view-infos {
                 .container-statistic {
                     .choose-priority-view {
-                        .select-priority{
+                        .select-priority {
                             width: 90%;
                         }
                     }
                 }
             }
         }
+
         .modal {
             min-width: 70vw;
         }
@@ -1175,6 +1184,7 @@ body {
             #container-profile {
                 flex-direction: column;
                 animation: none;
+                padding-bottom: .2em;
             }
 
             #container-select {
@@ -1220,12 +1230,12 @@ body {
                         }
                     }
 
-                    .choose-priority-view{
+                    .choose-priority-view {
                         margin: 2em 0px 2em;
                         width: 28vw;
                     }
 
-                    .container-statistic-bar{
+                    .container-statistic-bar {
                         margin-top: 4.4rem;
                     }
                 }
@@ -1316,7 +1326,7 @@ body {
                         }
                     }
 
-                    .choose-priority-view{
+                    .choose-priority-view {
                         width: 58vw;
                     }
 
@@ -1407,27 +1417,27 @@ body {
 
         //Estilo para a página de login
 
-        #main-enter{
+        #main-enter {
             width: 90vw;
 
-            .conatiner-credentials{
+            .conatiner-credentials {
 
-                .box-credentials{
+                .box-credentials {
 
-                    .title-input{
-                        font-size:1rem ;
+                    .title-input {
+                        font-size: 1rem;
                     }
 
-                    .inputs-credentials{
+                    .inputs-credentials {
                         font-size: .9rem;
                     }
 
-                    #forget-password{
+                    #forget-password {
                         font-size: .9rem;
                     }
                 }
 
-                .btn-sign{
+                .btn-sign {
                     height: 7vh;
                     opacity: 1;
                 }
@@ -1512,7 +1522,8 @@ body {
                     .container-statistic-bar {
                         height: 18vh;
                         margin-top: 2rem;
-                        .statistic-bar{
+
+                        .statistic-bar {
                             height: 10vh;
                         }
 
@@ -1523,15 +1534,15 @@ body {
                         }
                     }
 
-                    .choose-priority-view{
+                    .choose-priority-view {
                         margin: 2em 0 1em 0;
                         width: 50vw;
                         height: 10vh;
                     }
 
-                    .box-statistics{
-                        .style-box-statistics{
-                            .name-type-statitic{
+                    .box-statistics {
+                        .style-box-statistics {
+                            .name-type-statitic {
                                 font-size: .9rem;
                                 text-align: center;
                             }
@@ -1631,6 +1642,78 @@ body {
             width: 98%;
             min-height: 47%;
             border-radius: 10px;
+        }
+    }
+}
+
+@media screen and (max-height: 600px) {
+    body {
+        height: 160vh;
+
+        main {
+            height: 110vh;
+
+            #container {
+
+                #task-made {
+                    .container-actions {
+
+                        .actions {
+                            height: 3.6vh;
+                        }
+                    }
+                }
+
+                .task-puted {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        #main-profile {
+            .view-infos {
+                .container-statistic {
+                    .choose-priority-view {
+                        .select-priority {
+                            height: 12vh;
+                        }
+                    }
+
+                    .container-statistic-bar {
+                        height: 25vh;
+                    }
+                }
+            }
+        }
+
+        #modal-remove {
+            height: 60vh;
+        }
+
+        .modal {
+            min-height: 60vh;
+
+            .content-btn {
+                height: 15vh;
+            }
+        }
+
+        .content-priority {
+            height: 45%;
+        }
+
+        .priority-level {
+            width: 20px;
+            height: 20px;
+        }
+
+        .style-bar-options {
+            .container-bars {
+
+                .seeing-options-bar {
+                    height: 10vh;
+                }
+            }
         }
     }
 }
