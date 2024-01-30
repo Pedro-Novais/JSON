@@ -25,8 +25,10 @@ export async function interactorProfile() {
     const apiStatistic = 'http://localhost:5000/statistic'
 
     const responseVerificationUser = await verifyUser()
-    console.log(responseVerificationUser)
-    getStatisticAndConfig()
+    const statisticJson = responseVerificationUser.responseData.statistic
+
+    //getStatisticAndConfig()
+    getAllInfo()
 
     const viewPage = document.querySelector('#view-infos-unique')
     const profile = document.querySelector('#section-profile')
@@ -36,7 +38,7 @@ export async function interactorProfile() {
     const div = document.createElement('div')
     //div.style.animation="slideBar .5s ease"
 
-    setTimeout(initial, 50)
+    initial()
 
     async function getStatisticAndConfig() {
         let StatisticJson = await getConfig(apiStatistic)
@@ -144,16 +146,31 @@ export async function interactorProfile() {
 
         let tasksFinished = arrayStatistic[priority].finished
         let tasksCanceled = arrayStatistic[priority].canceled
+        tasksFinished = 0
+        //tasksCanceled = 0
         let allTasks = tasksFinished + tasksCanceled
 
-        tasksFinished = (tasksFinished / allTasks) * 100
-        tasksCanceled = (tasksCanceled / allTasks) * 100
+        if(tasksFinished == 0 && tasksCanceled == 0){
+            tasksFinished = 0
+            tasksCanceled = 0
 
-       barFinished.style.width = `${tasksFinished.toFixed(2)}%`
-       barCanceled.style.width = `${tasksCanceled.toFixed(2)}%`
+            barFinished.style.width = `50%`
+            barCanceled.style.width = `50%`
+        }else{
+
+            tasksFinished = (tasksFinished / allTasks) * 100
+            tasksCanceled = (tasksCanceled / allTasks) * 100
+            barFinished.style.width = `${tasksFinished.toFixed(2)}%`
+            barCanceled.style.width = `${tasksCanceled.toFixed(2)}%`
+        }
 
        numberFinished.innerHTML = `Tasks Concluídas: ${tasksFinished.toFixed(0)}%`
        numberCanceled.innerHTML = `Tasks Canceladas: ${tasksCanceled.toFixed(0)}%`
+
+       if(barFinished.width == "100%"){
+        barFinished.style.borderTopLeftRadius = "0.5rem"
+    
+       }
 
     }
 
@@ -229,16 +246,18 @@ export async function interactorProfile() {
 
     function getAllInfo() {
         let numberBase;
-        for (let i = 0; i < statisticData.length; i++) {
+        let nameStatistic = ["priorityOne", "priorityTwo", "priorityThree"]
+        console.log(statisticJson[nameStatistic[2]].created)
+        for (let i = 0; i < 3; i++) {
 
             numberBase = statisticAll.created;
-            statisticAll.created = statisticData[i]["created"] + numberBase
+            statisticAll.created = statisticJson[nameStatistic[i]].created + numberBase
 
             numberBase = statisticAll.finished
-            statisticAll.finished = statisticData[i]["finished"] + numberBase
+            statisticAll.finished = statisticJson[nameStatistic[i]].finished + numberBase
 
             numberBase = statisticAll.canceled
-            statisticAll.canceled = statisticData[i]["canceled"] + numberBase
+            statisticAll.canceled = statisticJson[nameStatistic[i]].canceled + numberBase
         }
 
         for (let i = 0; i < 4; i++) {
@@ -246,8 +265,10 @@ export async function interactorProfile() {
                 arrayStatistic.push(statisticAll)
                 break
             }
-            arrayStatistic.push(statisticData[i])
+            arrayStatistic.push(statisticJson[nameStatistic[i]])
         }
+
+        console.log(arrayStatistic)
     }
 
     function getPriorityStatistic() {
