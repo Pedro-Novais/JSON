@@ -14,9 +14,15 @@ const main = document.querySelector('main')
 const footer = document.querySelector('footer')
 
 linkProfile.addEventListener('click', callPageProfile)
+linkAbout.addEventListener('click', logout)
 
 initial()
 interactorResponsive()
+
+function logout(){
+    localStorage.removeItem('token')
+    window.location.href = "/login"
+}
 
 function callPageList() {
      
@@ -96,4 +102,4 @@ function initial() {
     interactorList()
 }
 
-export { callPageList, callPageProfile }
+export { callPageList, callPageProfile, logout }

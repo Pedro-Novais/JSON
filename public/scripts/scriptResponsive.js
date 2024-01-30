@@ -1,5 +1,5 @@
 import { viewBarsCode } from "./utils/modals.js"
-import { callPageList, callPageProfile } from "./changeView.js";
+import { callPageList, callPageProfile, logout } from "./changeView.js";
 
 export function interactorResponsive() {
 
@@ -71,6 +71,7 @@ export function interactorResponsive() {
             setTimeout(callPageProfile, 250)
         })
 
+        linkAbout.addEventListener('click', logout)
         const cancelBar = document.querySelector('#cancel-bar')
         if (cancelBar != null) {
             cancelBar.addEventListener('click', outBar)

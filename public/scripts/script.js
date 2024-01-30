@@ -22,7 +22,7 @@ export async function interactorList() {
   const statistic = responseVerificationUser.responseData.statistic
 
   const arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
-
+  console.log(configJson.orderPriority)
   loadingTask(null, 0)
 
   getPriority()
@@ -89,7 +89,7 @@ export async function interactorList() {
     try {
       const token = localStorage.getItem('token')
       const tasks = await order(apiTask, token)
-      //configJson.orderPriority = false
+      configJson.orderPriority = true
 
       if (determinate != null) {
         const tasksElement = document.querySelectorAll('.tasks')
