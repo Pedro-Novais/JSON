@@ -137,16 +137,21 @@ export async function interactorProfile() {
     }
 
     function insertStatisticBars(priority){
-
+        
         const barFinished = document.querySelector('#bar-task-finished')
         const barCanceled = document.querySelector('#bar-task-canceled')
+
+        barFinished.style.borderTopRightRadius = "0"
+        barFinished.style.borderBottomRightRadius = "0"
+        barCanceled.style.borderTopLeftRadius = "0"
+        barCanceled.style.borderBottomLeftRadius = "0"
         
         const numberFinished = document.querySelector('#number-finished')
         const numberCanceled = document.querySelector('#number-canceled')
 
         let tasksFinished = arrayStatistic[priority].finished
         let tasksCanceled = arrayStatistic[priority].canceled
-        tasksFinished = 0
+        //tasksFinished = 0
         //tasksCanceled = 0
         let allTasks = tasksFinished + tasksCanceled
 
@@ -167,9 +172,13 @@ export async function interactorProfile() {
        numberFinished.innerHTML = `Tasks Concluídas: ${tasksFinished.toFixed(0)}%`
        numberCanceled.innerHTML = `Tasks Canceladas: ${tasksCanceled.toFixed(0)}%`
 
-       if(barFinished.width == "100%"){
-        barFinished.style.borderTopLeftRadius = "0.5rem"
+       if(barFinished.style.width == "100%"){
+        barFinished.style.borderTopRightRadius = "0.5rem"
+        barFinished.style.borderBottomRightRadius = "0.5rem"
     
+       }else if(barCanceled.style.width == "100%"){
+        barCanceled.style.borderTopLeftRadius = "0.5rem"
+        barCanceled.style.borderBottomLeftRadius = "0.5rem"
        }
 
     }
