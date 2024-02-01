@@ -157,8 +157,8 @@ async function updateTaskBack(url, id, data, determinate, token) {
         let way;
 
         if (determinate == 0) {
-            methodUpdate = 'PATCH'
-            way = `${url}/${id}`
+            methodUpdate = 'PUT'
+            way = url
 
         }
         else if (determinate == 1) {

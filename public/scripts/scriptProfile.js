@@ -5,12 +5,13 @@ import { verifyUser } from "./utils/verificationUser.js"
 //não esquecer de tirar esse código, apenas para teste da page config 
 //interactorProfile()
 
+const apiConfig = "/api/user/config"
+
 export async function interactorProfile() {
 
     let activeHover = null;
 
     let arrayStatistic = [];
-    let statisticData;
 
     let statisticAll = {
         created: 0,
@@ -18,16 +19,18 @@ export async function interactorProfile() {
         canceled: 0
     };
 
-    let config;
-    let nameConfig = ["orderPriority", "usersCanViewProfile"]
+    let nameConfig = ["orderPriority", "usersCanViewStatistic"]
 
-    const apiConfig = 'http://localhost:5000/config'
-    const apiStatistic = 'http://localhost:5000/statistic'
+    let responseVerificationUser;
+    let statisticJson;
+    let configJson;
 
-    const responseVerificationUser = await verifyUser()
+    await getUserInfo()
+    console.log(responseVerificationUser, statisticJson, configJson)
+    /*const responseVerificationUser = await verifyUser()
     const statisticJson = responseVerificationUser.responseData.statistic
+    const configJson = responseVerificationUser.responseData.configurations*/
 
-    //getStatisticAndConfig()
     getAllInfo()
 
     const viewPage = document.querySelector('#view-infos-unique')
@@ -40,11 +43,10 @@ export async function interactorProfile() {
 
     initial()
 
-    async function getStatisticAndConfig() {
-        let StatisticJson = await getConfig(apiStatistic)
-        getInfoStatistic(StatisticJson)
-        let configJson = await getConfig(apiConfig)
-        getInfoConfig(configJson)
+    async function getUserInfo() {
+        responseVerificationUser = await verifyUser()
+        statisticJson = responseVerificationUser.responseData.statistic
+        configJson = responseVerificationUser.responseData.configurations
     }
 
     function viewProfile() {
@@ -69,6 +71,7 @@ export async function interactorProfile() {
 
         viewPage.appendChild(div)
 
+        activeHover = null
         insertStatistic(3)
         getPriorityStatistic()
         clickPriorityStatistic(3)
@@ -136,8 +139,8 @@ export async function interactorProfile() {
         insertStatisticBars(priority)
     }
 
-    function insertStatisticBars(priority){
-        
+    function insertStatisticBars(priority) {
+
         const barFinished = document.querySelector('#bar-task-finished')
         const barCanceled = document.querySelector('#bar-task-canceled')
 
@@ -145,7 +148,7 @@ export async function interactorProfile() {
         barFinished.style.borderBottomRightRadius = "0"
         barCanceled.style.borderTopLeftRadius = "0"
         barCanceled.style.borderBottomLeftRadius = "0"
-        
+
         const numberFinished = document.querySelector('#number-finished')
         const numberCanceled = document.querySelector('#number-canceled')
 
@@ -155,13 +158,13 @@ export async function interactorProfile() {
         //tasksCanceled = 0
         let allTasks = tasksFinished + tasksCanceled
 
-        if(tasksFinished == 0 && tasksCanceled == 0){
+        if (tasksFinished == 0 && tasksCanceled == 0) {
             tasksFinished = 0
             tasksCanceled = 0
 
             barFinished.style.width = `50%`
             barCanceled.style.width = `50%`
-        }else{
+        } else {
 
             tasksFinished = (tasksFinished / allTasks) * 100
             tasksCanceled = (tasksCanceled / allTasks) * 100
@@ -169,17 +172,17 @@ export async function interactorProfile() {
             barCanceled.style.width = `${tasksCanceled.toFixed(2)}%`
         }
 
-       numberFinished.innerHTML = `Tasks Concluídas: ${tasksFinished.toFixed(0)}%`
-       numberCanceled.innerHTML = `Tasks Canceladas: ${tasksCanceled.toFixed(0)}%`
+        numberFinished.innerHTML = `Tasks Concluídas: ${tasksFinished.toFixed(0)}%`
+        numberCanceled.innerHTML = `Tasks Canceladas: ${tasksCanceled.toFixed(0)}%`
 
-       if(barFinished.style.width == "100%"){
-        barFinished.style.borderTopRightRadius = "0.5rem"
-        barFinished.style.borderBottomRightRadius = "0.5rem"
-    
-       }else if(barCanceled.style.width == "100%"){
-        barCanceled.style.borderTopLeftRadius = "0.5rem"
-        barCanceled.style.borderBottomLeftRadius = "0.5rem"
-       }
+        if (barFinished.style.width == "100%") {
+            barFinished.style.borderTopRightRadius = "0.5rem"
+            barFinished.style.borderBottomRightRadius = "0.5rem"
+
+        } else if (barCanceled.style.width == "100%") {
+            barCanceled.style.borderTopLeftRadius = "0.5rem"
+            barCanceled.style.borderBottomLeftRadius = "0.5rem"
+        }
 
     }
 
@@ -188,10 +191,10 @@ export async function interactorProfile() {
 
         for (let i = 0; i < 2; i++) {
             let idConfig = changeStateConfig[i].getAttribute('id')
-            if (config[nameConfig[i]] == true) {
+            if (configJson[nameConfig[i]] == true) {
                 changeStateConfig[i].setAttribute('state', '0')
 
-            } else if (config[nameConfig[i]] == false) {
+            } else if (configJson[nameConfig[i]] == false) {
                 changeStateConfig[i].setAttribute('state', '1')
             }
             activeConfig(idConfig)
@@ -232,13 +235,22 @@ export async function interactorProfile() {
                 state[i] = true
             }
         }
-  
+
         let data = {
             orderPriority: state[0],
-            usersCanViewProfile: state[1]
+            usersCanViewStatistic: state[1]
         }
         try {
-            const responseUpdate = await updateTaskBack(apiConfig, null, data, 2)
+            const token = localStorage.getItem('token')
+            const responseUpdate = await updateTaskBack(apiConfig, null, data, 0, token)
+
+            if (responseUpdate.ok) {
+
+                await getUserInfo()
+                viewConfigChange()
+            }
+
+            console.log(responseUpdate)
         } catch (err) {
             console.log(err)
         }
@@ -334,35 +346,36 @@ export async function interactorProfile() {
     }
 
     function hoverPriority() {
+        console.log(activeHover)
         const level = document.querySelectorAll('.choose-priority-statistic')
         let levelHover;
 
         level.forEach(function (lvl) {
             lvl.addEventListener('mouseenter', function () {
                 levelHover = lvl.getAttribute('id')
-               
+
                 if (levelHover !== "priority-all") {
 
                     if (levelHover == "priority-one") {
                         level[0].style.backgroundColor = '#05DBF2';
                         level[0].addEventListener('mouseleave', outHover)
-        
+
                     }
 
                     if (levelHover == "priority-two") {
-                        for(let i = 0; i < 2; i++){
+                        for (let i = 0; i < 2; i++) {
 
                             level[i].style.backgroundColor = '#05DBF2';
-                            
+
                         }
                         level[1].addEventListener('mouseleave', outHover)
                     }
 
                     if (levelHover == "priority-three") {
-                        for(let i = 0; i < 3; i++){
+                        for (let i = 0; i < 3; i++) {
 
                             level[i].style.backgroundColor = '#05DBF2';
-                            
+
                         }
                         level[2].addEventListener('mouseleave', outHover)
                     }

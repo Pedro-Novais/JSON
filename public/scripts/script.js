@@ -89,7 +89,7 @@ export async function interactorList() {
     try {
       const token = localStorage.getItem('token')
       const tasks = await order(apiTask, token)
-      configJson.orderPriority = true
+      //configJson.orderPriority = true
 
       if (determinate != null) {
         const tasksElement = document.querySelectorAll('.tasks')

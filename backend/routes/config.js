@@ -8,7 +8,7 @@ router
     .get(checkToken, (req, res) => configController.getAll(req, res))
 
 router
-    .route('/user/:config')
+    .route('/user/config')
     .put(checkToken, (req, res) => configController.update(req, res))
 
 
