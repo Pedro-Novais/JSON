@@ -11,7 +11,7 @@
 }
 
 #task-made::-webkit-scrollbar {
-    width: 0;
+    width: 8px;
 }
 
 #task-made::-webkit-scrollbar-track {
@@ -350,8 +350,128 @@ body {
                 min-height: 70vh;
             }
 
-            //Container para a página de estatísticas
+            //Container para a página de Perfil
 
+            .container-profile-user{
+                @include container;
+                flex-direction: column;
+                width: 100%;
+                height: 70vh;
+                
+                .container-primary-infos{
+                    @include container;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    width: 95%;
+                    height: 90%;
+                    padding: 1em;
+                    margin-top: 2em;
+                    background-color: $details;
+                    border-radius:1rem;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                    #user-name{
+                        margin-bottom: 1rem;
+                        color: $white;
+                    }
+                    
+                    .box-user-infos{
+                        @include container;
+                        justify-content: space-between;
+                        width: 100%;
+                        height: 100%;
+                        padding: .5em;
+                    }
+                    
+                    .boxs-infos-user{
+                        @include container;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        width: 40%;
+                        height: 100%;
+                        //background-color: green;
+                        
+                        .box-infos{
+                            @include container;
+                            flex-direction: column;
+                            justify-content: center;
+                            width: 15vw;
+                            height: 5vh;
+                            padding: .2em;
+                            border-radius: .5em;
+                            background-color: $priority;
+                            color: $white;
+                            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
+                            //text-transform: uppercase;
+                            letter-spacing: 1px;
+
+                            p{
+                                //color: $white;
+                                font-weight: 500;
+                                
+                            }
+                        }
+                    }
+                    /*.box-user-description{
+                        //@include container;
+                        width: 100%;
+                        height: 20vh;
+                        background-color: $priority;
+                        color: $white;
+                        margin-top: 1em;
+                        padding: 1em;
+                        border-radius: 1em;
+                        overflow: hidden;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                        #text-user-description{
+                            font-weight: 500;
+                            word-wrap: break-word;
+                        }
+                    }*/
+
+                    .box-user-image{
+                        @include container;
+                        justify-content: center;
+                        background-color: #738000;
+                        width: 15rem;
+                        height: 15rem;
+                        overflow: hidden;
+                        border-radius: 20%;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                        #user-image{
+
+                            width: 100%;
+                            object-fit: cover; 
+    
+                        }
+                    }
+
+                    .box-description{
+                        @include container;
+                        flex-direction: column;
+                        //justify-content: space-around;
+                        width: 70%;
+                        height: 15rem;
+                    }
+
+                    .box-image{
+                        @include container;
+                        justify-content: center;
+                        width: 26%;
+                        margin-right: 2rem;
+                    }
+                }
+
+                #btn-save-user{
+                    margin-top: 1em;
+                }
+            }
+
+            //Container para a página de estatísticas
+            
             .container-statistic {
                 @include container;
                 flex-direction: column;
@@ -566,24 +686,6 @@ body {
                     }
                 }
 
-                .btn-configs {
-                    @include container;
-                    justify-content: center;
-                    width: 8rem;
-                    height: 8vh;
-                    margin-top: 2.5rem;
-                    background: linear-gradient(to right, $details, $priority);
-                    border-radius: 1rem;
-                    color: $white;
-                    font-weight: 400;
-                    box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
-                }
-
-                .btn-configs:hover {
-                    cursor: pointer;
-                    background: linear-gradient(to left, $details, $priority);
-                }
-
                 .style-to-name-config {
                     color: $white;
                     font-size: 1.2rem;
@@ -591,6 +693,23 @@ body {
                     margin-right: 0.5em;
                     white-space: pre-wrap;
                 }
+            }
+            .btn-configs {
+                @include container;
+                justify-content: center;
+                width: 8rem;
+                height: 8vh;
+                margin-top: 2.5rem;
+                background: linear-gradient(to right, $details, $priority);
+                border-radius: 1rem;
+                color: $white;
+                font-weight: 400;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+            }
+
+            .btn-configs:hover {
+                cursor: pointer;
+                background: linear-gradient(to left, $details, $priority);
             }
         }
     }
@@ -1610,7 +1729,7 @@ body {
                 }
 
                 #task-made {
-                    padding-top: 1rem;
+                    //padding-top: 1rem;
                     margin-bottom: 1rem;
 
                     .container-actions {
