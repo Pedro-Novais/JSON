@@ -356,117 +356,134 @@ body {
                 @include container;
                 flex-direction: column;
                 width: 100%;
-                height: 70vh;
+                max-height: 80vh;
                 
-                .container-primary-infos{
+                .container-infos-user{
                     @include container;
-                    justify-content: space-between;
-                    align-items: flex-start;
-                    width: 95%;
-                    height: 90%;
-                    padding: 1em;
-                    margin-top: 2em;
-                    background-color: $details;
-                    border-radius:1rem;
-                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                    max-height: 90%;
+                    //background-color: $details;
 
-                    #user-name{
-                        margin-bottom: 1rem;
-                        color: $white;
-                    }
-                    
-                    .box-user-infos{
+                    .container-primary-infos{
                         @include container;
-                        justify-content: space-between;
-                        width: 100%;
-                        height: 100%;
-                        padding: .5em;
-                    }
-                    
-                    .boxs-infos-user{
-                        @include container;
-                        flex-direction: column;
                         justify-content: space-between;
                         align-items: flex-start;
-                        width: 40%;
-                        height: 100%;
-                        //background-color: green;
+                        width: 95%;
+                        //height: 90%;
+                        padding: 1em;
+                        margin-top: 2em;
+                        background-color: $details;
+                        border-radius:1rem;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
+                        #user-name{
+                            margin-bottom: 1rem;
+                            color: $white;
+                        }
                         
-                        .box-infos{
+                        .box-user-infos{
+                            @include container;
+                            justify-content: space-between;
+                            width: 100%;
+                            height: 100%;
+                            padding: .5em;
+                        }
+                        
+                        .boxs-infos-user{
                             @include container;
                             flex-direction: column;
-                            justify-content: center;
-                            width: 15vw;
-                            height: 5vh;
-                            padding: .2em;
-                            border-radius: .5em;
-                            background-color: $priority;
-                            color: $white;
-                            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
-                            //text-transform: uppercase;
-                            letter-spacing: 1px;
-
-                            p{
-                                //color: $white;
-                                font-weight: 500;
-                                
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            width: 40%;
+                            height: 100%;
+                            //background-color: green;
+                            
+                            .box-infos{
+                                @include container;
+                                flex-direction: column;
+                                justify-content: center;
+                                width: 15vw;
+                                height: 5vh;
+                                padding: .2em;
+                                border-radius: .5em;
+                                background-color: $priority;
+                                color: $white;
+                                box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
+                                //text-transform: uppercase;
+                                letter-spacing: 1px;
                             }
                         }
-                    }
-                    /*.box-user-description{
-                        //@include container;
-                        width: 100%;
-                        height: 20vh;
-                        background-color: $priority;
-                        color: $white;
-                        margin-top: 1em;
-                        padding: 1em;
-                        border-radius: 1em;
-                        overflow: hidden;
-                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
-                        #text-user-description{
-                            font-weight: 500;
-                            word-wrap: break-word;
-                        }
-                    }*/
-
-                    .box-user-image{
-                        @include container;
-                        justify-content: center;
-                        background-color: #738000;
-                        width: 15rem;
-                        height: 15rem;
-                        overflow: hidden;
-                        border-radius: 20%;
-                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
-                        #user-image{
-
-                            width: 100%;
-                            object-fit: cover; 
     
+                        .box-user-image{
+                            @include container;
+                            justify-content: center;
+                            background-color: #738000;
+                            width: 15rem;
+                            height: 15rem;
+                            overflow: hidden;
+                            border-radius: 20%;
+                            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
+                            #user-image{
+    
+                                width: 100%;
+                                object-fit: cover; 
+        
+                            }
+                        }
+    
+                        .box-description{
+                            @include container;
+                            flex-direction: column;
+                            //justify-content: space-around;
+                            width: 70%;
+                            height: 15rem;
+                        }
+    
+                        .box-image{
+                            @include container;
+                            justify-content: center;
+                            width: 26%;
+                            margin-right: 2rem;
                         }
                     }
 
-                    .box-description{
+                    .container-second-infos{
                         @include container;
-                        flex-direction: column;
-                        //justify-content: space-around;
-                        width: 70%;
-                        height: 15rem;
-                    }
+                        justify-content: space-between;
+                        width: 95%;
 
-                    .box-image{
-                        @include container;
-                        justify-content: center;
-                        width: 26%;
-                        margin-right: 2rem;
+                        .box-user-description{
+                            //@include container;
+                            width: 49%;
+                            height: 20vh;
+                            background-color: $details;
+                            color: $white;
+                            margin-top: 1em;
+                            padding: 1em;
+                            padding-top: .3em;
+                            border-radius: 1em;
+                            overflow: hidden;
+                            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                            
+                            h3{
+                                letter-spacing: 1px;
+                            }
+                            #text-user-description{
+                                font-weight: 500;
+                                word-wrap: break-word;
+                            }
+                        }
                     }
                 }
 
                 #btn-save-user{
-                    margin-top: 1em;
+                    //position: absolute;
+                    //bottom: 10px;
+                    width: 8vw;
+                    height: 6vh;
                 }
             }
 
@@ -723,7 +740,7 @@ body {
         width: 50vw;
         height: 40vh;
         position: relative;
-        top: 12%;
+        top: 7%;
 
         #task-remove {
 
@@ -740,7 +757,7 @@ body {
         align-items: center;
         position: relative;
         z-index: 100;
-        top: 12%;
+        top: 7%;
         width: 50vw;
         height: 40vh;
         padding: 1rem;

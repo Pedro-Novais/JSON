@@ -9,7 +9,6 @@ const apiStatistics = 'http://localhost:5000/statistic'
 const apiTask = '/api/user/tasks'
 const apiStatistic = '/api/user/statistic'
 
-//let statistic = null;
 let priorityId = null;
 let activeHover = null;
 
@@ -206,7 +205,7 @@ export async function interactorList() {
   }
 
   function createActions(div, priority, i, json) {
-    //let id = json[i]['id']
+
     let idTask = json[i]['_id']
     let levelPriority = json[i]['priority']
     const div_action = document.createElement('div')
@@ -244,7 +243,7 @@ export async function interactorList() {
     div.appendChild(priority)
 
     i_add.addEventListener('click', () => {
-      
+
       modalRemove(json, idTask, 1)
       validUpdate(idTask, 2, levelPriority)
     })
@@ -258,13 +257,21 @@ export async function interactorList() {
       modalChange()
       validUpdate(idTask, 0)
     })
-
-  }
+  } 
 
   function modalRemove(json, id, determinate) {
     let modalDiv = document.createElement('div');
     modalDiv.setAttribute('class', 'modal')
     modalDiv.setAttribute('id', 'modal-remove')
+
+    let posDiv = modalDiv.offsetTop
+
+    window.scrollTo({
+      top: posDiv,
+      behavior: 'smooth' // Adiciona uma animação de rolagem suave (opcional)
+    });
+
+    document.body.style.overflow = 'hidden';
 
     const main = document.querySelector('main')
     const header = document.querySelector('header')
@@ -320,6 +327,14 @@ export async function interactorList() {
     modalDiv.setAttribute('id', 'modal-edit')
     const levelPiority = document.querySelectorAll('.choose-priority')
 
+    let posDiv = modalDiv.offsetTop
+
+    window.scrollTo({
+      top: posDiv,
+      behavior: 'smooth' // Adiciona uma animação de rolagem suave (opcional)
+    });
+    document.body.style.overflow = 'hidden';
+
     for (let i = 0; i < levelPiority.length; i++) {
       levelPiority[i].getAttribute('id')
       levelPiority[i].removeAttribute('id')
@@ -353,6 +368,7 @@ export async function interactorList() {
     const btnCancelNewTask = document.querySelector('#btn-edit-cancel')
 
     btnNewTask.addEventListener('click', function (event) {
+      document.body.style.overflow = 'auto';
       if (determinate == 0) {
         const inputTaskElement = document.querySelector('#input-edit')
         const inputTask = document.querySelector('#input-edit').value
@@ -388,6 +404,7 @@ export async function interactorList() {
     })
 
     btnCancelNewTask.addEventListener('click', () => {
+      document.body.style.overflow = 'auto';
 
       let priority = ["priority-one", "priority-two", "priority-three"]
       let modalType = ".modal"
@@ -516,7 +533,7 @@ export async function interactorList() {
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
-     
+
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created + 1,
@@ -524,10 +541,10 @@ export async function interactorList() {
             canceled: responseUpdateStatistic.canceled
           }
         }
-      
+
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
-        if(!responseUpdate.ok){
+        if (!responseUpdate.ok) {
           console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
         }
 
@@ -537,7 +554,7 @@ export async function interactorList() {
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
-    
+
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created,
@@ -545,10 +562,10 @@ export async function interactorList() {
             canceled: responseUpdateStatistic.canceled
           }
         }
-        
+
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
-        if(!responseUpdate.ok){
+        if (!responseUpdate.ok) {
           console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
         }
       }
@@ -557,7 +574,7 @@ export async function interactorList() {
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
-      
+
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created,
@@ -565,10 +582,10 @@ export async function interactorList() {
             canceled: responseUpdateStatistic.canceled + 1
           }
         }
-       
+
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
-        if(!responseUpdate.ok){
+        if (!responseUpdate.ok) {
           console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
         }
       }
