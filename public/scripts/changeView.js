@@ -7,7 +7,7 @@ const div = document.createElement('div')
 
 const linkToDo = document.querySelector('#visit-list')
 const linkProfile = document.querySelector('#visit-profile')
-const linkAbout = document.querySelector('#visit-about')
+const linkAbout = document.querySelector('#logout')
 
 const header = document.querySelector('header')
 const main = document.querySelector('main')

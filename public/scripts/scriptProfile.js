@@ -1,5 +1,5 @@
-import { pageStatistic, pageConfigText } from "./utils/modals.js"
-import { getConfig, updateTaskBack } from "./utils/functionsReq.js"
+import { pageStatistic, pageConfigText, pageProfile } from "./utils/modals.js"
+import { updateTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
 //não esquecer de tirar esse código, apenas para teste da page config 
@@ -26,11 +26,6 @@ export async function interactorProfile() {
     let configJson;
 
     await getUserInfo()
-    console.log(responseVerificationUser, statisticJson, configJson)
-    /*const responseVerificationUser = await verifyUser()
-    const statisticJson = responseVerificationUser.responseData.statistic
-    const configJson = responseVerificationUser.responseData.configurations*/
-
     getAllInfo()
 
     const viewPage = document.querySelector('#view-infos-unique')
@@ -39,7 +34,6 @@ export async function interactorProfile() {
     const pageConfig = document.querySelector('#section-config')
 
     const div = document.createElement('div')
-    //div.style.animation="slideBar .5s ease"
 
     initial()
 
@@ -54,7 +48,7 @@ export async function interactorProfile() {
 
         div.setAttribute('class', 'container-statistic')
 
-        div.innerHTML = "Será Adicionada em Breve";
+        div.innerHTML = pageProfile;
         viewPage.appendChild(div)
 
         profile.removeEventListener('click', viewProfile)
@@ -154,8 +148,6 @@ export async function interactorProfile() {
 
         let tasksFinished = arrayStatistic[priority].finished
         let tasksCanceled = arrayStatistic[priority].canceled
-        //tasksFinished = 0
-        //tasksCanceled = 0
         let allTasks = tasksFinished + tasksCanceled
 
         if (tasksFinished == 0 && tasksCanceled == 0) {
@@ -256,19 +248,10 @@ export async function interactorProfile() {
         }
     }
 
-    function getInfoConfig(json) {
-        config = json
-    }
-
-    function getInfoStatistic(json) {
-        statisticData = json.reverse()
-        getAllInfo()
-    }
-
     function getAllInfo() {
         let numberBase;
         let nameStatistic = ["priorityOne", "priorityTwo", "priorityThree"]
-        console.log(statisticJson[nameStatistic[2]].created)
+
         for (let i = 0; i < 3; i++) {
 
             numberBase = statisticAll.created;
@@ -288,8 +271,6 @@ export async function interactorProfile() {
             }
             arrayStatistic.push(statisticJson[nameStatistic[i]])
         }
-
-        console.log(arrayStatistic)
     }
 
     function getPriorityStatistic() {
@@ -346,7 +327,6 @@ export async function interactorProfile() {
     }
 
     function hoverPriority() {
-        console.log(activeHover)
         const level = document.querySelectorAll('.choose-priority-statistic')
         let levelHover;
 

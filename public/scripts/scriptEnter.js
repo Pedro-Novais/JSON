@@ -1,4 +1,4 @@
-import { get, getUser, post } from "./utils/functionsReq.js"
+import { get, post } from "./utils/functionsReq.js"
 
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"
@@ -51,7 +51,6 @@ async function makeLogin() {
 }
 
 function validEmail(email) {
-    // Expressão regular para validar e-mail
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regexEmail.test(email);
 }

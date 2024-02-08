@@ -1,4 +1,4 @@
-import { getConfig, addTaskBack, deleteTaskBack, updateTaskBack, order } from "./utils/functionsReq.js"
+import { addTaskBack, deleteTaskBack, updateTaskBack, order } from "./utils/functionsReq.js"
 import { modalEdit, modalRemovetext } from "./utils/modals.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
@@ -13,16 +13,17 @@ let priorityId = null;
 let activeHover = null;
 
 export async function interactorList() {
-
+  priorityId = null
   const responseVerificationUser = await verifyUser()
+  console.log(responseVerificationUser)
 
   statusUser(responseVerificationUser)
   const configJson = responseVerificationUser.responseData.configurations
   const statistic = responseVerificationUser.responseData.statistic
 
   const arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
-  console.log(configJson.orderPriority)
-  loadingTask(null, 0)
+
+  loadingTask(0)
 
   getPriority()
   hoverPriority()
@@ -74,7 +75,7 @@ export async function interactorList() {
       const resultAdding = await addTaskBack(apiTask, data, token)
 
       if (resultAdding.ok) {
-        loadingTask(null, 1)
+        loadingTask(1)
         priorityId = null
       }
 
@@ -84,7 +85,7 @@ export async function interactorList() {
 
   }
 
-  async function loadingTask(priorityJson = null, determinate = null) {
+  async function loadingTask(determinate = null) {
     try {
       const token = localStorage.getItem('token')
       const tasks = await order(apiTask, token)
@@ -257,7 +258,7 @@ export async function interactorList() {
       modalChange()
       validUpdate(idTask, 0)
     })
-  } 
+  }
 
   function modalRemove(json, id, determinate) {
     let modalDiv = document.createElement('div');
@@ -380,7 +381,7 @@ export async function interactorList() {
             inputTaskElement.style.boxShadow = "none"
 
           })
-          return false
+          document.body.style.overflow = 'hidden';
 
         } else {
           updateTask(id, inputTask)
@@ -509,7 +510,7 @@ export async function interactorList() {
       if (responseUpdateTask) {
         const taskChange = document.querySelector(`#_${id}`)
 
-        loadingTask(null, 1)
+        loadingTask(1)
 
         removeTaskFront(null, 1)
 

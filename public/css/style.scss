@@ -229,9 +229,9 @@ body {
                     border-radius: 0.5rem;
                     box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     transition: .1s;
-
+                    
                 }
-
+                
                 li {
                     @include container;
                     justify-content: center;
@@ -240,19 +240,23 @@ body {
                     text-transform: uppercase;
                     border-radius: 0.5rem;
                     transition: .1s;
-
+                    
                     p {
                         color: $white;
                         font-weight: 500;
                         font-size: .8rem;
                     }
-
+                    
                 }
-
+                
                 li:hover {
                     background-color: $details;
                     box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     cursor: pointer;
+                }
+
+                #logout:hover{
+                    background-color: $hover-btn-cancel;
                 }
             }
         }
@@ -312,7 +316,7 @@ body {
         }
 
         .view-infos::-webkit-scrollbar {
-            width: 0.8rem;
+            width: 8px
         }
 
         .view-infos::-webkit-scrollbar-track {
@@ -352,21 +356,22 @@ body {
 
             //Container para a página de Perfil
 
-            .container-profile-user{
+            .container-profile-user {
                 @include container;
                 flex-direction: column;
                 width: 100%;
                 max-height: 80vh;
-                
-                .container-infos-user{
+
+                .container-infos-user {
                     @include container;
                     flex-direction: column;
                     justify-content: center;
                     width: 100%;
                     max-height: 90%;
-                    //background-color: $details;
+                    border-radius: 1rem;
+                    padding-bottom: 0.5em;
 
-                    .container-primary-infos{
+                    .container-primary-infos {
                         @include container;
                         justify-content: space-between;
                         align-items: flex-start;
@@ -374,24 +379,24 @@ body {
                         //height: 90%;
                         padding: 1em;
                         margin-top: 2em;
-                        background-color: $details;
-                        border-radius:1rem;
-                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    
-                        #user-name{
+                        //background-color: $details;
+                        border-radius: 1rem;
+                        //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                        #user-name {
                             margin-bottom: 1rem;
                             color: $white;
                         }
-                        
-                        .box-user-infos{
+
+                        .box-user-infos {
                             @include container;
                             justify-content: space-between;
                             width: 100%;
                             height: 100%;
                             padding: .5em;
                         }
-                        
-                        .boxs-infos-user{
+
+                        .boxs-infos-user {
                             @include container;
                             flex-direction: column;
                             justify-content: space-between;
@@ -399,8 +404,8 @@ body {
                             width: 40%;
                             height: 100%;
                             //background-color: green;
-                            
-                            .box-infos{
+
+                            .box-infos {
                                 @include container;
                                 flex-direction: column;
                                 justify-content: center;
@@ -408,55 +413,82 @@ body {
                                 height: 5vh;
                                 padding: .2em;
                                 border-radius: .5em;
-                                background-color: $priority;
+                                background-color: $details;
                                 color: $white;
-                                box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 10px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
-                                //text-transform: uppercase;
+                                box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
                                 letter-spacing: 1px;
                             }
                         }
-    
-                        .box-user-image{
+
+                        .box-user-image {
                             @include container;
                             justify-content: center;
                             background-color: #738000;
-                            width: 15rem;
-                            height: 15rem;
+                            width: 100%;
                             overflow: hidden;
                             border-radius: 20%;
                             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    
-                            #user-image{
-    
+
+                            #user-image {
+
                                 width: 100%;
-                                object-fit: cover; 
-        
+                                object-fit: cover;
+
                             }
                         }
-    
-                        .box-description{
+
+                        .box-description {
                             @include container;
                             flex-direction: column;
                             //justify-content: space-around;
-                            width: 70%;
+                            width: 85%;
                             height: 15rem;
                         }
-    
-                        .box-image{
+
+                        .box-image {
+                            align-self: flex-end;
                             @include container;
                             justify-content: center;
-                            width: 26%;
-                            margin-right: 2rem;
+                            width: 9vw;
                         }
                     }
 
-                    .container-second-infos{
+                    .container-second-infos {
                         @include container;
                         justify-content: space-between;
                         width: 95%;
 
-                        .box-user-description{
-                            //@include container;
+                        #user-infos-general {
+                            overflow: hidden;
+                            .box-infos-general {
+                                @include container;
+                                justify-content: center;
+                                width: 100%;
+                                height: 80%;
+
+                                .division-info-general{
+                                    @include container;
+                                    flex-direction: column;
+                                    justify-content: space-around;
+                                    align-items: flex-start;
+                                    width: 50%;
+                                    height: 100%;
+
+                                    .container-name-infos-general{
+                                        @include container;
+                                     
+                                    }
+    
+                                    .text-infos-general{
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .box-user-description {
+                            @include container;
+                            flex-direction: column;
                             width: 49%;
                             height: 20vh;
                             background-color: $details;
@@ -465,13 +497,15 @@ body {
                             padding: 1em;
                             padding-top: .3em;
                             border-radius: 1em;
-                            overflow: hidden;
-                            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-                            
-                            h3{
+                            overflow: auto;
+                            //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                            h3 {
                                 letter-spacing: 1px;
+                                margin-bottom: 5px;
                             }
-                            #text-user-description{
+
+                            #text-user-description {
                                 font-weight: 500;
                                 word-wrap: break-word;
                             }
@@ -479,7 +513,7 @@ body {
                     }
                 }
 
-                #btn-save-user{
+                #btn-save-user {
                     //position: absolute;
                     //bottom: 10px;
                     width: 8vw;
@@ -488,7 +522,7 @@ body {
             }
 
             //Container para a página de estatísticas
-            
+
             .container-statistic {
                 @include container;
                 flex-direction: column;
@@ -661,7 +695,7 @@ body {
                     width: 80%;
                     height: 60%;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-                    overflow: hidden;
+                    overflow: auto;
 
                     .box-configurations {
                         @include container;
@@ -711,6 +745,7 @@ body {
                     white-space: pre-wrap;
                 }
             }
+
             .btn-configs {
                 @include container;
                 justify-content: center;
@@ -1699,7 +1734,7 @@ body {
                             .line-config {
                                 flex-direction: column;
                                 justify-content: space-around;
-                                height: 15vh;
+                                min-height: 15vh;
                                 background-color: $details;
                                 padding: 0.6em;
                             }

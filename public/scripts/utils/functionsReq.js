@@ -24,30 +24,6 @@ async function order(url, token) {
     }
 }
 
-async function getConfig(url, token) {
-    try {
-
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
-        }
-
-        const json = await response.json()
-
-        return json
-
-    } catch (err) {
-        throw err
-    }
-}
-
 async function addTaskBack(url, data, token) {
     try {
         const response = await fetch(url, {
@@ -219,4 +195,4 @@ async function deleteTaskBack(url, id, token) {
     }
 }
 
-export { deleteTaskBack, updateTaskBack, addTaskBack, getConfig, order, getUser, post, get }
+export { deleteTaskBack, updateTaskBack, addTaskBack, order, getUser, post, get }
