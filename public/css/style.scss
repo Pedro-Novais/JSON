@@ -229,9 +229,9 @@ body {
                     border-radius: 0.5rem;
                     box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     transition: .1s;
-                    
+
                 }
-                
+
                 li {
                     @include container;
                     justify-content: center;
@@ -240,22 +240,22 @@ body {
                     text-transform: uppercase;
                     border-radius: 0.5rem;
                     transition: .1s;
-                    
+
                     p {
                         color: $white;
                         font-weight: 500;
                         font-size: .8rem;
                     }
-                    
+
                 }
-                
+
                 li:hover {
                     background-color: $details;
                     box-shadow: rgba(0, 0, 0, 0.22) 0px 5px 10px;
                     cursor: pointer;
                 }
 
-                #logout:hover{
+                #logout:hover {
                     background-color: $hover-btn-cancel;
                 }
             }
@@ -344,6 +344,7 @@ body {
                 text-transform: uppercase;
                 font-size: 2.5rem;
                 font-weight: 900;
+                letter-spacing: 2px;
             }
 
             .container-profile {
@@ -369,28 +370,28 @@ body {
                     width: 100%;
                     max-height: 90%;
                     border-radius: 1rem;
+                    margin-top: 1em;
                     padding-bottom: 0.5em;
+                    //box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
 
                     .container-primary-infos {
                         @include container;
                         justify-content: space-between;
                         align-items: flex-start;
                         width: 95%;
-                        //height: 90%;
-                        padding: 1em;
-                        margin-top: 2em;
-                        //background-color: $details;
+                        margin-top: 1em;
                         border-radius: 1rem;
-                        //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
                         #user-name {
+                            font-size: 1.3rem;
+                            font-weight: 500;
                             margin-bottom: 1rem;
                             color: $white;
                         }
 
                         .box-user-infos {
                             @include container;
-                            justify-content: space-between;
+                            justify-content: space-around;
                             width: 100%;
                             height: 100%;
                             padding: .5em;
@@ -400,7 +401,6 @@ body {
                             @include container;
                             flex-direction: column;
                             justify-content: space-between;
-                            align-items: flex-start;
                             width: 40%;
                             height: 100%;
                             //background-color: green;
@@ -409,13 +409,14 @@ body {
                                 @include container;
                                 flex-direction: column;
                                 justify-content: center;
-                                width: 15vw;
+                                min-width: 80%;
                                 height: 5vh;
                                 padding: .2em;
                                 border-radius: .5em;
                                 background-color: $details;
                                 color: $white;
                                 box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
+                                font-size: 100%;
                                 letter-spacing: 1px;
                             }
                         }
@@ -441,7 +442,8 @@ body {
                             @include container;
                             flex-direction: column;
                             //justify-content: space-around;
-                            width: 85%;
+                            align-items: center;
+                            width: 100%;
                             height: 15rem;
                         }
 
@@ -449,7 +451,7 @@ body {
                             align-self: flex-end;
                             @include container;
                             justify-content: center;
-                            width: 9vw;
+                            width: 10rem;
                         }
                     }
 
@@ -457,16 +459,19 @@ body {
                         @include container;
                         justify-content: space-between;
                         width: 95%;
+                        margin-top: 1.5em;
 
                         #user-infos-general {
                             overflow: hidden;
+
                             .box-infos-general {
                                 @include container;
                                 justify-content: center;
                                 width: 100%;
                                 height: 80%;
+                                overflow: auto;
 
-                                .division-info-general{
+                                .division-info-general {
                                     @include container;
                                     flex-direction: column;
                                     justify-content: space-around;
@@ -474,12 +479,13 @@ body {
                                     width: 50%;
                                     height: 100%;
 
-                                    .container-name-infos-general{
+                                    .container-name-infos-general {
                                         @include container;
-                                     
+                                        white-space: nowrap;
+
                                     }
-    
-                                    .text-infos-general{
+
+                                    .text-infos-general {
                                         margin-left: 5px;
                                     }
                                 }
@@ -497,17 +503,18 @@ body {
                             padding: 1em;
                             padding-top: .3em;
                             border-radius: 1em;
-                            overflow: auto;
+                            //overflow: auto;
                             //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
                             h3 {
                                 letter-spacing: 1px;
-                                margin-bottom: 5px;
+                                margin-bottom: 10px;
                             }
 
                             #text-user-description {
                                 font-weight: 500;
                                 word-wrap: break-word;
+                                overflow: auto;
                             }
                         }
                     }
@@ -516,8 +523,8 @@ body {
                 #btn-save-user {
                     //position: absolute;
                     //bottom: 10px;
-                    width: 8vw;
-                    height: 6vh;
+                    width: 8rem;
+                    min-height: 6vh;
                 }
             }
 
@@ -1469,6 +1476,31 @@ body {
         //Style para página Profile
         #main-profile {
             .view-infos {
+
+                .container-profile-user {
+
+                    .container-infos-user {
+                        width: 110%;
+
+                        .container-primary-infos {
+
+                            #user-name {
+                                text-align: center;
+                            }
+
+                            .boxs-infos-user {
+
+                                padding: 0;
+
+                                .box-infos {
+                                    min-width: 32vw;
+                                    text-align: center;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 .container-statistic {
                     min-height: 110vh;
 
@@ -1683,6 +1715,59 @@ body {
 
         #main-profile {
             .view-infos {
+
+                .container-profile-user {
+
+                    #btn-save-user {
+                        margin-top: 1rem;
+                    }
+
+                    .container-infos-user {
+
+                        .container-primary-infos {
+
+                            .box-description {
+                                height: 20rem;
+                            }
+
+                            .boxs-infos-user {
+
+                                .box-infos {
+                                    width: 100%;
+                                    height: 50%;
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+
+                        .container-second-infos {
+                            flex-direction: column;
+
+                            .box-user-description {
+                                width: 95%;
+                                height: 25vh;
+                            }
+
+                            #user-infos-general {
+                                .box-infos-general {
+                                    flex-direction: column;
+                                    justify-content: flex-start;
+                                    align-items: flex-start;
+
+                                    .division-info-general {
+                                        width: 100%;
+                                        .container-name-infos-general {
+                                            width: 100%;
+                                            border-bottom: solid .5px;
+                                            margin-bottom: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 .style-to-title {
                     color: $white;
                     text-transform: uppercase;
