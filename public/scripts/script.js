@@ -540,7 +540,8 @@ export async function interactorList() {
             created: responseUpdateStatistic.created + 1,
             finished: responseUpdateStatistic.finished,
             canceled: responseUpdateStatistic.canceled
-          }
+          },
+          taskCreated: 1
         }
 
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
@@ -561,7 +562,8 @@ export async function interactorList() {
             created: responseUpdateStatistic.created,
             finished: responseUpdateStatistic.finished + 1,
             canceled: responseUpdateStatistic.canceled
-          }
+          },
+          taskFinished: 1
         }
 
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
@@ -581,7 +583,8 @@ export async function interactorList() {
             created: responseUpdateStatistic.created,
             finished: responseUpdateStatistic.finished,
             canceled: responseUpdateStatistic.canceled + 1
-          }
+          },
+          taskCanceled: 1
         }
 
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)

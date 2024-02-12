@@ -62,7 +62,6 @@ async function get(url, token){
             }
         })
 
-        console.log(response)
         return response
 
     } catch (error) {

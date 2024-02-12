@@ -37,6 +37,8 @@ const statisticController = {
        
             user.statistic[priority] = newStatistic
 
+            changePersistStatistic(req.body, user.persistStatistic)
+
             await user.save()
 
             res
@@ -46,6 +48,19 @@ const statisticController = {
         } catch (error) {
             console.log(error)
         }
+    }
+}
+
+function changePersistStatistic(body, persist){
+    
+    if(body.taskCreated > 0){
+        persist.taskCreated ++ 
+    }
+    else if(body.taskFinished > 0){
+        persist.taskFinished ++ 
+    }
+    else if(body.taskCanceled > 0){
+        persist.taskCanceled ++ 
     }
 }
 

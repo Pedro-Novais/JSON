@@ -9,6 +9,9 @@ const apiConfig = "/api/user/config"
 
 export async function interactorProfile() {
 
+    //const responseVerificationUser = await verifyUser()
+    //console.log(responseVerificationUser)
+
     let activeHover = null;
 
     let arrayStatistic = [];
@@ -22,11 +25,12 @@ export async function interactorProfile() {
     let nameConfig = ["orderPriority", "usersCanViewStatistic"]
 
     let responseVerificationUser;
+    let infosAboutUser;
     let statisticJson;
     let configJson;
 
     await getUserInfo()
-    getAllInfo()
+    getAllInfoStatistic()
 
     const viewPage = document.querySelector('#view-infos-unique')
     const profile = document.querySelector('#section-profile')
@@ -41,12 +45,13 @@ export async function interactorProfile() {
         responseVerificationUser = await verifyUser()
         statisticJson = responseVerificationUser.responseData.statistic
         configJson = responseVerificationUser.responseData.configurations
+        console.log(responseVerificationUser)
     }
 
     function viewProfile() {
         div.remove()
 
-        div.setAttribute('class', 'container-statistic')
+        div.setAttribute('class', 'container-profile-user')
 
         div.innerHTML = pageProfile;
         viewPage.appendChild(div)
@@ -248,7 +253,7 @@ export async function interactorProfile() {
         }
     }
 
-    function getAllInfo() {
+    function getAllInfoStatistic() {
         let numberBase;
         let nameStatistic = ["priorityOne", "priorityTwo", "priorityThree"]
 

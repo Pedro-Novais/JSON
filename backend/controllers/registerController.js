@@ -38,6 +38,12 @@ const registerController = {
                 }
             }
 
+            const persistStatisticDefault = {
+                taskCreated: 0,
+                taskFinished: 0,
+                taskCanceled: 0
+            }
+
             const configurations = {
                 orderPriority: false,
                 usersCanViewStatistic: false
@@ -47,8 +53,9 @@ const registerController = {
                 name: req.body.name,
                 email: email,
                 password: password,
+                configurations: configurations,
                 statistic: statisticDefault,
-                configurations: configurations
+                persistStatistic: persistStatisticDefault
             }
 
             const response = await UserModel.create(newUser)

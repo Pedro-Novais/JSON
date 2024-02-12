@@ -32,5 +32,20 @@ const statisticSchema = new mongoose.Schema({
     }
 })
 
+const persistStatistic = new mongoose.Schema({
+    taskCreated: {
+        type: Number,
+        _id: false
+    },
+    taskFinished: {
+        type: Number,
+        _id: false
+    },
+    taskCanceled: {
+        type: Number,
+        _id: false
+    }
+})
+
 const Statistic = mongoose.model('Statistic', statisticSchema)
-module.exports = { Statistic, statisticSchema }
+module.exports = { Statistic, statisticSchema, persistStatistic }

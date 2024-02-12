@@ -16,8 +16,8 @@ async function makeLogin() {
 
     if (email.value == "" || password.value == "") {
 
-        email.value = "lista@gmail.com"
-        password.value = "Lista"
+        email.value = "novais@gmail.com"
+        password.value = "novais"
     }
 
     if (email.value == "" || password.value == "") {

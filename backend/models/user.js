@@ -5,7 +5,7 @@ const { Schema } = mongoose
 
 const { taskSchema } = require('./tasks')
 const { configSchema } = require('./config')
-const { statisticSchema } = require('./statistic')
+const { statisticSchema, persistStatistic } = require('./statistic')
 
 const userSchema = new Schema({
     name: {
@@ -36,6 +36,11 @@ const userSchema = new Schema({
     },
     statistic: {
         type: statisticSchema,
+        required: true,
+        _id: false
+    },
+    persistStatistic: {
+        type: persistStatistic,
         required: true,
         _id: false
     }
