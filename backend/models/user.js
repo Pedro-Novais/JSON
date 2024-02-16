@@ -23,7 +23,8 @@ const userSchema = new Schema({
         required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     tasks: {
         type: [mongoose.Schema.Types.ObjectId], 

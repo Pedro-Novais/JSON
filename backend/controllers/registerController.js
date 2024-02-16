@@ -53,6 +53,7 @@ const registerController = {
                 name: req.body.name,
                 email: email,
                 password: password,
+                description: " ",
                 configurations: configurations,
                 statistic: statisticDefault,
                 persistStatistic: persistStatisticDefault
@@ -60,7 +61,7 @@ const registerController = {
 
             const response = await UserModel.create(newUser)
 
-            response.password = undefined
+            //response.password = undefined
 
             res
                 .status(201)

@@ -25,7 +25,7 @@ export async function interactorProfile() {
     let nameConfig = ["orderPriority", "usersCanViewStatistic"]
 
     let responseVerificationUser;
-    let infosAboutUser;
+    let infosAboutUser = {};
     let statisticJson;
     let configJson;
 
@@ -43,9 +43,17 @@ export async function interactorProfile() {
 
     async function getUserInfo() {
         responseVerificationUser = await verifyUser()
+
+        infosAboutUser.name = responseVerificationUser.responseData.name
+        infosAboutUser.email = responseVerificationUser.responseData.email
+        infosAboutUser.statistic = responseVerificationUser.responseData.persistStatistic
+        infosAboutUser.description = responseVerificationUser.responseData.description
+        //infosAboutUser.dateCreation = responseVerificationUser.responseData.createdAt
+
         statisticJson = responseVerificationUser.responseData.statistic
         configJson = responseVerificationUser.responseData.configurations
         console.log(responseVerificationUser)
+        console.log(infosAboutUser)
     }
 
     function viewProfile() {
@@ -55,6 +63,8 @@ export async function interactorProfile() {
 
         div.innerHTML = pageProfile;
         viewPage.appendChild(div)
+
+        insertInfosUser()
 
         profile.removeEventListener('click', viewProfile)
         statistic.addEventListener('click', viewStatistic)
@@ -123,6 +133,10 @@ export async function interactorProfile() {
 
         profile.addEventListener('click', viewProfile)
         pageConfig.addEventListener('click', viewConfig)
+    }
+
+    function insertInfosUser(){
+
     }
 
     function insertStatistic(priority) {
