@@ -48,11 +48,11 @@
 
 @keyframes slideProfile {
     from {
-        height: 70%;
+        height: 500px;
     }
 
     to {
-        height: 100%;
+        height: 620px;
     }
 }
 
@@ -99,7 +99,8 @@
 
 body {
     width: 100%;
-    height: 120vh;
+    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -178,7 +179,7 @@ body {
         @include container;
         justify-content: space-between;
         width: 100%;
-        height: 10%;
+        min-height: 8rem;
         padding: 1rem;
         //background-color: $background-dark;
         //display: none;
@@ -272,7 +273,7 @@ body {
         #container-profile {
             @include container;
             width: 100%;
-            height: 100%;
+            height: 620px;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
             border-radius: 1rem;
             animation: slideProfile .5s ease;
@@ -282,8 +283,8 @@ body {
             @include container;
             flex-direction: column;
             justify-content: space-between;
-            width: 90%;
-            height: 40%;
+            width: 100%;
+            min-height: 17rem;
         }
 
         .select-page {
@@ -411,7 +412,7 @@ body {
                                 flex-direction: column;
                                 justify-content: center;
                                 min-width: 80%;
-                                height: 5vh;
+                                min-height: 5vh;
                                 padding: .2em;
                                 border-radius: .5em;
                                 background-color: $details;
@@ -506,7 +507,8 @@ body {
                             @include container;
                             flex-direction: column;
                             width: 49%;
-                            height: 20vh;
+                            max-height: 35vh;
+                            min-height: 30vh;
                             background-color: $details;
                             color: $white;
                             margin-top: 1em;
@@ -554,14 +556,14 @@ body {
                 flex-direction: column;
                 justify-content: space-between;
                 width: 100%;
-                min-height: 70vh;
+                height: 100%;
 
                 .choose-priority-view {
                     @include container;
                     flex-direction: row;
                     justify-content: space-around;
-                    width: 22vw;
-                    height: 8vh;
+                    width: 25vw;
+                    height: 9vh;
                     position: relative;
                     padding: .2em;
 
@@ -718,7 +720,7 @@ body {
                     padding: 1rem;
                     background-color: $details;
                     border-radius: 1rem;
-                    width: 80%;
+                    width: 90%;
                     height: 60%;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                     overflow: auto;
@@ -895,13 +897,13 @@ body {
         align-items: flex-start;
         justify-content: center;
         width: 35rem;
-        height: 65%;
+        //height: 65%;
 
         .conatiner-credentials {
             @include container;
             flex-direction: column;
             width: 100%;
-            height: 100%;
+            height: 650px;
             padding: .7em;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -920,7 +922,7 @@ body {
                 align-items: flex-start;
                 justify-content: space-around;
                 width: 90%;
-                min-height: 35%;
+                min-height: 45%;
                 padding: .5em;
                 margin-top: 1rem;
 
@@ -979,7 +981,7 @@ body {
             .btn-sign {
                 margin-top: 2em;
                 width: 80%;
-                height: 5vh;
+                min-height: 45px;
                 border-radius: 1em;
                 border-style: none;
                 font-size: 1rem;
@@ -1003,15 +1005,17 @@ body {
         @include container;
         align-items: flex-start;
         justify-content: center;
-        width: 50%;
-        height: 50%;
+        //width: 50%;
+        width: 1000px;
+        min-height: 35rem;
+        margin-top: 2.5rem;
 
         #container {
             justify-self: center;
             @include container;
             flex-direction: column;
             width: 100%;
-            height: 100%;
+            min-height: 90%;
             padding: 1vw;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1031,6 +1035,7 @@ body {
                 margin-bottom: 2vw;
                 width: 100%;
                 height: 8vh;
+                min-height: 4.1rem;
 
                 #task-add {
                     width: 60%;
@@ -1105,7 +1110,8 @@ body {
                 justify-content: flex-start;
                 padding: 0.5vw;
                 width: 100%;
-                height: 40vh;
+                height: 37vh;
+                min-height: 21rem;
                 border-radius: .5rem;
                 overflow-x: hidden;
                 overflow-y: auto;
@@ -1212,9 +1218,18 @@ body {
     }
 
     footer {
-        background-color: $color-light;
+        @include container;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $color-resposive;
         width: 100%;
-        height: 15%;
+        min-height: 15rem;
+        margin-top: 14rem;
+        //border-top: solid 1px $white;
+
+        p{
+            color: $white;
+        }
     }
 }
 
@@ -1241,14 +1256,6 @@ body {
 @media screen and (max-width: 1400px) {
     body {
         width: 100%;
-
-        main {
-            width: 70vw;
-
-            #container {
-                width: 100%;
-            }
-        }
 
         .modal {
             width: 65%;
@@ -1294,13 +1301,11 @@ body {
         width: 100%;
 
         main {
-            width: 70vw;
-            height: 70vh;
+            width: 700px;
+            //height: 70vh;
 
             #container {
                 justify-content: space-around;
-                width: 100%;
-                height: 100%;
 
                 #task-made {
                     width: 90%;
@@ -1343,7 +1348,7 @@ body {
 
                     #btn-add {
                         width: 90%;
-                        height: 25%;
+                        height: 30%;
                     }
                 }
             }
@@ -1386,6 +1391,7 @@ body {
             #container-select {
                 flex-direction: row;
                 height: 100%;
+                min-height: 100%;
             }
 
             #modal-remove {
@@ -1526,10 +1532,11 @@ body {
 
                     .box-statistics {
                         flex-direction: column;
-                        height: 80vh;
+                        height: 100%;
 
                         .style-box-statistics {
                             width: 60%;
+                            margin-bottom: 1em;
 
                             .name-type-statitic {
                                 letter-spacing: .1em;
@@ -1580,6 +1587,7 @@ body {
         main {
             width: 95vw;
             height: 90vh;
+            margin-top: 0;
 
             #main-profile {
                 position: unset;
@@ -1597,14 +1605,10 @@ body {
 
             #container {
                 width: 93%;
-                height: 100%;
-                //border: solid $color-light 2px;
-                //background-color: $color-resposive;
-                //background: linear-gradient(to right, $background-one, $color-resposive);
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
 
                 #task-made {
-                    height: 60vh;
+                    //height: 60vh;
                     padding-top: 1vw;
 
                     .priority-action {
@@ -1814,9 +1818,9 @@ body {
                     }
 
                     .choose-priority-view {
-                        margin: 2em 0 1em 0;
+                        //margin: 2em 0 1em 0;
                         width: 50vw;
-                        height: 10vh;
+                        min-height: 10vh;
                     }
 
                     .box-statistics {
@@ -1921,6 +1925,30 @@ body {
             width: 98%;
             min-height: 47%;
             border-radius: 10px;
+        }
+    }
+}
+
+@media screen and (min-height: 900px){
+    body {
+        #main-profile {
+
+            #container-profile{
+                height: 700px;
+
+            }
+            
+            .view-infos {
+
+                .container-statistic {
+                    
+                    .choose-priority-view{
+
+                        width: 22vw;
+                        height: 8vh;
+                    }
+                }
+            }
         }
     }
 }

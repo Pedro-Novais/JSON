@@ -38,10 +38,10 @@
 }
 @keyframes slideProfile {
   from {
-    height: 70%;
+    height: 500px;
   }
   to {
-    height: 100%;
+    height: 620px;
   }
 }
 @keyframes slideIn {
@@ -78,7 +78,8 @@
 }
 body {
   width: 100%;
-  height: 120vh;
+  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -159,7 +160,7 @@ body header {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 10%;
+  min-height: 8rem;
   padding: 1rem;
 }
 body header #bar-view-options {
@@ -250,7 +251,7 @@ body #main-profile #container-profile {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 620px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 1rem;
   animation: slideProfile 0.5s ease;
@@ -262,8 +263,8 @@ body #main-profile #container-select {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  width: 90%;
-  height: 40%;
+  width: 100%;
+  min-height: 17rem;
 }
 body #main-profile .select-page {
   display: flex;
@@ -399,7 +400,7 @@ body #main-profile .view-infos .container-profile-user .container-infos-user .co
   flex-direction: column;
   justify-content: center;
   min-width: 80%;
-  height: 5vh;
+  min-height: 5vh;
   padding: 0.2em;
   border-radius: 0.5em;
   background-color: #034AA6;
@@ -501,7 +502,8 @@ body #main-profile .view-infos .container-profile-user .container-infos-user .co
   align-items: center;
   flex-direction: column;
   width: 49%;
-  height: 20vh;
+  max-height: 35vh;
+  min-height: 30vh;
   background-color: #034AA6;
   color: #D9D9D9;
   margin-top: 1em;
@@ -537,7 +539,7 @@ body #main-profile .view-infos .container-statistic {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  min-height: 70vh;
+  height: 100%;
 }
 body #main-profile .view-infos .container-statistic .choose-priority-view {
   display: flex;
@@ -546,8 +548,8 @@ body #main-profile .view-infos .container-statistic .choose-priority-view {
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
-  width: 22vw;
-  height: 8vh;
+  width: 25vw;
+  height: 9vh;
   position: relative;
   padding: 0.2em;
 }
@@ -714,7 +716,7 @@ body #main-profile .view-infos .container-config .box-configs {
   padding: 1rem;
   background-color: #034AA6;
   border-radius: 1rem;
-  width: 80%;
+  width: 90%;
   height: 60%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   overflow: auto;
@@ -894,7 +896,6 @@ body #main-enter {
   align-items: flex-start;
   justify-content: center;
   width: 35rem;
-  height: 65%;
 }
 body #main-enter .conatiner-credentials {
   display: flex;
@@ -903,7 +904,7 @@ body #main-enter .conatiner-credentials {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 650px;
   padding: 0.7em;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -924,7 +925,7 @@ body #main-enter .conatiner-credentials .box-credentials {
   align-items: flex-start;
   justify-content: space-around;
   width: 90%;
-  min-height: 35%;
+  min-height: 45%;
   padding: 0.5em;
   margin-top: 1rem;
 }
@@ -980,7 +981,7 @@ body #main-enter .conatiner-credentials .box-credentials .inputs-credentials:foc
 body #main-enter .conatiner-credentials .btn-sign {
   margin-top: 2em;
   width: 80%;
-  height: 5vh;
+  min-height: 45px;
   border-radius: 1em;
   border-style: none;
   font-size: 1rem;
@@ -1003,8 +1004,9 @@ body main {
   align-items: center;
   align-items: flex-start;
   justify-content: center;
-  width: 50%;
-  height: 50%;
+  width: 1000px;
+  min-height: 35rem;
+  margin-top: 2.5rem;
 }
 body main #container {
   justify-self: center;
@@ -1014,7 +1016,7 @@ body main #container {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  min-height: 90%;
   padding: 1vw;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1036,6 +1038,7 @@ body main #container #container-info {
   margin-bottom: 2vw;
   width: 100%;
   height: 8vh;
+  min-height: 4.1rem;
 }
 body main #container #container-info #task-add {
   width: 60%;
@@ -1118,7 +1121,8 @@ body main #container #task-made {
   justify-content: flex-start;
   padding: 0.5vw;
   width: 100%;
-  height: 40vh;
+  height: 37vh;
+  min-height: 21rem;
   border-radius: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
@@ -1227,9 +1231,19 @@ body .watch-out {
   box-shadow: rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset;
 }
 body footer {
-  background-color: #05DBF2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #082783;
   width: 100%;
-  height: 15%;
+  min-height: 15rem;
+  margin-top: 14rem;
+}
+body footer p {
+  color: #D9D9D9;
 }
 
 @media screen and (max-width: 1350px) {
@@ -1242,12 +1256,6 @@ body footer {
 }
 @media screen and (max-width: 1400px) {
   body {
-    width: 100%;
-  }
-  body main {
-    width: 70vw;
-  }
-  body main #container {
     width: 100%;
   }
   body .modal {
@@ -1273,13 +1281,10 @@ body footer {
     width: 100%;
   }
   body main {
-    width: 70vw;
-    height: 70vh;
+    width: 700px;
   }
   body main #container {
     justify-content: space-around;
-    width: 100%;
-    height: 100%;
   }
   body main #container #task-made {
     width: 90%;
@@ -1314,7 +1319,7 @@ body footer {
   }
   body main #container #container-info #btn-add {
     width: 90%;
-    height: 25%;
+    height: 30%;
   }
   body .choose-priority {
     width: 18px;
@@ -1342,6 +1347,7 @@ body footer {
   body #main-profile #container-select {
     flex-direction: row;
     height: 100%;
+    min-height: 100%;
   }
   body #main-profile #modal-remove {
     min-width: 90vw;
@@ -1434,10 +1440,11 @@ body footer {
   }
   body #main-profile .view-infos .container-statistic .box-statistics {
     flex-direction: column;
-    height: 80vh;
+    height: 100%;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics {
     width: 60%;
+    margin-bottom: 1em;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
     letter-spacing: 0.1em;
@@ -1469,6 +1476,7 @@ body footer {
   body main {
     width: 95vw;
     height: 90vh;
+    margin-top: 0;
   }
   body main #main-profile {
     position: unset;
@@ -1482,11 +1490,9 @@ body footer {
   }
   body main #container {
     width: 93%;
-    height: 100%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
   }
   body main #container #task-made {
-    height: 60vh;
     padding-top: 1vw;
   }
   body main #container #task-made .priority-action {
@@ -1626,9 +1632,8 @@ body footer {
     height: 60%;
   }
   body #main-profile .view-infos .container-statistic .choose-priority-view {
-    margin: 2em 0 1em 0;
     width: 50vw;
-    height: 10vh;
+    min-height: 10vh;
   }
   body #main-profile .view-infos .container-statistic .box-statistics .style-box-statistics .name-type-statitic {
     font-size: 0.9rem;
@@ -1698,6 +1703,15 @@ body footer {
     width: 98%;
     min-height: 47%;
     border-radius: 10px;
+  }
+}
+@media screen and (min-height: 900px) {
+  body #main-profile #container-profile {
+    height: 700px;
+  }
+  body #main-profile .view-infos .container-statistic .choose-priority-view {
+    width: 22vw;
+    height: 8vh;
   }
 }
 @media screen and (max-height: 600px) {
