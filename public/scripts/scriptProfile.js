@@ -48,7 +48,7 @@ export async function interactorProfile() {
         infosAboutUser.email = responseVerificationUser.responseData.email
         infosAboutUser.statistic = responseVerificationUser.responseData.persistStatistic
         infosAboutUser.description = responseVerificationUser.responseData.description
-        //infosAboutUser.dateCreation = responseVerificationUser.responseData.createdAt
+        infosAboutUser.dateCreation = responseVerificationUser.responseData.createdAt
 
         statisticJson = responseVerificationUser.responseData.statistic
         configJson = responseVerificationUser.responseData.configurations
@@ -135,7 +135,52 @@ export async function interactorProfile() {
         pageConfig.addEventListener('click', viewConfig)
     }
 
-    function insertInfosUser(){
+    function insertInfosUser() {
+        const name = document.querySelector('#user-name')
+
+        const dateCreated = document.querySelector('#info-since')
+        const conexion = document.querySelector('#info-connections')
+        const ranking = document.querySelector('#info-ranking')
+
+        const taskCreated = document.querySelector('#info-task-created')
+        const taskFinished = document.querySelector('#info-task-finished')
+        const taskCanceled = document.querySelector('#info-task-canceled')
+
+        const description = document.querySelector('#text-user-description')
+
+        name.innerHTML = infosAboutUser.name
+
+        const date = formatedDate(infosAboutUser.dateCreation)
+        dateCreated.innerHTML = date
+        conexion.innerHTML = " - "
+        ranking.innerHTML = " - "
+
+        taskCreated.innerHTML = infosAboutUser.statistic.taskCreated
+        taskFinished.innerHTML = infosAboutUser.statistic.taskFinished
+        taskCanceled.innerHTML = infosAboutUser.statistic.taskCanceled
+
+        let descriptionValue;
+
+        if (infosAboutUser.description == " ") {
+            descriptionValue = " Adicione uma descrição ao seu perfil! "
+        } else {
+            descriptionValue = infosAboutUser.description
+        }
+
+        description.innerHTML = descriptionValue
+    }
+
+    function formatedDate(dateNum) {
+
+        const date = new Date(dateNum);
+
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+
+        const dateFormated = `${day}/${month}/${year}`;
+
+        return dateFormated
 
     }
 

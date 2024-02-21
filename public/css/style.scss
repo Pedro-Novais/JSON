@@ -52,8 +52,20 @@
     }
 
     to {
+        height: 700px;
+    }
+}
+
+@keyframes slideProfileMax {
+
+    from {
+        height: 500px;
+    }
+
+    to {
         height: 620px;
     }
+    
 }
 
 @keyframes slideIn {
@@ -276,7 +288,7 @@ body {
             height: 620px;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
             border-radius: 1rem;
-            animation: slideProfile .5s ease;
+            animation: slideProfileMax .5s ease;
         }
 
         #container-select {
@@ -1008,7 +1020,7 @@ body {
         //width: 50%;
         width: 1000px;
         min-height: 35rem;
-        margin-top: 2.5rem;
+        margin-top: 10vh;
 
         #container {
             justify-self: center;
@@ -1019,7 +1031,7 @@ body {
             padding: 1vw;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-            animation: slideTask .5s ease;
+            //animation: slideTask .5s ease;
             overflow: hidden;
 
             h2 {
@@ -1224,7 +1236,7 @@ body {
         background-color: $color-resposive;
         width: 100%;
         min-height: 15rem;
-        margin-top: 14rem;
+        margin-top: 12%;
         //border-top: solid 1px $white;
 
         p{
@@ -1357,6 +1369,11 @@ body {
         .choose-priority {
             width: 18px;
             height: 18px;
+        }
+
+        footer{
+            margin-top: 15rem;
+
         }
     }
 }
@@ -1674,6 +1691,8 @@ body {
 
         #modal-remove {
             #task-remove {
+                min-height: 35%;
+
                 p {
                     text-align: center;
                     width: 100%;
@@ -1774,22 +1793,11 @@ body {
                                 height: 25vh;
                             }
 
-                            #user-infos-general {
-                                .box-infos-general {
-                                    flex-direction: column;
-                                    justify-content: flex-start;
-                                    align-items: flex-start;
+                            /*#user-infos-general {
 
-                                    .division-info-general {
-                                        width: 100%;
-                                        .container-name-infos-general {
-                                            min-width: 80%;
-                                            border-bottom: solid .5px;
-                                            margin-bottom: 10px;
-                                        }
-                                    }
-                                }
-                            }
+                              Inserir aqui o estilo da box de desempenho
+
+                            }*/
                         }
                     }
                 }
@@ -1935,6 +1943,7 @@ body {
 
             #container-profile{
                 height: 700px;
+                animation: slideProfile 0.5s
 
             }
             

@@ -41,6 +41,14 @@
     height: 500px;
   }
   to {
+    height: 700px;
+  }
+}
+@keyframes slideProfileMax {
+  from {
+    height: 500px;
+  }
+  to {
     height: 620px;
   }
 }
@@ -254,7 +262,7 @@ body #main-profile #container-profile {
   height: 620px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 1rem;
-  animation: slideProfile 0.5s ease;
+  animation: slideProfileMax 0.5s ease;
 }
 body #main-profile #container-select {
   display: flex;
@@ -1006,7 +1014,7 @@ body main {
   justify-content: center;
   width: 1000px;
   min-height: 35rem;
-  margin-top: 2.5rem;
+  margin-top: 10vh;
 }
 body main #container {
   justify-self: center;
@@ -1020,7 +1028,6 @@ body main #container {
   padding: 1vw;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  animation: slideTask 0.5s ease;
   overflow: hidden;
 }
 body main #container h2 {
@@ -1240,7 +1247,7 @@ body footer {
   background-color: #082783;
   width: 100%;
   min-height: 15rem;
-  margin-top: 14rem;
+  margin-top: 12%;
 }
 body footer p {
   color: #D9D9D9;
@@ -1324,6 +1331,9 @@ body footer p {
   body .choose-priority {
     width: 18px;
     height: 18px;
+  }
+  body footer {
+    margin-top: 15rem;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -1531,6 +1541,9 @@ body footer p {
     height: 7vh;
     opacity: 1;
   }
+  body #modal-remove #task-remove {
+    min-height: 35%;
+  }
   body #modal-remove #task-remove p {
     text-align: center;
     width: 100%;
@@ -1595,23 +1608,15 @@ body footer p {
   }
   body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos {
     flex-direction: column;
+    /*#user-infos-general {
+
+      Inserir aqui o estilo da box de desempenho
+
+    }*/
   }
   body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos .box-user-description {
     width: 95%;
     height: 25vh;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general {
-    width: 100%;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general .container-name-infos-general {
-    min-width: 80%;
-    border-bottom: solid 0.5px;
-    margin-bottom: 10px;
   }
   body #main-profile .view-infos .style-to-title {
     color: #D9D9D9;
@@ -1708,6 +1713,7 @@ body footer p {
 @media screen and (min-height: 900px) {
   body #main-profile #container-profile {
     height: 700px;
+    animation: slideProfile 0.5s;
   }
   body #main-profile .view-infos .container-statistic .choose-priority-view {
     width: 22vw;

@@ -15,7 +15,6 @@ let activeHover = null;
 export async function interactorList() {
   priorityId = null
   const responseVerificationUser = await verifyUser()
-  console.log(responseVerificationUser)
 
   statusUser(responseVerificationUser)
   const configJson = responseVerificationUser.responseData.configurations
