@@ -3,83 +3,87 @@ import { get, post } from "./utils/functionsReq.js"
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"
 
-const email = document.querySelector('#value-email')
-const password = document.querySelector('#value-password')
+interactorLogin()
+export async function interactorLogin() {
+    const email = document.querySelector('#value-email')
+    const password = document.querySelector('#value-password')
 
-const btnSend = document.querySelector('#btn-login')
+    const btnSend = document.querySelector('#btn-login')
 
-btnSend.addEventListener('click', makeLogin)
+    btnSend.addEventListener('click', makeLogin)
 
-removePlaceholder()
+    removePlaceholder()
 
-async function makeLogin() {
+    async function makeLogin() {
 
-    if (email.value == "" || password.value == "") {
+        /*if (email.value == "" || password.value == "") {
 
-        email.value = "pedro2@gmail.com"
-        password.value = "pedro2"
-    }
+            email.value = "pedro2@gmail.com"
+            password.value = "pedro2"
+        }*/
 
-    if (email.value == "" || password.value == "") {
-        return console.log('Preencha todos os dados para realizar o login')
-    }
+        if (email.value == "" || password.value == "") {
+            return console.log('Preencha todos os dados para realizar o login')
+        }
 
-    if (!validEmail(email.value)) {
-        return console.log('Formato de email inválido')
-    }
+        if (!validEmail(email.value)) {
+            return console.log('Formato de email inválido')
+        }
 
 
-    let data = {
-        email: email.value,
-        password: password.value
-    }
+        let data = {
+            email: email.value,
+            password: password.value
+        }
 
-    const loginResult = await post(urlLogin, data)
+        const loginResult = await post(urlLogin, data)
 
-    if (loginResult.ok) {
+        if (loginResult.ok) {
 
-        const responseToDo = await get(urlList, loginResult.responseData.token)
+            const responseToDo = await get(urlList, loginResult.responseData.token)
 
-        localStorage.setItem('token', loginResult.responseData.token);
+            localStorage.setItem('token', loginResult.responseData.token);
 
-        window.location.href = responseToDo.url
-    } else {
+            window.location.href = responseToDo.url
+        } else {
 
-        console.log(loginResult)
-    }
-
-}
-
-function validEmail(email) {
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email);
-}
-
-function removePlaceholder() {
-    const inputAuthor = document.querySelectorAll('.inputs-credentials');
-    let placeholder = []
-
-    for (let i = 0; i < inputAuthor.length; i++) {
-
-        placeholder[i] = inputAuthor[i].placeholder;
+            console.log(loginResult)
+        }
 
     }
 
-    inputAuthor.forEach((input) => {
+    function validEmail(email) {
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regexEmail.test(email);
+    }
 
-        input.addEventListener('focus', () => {
-            input.placeholder = ""
+    function removePlaceholder() {
+        const inputAuthor = document.querySelectorAll('.inputs-credentials');
+        let placeholder = []
+
+        for (let i = 0; i < inputAuthor.length; i++) {
+
+            placeholder[i] = inputAuthor[i].placeholder;
+
+        }
+
+        inputAuthor.forEach((input) => {
+
+            input.addEventListener('focus', () => {
+                input.placeholder = ""
+            })
         })
-    })
 
-    inputAuthor.forEach((input) => {
+        inputAuthor.forEach((input) => {
 
-        input.addEventListener('blur', () => {
-            if (input.value == "") {
+            input.addEventListener('blur', () => {
 
-                const getForName = input.getAttribute('mark')
-                inputAuthor[getForName].placeholder = placeholder[getForName]
-            }
+                if (input.value == "") {
+
+                    const getForName = input.getAttribute('mark')
+                    inputAuthor[getForName].placeholder = placeholder[getForName]
+                }
+            })
         })
-    })
+    }
 }
