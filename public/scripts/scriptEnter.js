@@ -3,7 +3,6 @@ import { get, post } from "./utils/functionsReq.js"
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"
 
-interactorLogin()
 export async function interactorLogin() {
     const email = document.querySelector('#value-email')
     const password = document.querySelector('#value-password')
@@ -16,11 +15,11 @@ export async function interactorLogin() {
 
     async function makeLogin() {
 
-        /*if (email.value == "" || password.value == "") {
+        if (email.value == "" || password.value == "") {
 
             email.value = "pedro2@gmail.com"
             password.value = "pedro2"
-        }*/
+        }
 
         if (email.value == "" || password.value == "") {
             return console.log('Preencha todos os dados para realizar o login')

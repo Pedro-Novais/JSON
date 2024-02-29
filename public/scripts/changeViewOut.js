@@ -1,6 +1,5 @@
 import { interactorLogin } from "./scriptEnter.js"
 import { login, register } from "./utils/modals.js"
-import { interactorResponsive } from "./scriptResponsive.js"
 
 const linkWelcome = document.querySelector('#visit-welcome')
 const linkLogin = document.querySelector('#visit-login')
@@ -15,7 +14,6 @@ linkLogin.addEventListener('click', callPageLogin)
 linkRegister.addEventListener('click', callPageRegister)
 
 initial()
-//interactorResponsive()
 
 function callPageWelcome() {
     div.remove()
@@ -42,7 +40,6 @@ function callPageLogin() {
 
     main.appendChild(div)
     interactorLogin()
-    console.log('mid')
 
     linkWelcome.addEventListener('click', callPageWelcome)
     linkLogin.removeEventListener('click', callPageLogin)

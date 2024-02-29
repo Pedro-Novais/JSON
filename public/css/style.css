@@ -1716,8 +1716,8 @@ body footer p {
     animation: slideProfile 0.5s;
   }
   body #main-profile .view-infos .container-statistic .choose-priority-view {
-    width: 22vw;
-    height: 8vh;
+    min-width: 22vw;
+    min-height: 8vh;
   }
 }
 @media screen and (max-height: 600px) {
