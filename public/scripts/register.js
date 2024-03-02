@@ -1,7 +1,13 @@
 import { validEmail } from "./utils/validEmail.js"
+import { digitCode } from "./utils/modals.js"
 
 export async function interectorRegister(){
     
+    const containerRegister = document.querySelector('#container-register')
+    
+    const main = document.querySelector('main')
+    const div = document.createElement('div')
+
     const name = document.querySelector('#value-name')
     const email = document.querySelector('#value-email')
     const password = document.querySelector('#value-password')
@@ -31,10 +37,27 @@ export async function interectorRegister(){
             return console.log('Sua senha precisa conter simbolos e números')
         }
 
+        containerRegister.style.display = "none"
+
+        div.setAttribute('class', 'conatiner-credentials')
+        div.setAttribute('id', 'container-insert-code')
+
+        div.innerHTML = digitCode
+
+        main.appendChild(div)
+
         const data = {
             name: name.value,
             email: email.value,
             password: password.value
         }
+
+        validationCode(data)
+    }
+
+    async function validationCode(data){
+
+        console.log(data)
+
     }
 }

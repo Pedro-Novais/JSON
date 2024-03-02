@@ -56,6 +56,7 @@ function callPageRegister() {
     linkRegister.setAttribute('class', 'li-visits')
 
     div.setAttribute('class', 'conatiner-credentials')
+    div.setAttribute('id', 'container-register')
 
     div.innerHTML = register
 
