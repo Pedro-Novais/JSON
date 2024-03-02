@@ -1,5 +1,8 @@
 const { User: UserModel } = require('../models/user')
+const { ConfirmationUser } = require('../models/confirmation') 
+
 const bcrypt = require('bcrypt');
+const { send } = require('./utils/sendEmail')
 
 const registerController = {
 
@@ -7,7 +10,7 @@ const registerController = {
         try {
 
             const email = req.body.email
-
+    
             const existingUser = await UserModel.findOne({ email });
 
             if (existingUser) {
@@ -61,11 +64,69 @@ const registerController = {
 
             const response = await UserModel.create(newUser)
 
-            //response.password = undefined
-
             res
                 .status(201)
                 .json({ response, msg: "Usúario criado com sucesso" })
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    createCode: async (req, res) => {
+        try{
+
+            const email = req.body.email
+    
+            const existingUser = await UserModel.findOne({ email });
+    
+            if (existingUser) {
+                return res.status(400).json({ msg: 'E-mail já registrado' });
+            }
+
+            // Gere um código de confirmação (pode ser gerado aleatoriamente)
+            const code = Math.floor(100000 + Math.random() * 900000);
+
+    
+            send(code, req)
+    
+            const dataConfirmation = {
+                email: req.body.email,
+                code: code
+            }
+            
+            const response = await ConfirmationUser.create(dataConfirmation)
+
+            res
+                .status(201)
+                .json({ response, msg: "Código de confirmação criado com sucesso" })
+
+        }catch(error){
+            console.log(error)
+        }
+    },
+
+    verifyCode: async (req, res) =>{
+        try {
+
+            const email = req.body.email
+            const code = req.body.code
+    
+            const user = await ConfirmationUser.findOne({ email });
+
+            if (!user) {
+                return res.status(400).json({ msg: 'E-mail não encontrado' });
+            }
+
+            if(user.code !== code){
+                return res.status(400).json({ msg: 'Código de confirmação incorreto' });
+            }
+
+            const response = await ConfirmationUser.deleteOne({ email })
+
+            res
+                .status(201)
+                .json({ response, msg: "Código de confirmação excluido com sucesso" })
 
         } catch (error) {
             console.log(error)

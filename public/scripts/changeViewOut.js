@@ -1,4 +1,5 @@
 import { interactorLogin } from "./scriptEnter.js"
+import { interectorRegister } from "./register.js"
 import { login, register } from "./utils/modals.js"
 
 const linkWelcome = document.querySelector('#visit-welcome')
@@ -59,6 +60,9 @@ function callPageRegister() {
     div.innerHTML = register
 
     main.appendChild(div)
+
+
+    interectorRegister()
 
     linkWelcome.addEventListener('click', callPageWelcome)
     linkLogin.addEventListener('click', callPageLogin)

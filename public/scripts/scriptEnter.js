@@ -1,4 +1,5 @@
 import { get, post } from "./utils/functionsReq.js"
+import { validEmail } from "./utils/validEmail.js"
 
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"
@@ -15,11 +16,11 @@ export async function interactorLogin() {
 
     async function makeLogin() {
 
-        if (email.value == "" || password.value == "") {
+        /*if (email.value == "" || password.value == "") {
 
             email.value = "pedro2@gmail.com"
             password.value = "pedro2"
-        }
+        }*/
 
         if (email.value == "" || password.value == "") {
             return console.log('Preencha todos os dados para realizar o login')
@@ -30,7 +31,7 @@ export async function interactorLogin() {
         }
 
 
-        let data = {
+        const data = {
             email: email.value,
             password: password.value
         }
@@ -49,11 +50,6 @@ export async function interactorLogin() {
             console.log(loginResult)
         }
 
-    }
-
-    function validEmail(email) {
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regexEmail.test(email);
     }
 
     function removePlaceholder() {
