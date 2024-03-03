@@ -20,7 +20,6 @@
     "nodemailer": "^6.9.11"
   },
   "devDependencies": {
-    "json-server": "^1.0.0-alpha.22",
     "nodemon": "^3.0.3"
   }
 }

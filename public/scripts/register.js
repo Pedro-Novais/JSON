@@ -5,6 +5,7 @@ export async function interectorRegister(){
     
     const containerRegister = document.querySelector('#container-register')
     
+    const header = document.querySelector('header')
     const main = document.querySelector('main')
     const div = document.createElement('div')
 
@@ -38,6 +39,7 @@ export async function interectorRegister(){
         }
 
         containerRegister.style.display = "none"
+        header.style.pointerEvents = 'none';
 
         div.setAttribute('class', 'conatiner-credentials')
         div.setAttribute('id', 'container-insert-code')
@@ -56,7 +58,7 @@ export async function interectorRegister(){
     }
 
     async function validationCode(data){
-
+        
         console.log(data)
 
     }

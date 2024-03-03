@@ -79,7 +79,8 @@ const registerController = {
             const email = req.body.email
     
             const existingUser = await UserModel.findOne({ email });
-    
+            const existingUserConfirmation = await ConfirmationUser.findOne({ email });
+
             if (existingUser) {
                 return res.status(400).json({ msg: 'E-mail já registrado' });
             }
@@ -87,6 +88,16 @@ const registerController = {
             // Gere um código de confirmação (pode ser gerado aleatoriamente)
             const code = Math.floor(100000 + Math.random() * 900000);
 
+            if(existingUserConfirmation){
+
+                existingUserConfirmation.code  = code
+
+                existingUserConfirmation.save()
+
+                return res
+                        .status(201)
+                        .json({ response, msg: "Código de confirmação criado com sucesso" })
+            }
     
             send(code, req)
     
