@@ -1,11 +1,14 @@
 import { interactorLogin } from "./scriptEnter.js"
 import { interectorRegister } from "./register.js"
 import { login, register } from "./utils/modals.js"
+import { interactorResponsive } from "./responsive/responsiveExternal.js"
 
 const linkWelcome = document.querySelector('#visit-welcome')
 const linkLogin = document.querySelector('#visit-login')
 const linkRegister = document.querySelector('#visit-signup')
 
+const header = document.querySelector('header')
+const footer = document.querySelector('footer')
 const main = document.querySelector('#main-enter')
 
 const div = document.createElement('div')
@@ -15,8 +18,23 @@ linkLogin.addEventListener('click', callPageLogin)
 linkRegister.addEventListener('click', callPageRegister)
 
 initial()
+interactorResponsive()
 
 function callPageWelcome() {
+
+    let width = window.innerWidth 
+
+    if (width <= 800) { 
+
+    header.style.display = "flex";
+    main.style.display = "flex";
+    footer.style.display = "flex";
+
+    let divOptions = document.querySelector('#bar-options')
+    divOptions.remove()
+
+    }
+
     div.remove()
 
     pageSelectMoment()
@@ -29,6 +47,20 @@ function callPageWelcome() {
 }
 
 function callPageLogin() {
+
+    let width = window.innerWidth 
+
+    if (width <= 800) { 
+
+    header.style.display = "flex";
+    main.style.display = "flex";
+    footer.style.display = "flex";
+
+    let divOptions = document.querySelector('#bar-options')
+    divOptions.remove()
+
+    }
+
     div.remove()
 
     pageSelectMoment()
@@ -49,6 +81,20 @@ function callPageLogin() {
 }
 
 function callPageRegister() {
+
+    let width = window.innerWidth 
+
+    if (width <= 800) { 
+
+    header.style.display = "flex";
+    main.style.display = "flex";
+    footer.style.display = "flex";
+
+    let divOptions = document.querySelector('#bar-options')
+    divOptions.remove()
+
+    }
+
     div.remove()
     
     pageSelectMoment()
@@ -93,3 +139,5 @@ function pageSelectMoment(){
         linkRegister.removeAttribute('class', 'li-visits')
     }
 }
+
+export { callPageWelcome, callPageLogin, callPageRegister}

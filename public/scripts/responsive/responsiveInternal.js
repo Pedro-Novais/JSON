@@ -1,5 +1,5 @@
-import { viewBarsCode } from "./utils/modals.js"
-import { callPageList, callPageProfile, logout } from "./changeView.js";
+import { viewBarsCode } from "../utils/modals.js"
+import { callPageList, callPageProfile, logout } from "../changeView.js";
 
 export function interactorResponsive() {
 
@@ -72,6 +72,7 @@ export function interactorResponsive() {
         })
 
         linkAbout.addEventListener('click', logout)
+
         const cancelBar = document.querySelector('#cancel-bar')
         if (cancelBar != null) {
             cancelBar.addEventListener('click', outBar)
@@ -80,9 +81,8 @@ export function interactorResponsive() {
 
     function outBar() {
         main.style.display = "flex";
-        //header.style.display = "flex";
-        //footer.style.display = "flex";
         div.style.animation = "closeBar .3s ease-out"
+
         setTimeout(() => {
             div.remove()
         }, 250)

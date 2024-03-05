@@ -992,7 +992,7 @@ body #main-enter .conatiner-credentials #re-send-code {
   transition: 0.2s;
 }
 body #main-enter .conatiner-credentials #re-send-code:hover {
-  color: #0487D9;
+  color: #05DBF2;
   cursor: pointer;
 }
 body #main-enter .conatiner-credentials #info-send-code {

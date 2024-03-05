@@ -1,7 +1,7 @@
 import { profile, listToDo } from "./utils/modals.js"
 import { interactorProfile } from "./scriptProfile.js"
 import { interactorList } from "./script.js"
-import { interactorResponsive } from "./scriptResponsive.js"
+import { interactorResponsive } from "./responsive/responsiveInternal.js"
 
 const div = document.createElement('div')
 
@@ -17,7 +17,7 @@ linkProfile.addEventListener('click', callPageProfile)
 linkAbout.addEventListener('click', logout)
 
 initial()
-interactorResponsive()
+interactorResponsive(1)
 
 function logout(){
     localStorage.removeItem('token')
@@ -37,7 +37,7 @@ function callPageList() {
     let divOptions = document.querySelector('#bar-options')
     divOptions.remove()
 
-}
+    }
 
 if (linkProfile.className == 'li-visits') {
 
