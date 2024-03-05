@@ -2,6 +2,9 @@ const { User: UserModel } = require('../models/user')
 const { ConfirmationUser } = require('../models/confirmation') 
 
 const bcrypt = require('bcrypt');
+require('dotenv').config()
+const jwt = require('jsonwebtoken')
+
 const { send } = require('./utils/sendEmail')
 
 const registerController = {
@@ -64,9 +67,18 @@ const registerController = {
 
             const response = await UserModel.create(newUser)
 
+            const secret = process.env.SECRET
+
+            const token = jwt.sign(
+                {
+                    id: response._id
+                },
+                secret
+            )
+
             res
                 .status(201)
-                .json({ response, msg: "Usúario criado com sucesso" })
+                .json({ token, msg: "Usúario criado com sucesso" })
 
         } catch (error) {
             console.log(error)
@@ -82,7 +94,10 @@ const registerController = {
             const existingUserConfirmation = await ConfirmationUser.findOne({ email });
 
             if (existingUser) {
-                return res.status(400).json({ msg: 'E-mail já registrado' });
+
+                return res
+                        .status(409)
+                        .json({ msg: 'E-mail já registrado' });
             }
 
             // Gere um código de confirmação (pode ser gerado aleatoriamente)
@@ -94,9 +109,11 @@ const registerController = {
 
                 existingUserConfirmation.save()
 
+                send(code, req)
+
                 return res
                         .status(201)
-                        .json({ response, msg: "Código de confirmação criado com sucesso" })
+                        .json({code: code, msg: "Código de confirmação criado com sucesso" })
             }
     
             send(code, req)
@@ -110,7 +127,7 @@ const registerController = {
 
             res
                 .status(201)
-                .json({ response, msg: "Código de confirmação criado com sucesso" })
+                .json({ code: code, msg: "Código de confirmação criado com sucesso" })
 
         }catch(error){
             console.log(error)

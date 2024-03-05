@@ -2,10 +2,6 @@ import { addTaskBack, deleteTaskBack, updateTaskBack, order } from "./utils/func
 import { modalEdit, modalRemovetext } from "./utils/modals.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
-const api = 'http://localhost:5000/tasks'
-const apiConfig = 'http://localhost:5000/config'
-const apiStatistics = 'http://localhost:5000/statistic'
-
 const apiTask = '/api/user/tasks'
 const apiStatistic = '/api/user/statistic'
 
@@ -17,6 +13,7 @@ export async function interactorList() {
   const responseVerificationUser = await verifyUser()
 
   statusUser(responseVerificationUser)
+  
   const configJson = responseVerificationUser.responseData.configurations
   const statistic = responseVerificationUser.responseData.statistic
 

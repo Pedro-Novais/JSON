@@ -93,7 +93,7 @@ async function getUser(url, token){
         return { responseData, status: response.status, ok: response.ok }
 
     } catch (error) {
-        console.log(error)
+        console.log(error) 
     }
 }
 
@@ -109,12 +109,12 @@ async function post(url, data){
             body: JSON.stringify(data)
         })
 
-        if (!response.ok) {
+        /*if (!response.ok) {
             return { 
                 status: response.status, 
                 ok: response.ok
             }
-        }
+        }*/
 
         const responseData = await response.json()
     

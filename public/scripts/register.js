@@ -1,10 +1,16 @@
 import { validEmail } from "./utils/validEmail.js"
 import { digitCode } from "./utils/modals.js"
+import { get, post } from "./utils/functionsReq.js"
 
-export async function interectorRegister(){
-    
+const urlList = "/list-to-do"
+const apiCreateCode = "/api/confirmation"
+const apiVerifyCode = "/api/verify"
+const apiRegister = "/api/register"
+
+export async function interectorRegister() {
+
     const containerRegister = document.querySelector('#container-register')
-    
+
     const header = document.querySelector('header')
     const main = document.querySelector('main')
     const div = document.createElement('div')
@@ -17,8 +23,12 @@ export async function interectorRegister(){
 
     btnRegister.addEventListener('click', register)
 
-    async function register(){
-        
+    async function register() {
+
+        //name.value = "Teste"
+        //email.value = "predohn@gmail.com"
+        //password.value = "teste123$"
+
         if (email.value == "" || password.value == "" || name.value == "") {
             return console.log('Preencha todos os dados para realizar o cadastro')
         }
@@ -30,36 +40,86 @@ export async function interectorRegister(){
         const passwordSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password.value)
         const passwordNumber = /\d/.test(password.value);
 
-        if(password.value.length < 7){
+        if (password.value.length < 7) {
             return console.log('Digite uma senha mais longa')
         }
 
-        if (!passwordSymbol || !passwordNumber){
+        if (!passwordSymbol || !passwordNumber) {
             return console.log('Sua senha precisa conter simbolos e números')
         }
 
-        containerRegister.style.display = "none"
-        header.style.pointerEvents = 'none';
-
-        div.setAttribute('class', 'conatiner-credentials')
-        div.setAttribute('id', 'container-insert-code')
-
-        div.innerHTML = digitCode
-
-        main.appendChild(div)
-
         const data = {
-            name: name.value,
             email: email.value,
-            password: password.value
         }
+        const response = await post(apiCreateCode, data)
 
-        validationCode(data)
+        if (response.status !== 201) {
+
+            console.log(response.responseData.msg)
+
+        } else {
+
+            console.log(response)
+            containerRegister.style.display = "none"
+            header.style.pointerEvents = 'none';
+
+            div.setAttribute('class', 'conatiner-credentials')
+            div.setAttribute('id', 'container-insert-code')
+
+            div.innerHTML = digitCode
+
+            main.appendChild(div)
+
+            verificationCode(data)
+        }
     }
 
-    async function validationCode(data){
-        
-        console.log(data)
+    async function verificationCode() {
 
+        const inputCode = document.querySelector('#value-code')
+        const btnSend = document.querySelector('#btn-verify-code')
+
+        btnSend.addEventListener('click', async () => {
+
+            const data = {
+                email: email.value,
+                code: inputCode.value
+            }
+
+            const response = await post(apiVerifyCode, data)
+            console.log(response)
+
+            if (!response.ok) {
+
+                return false
+
+            }
+            else {
+
+                const data = {
+                    name: name.value,
+                    email: email.value,
+                    password: password.value
+                }
+
+                const response = await post(apiRegister, data)
+
+                if (response.ok) {
+                    console.log(response)
+                    
+                    const responseToDo = await get(urlList, response.responseData.token)
+
+                    localStorage.setItem('token', response.responseData.token);
+
+                    window.location.href = responseToDo.url
+
+                } else {
+                    console.log(loginResult)
+                }
+
+                console.log(response)
+            }
+
+        })
     }
 }
