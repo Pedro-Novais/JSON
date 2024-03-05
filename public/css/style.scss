@@ -926,15 +926,16 @@ body {
                 font-weight: 700;
                 letter-spacing: .1em;
                 margin-top: 1rem;
+                text-align: center
             }
 
             .box-credentials {
                 @include container;
                 flex-direction: column;
-                align-items: flex-start;
+                //align-items: flex-start;
                 justify-content: space-around;
                 width: 90%;
-                min-height: 45%;
+                min-height: 50%;
                 padding: .5em;
                 margin-top: 1rem;
 
@@ -988,6 +989,23 @@ body {
                 .inputs-credentials:focus {
                     border-bottom: solid 2px $white;
                 }
+            }
+
+            #re-send-code{
+                text-decoration: none;
+                color: $white;
+                transition: .2s;
+            }
+
+            #re-send-code:hover{
+                color: $priority;
+                cursor: pointer;
+            }
+
+            #info-send-code{
+                text-align: center;
+                margin-top: 1em;
+                color: $white;
             }
 
             .btn-sign {

@@ -25,9 +25,9 @@ export async function interectorRegister() {
 
     async function register() {
 
-        //name.value = "Teste"
+        name.value = "Teste"
         //email.value = "predohn@gmail.com"
-        //password.value = "teste123$"
+        password.value = "teste123$"
 
         if (email.value == "" || password.value == "" || name.value == "") {
             return console.log('Preencha todos os dados para realizar o cadastro')
@@ -81,6 +81,12 @@ export async function interectorRegister() {
 
         btnSend.addEventListener('click', async () => {
 
+            if(inputCode.value == " "){
+
+                return false
+
+            }
+
             const data = {
                 email: email.value,
                 code: inputCode.value
@@ -91,10 +97,9 @@ export async function interectorRegister() {
 
             if (!response.ok) {
 
-                return false
+                return console.log('CÓDIGO INVALIDO')
 
-            }
-            else {
+            }else {
 
                 const data = {
                     name: name.value,
@@ -105,8 +110,7 @@ export async function interectorRegister() {
                 const response = await post(apiRegister, data)
 
                 if (response.ok) {
-                    console.log(response)
-                    
+
                     const responseToDo = await get(urlList, response.responseData.token)
 
                     localStorage.setItem('token', response.responseData.token);
@@ -114,10 +118,9 @@ export async function interectorRegister() {
                     window.location.href = responseToDo.url
 
                 } else {
-                    console.log(loginResult)
+                    console.log("Algum erro inesperado aconteceu")
                 }
 
-                console.log(response)
             }
 
         })
