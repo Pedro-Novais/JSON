@@ -60,7 +60,7 @@ export async function interectorRegister() {
 
         if (response.status !== 201) {
 
-            console.log(response.responseData.msg)
+            return boxAlerts(response.responseData.msg, '#container-register', 5000)
 
         } else {
 

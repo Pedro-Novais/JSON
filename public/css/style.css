@@ -1567,6 +1567,11 @@ body footer p {
   body #main-enter .conatiner-credentials .box-credentials #forget-password {
     font-size: 0.9rem;
   }
+  body #main-enter .conatiner-credentials .box-watch-out {
+    min-width: 90%;
+    max-width: 90%;
+    min-height: 8vh;
+  }
   body #main-enter .conatiner-credentials .btn-sign {
     height: 7vh;
     opacity: 1;
