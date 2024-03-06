@@ -1,5 +1,5 @@
 import { get, post } from "./utils/functionsReq.js"
-import { validEmail } from "./utils/validEmail.js"
+import { validEmail } from "./utils/utilsInitial.js"
 
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"

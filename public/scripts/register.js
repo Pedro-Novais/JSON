@@ -1,4 +1,4 @@
-import { validEmail } from "./utils/validEmail.js"
+import { validEmail, boxAlerts, validOnlyNumber } from "./utils/utilsInitial.js"
 import { digitCode } from "./utils/modals.js"
 import { get, post } from "./utils/functionsReq.js"
 
@@ -26,28 +26,31 @@ export async function interectorRegister() {
     async function register() {
 
         name.value = "Teste"
-        //email.value = "predohn@gmail.com"
-        password.value = "teste123$"
+        //email.value = "teste@gmail.com"
+       // password.value = "teste123$"
 
         if (email.value == "" || password.value == "" || name.value == "") {
 
-            return boxAlerts("Preencha todos os dados para realizar o cadastro")
+            return boxAlerts("Preencha todos os dados para realizar o cadastro", '#container-register', 5000)
         
         }
 
         if (!validEmail(email.value)) {
-            return console.log('Formato de email inválido')
+
+            return boxAlerts("Insira um formato de email válido", '#container-register', 5000)
         }
 
         const passwordSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password.value)
         const passwordNumber = /\d/.test(password.value);
 
         if (password.value.length < 7) {
-            return console.log('Digite uma senha mais longa')
+
+            return boxAlerts("Sua senha precisa conter mais de 7 caracteres", '#container-register', 5000)
         }
 
         if (!passwordSymbol || !passwordNumber) {
-            return console.log('Sua senha precisa conter simbolos e números')
+
+            return boxAlerts("Sua senha precisa conter números e símbolos", '#container-register', 5000)
         }
 
         const data = {
@@ -61,17 +64,18 @@ export async function interectorRegister() {
 
         } else {
 
-            console.log(response)
-            containerRegister.style.display = "none"
+            //containerRegister.style.display = "none"
+            containerRegister.remove()
             header.style.pointerEvents = 'none';
-
+            
             div.setAttribute('class', 'conatiner-credentials')
             div.setAttribute('id', 'container-insert-code')
-
+            
             div.innerHTML = digitCode
-
+            
             main.appendChild(div)
-
+            
+            boxAlerts("O código de confirmação foi enviado ao seu email", '#container-insert-code', 10000)
             verificationCode(data)
         }
     }
@@ -82,11 +86,14 @@ export async function interectorRegister() {
         const btnSend = document.querySelector('#btn-verify-code')
 
         btnSend.addEventListener('click', async () => {
+    
+            if(inputCode.value == ""){
+                return boxAlerts("É necessário inserir o código de confirmação para continuar", '#container-insert-code', 5000)
 
-            if(inputCode.value == " "){
+            }
 
-                return false
-
+            if(!validOnlyNumber(inputCode.value)){
+                return boxAlerts("O código não está no formato válido, verifique seu email e tente novamente", '#container-insert-code', 5000)
             }
 
             const data = {
@@ -95,11 +102,10 @@ export async function interectorRegister() {
             }
 
             const response = await post(apiVerifyCode, data)
-            console.log(response)
 
             if (!response.ok) {
 
-                return console.log('CÓDIGO INVALIDO')
+                return boxAlerts("O código inserido está incorreto, verifique seu email e tente novamente", '#container-insert-code', 5000)
 
             }else {
 
@@ -127,43 +133,4 @@ export async function interectorRegister() {
 
         })
     }
-
-    let time = null;
-
-    function boxAlerts(alert){
-        const divAlert = document.querySelector('.box-watch-out')
-
-        if(time !== null){
-
-            clearInterval(time)
-        }
-        
-        if(divAlert){
-            divAlert.remove()
-        }
-
-        const div = document.createElement('div')
-        const p = document.createElement('p')
-
-        div.setAttribute('class', 'box-watch-out')
-
-        p.setAttribute('id', 'msg-watch-out')
-
-        p.innerHTML = alert
-
-        div.appendChild(p)
-        containerRegister.appendChild(div)
-
-        time = setInterval(clearBoxAlerts, 5000)
-    }
-
-    function clearBoxAlerts(){
-        const divAlert = document.querySelector('.box-watch-out')
-
-        if(divAlert){
-            divAlert.remove()
-        }
-
-    }
-
 }

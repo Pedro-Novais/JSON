@@ -1002,12 +1002,6 @@ body {
                 cursor: pointer;
             }
 
-            #info-send-code{
-                text-align: center;
-                margin-top: 1em;
-                color: $white;
-            }
-
             .btn-sign {
                 margin-top: 2em;
                 width: 80%;
@@ -1037,8 +1031,9 @@ body {
                 border: solid 1px $color-light;
                 background-color: $color-light-opacity;
                 border-radius: .5rem;
+                padding: .2em;
                 min-width: 80%;
-                max-width: 80%;
+                max-width: 90%;
                 min-height: 5vh;
                 color: $white;
                 animation: slideIn 1s ease;
