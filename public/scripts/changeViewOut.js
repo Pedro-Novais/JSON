@@ -22,16 +22,16 @@ interactorResponsive()
 
 function callPageWelcome() {
 
-    let width = window.innerWidth 
+    let width = window.innerWidth
 
-    if (width <= 800) { 
+    if (width <= 800) {
 
-    header.style.display = "flex";
-    main.style.display = "flex";
-    footer.style.display = "flex";
+        header.style.display = "flex";
+        main.style.display = "flex";
+        footer.style.display = "flex";
 
-    let divOptions = document.querySelector('#bar-options')
-    divOptions.remove()
+        let divOptions = document.querySelector('#bar-options')
+        divOptions.remove()
 
     }
 
@@ -48,16 +48,16 @@ function callPageWelcome() {
 
 function callPageLogin() {
 
-    let width = window.innerWidth 
+    let width = window.innerWidth
 
-    if (width <= 800) { 
+    if (width <= 800) {
 
-    header.style.display = "flex";
-    main.style.display = "flex";
-    footer.style.display = "flex";
+        header.style.display = "flex";
+        main.style.display = "flex";
+        footer.style.display = "flex";
 
-    let divOptions = document.querySelector('#bar-options')
-    divOptions.remove()
+        let divOptions = document.querySelector('#bar-options')
+        divOptions.remove()
 
     }
 
@@ -82,21 +82,21 @@ function callPageLogin() {
 
 function callPageRegister() {
 
-    let width = window.innerWidth 
+    let width = window.innerWidth
 
-    if (width <= 800) { 
+    if (width <= 800) {
 
-    header.style.display = "flex";
-    main.style.display = "flex";
-    footer.style.display = "flex";
+        header.style.display = "flex";
+        main.style.display = "flex";
+        footer.style.display = "flex";
 
-    let divOptions = document.querySelector('#bar-options')
-    divOptions.remove()
+        let divOptions = document.querySelector('#bar-options')
+        divOptions.remove()
 
     }
 
     div.remove()
-    
+
     pageSelectMoment()
 
     linkRegister.setAttribute('class', 'li-visits')
@@ -128,16 +128,16 @@ function initial() {
 
 }
 
-function pageSelectMoment(){
-    if(linkWelcome.classList == "li-visits"){
+function pageSelectMoment() {
+    if (linkWelcome.classList == "li-visits") {
         linkWelcome.removeAttribute('class', 'li-visits')
     }
-    else if(linkLogin.classList == "li-visits"){
+    else if (linkLogin.classList == "li-visits") {
         linkLogin.removeAttribute('class', 'li-visits')
     }
-    else if(linkRegister.classList == "li-visits"){
+    else if (linkRegister.classList == "li-visits") {
         linkRegister.removeAttribute('class', 'li-visits')
     }
 }
 
-export { callPageWelcome, callPageLogin, callPageRegister}
+export { callPageWelcome, callPageLogin, callPageRegister }

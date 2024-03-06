@@ -1028,6 +1028,24 @@ body {
                 cursor: pointer;
                 opacity: 1;
             }
+
+            .box-watch-out{
+                @include container;
+                justify-content: center;
+                position: relative;
+                top: 9%;
+                border: solid 1px $color-light;
+                background-color: #05DBF240;
+                border-radius: 1rem;
+                min-width: 80%;
+                max-width: 80%;
+                min-height: 5vh;
+                color: $white;
+
+                p{
+                    text-align: center;
+                }
+            }
         }
     }
 

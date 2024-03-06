@@ -1019,6 +1019,25 @@ body #main-enter .conatiner-credentials .btn-sign:hover {
   cursor: pointer;
   opacity: 1;
 }
+body #main-enter .conatiner-credentials .box-watch-out {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 9%;
+  border: solid 1px #05DBF2;
+  background-color: rgba(5, 219, 242, 0.2509803922);
+  border-radius: 1rem;
+  min-width: 80%;
+  max-width: 80%;
+  min-height: 5vh;
+  color: #D9D9D9;
+}
+body #main-enter .conatiner-credentials .box-watch-out p {
+  text-align: center;
+}
 body main {
   display: flex;
   flex-direction: row;
