@@ -68,6 +68,7 @@ function callPageLogin() {
     linkLogin.setAttribute('class', 'li-visits')
 
     div.setAttribute('class', 'conatiner-credentials')
+    div.setAttribute('id', 'container-login')
 
     div.innerHTML = login
 
@@ -119,6 +120,7 @@ function callPageRegister() {
 
 function initial() {
     div.setAttribute('class', 'conatiner-credentials')
+    div.setAttribute('id', 'container-login')
     linkLogin.setAttribute('class', 'li-visits')
 
     div.innerHTML = login

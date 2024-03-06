@@ -1,5 +1,5 @@
 import { get, post } from "./utils/functionsReq.js"
-import { validEmail } from "./utils/utilsInitial.js"
+import { boxAlerts, validEmail } from "./utils/utilsInitial.js"
 
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"
@@ -23,7 +23,8 @@ export async function interactorLogin() {
         }*/
 
         if (email.value == "" || password.value == "") {
-            return console.log('Preencha todos os dados para realizar o login')
+
+            return boxAlerts('Preencha todos os dados para realizar o login', '#container-login', 5000) 
         }
 
         if (!validEmail(email.value)) {
