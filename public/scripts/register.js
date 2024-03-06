@@ -84,6 +84,7 @@ export async function interectorRegister() {
 
         const inputCode = document.querySelector('#value-code')
         const btnSend = document.querySelector('#btn-verify-code')
+        const sendAgain = document.querySelector('#re-send-code')
 
         btnSend.addEventListener('click', async () => {
     
@@ -121,9 +122,13 @@ export async function interectorRegister() {
 
                     const responseToDo = await get(urlList, response.responseData.token)
 
+                    boxAlerts("Conta criada com sucesso", '#container-insert-code', 5000)
+
                     localStorage.setItem('token', response.responseData.token);
 
-                    window.location.href = responseToDo.url
+                    setTimeout( () =>{
+                        window.location.href = responseToDo.url
+                    }, 1000)
 
                 } else {
                     console.log("Algum erro inesperado aconteceu")
@@ -132,7 +137,30 @@ export async function interectorRegister() {
             }
 
         })
+
+        sendAgain.addEventListener( "click", async ()=> {
+
+            try {
+
+                const data = {
+                    email: email.value,
+                }
+                const response = await post(apiCreateCode, data)
+
+                if(response.ok){
+
+                    boxAlerts("Um novo código foi enviado ao seu email", '#container-insert-code', 5000)
+
+                }else{
+                    boxAlerts("Ocorreu um erro ao criar um novo código, tente novamente mais tarde", '#container-insert-code', 5000)
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+
+        })
     }
-    
+
     removePlaceholder()
 }

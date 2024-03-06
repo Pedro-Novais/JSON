@@ -28,7 +28,8 @@ export async function interactorLogin() {
         }
 
         if (!validEmail(email.value)) {
-            return console.log('Formato de email inválido')
+
+            return boxAlerts('Formato de email inválido', '#container-login', 5000) 
         }
 
 
@@ -43,11 +44,17 @@ export async function interactorLogin() {
 
             const responseToDo = await get(urlList, loginResult.responseData.token)
 
+            boxAlerts(loginResult.responseData.msg, '#container-login', 5000) 
+
             localStorage.setItem('token', loginResult.responseData.token);
 
-            window.location.href = responseToDo.url
+            setTimeout( () =>{
+                window.location.href = responseToDo.url
+            }, 1000)
+            
         } else {
 
+            return boxAlerts(loginResult.responseData.msg, '#container-login', 5000) 
             console.log(loginResult)
         }
 
