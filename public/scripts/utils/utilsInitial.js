@@ -38,6 +38,36 @@ function clearBoxAlerts() {
 
 }
 
+function removePlaceholder() {
+    const inputAuthor = document.querySelectorAll('.inputs-credentials');
+    let placeholder = []
+
+    for (let i = 0; i < inputAuthor.length; i++) {
+
+        placeholder[i] = inputAuthor[i].placeholder;
+
+    }
+
+    inputAuthor.forEach((input) => {
+
+        input.addEventListener('focus', () => {
+            input.placeholder = ""
+        })
+    })
+
+    inputAuthor.forEach((input) => {
+
+        input.addEventListener('blur', () => {
+
+            if (input.value == "") {
+
+                const getForName = input.getAttribute('mark')
+                inputAuthor[getForName].placeholder = placeholder[getForName]
+            }
+        })
+    })
+}
+
 function validEmail(email) {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regexEmail.test(email);
@@ -47,4 +77,4 @@ function validOnlyNumber(input) {
     return /^[0-9]+$/.test(input);
   }
 
-export { validEmail, boxAlerts, validOnlyNumber}
+export { validEmail, boxAlerts, validOnlyNumber, removePlaceholder}

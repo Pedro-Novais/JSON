@@ -1,4 +1,4 @@
-import { validEmail, boxAlerts, validOnlyNumber } from "./utils/utilsInitial.js"
+import { validEmail, boxAlerts, validOnlyNumber, removePlaceholder } from "./utils/utilsInitial.js"
 import { digitCode } from "./utils/modals.js"
 import { get, post } from "./utils/functionsReq.js"
 
@@ -133,4 +133,6 @@ export async function interectorRegister() {
 
         })
     }
+    
+    removePlaceholder()
 }

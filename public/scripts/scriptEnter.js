@@ -1,5 +1,5 @@
 import { get, post } from "./utils/functionsReq.js"
-import { boxAlerts, validEmail } from "./utils/utilsInitial.js"
+import { boxAlerts, validEmail, removePlaceholder } from "./utils/utilsInitial.js"
 
 const urlLogin = "/api/login"
 const urlList = "/list-to-do"
@@ -53,33 +53,6 @@ export async function interactorLogin() {
 
     }
 
-    function removePlaceholder() {
-        const inputAuthor = document.querySelectorAll('.inputs-credentials');
-        let placeholder = []
+    removePlaceholder()
 
-        for (let i = 0; i < inputAuthor.length; i++) {
-
-            placeholder[i] = inputAuthor[i].placeholder;
-
-        }
-
-        inputAuthor.forEach((input) => {
-
-            input.addEventListener('focus', () => {
-                input.placeholder = ""
-            })
-        })
-
-        inputAuthor.forEach((input) => {
-
-            input.addEventListener('blur', () => {
-
-                if (input.value == "") {
-
-                    const getForName = input.getAttribute('mark')
-                    inputAuthor[getForName].placeholder = placeholder[getForName]
-                }
-            })
-        })
-    }
 }
