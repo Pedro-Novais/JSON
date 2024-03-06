@@ -1035,12 +1035,13 @@ body {
                 position: relative;
                 top: 9%;
                 border: solid 1px $color-light;
-                background-color: #05DBF240;
+                background-color: $color-light-opacity;
                 border-radius: 1rem;
                 min-width: 80%;
                 max-width: 80%;
                 min-height: 5vh;
                 color: $white;
+                animation: slideIn 1s ease;
 
                 p{
                     text-align: center;

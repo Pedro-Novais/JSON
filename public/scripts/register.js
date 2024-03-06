@@ -30,7 +30,9 @@ export async function interectorRegister() {
         password.value = "teste123$"
 
         if (email.value == "" || password.value == "" || name.value == "") {
-            return console.log('Preencha todos os dados para realizar o cadastro')
+
+            return boxAlerts("Preencha todos os dados para realizar o cadastro")
+        
         }
 
         if (!validEmail(email.value)) {
@@ -125,4 +127,24 @@ export async function interectorRegister() {
 
         })
     }
+
+    function boxAlerts(alert){
+        const divAlert = document.querySelector('.box-watch-out')
+        if(divAlert){
+            divAlert.remove()
+        }
+
+        const div = document.createElement('div')
+        const p = document.createElement('p')
+
+        div.setAttribute('class', 'box-watch-out')
+
+        p.setAttribute('id', 'msg-watch-out')
+
+        p.innerHTML = alert
+
+        div.appendChild(p)
+        containerRegister.appendChild(div)
+    }
+
 }

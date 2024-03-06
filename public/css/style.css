@@ -1034,6 +1034,7 @@ body #main-enter .conatiner-credentials .box-watch-out {
   max-width: 80%;
   min-height: 5vh;
   color: #D9D9D9;
+  animation: slideIn 1s ease;
 }
 body #main-enter .conatiner-credentials .box-watch-out p {
   text-align: center;
