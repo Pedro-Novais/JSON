@@ -128,8 +128,16 @@ export async function interectorRegister() {
         })
     }
 
+    let time = null;
+
     function boxAlerts(alert){
         const divAlert = document.querySelector('.box-watch-out')
+
+        if(time !== null){
+
+            clearInterval(time)
+        }
+        
         if(divAlert){
             divAlert.remove()
         }
@@ -145,6 +153,17 @@ export async function interectorRegister() {
 
         div.appendChild(p)
         containerRegister.appendChild(div)
+
+        time = setInterval(clearBoxAlerts, 5000)
+    }
+
+    function clearBoxAlerts(){
+        const divAlert = document.querySelector('.box-watch-out')
+
+        if(divAlert){
+            divAlert.remove()
+        }
+
     }
 
 }
