@@ -13,7 +13,7 @@ export async function interactorList() {
   const responseVerificationUser = await verifyUser()
 
   statusUser(responseVerificationUser)
-  
+
   const configJson = responseVerificationUser.responseData.configurations
   const statistic = responseVerificationUser.responseData.statistic
 
@@ -30,12 +30,15 @@ export async function interactorList() {
   btn.addEventListener('click', addTask)
 
   function statusUser(user) {
+
     if (!user.ok) {
 
       window.location.href = "/login"
+      
     } else if (user.ok) {
 
       return true
+
     }
   }
 
@@ -52,6 +55,7 @@ export async function interactorList() {
       })
 
       return false
+
     }
 
     if (priorityId == null) {
@@ -59,10 +63,10 @@ export async function interactorList() {
     }
 
     priorityId = priorityId + 1
-    let val = task_put.value
+    const task = task_put.value
 
     let data = {
-      task: val,
+      task: task,
       priority: priorityId
     }
 
@@ -82,10 +86,11 @@ export async function interactorList() {
   }
 
   async function loadingTask(determinate = null) {
+
     try {
+
       const token = localStorage.getItem('token')
       const tasks = await order(apiTask, token)
-      //configJson.orderPriority = true
 
       if (determinate != null) {
         const tasksElement = document.querySelectorAll('.tasks')
@@ -94,6 +99,7 @@ export async function interactorList() {
           tasksElement[i].remove()
 
         }
+
         cleanValues()
         clearNewClick()
         activeHover = null
@@ -107,6 +113,7 @@ export async function interactorList() {
           let state = 3;
 
           for (let i = 0; i <= tasks.length; i++) {
+
             if (i == tasks.length) {
               i = 0;
               state = state - 1
@@ -114,19 +121,27 @@ export async function interactorList() {
             if (state == 0) {
               break
             }
+
             if (state == 3) {
-              if (tasks[i].priority == 3) {
-                taskOrderPriority.push(tasks[i])
-              }
+
+                if (tasks[i].priority == 3) {
+                  taskOrderPriority.push(tasks[i])
+                }
+
             } else if (state == 2) {
-              if (tasks[i].priority == 2) {
-                taskOrderPriority.push(tasks[i])
-              }
+
+                if (tasks[i].priority == 2) {
+                  taskOrderPriority.push(tasks[i])
+                }
+
             } else if (state == 1) {
-              if (tasks[i].priority == 1) {
-                taskOrderPriority.push(tasks[i])
-              }
+
+                if (tasks[i].priority == 1) {
+                  taskOrderPriority.push(tasks[i])
+                }
+
             }
+
           }
 
           orderPriority(taskOrderPriority)
@@ -145,14 +160,17 @@ export async function interactorList() {
   }
 
   function orderPriority(order) {
+
     if (order.length > 0) {
       for (let i = 0; i < order.length; i++) {
         createTask(order, i)
       }
     }
+
   }
 
   function createTask(taskJson, index) {
+
     const idTask = taskJson[index]['_id']
 
     const container = document.querySelector('#task-made')
@@ -167,11 +185,13 @@ export async function interactorList() {
     createNameTask(taskJson, index, div)
     createPriorityTask(taskJson, div, priorityAction, index)
     createActions(div, priorityAction, index, taskJson)
+
     container.appendChild(div)
 
   }
 
   function createNameTask(json, i, div) {
+
     const p = document.createElement('p')
     p.classList.add('task-puted')
 
@@ -179,23 +199,31 @@ export async function interactorList() {
 
     p.appendChild(name)
     div.appendChild(p)
+
   }
 
   function createPriorityTask(json, div, priority, id) {
+
     const container = document.createElement('div')
     container.setAttribute('class', 'priority-task')
+
     let level = []
     let priJson = json[id]["priority"]
+
     for (let i = 0; i < 3; i++) {
+
       level[i] = document.createElement('div')
       level[i].setAttribute('class', 'priority-level')
 
       container.appendChild(level[i])
       priority.appendChild(container)
+
     }
 
     for (let i = 0; i < priJson; i++) {
+
       level[i].style.backgroundColor = '#05DBF2';
+
     }
 
     div.appendChild(priority)
@@ -265,10 +293,8 @@ export async function interactorList() {
 
     window.scrollTo({
       top: posDiv,
-      behavior: 'smooth' // Adiciona uma animação de rolagem suave (opcional)
+      behavior: 'smooth'
     });
-
-    document.body.style.overflow = 'hidden';
 
     const main = document.querySelector('main')
     const header = document.querySelector('header')
@@ -289,12 +315,14 @@ export async function interactorList() {
       let title = document.createTextNode("Concluir tarefa")
       titleAction.appendChild(title)
     }
+
     modalRemovePriority(json, id)
 
     header.style.pointerEvents = 'none';
   }
 
   function modalRemovePriority(json, id) {
+
     const levelMark = document.querySelectorAll('[level]')
     let nameTask;
     let levelTask;
@@ -328,9 +356,8 @@ export async function interactorList() {
 
     window.scrollTo({
       top: posDiv,
-      behavior: 'smooth' // Adiciona uma animação de rolagem suave (opcional)
+      behavior: 'smooth'
     });
-    document.body.style.overflow = 'hidden';
 
     for (let i = 0; i < levelPiority.length; i++) {
       levelPiority[i].getAttribute('id')
@@ -361,11 +388,13 @@ export async function interactorList() {
   }
 
   function validUpdate(id, determinate, level = null) {
+
     const btnNewTask = document.querySelector('#btn-edit-edit')
     const btnCancelNewTask = document.querySelector('#btn-edit-cancel')
 
     btnNewTask.addEventListener('click', function (event) {
       document.body.style.overflow = 'auto';
+
       if (determinate == 0) {
         const inputTaskElement = document.querySelector('#input-edit')
         const inputTask = document.querySelector('#input-edit').value
@@ -377,7 +406,6 @@ export async function interactorList() {
             inputTaskElement.style.boxShadow = "none"
 
           })
-          document.body.style.overflow = 'hidden';
 
         } else {
           updateTask(id, inputTask)
@@ -517,11 +545,6 @@ export async function interactorList() {
     }
   }
 
-  /*function updateTaskFront(id){
-    const taskChange = document.querySelector(`#_${id}`)
-
-  }*/
-
   async function changeStatistic(priorityId, determinate) {
     try {
       const token = localStorage.getItem('token')
@@ -617,10 +640,13 @@ export async function interactorList() {
 
   function getPriority() {
     const level = document.querySelectorAll('.choose-priority')
+
     level.forEach(function (lvl) {
       lvl.addEventListener('click', function () {
+
         clearNewClick()
         priorityId = lvl.getAttribute('id');
+
         if (priorityId == "priority-one") {
           priorityId = 0
           activeHover = 0
@@ -642,10 +668,6 @@ export async function interactorList() {
         }
       });
     });
-  }
-
-  function getStatistics(json) {
-    statistic = json.reverse()
   }
 
   function markNewClick(index) {
@@ -719,5 +741,4 @@ export async function interactorList() {
       }
     }
   }
-
 }
