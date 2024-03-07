@@ -44,6 +44,7 @@ export async function interactorList() {
 
   //Function that make the verification and add new tasks from user
   async function addTask() {
+
     const token = localStorage.getItem('token')
     const input = document.querySelector('#task-add').value
 
@@ -107,6 +108,9 @@ export async function interactorList() {
       }
 
       if (tasks.length != 0) {
+
+        alertInsertTask(1)
+
         if (configJson.orderPriority == true) {
 
           let taskOrderPriority = []
@@ -152,10 +156,34 @@ export async function interactorList() {
           orderPriority(tasks)
 
         }
+      }else{
+
+        alertInsertTask(0)
+
       }
 
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  function alertInsertTask(determinate){
+
+    const container = document.querySelector('#task-made')
+
+    if(determinate == 0){
+
+      container.innerHTML = alertAddTask
+
+    }
+    else if(determinate == 1){
+      const alert = document.querySelector('.box-info-add-task')
+
+      if(alert){
+
+        alert.remove()
+
+      }
     }
   }
 
@@ -509,12 +537,21 @@ export async function interactorList() {
     div.remove()
     header.style.pointerEvents = 'auto';
     container.style.display = "flex"
-
+    
     if (determinate == 0) {
       const taskRemoved = document.querySelector(`#_${task}`)
-
+      
       taskRemoved.remove();
     }
+    
+    const tasks = document.querySelectorAll('.tasks')
+
+    if(tasks.length == 0){
+  
+      alertInsertTask(0)
+      
+    }
+
   }
 
   async function updateTask(id, newTask) {
