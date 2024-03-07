@@ -15,9 +15,11 @@ const taskController = {
                 return
             }
             let priorityTry = req.body.priority;
+
             if(priorityTry > 3) {
                 priorityTry = 3
             }
+            
             const newTask = {
                 task: req.body.task,
                 priority: priorityTry,

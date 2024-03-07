@@ -43,7 +43,7 @@ export async function interactorProfile() {
 
     async function getUserInfo() {
         responseVerificationUser = await verifyUser()
-
+    
         infosAboutUser.name = responseVerificationUser.responseData.name
         infosAboutUser.email = responseVerificationUser.responseData.email
         infosAboutUser.statistic = responseVerificationUser.responseData.persistStatistic
@@ -52,8 +52,9 @@ export async function interactorProfile() {
 
         statisticJson = responseVerificationUser.responseData.statistic
         configJson = responseVerificationUser.responseData.configurations
-        console.log(responseVerificationUser)
-        console.log(infosAboutUser)
+
+        console.log(responseVerificationUser.responseData)
+        //console.log(infosAboutUser)
     }
 
     function viewProfile() {

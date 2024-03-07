@@ -23,7 +23,9 @@ const statisticController = {
 
     update: async (req, res) => {
         try {
+
             const id = req.userId
+          
             const priority = req.params.priority
 
             const user = await UserModel.findById(id)
@@ -34,7 +36,7 @@ const statisticController = {
             }
     
             const newStatistic = req.body[priority]
-       
+
             user.statistic[priority] = newStatistic
 
             changePersistStatistic(req.body, user.persistStatistic)

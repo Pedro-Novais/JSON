@@ -14,8 +14,8 @@ export async function interactorList() {
 
   statusUser(responseVerificationUser)
 
-  const configJson = responseVerificationUser.responseData.configurations
-  const statistic = responseVerificationUser.responseData.statistic
+  let configJson = responseVerificationUser.responseData.configurations
+  let statistic = responseVerificationUser.responseData.statistic
 
   const arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
 
@@ -40,6 +40,15 @@ export async function interactorList() {
       return true
 
     }
+  }
+
+  async function updateStatisticNow() {
+
+    const responseVerificationUser = await verifyUser()
+
+    configJson = responseVerificationUser.responseData.configurations
+    statistic = responseVerificationUser.responseData.statistic
+
   }
 
   //Function that make the verification and add new tasks from user
@@ -72,8 +81,11 @@ export async function interactorList() {
     }
 
     try {
-      const resultStatistic = await changeStatistic(priorityId, 0)
+
+      const responseStatistic = await changeStatistic(priorityId, 0)
       const resultAdding = await addTaskBack(apiTask, data, token)
+
+      updateStatisticNow()
 
       if (resultAdding.ok) {
         loadingTask(1)
@@ -128,21 +140,21 @@ export async function interactorList() {
 
             if (state == 3) {
 
-                if (tasks[i].priority == 3) {
-                  taskOrderPriority.push(tasks[i])
-                }
+              if (tasks[i].priority == 3) {
+                taskOrderPriority.push(tasks[i])
+              }
 
             } else if (state == 2) {
 
-                if (tasks[i].priority == 2) {
-                  taskOrderPriority.push(tasks[i])
-                }
+              if (tasks[i].priority == 2) {
+                taskOrderPriority.push(tasks[i])
+              }
 
             } else if (state == 1) {
 
-                if (tasks[i].priority == 1) {
-                  taskOrderPriority.push(tasks[i])
-                }
+              if (tasks[i].priority == 1) {
+                taskOrderPriority.push(tasks[i])
+              }
 
             }
 
@@ -156,7 +168,7 @@ export async function interactorList() {
           orderPriority(tasks)
 
         }
-      }else{
+      } else {
 
         alertInsertTask(0)
 
@@ -167,19 +179,19 @@ export async function interactorList() {
     }
   }
 
-  function alertInsertTask(determinate){
+  function alertInsertTask(determinate) {
 
     const container = document.querySelector('#task-made')
 
-    if(determinate == 0){
+    if (determinate == 0) {
 
       container.innerHTML = alertAddTask
 
     }
-    else if(determinate == 1){
+    else if (determinate == 1) {
       const alert = document.querySelector('.box-info-add-task')
 
-      if(alert){
+      if (alert) {
 
         alert.remove()
 
@@ -537,19 +549,19 @@ export async function interactorList() {
     div.remove()
     header.style.pointerEvents = 'auto';
     container.style.display = "flex"
-    
+
     if (determinate == 0) {
       const taskRemoved = document.querySelector(`#_${task}`)
-      
+
       taskRemoved.remove();
     }
-    
+
     const tasks = document.querySelectorAll('.tasks')
 
-    if(tasks.length == 0){
-  
+    if (tasks.length == 0) {
+
       alertInsertTask(0)
-      
+
     }
 
   }
@@ -584,9 +596,12 @@ export async function interactorList() {
 
   async function changeStatistic(priorityId, determinate) {
     try {
+
       const token = localStorage.getItem('token')
       let responseUpdateStatistic = [];
+
       if (determinate == 0) {
+
         const endStatistic = priorityName(priorityId)
 
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
@@ -602,9 +617,7 @@ export async function interactorList() {
 
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
-        if (!responseUpdate.ok) {
-          console.log('Ocorreu um erro inesperado, não foi possível alterar as estatísticas')
-        }
+        return responseUpdate
 
       }
 
@@ -621,6 +634,8 @@ export async function interactorList() {
           },
           taskFinished: 1
         }
+
+        console.log(dataStatistic)
 
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
