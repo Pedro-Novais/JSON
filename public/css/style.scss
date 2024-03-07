@@ -15,8 +15,6 @@
 }
 
 #task-made::-webkit-scrollbar-track {
-    //background: $details;
-    //margin-top: 1rem;
     margin-bottom: 1.2rem;
     margin-top: 0.5vw;
 }
@@ -24,6 +22,16 @@
 #task-made::-webkit-scrollbar-thumb {
     background-color: $color-light;
     border-radius: 20px;
+}
+
+@keyframes msgAddTask{
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: .9;
+    }
 }
 
 @keyframes slideBoxStatistic {
@@ -38,17 +46,17 @@
 
 @keyframes slideTask {
     from {
-        height: 85%;
+        height: 80%;
     }
 
     to {
-        height: 100%;
+        height: 95%;
     }
 }
 
 @keyframes slideProfile {
     from {
-        height: 500px;
+        height: 600px;
     }
 
     to {
@@ -809,13 +817,12 @@ body {
     //Fim do estilo
 
     #modal-remove {
-        @include container;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 50vw;
-        height: 40vh;
-        position: relative;
-        top: 7%;
+        //@include container;
+        //flex-direction: column;
+        //justify-content: space-around;
+        //height: 40vh;
+        //position: relative;
+        //top: 7%;
 
         #task-remove {
 
@@ -833,12 +840,13 @@ body {
         position: relative;
         z-index: 100;
         top: 7%;
-        width: 50vw;
+        min-width: 100%;
         height: 40vh;
         padding: 1rem;
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         color: $text;
+        animation: slideIn .5s ease;
 
         .content-modal {
             @include container;
@@ -854,7 +862,7 @@ body {
                 background-color: $details;
                 outline: none;
                 border-style: none;
-                font-size: 1vw;
+                font-size: 1rem;
                 border-radius: 1rem;
                 color: $text;
                 font-weight: 900;
@@ -1063,7 +1071,7 @@ body {
             padding: 1vw;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-            //animation: slideTask .5s ease;
+            animation: slideBoxStatistic .5s ease;
             overflow: hidden;
 
             h2 {
@@ -1183,6 +1191,34 @@ body {
 
                     .actions {
                         cursor: pointer;
+                    }
+                }
+
+                .box-info-add-task{
+                    @include container;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 100%;
+                    min-height: 90%;
+
+                    .info-add-task{
+                        @include container;
+                        justify-content: center;
+                        align-items: center;
+                        width: 85%;
+                        min-height: 70%;
+                        border-radius: .5rem;
+                        background-color: $details;
+                        transition: 1s;
+                        animation: msgAddTask 2.5s ease infinite alternate;
+
+                        p{
+                            color: $white;
+                            font-size: 1.7rem;
+                            letter-spacing: .05em;
+                            font-weight: 600;
+                            text-align: center;
+                        }
                     }
                 }
             }

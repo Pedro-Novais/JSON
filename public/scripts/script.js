@@ -1,5 +1,5 @@
 import { addTaskBack, deleteTaskBack, updateTaskBack, order } from "./utils/functionsReq.js"
-import { modalEdit, modalRemovetext } from "./utils/modals.js"
+import { modalEdit, modalRemovetext, alertAddTask } from "./utils/modals.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
 const apiTask = '/api/user/tasks'
@@ -34,7 +34,7 @@ export async function interactorList() {
     if (!user.ok) {
 
       window.location.href = "/login"
-      
+
     } else if (user.ok) {
 
       return true

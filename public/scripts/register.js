@@ -64,7 +64,6 @@ export async function interectorRegister() {
 
         } else {
 
-            //containerRegister.style.display = "none"
             containerRegister.remove()
             header.style.pointerEvents = 'none';
             
