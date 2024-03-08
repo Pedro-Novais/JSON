@@ -387,6 +387,7 @@ body #main-profile .view-infos .container-profile-user .container-infos-user .co
   font-weight: 500;
   margin-bottom: 1rem;
   color: #D9D9D9;
+  text-transform: capitalize;
 }
 body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .box-user-infos {
   display: flex;
@@ -783,6 +784,27 @@ body #main-profile .view-infos .container-config .style-to-name-config {
   font-weight: 580;
   margin-right: 0.5em;
   white-space: pre-wrap;
+}
+body #main-profile .view-infos .container-config .box-watch-out {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 6%;
+  border: solid 1px #05DBF2;
+  background-color: rgba(5, 219, 242, 0.2509803922);
+  border-radius: 0.5rem;
+  padding: 0.5em;
+  min-width: 60%;
+  max-width: 90%;
+  min-height: 6vh;
+  color: #D9D9D9;
+  animation: slideIn 1s ease;
+}
+body #main-profile .view-infos .container-config .box-watch-out p {
+  text-align: center;
 }
 body #main-profile .view-infos .btn-configs {
   display: flex;

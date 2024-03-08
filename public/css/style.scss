@@ -409,6 +409,7 @@ body {
                             font-weight: 500;
                             margin-bottom: 1rem;
                             color: $white;
+                            text-transform: capitalize;
                         }
 
                         .box-user-infos {
@@ -791,6 +792,26 @@ body {
                     font-weight: 580;
                     margin-right: 0.5em;
                     white-space: pre-wrap;
+                }
+
+                .box-watch-out{
+                    @include container;
+                    justify-content: center;
+                    position: relative;
+                    top: 6%;
+                    border: solid 1px $color-light;
+                    background-color: $color-light-opacity;
+                    border-radius: .5rem;
+                    padding: .5em;
+                    min-width: 60%;
+                    max-width: 90%;
+                    min-height: 6vh;
+                    color: $white;
+                    animation: slideIn 1s ease;
+    
+                    p{
+                        text-align: center;
+                    }
                 }
             }
 

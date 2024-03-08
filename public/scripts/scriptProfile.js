@@ -1,4 +1,5 @@
 import { pageStatistic, pageConfigText, pageProfile } from "./utils/modals.js"
+import { boxAlerts } from "./utils/utilsInitial.js"
 import { updateTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
@@ -297,6 +298,7 @@ export async function interactorProfile() {
             orderPriority: state[0],
             usersCanViewStatistic: state[1]
         }
+
         try {
             const token = localStorage.getItem('token')
             const responseUpdate = await updateTaskBack(apiConfig, null, data, 0, token)
@@ -305,11 +307,14 @@ export async function interactorProfile() {
 
                 await getUserInfo()
                 viewConfigChange()
+
+                boxAlerts("Configurações salvas com sucesso", ".container-config", 5000)
             }
 
-            console.log(responseUpdate)
         } catch (err) {
-            console.log(err)
+
+            return boxAlerts("Ocorreu um erro ao salvar sua configurações", ".container-config", 5000)
+          
         }
     }
 

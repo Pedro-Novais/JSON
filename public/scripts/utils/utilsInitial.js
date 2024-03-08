@@ -18,14 +18,14 @@ function boxAlerts(alert, containerId, interval) {
     const p = document.createElement('p')
 
     div.setAttribute('class', 'box-watch-out')
-
+    
     p.setAttribute('id', 'msg-watch-out')
 
     p.innerHTML = alert
-
+ 
     div.appendChild(p)
     container.appendChild(div)
-
+    
     time = setInterval(clearBoxAlerts, interval)
 }
 
