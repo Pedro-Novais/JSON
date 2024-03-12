@@ -74,7 +74,7 @@ export async function interectorRegister() {
             
             main.appendChild(div)
             
-            boxAlerts(`O código de confirmação foi enviado ao seu email: ${data.email}`, '#container-insert-code', 10000)
+            boxAlerts(`O código de confirmação foi enviado ao seu email: ${data.email}`, '#container-insert-code', 100000)
             verificationCode(data)
         }
     }

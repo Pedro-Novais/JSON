@@ -199,10 +199,12 @@ body {
         @include container;
         justify-content: space-between;
         width: 100%;
-        min-height: 8rem;
+        height: 6rem;
         padding: 1rem;
-        //background-color: $background-dark;
-        //display: none;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        background: linear-gradient(to right, $background-one, $details);
 
         #bar-view-options {
             position: absolute;
@@ -232,7 +234,7 @@ body {
 
         nav {
             width: 40%;
-            height: 60%;
+            height: 80%;
 
             ul {
                 @include container;
@@ -286,7 +288,7 @@ body {
     //Style opara página de perfil, estatísticas e configurações
     #main-profile {
         position: absolute;
-        top: 10rem;
+        //top: 10rem;
         width: 95%;
         height: 75vh;
 
@@ -585,7 +587,7 @@ body {
                     flex-direction: row;
                     justify-content: space-around;
                     width: 25vw;
-                    height: 11vh;
+                    height: 5rem;
                     position: relative;
                     padding: .2em;
 
@@ -939,13 +941,14 @@ body {
         align-items: flex-start;
         justify-content: center;
         width: 35rem;
+        margin-top: 12rem;
         //height: 65%;
 
         .conatiner-credentials {
             @include container;
             flex-direction: column;
-            width: 100%;
-            height: 650px;
+            width: 85%;
+            height: 100%;
             padding: .7em;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1033,6 +1036,17 @@ body {
                 cursor: pointer;
             }
 
+            #back-page{
+                text-decoration: none;
+                color: $white;
+                transition: .2s;
+            }
+
+            #back-page:hover{
+                color: $color-light;
+                cursor: pointer;
+            }
+
             .btn-sign {
                 margin-top: 2em;
                 width: 80%;
@@ -1065,7 +1079,7 @@ body {
                 padding: .2em;
                 min-width: 80%;
                 max-width: 90%;
-                min-height: 5vh;
+                min-height: 7vh;
                 color: $white;
                 animation: slideIn 1s ease;
 
@@ -1081,9 +1095,9 @@ body {
         align-items: flex-start;
         justify-content: center;
         //width: 50%;
-        width: 1000px;
+        width: 750px;
         min-height: 35rem;
-        margin-top: 10vh;
+        margin-top: 8rem;
 
         #container {
             justify-self: center;
@@ -1135,7 +1149,7 @@ body {
                     @include container;
                     flex-direction: column;
                     justify-content: space-between;
-                    width: 15%;
+                    width: 17%;
                     height: 100%;
                     padding: 0.1vw;
                     border-radius: 0.5rem;
@@ -1162,7 +1176,7 @@ body {
                 #btn-add {
                     @include container;
                     justify-content: center;
-                    width: 15%;
+                    width: 17%;
                     height: 100%;
                     border-radius: 0.5rem;
                     background-color: $details;
@@ -1429,7 +1443,7 @@ body {
 
                 #container-info {
                     flex-direction: column;
-                    height: 25vh;
+                    height: 30vh;
 
                     #task-add {
                         width: 90%;
@@ -1691,16 +1705,17 @@ body {
         background: none;
         background-color: $color-resposive;
 
+        header{
+            background-image: none;
+            background-color: $color-resposive;
+        }
 
         main {
             width: 95vw;
             height: 90vh;
-            margin-top: 0;
 
             #main-profile {
-                position: unset;
                 height: 100%;
-                //background-color: $color-resposive;
                 border-radius: 1rem;
                 width: 95%;
 
@@ -1754,11 +1769,12 @@ body {
         //Estilo para a página de login
 
         #main-enter {
-            width: 90vw;
+            margin-top: 8rem;
+            width: 100%;
 
             .conatiner-credentials {
 
-                .box-credentials {
+                /*.box-credentials {
 
                     .title-input {
                         font-size: 1rem;
@@ -1771,7 +1787,7 @@ body {
                     #forget-password {
                         font-size: .9rem;
                     }
-                }
+                }*/
 
                     .box-watch-out{
                         min-width: 90%;
@@ -2055,6 +2071,15 @@ body {
                     }
                 }
             }
+        }
+
+        @media screen and (min-width: 1100px){
+            
+            main{
+                width: 1000px;
+                margin-top: 13rem;
+            }
+
         }
     }
 }

@@ -176,8 +176,12 @@ body header {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 8rem;
+  height: 6rem;
   padding: 1rem;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(to right, #011140, #034AA6);
 }
 body header #bar-view-options {
   position: absolute;
@@ -205,7 +209,7 @@ body header .name-symbol h1 {
 }
 body header nav {
   width: 40%;
-  height: 60%;
+  height: 80%;
 }
 body header nav ul {
   display: flex;
@@ -257,7 +261,6 @@ body header nav ul #logout:hover {
 }
 body #main-profile {
   position: absolute;
-  top: 10rem;
   width: 95%;
   height: 75vh;
 }
@@ -567,7 +570,7 @@ body #main-profile .view-infos .container-statistic .choose-priority-view {
   flex-direction: row;
   justify-content: space-around;
   width: 25vw;
-  height: 11vh;
+  height: 5rem;
   position: relative;
   padding: 0.2em;
 }
@@ -924,6 +927,7 @@ body #main-enter {
   align-items: flex-start;
   justify-content: center;
   width: 35rem;
+  margin-top: 12rem;
 }
 body #main-enter .conatiner-credentials {
   display: flex;
@@ -931,8 +935,8 @@ body #main-enter .conatiner-credentials {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 650px;
+  width: 85%;
+  height: 100%;
   padding: 0.7em;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1016,6 +1020,15 @@ body #main-enter .conatiner-credentials #re-send-code:hover {
   color: #05DBF2;
   cursor: pointer;
 }
+body #main-enter .conatiner-credentials #back-page {
+  text-decoration: none;
+  color: #D9D9D9;
+  transition: 0.2s;
+}
+body #main-enter .conatiner-credentials #back-page:hover {
+  color: #05DBF2;
+  cursor: pointer;
+}
 body #main-enter .conatiner-credentials .btn-sign {
   margin-top: 2em;
   width: 80%;
@@ -1049,7 +1062,7 @@ body #main-enter .conatiner-credentials .box-watch-out {
   padding: 0.2em;
   min-width: 80%;
   max-width: 90%;
-  min-height: 5vh;
+  min-height: 7vh;
   color: #D9D9D9;
   animation: slideIn 1s ease;
 }
@@ -1063,9 +1076,9 @@ body main {
   align-items: center;
   align-items: flex-start;
   justify-content: center;
-  width: 1000px;
+  width: 750px;
   min-height: 35rem;
-  margin-top: 10vh;
+  margin-top: 8rem;
 }
 body main #container {
   justify-self: center;
@@ -1127,7 +1140,7 @@ body main #container #container-info #priority {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  width: 15%;
+  width: 17%;
   height: 100%;
   padding: 0.1vw;
   border-radius: 0.5rem;
@@ -1157,7 +1170,7 @@ body main #container #container-info #btn-add {
   justify-content: flex-start;
   align-items: center;
   justify-content: center;
-  width: 15%;
+  width: 17%;
   height: 100%;
   border-radius: 0.5rem;
   background-color: #034AA6;
@@ -1391,7 +1404,7 @@ body footer p {
   }
   body main #container #container-info {
     flex-direction: column;
-    height: 25vh;
+    height: 30vh;
   }
   body main #container #container-info #task-add {
     width: 90%;
@@ -1566,13 +1579,15 @@ body footer p {
     background: none;
     background-color: #082783;
   }
+  body header {
+    background-image: none;
+    background-color: #082783;
+  }
   body main {
     width: 95vw;
     height: 90vh;
-    margin-top: 0;
   }
   body main #main-profile {
-    position: unset;
     height: 100%;
     border-radius: 1rem;
     width: 95%;
@@ -1609,16 +1624,24 @@ body footer p {
     width: 100%;
   }
   body #main-enter {
-    width: 90vw;
+    margin-top: 8rem;
+    width: 100%;
   }
-  body #main-enter .conatiner-credentials .box-credentials .title-input {
-    font-size: 1rem;
-  }
-  body #main-enter .conatiner-credentials .box-credentials .inputs-credentials {
-    font-size: 0.9rem;
-  }
-  body #main-enter .conatiner-credentials .box-credentials #forget-password {
-    font-size: 0.9rem;
+  body #main-enter .conatiner-credentials {
+    /*.box-credentials {
+
+        .title-input {
+            font-size: 1rem;
+        }
+
+        .inputs-credentials {
+            font-size: .9rem;
+        }
+
+        #forget-password {
+            font-size: .9rem;
+        }
+    }*/
   }
   body #main-enter .conatiner-credentials .box-watch-out {
     min-width: 90%;
@@ -1806,6 +1829,12 @@ body footer p {
   body #main-profile .view-infos .container-statistic .choose-priority-view {
     min-width: 22vw;
     min-height: 8vh;
+  }
+}
+@media screen and (min-height: 900px) and (min-width: 1100px) {
+  body main {
+    width: 1000px;
+    margin-top: 13rem;
   }
 }
 @media screen and (max-height: 600px) {
