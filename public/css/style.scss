@@ -24,7 +24,7 @@
     border-radius: 20px;
 }
 
-@keyframes msgAddTask{
+@keyframes msgAddTask {
     from {
         opacity: .4;
     }
@@ -73,7 +73,7 @@
     to {
         height: 620px;
     }
-    
+
 }
 
 @keyframes slideIn {
@@ -519,7 +519,7 @@ body {
                             .box-infos-general::-webkit-scrollbar {
                                 width: 6px
                             }
-                    
+
                             .box-infos-general::-webkit-scrollbar-thumb {
                                 background-color: $color-light;
                                 border-radius: 20px;
@@ -556,7 +556,7 @@ body {
                             #text-user-description::-webkit-scrollbar {
                                 width: 6px
                             }
-                    
+
                             #text-user-description::-webkit-scrollbar-thumb {
                                 background-color: $color-light;
                                 border-radius: 20px;
@@ -797,7 +797,7 @@ body {
                     white-space: pre-wrap;
                 }
 
-                .box-watch-out{
+                .box-watch-out {
                     @include container;
                     justify-content: center;
                     position: relative;
@@ -811,8 +811,8 @@ body {
                     min-height: 6vh;
                     color: $white;
                     animation: slideIn 1s ease;
-    
-                    p{
+
+                    p {
                         text-align: center;
                     }
                 }
@@ -1025,24 +1025,24 @@ body {
                 }
             }
 
-            #re-send-code{
+            #re-send-code {
                 text-decoration: none;
                 color: $white;
                 transition: .2s;
             }
 
-            #re-send-code:hover{
+            #re-send-code:hover {
                 color: $color-light;
                 cursor: pointer;
             }
 
-            #back-page{
+            #back-page {
                 text-decoration: none;
                 color: $white;
                 transition: .2s;
             }
 
-            #back-page:hover{
+            #back-page:hover {
                 color: $color-light;
                 cursor: pointer;
             }
@@ -1068,7 +1068,7 @@ body {
                 opacity: 1;
             }
 
-            .box-watch-out{
+            .box-watch-out {
                 @include container;
                 justify-content: center;
                 position: relative;
@@ -1083,7 +1083,7 @@ body {
                 color: $white;
                 animation: slideIn 1s ease;
 
-                p{
+                p {
                     text-align: center;
                 }
             }
@@ -1231,14 +1231,14 @@ body {
                     }
                 }
 
-                .box-info-add-task{
+                .box-info-add-task {
                     @include container;
                     justify-content: center;
                     align-items: center;
                     min-width: 100%;
                     min-height: 90%;
 
-                    .info-add-task{
+                    .info-add-task {
                         @include container;
                         justify-content: center;
                         align-items: center;
@@ -1249,7 +1249,7 @@ body {
                         transition: 1s;
                         animation: msgAddTask 2.5s ease infinite alternate;
 
-                        p{
+                        p {
                             color: $white;
                             font-size: 1.7rem;
                             letter-spacing: .05em;
@@ -1315,6 +1315,7 @@ body {
         letter-spacing: 0.1rem;
         width: 50%;
         white-space: nowrap;
+        text-transform: capitalize;
     }
 
     .choose-priority {
@@ -1344,7 +1345,7 @@ body {
         margin-top: 12%;
         //border-top: solid 1px $white;
 
-        p{
+        p {
             color: $white;
         }
     }
@@ -1476,7 +1477,7 @@ body {
             height: 18px;
         }
 
-        footer{
+        footer {
             margin-top: 15rem;
 
         }
@@ -1705,7 +1706,7 @@ body {
         background: none;
         background-color: $color-resposive;
 
-        header{
+        header {
             background-image: none;
             background-color: $color-resposive;
         }
@@ -1789,11 +1790,11 @@ body {
                     }
                 }*/
 
-                    .box-watch-out{
-                        min-width: 90%;
-                        max-width: 90%;
-                        min-height: 8vh;
-                    }
+                .box-watch-out {
+                    min-width: 90%;
+                    max-width: 90%;
+                    min-height: 8vh;
+                }
 
                 .btn-sign {
                     height: 7vh;
@@ -1820,7 +1821,7 @@ body {
             padding: 0;
             padding-top: 0.5rem;
             border-radius: 20px;
-            min-height: 31%;
+            min-height: 46%;
         }
 
         .priority-level {
@@ -1893,7 +1894,7 @@ body {
                                     height: 50%;
                                     margin-bottom: 5px;
                                     font-size: .9rem;
-                               
+
                                 }
                             }
                         }
@@ -2050,21 +2051,20 @@ body {
     }
 }
 
-@media screen and (min-height: 900px){
+@media screen and (min-height: 900px) {
     body {
         #main-profile {
 
-            #container-profile{
+            #container-profile {
                 height: 700px;
                 animation: slideProfile 0.5s
-
             }
-            
+
             .view-infos {
 
                 .container-statistic {
-                    
-                    .choose-priority-view{
+
+                    .choose-priority-view {
 
                         min-width: 22vw;
                         min-height: 8vh;
@@ -2073,9 +2073,9 @@ body {
             }
         }
 
-        @media screen and (min-width: 1100px){
-            
-            main{
+        @media screen and (min-width: 1100px) {
+
+            main {
                 width: 1000px;
                 margin-top: 13rem;
             }
@@ -2084,26 +2084,34 @@ body {
     }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 899px) {
     body {
         height: 160vh;
 
         main {
             height: 110vh;
 
-            #container {
+            @media screen and (min-width: 1050px) {
 
-                #task-made {
-                    .container-actions {
+                #container {
+                    min-height: 0;
+                    height: 80%;
 
-                        .actions {
-                            height: 3.6vh;
+
+                    #task-made {
+                        min-height: 16rem;
+
+                        .container-actions {
+
+                            .actions {
+                                height: 3vh;
+                            }
                         }
                     }
-                }
 
-                .task-puted {
-                    font-size: 1.2rem;
+                    .task-puted {
+                        font-size: 1.2rem;
+                    }
                 }
             }
         }

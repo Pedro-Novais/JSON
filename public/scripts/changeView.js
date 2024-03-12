@@ -56,6 +56,18 @@ interactorList()
 
 linkToDo.removeEventListener('click', callPageList)
 linkProfile.addEventListener('click', callPageProfile)
+
+/*const modalDiv = document.querySelector('#container')
+
+    let posDiv = modalDiv.offsetTop
+
+    console.log(posDiv)
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });*/
+
 }
 
 function callPageProfile() {

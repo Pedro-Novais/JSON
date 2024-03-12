@@ -1318,6 +1318,7 @@ body .task-puted {
   letter-spacing: 0.1rem;
   width: 50%;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 body .choose-priority {
   width: 20px;
@@ -1666,7 +1667,7 @@ body footer p {
     padding: 0;
     padding-top: 0.5rem;
     border-radius: 20px;
-    min-height: 31%;
+    min-height: 46%;
   }
   body .priority-level {
     width: 20px;
@@ -1837,19 +1838,30 @@ body footer p {
     margin-top: 13rem;
   }
 }
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 899px) {
   body {
     height: 160vh;
   }
   body main {
     height: 110vh;
   }
+}
+@media screen and (max-height: 899px) and (min-width: 1050px) {
+  body main #container {
+    min-height: 0;
+    height: 80%;
+  }
+  body main #container #task-made {
+    min-height: 16rem;
+  }
   body main #container #task-made .container-actions .actions {
-    height: 3.6vh;
+    height: 3vh;
   }
   body main #container .task-puted {
     font-size: 1.2rem;
   }
+}
+@media screen and (max-height: 899px) {
   body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
     height: 12vh;
   }
