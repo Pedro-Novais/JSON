@@ -313,6 +313,7 @@ body {
             @include container;
             flex-direction: column;
             width: 25%;
+            min-height: 100px;
             height: 100%;
             padding: 1rem;
             background-color: $background-one;
@@ -683,8 +684,8 @@ body {
                     .statistic-bar {
                         @include container;
                         flex-direction: row;
-                        width: 100%;
-                        height: 35%;
+                        width: 90%;
+                        height: 2rem;
                         border-radius: 0.5rem;
                         background-color: $white;
                         box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
@@ -2121,7 +2122,7 @@ body {
                 .container-statistic {
                     .choose-priority-view {
                         .select-priority {
-                            height: 12vh;
+                            height: 9vh;
                         }
                     }
 
@@ -2132,21 +2133,21 @@ body {
             }
         }
 
-        #modal-remove {
+        /*#modal-remove {
             height: 60vh;
-        }
+        }*/
 
         .modal {
-            min-height: 60vh;
+            //min-height: 60vh;
 
             .content-btn {
                 height: 15vh;
             }
         }
 
-        .content-priority {
+        /*.content-priority {
             height: 45%;
-        }
+        }*/
 
         .priority-level {
             width: 20px;

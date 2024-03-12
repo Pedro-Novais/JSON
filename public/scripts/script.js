@@ -319,6 +319,8 @@ export async function interactorList() {
     })
 
     i_edit.addEventListener('click', () => {
+      debugger
+      console.log(json)
       modalChange()
       validUpdate(idTask, 0)
     })
@@ -414,7 +416,7 @@ export async function interactorList() {
     modalDiv.innerHTML = modalEdit;
 
     main.appendChild(modalDiv)
-
+   
     if (activeHover !== null) {
       activeHover = null
     }

@@ -292,6 +292,7 @@ body #main-profile .select-page {
   align-items: center;
   flex-direction: column;
   width: 25%;
+  min-height: 100px;
   height: 100%;
   padding: 1rem;
   background-color: #011140;
@@ -675,8 +676,8 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  width: 100%;
-  height: 35%;
+  width: 90%;
+  height: 2rem;
   border-radius: 0.5rem;
   background-color: #D9D9D9;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
@@ -1841,6 +1842,12 @@ body footer p {
 @media screen and (max-height: 899px) {
   body {
     height: 160vh;
+    /*#modal-remove {
+        height: 60vh;
+    }*/
+    /*.content-priority {
+        height: 45%;
+    }*/
   }
   body main {
     height: 110vh;
@@ -1863,22 +1870,13 @@ body footer p {
 }
 @media screen and (max-height: 899px) {
   body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
-    height: 12vh;
+    height: 9vh;
   }
   body #main-profile .view-infos .container-statistic .container-statistic-bar {
     height: 25vh;
   }
-  body #modal-remove {
-    height: 60vh;
-  }
-  body .modal {
-    min-height: 60vh;
-  }
   body .modal .content-btn {
     height: 15vh;
-  }
-  body .content-priority {
-    height: 45%;
   }
   body .priority-level {
     width: 20px;
