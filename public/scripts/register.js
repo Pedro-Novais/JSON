@@ -25,9 +25,9 @@ export async function interectorRegister() {
 
     async function register() {
 
-        name.value = "Teste"
+        // name.value = "Teste"
         //email.value = "teste@gmail.com"
-       // password.value = "teste123$"
+        //password.value = "teste123$"
 
         if (email.value == "" || password.value == "" || name.value == "") {
 
@@ -74,7 +74,7 @@ export async function interectorRegister() {
             
             main.appendChild(div)
             
-            boxAlerts("O código de confirmação foi enviado ao seu email", '#container-insert-code', 10000)
+            boxAlerts(`O código de confirmação foi enviado ao seu email: ${data.email}`, '#container-insert-code', 10000)
             verificationCode(data)
         }
     }
@@ -148,7 +148,7 @@ export async function interectorRegister() {
 
                 if(response.ok){
 
-                    boxAlerts("Um novo código foi enviado ao seu email", '#container-insert-code', 5000)
+                    boxAlerts(`Um novo código foi enviado ao email: ${data.email}`, '#container-insert-code', 5000)
 
                 }else{
                     boxAlerts("Ocorreu um erro ao criar um novo código, tente novamente mais tarde", '#container-insert-code', 5000)

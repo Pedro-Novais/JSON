@@ -164,9 +164,13 @@ export async function interactorProfile() {
         let descriptionValue;
 
         if (infosAboutUser.description == " ") {
+
             descriptionValue = " Adicione uma descrição ao seu perfil! "
+
         } else {
+            
             descriptionValue = infosAboutUser.description
+            
         }
 
         description.innerHTML = descriptionValue
