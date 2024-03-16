@@ -1739,9 +1739,6 @@ body footer p {
     margin-top: 2rem;
     padding-bottom: 1em;
   }
-  body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar {
-    height: 10vh;
-  }
   body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info {
     flex-direction: column;
     width: 80%;

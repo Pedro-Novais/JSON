@@ -35,7 +35,17 @@ function callPageWelcome() {
 
     }
 
-    div.remove()
+    const containerInsert = document.querySelector('#container-register')
+
+    if(containerInsert){
+
+        containerInsert.remove()
+
+    }else{
+
+        div.remove()
+
+    }
 
     pageSelectMoment()
 
@@ -61,7 +71,17 @@ function callPageLogin() {
 
     }
 
-    div.remove()
+    const containerInsert = document.querySelector('#container-register')
+
+    if(containerInsert){
+
+        containerInsert.remove()
+
+    }else{
+
+        div.remove()
+
+    }
 
     pageSelectMoment()
 

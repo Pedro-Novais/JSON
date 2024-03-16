@@ -1,5 +1,5 @@
 import { validEmail, boxAlerts, validOnlyNumber, removePlaceholder } from "./utils/utilsInitial.js"
-import { digitCode } from "./utils/modals.js"
+import { register, digitCode } from "./utils/modals.js"
 import { get, post } from "./utils/functionsReq.js"
 
 const urlList = "/list-to-do"
@@ -21,18 +21,18 @@ export async function interectorRegister() {
 
     const btnRegister = document.querySelector('#btn-register')
 
-    btnRegister.addEventListener('click', register)
+    btnRegister.addEventListener('click', registerFun)
 
-    async function register() {
+    async function registerFun() {
 
-        // name.value = "Teste"
-        //email.value = "teste@gmail.com"
-        //password.value = "teste123$"
+        name.value = "Teste"
+        email.value = "teste@gmail.com"
+        password.value = "teste123$"
 
         if (email.value == "" || password.value == "" || name.value == "") {
 
             return boxAlerts("Preencha todos os dados para realizar o cadastro", '#container-register', 5000)
-        
+
         }
 
         if (!validEmail(email.value)) {
@@ -66,14 +66,14 @@ export async function interectorRegister() {
 
             containerRegister.remove()
             header.style.pointerEvents = 'none';
-            
+
             div.setAttribute('class', 'conatiner-credentials')
             div.setAttribute('id', 'container-insert-code')
-            
+
             div.innerHTML = digitCode
-            
+
             main.appendChild(div)
-            
+
             boxAlerts(`O código de confirmação foi enviado ao seu email: ${data.email}`, '#container-insert-code', 100000)
             verificationCode(data)
         }
@@ -84,15 +84,16 @@ export async function interectorRegister() {
         const inputCode = document.querySelector('#value-code')
         const btnSend = document.querySelector('#btn-verify-code')
         const sendAgain = document.querySelector('#re-send-code')
+        const backPage = document.querySelector('#back-page')
 
         btnSend.addEventListener('click', async () => {
-    
-            if(inputCode.value == ""){
+
+            if (inputCode.value == "") {
                 return boxAlerts("É necessário inserir o código de confirmação para continuar", '#container-insert-code', 5000)
 
             }
 
-            if(!validOnlyNumber(inputCode.value)){
+            if (!validOnlyNumber(inputCode.value)) {
                 return boxAlerts("O código não está no formato válido, verifique seu email e tente novamente", '#container-insert-code', 5000)
             }
 
@@ -107,7 +108,7 @@ export async function interectorRegister() {
 
                 return boxAlerts("O código inserido está incorreto, verifique seu email e tente novamente", '#container-insert-code', 5000)
 
-            }else {
+            } else {
 
                 const data = {
                     name: name.value,
@@ -125,7 +126,7 @@ export async function interectorRegister() {
 
                     localStorage.setItem('token', response.responseData.token);
 
-                    setTimeout( () =>{
+                    setTimeout(() => {
                         window.location.href = responseToDo.url
                     }, 1000)
 
@@ -137,20 +138,21 @@ export async function interectorRegister() {
 
         })
 
-        sendAgain.addEventListener( "click", async ()=> {
+        sendAgain.addEventListener("click", async () => {
 
             try {
 
                 const data = {
                     email: email.value,
                 }
+
                 const response = await post(apiCreateCode, data)
 
-                if(response.ok){
+                if (response.ok) {
 
                     boxAlerts(`Um novo código foi enviado ao email: ${data.email}`, '#container-insert-code', 5000)
 
-                }else{
+                } else {
                     boxAlerts("Ocorreu um erro ao criar um novo código, tente novamente mais tarde", '#container-insert-code', 5000)
                 }
 
@@ -158,6 +160,29 @@ export async function interectorRegister() {
                 console.log(error)
             }
 
+        })
+
+        backPage.addEventListener('click', () => {
+            console.log(email.value, name.value)
+            div.remove()
+
+            header.style.pointerEvents = 'unset';
+
+            div.setAttribute('class', 'conatiner-credentials')
+            div.setAttribute('id', 'container-register')
+
+            div.innerHTML = register
+
+            main.appendChild(div)
+
+            const nameElement = document.querySelector('#value-name')
+            const emailElement = document.querySelector('#value-email')
+            const passwordElement = document.querySelector('#value-password')
+
+            nameElement.value = name.value
+            emailElement.value = email.value
+            
+            interectorRegister()
         })
     }
 
