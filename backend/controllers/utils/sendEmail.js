@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config()
 
 async function send(code, req){
 
@@ -6,12 +7,11 @@ async function send(code, req){
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'phnovais7@gmail.com',
-            pass: 'viku cnlq yofp xgod'
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
         }
     });
- 
-    // Detalhes do email
+    
     const mailOptions = {
         from: 'phnovais7@gmail.com',
         to: req.body.email,
@@ -19,13 +19,10 @@ async function send(code, req){
         text: `Seu código de confirmação é: ${code}`
     };
 
-    // Envie o email
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return console.log(error);
         }
-
-        console.log(info.response)
     });
 }
 

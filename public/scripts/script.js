@@ -319,8 +319,6 @@ export async function interactorList() {
     })
 
     i_edit.addEventListener('click', () => {
-      debugger
-      console.log(json)
       modalChange()
       validUpdate(idTask, 0)
     })
