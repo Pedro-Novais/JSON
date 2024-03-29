@@ -1,4 +1,4 @@
-import { pageStatistic, pageConfigText, pageProfile } from "./utils/modals.js"
+import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization } from "./utils/modals.js"
 import { boxAlerts } from "./utils/utilsInitial.js"
 import { updateTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
@@ -54,8 +54,6 @@ export async function interactorProfile() {
         statisticJson = responseVerificationUser.responseData.statistic
         configJson = responseVerificationUser.responseData.configurations
 
-        console.log(responseVerificationUser.responseData)
-        //console.log(infosAboutUser)
     }
 
     function viewProfile() {
@@ -68,9 +66,106 @@ export async function interactorProfile() {
 
         insertInfosUser()
 
+        const btnUpdate = document.querySelector('#btn-save-user')
+
+        btnUpdate.addEventListener('click', viewProfilePersonalization)
+
         profile.removeEventListener('click', viewProfile)
         statistic.addEventListener('click', viewStatistic)
         pageConfig.addEventListener('click', viewConfig)
+    }
+
+    function viewProfilePersonalization(){
+        div.remove()
+        
+        div.setAttribute('class', 'container-personalization-infos-user')
+
+
+        div.innerHTML = pageProfileCustomization
+        viewPage.appendChild(div)
+
+        const btnBack = document.querySelector('#icon-back')
+
+        btnBack.addEventListener('click', viewProfile)
+
+        insertProfilePersonalization()
+    }
+
+    function insertProfilePersonalization(){
+        const boxCustomization = document.querySelectorAll('.box-view-info-icon')
+        
+        for(let i = 0; i < boxCustomization.length; i++){
+
+            const div = document.createElement('div')
+            //const icon = document.createElement('img')
+
+            div.setAttribute('class', 'box-info-to-edit')
+
+            const icon = createIcon('svg/pen-to-square-solid.svg')
+            //icon.setAttribute('src', 'svg/pen-to-square-solid.svg')
+
+            boxCustomization[i].appendChild(div)
+            boxCustomization[i].appendChild(icon)
+
+            definedActions(i, div, icon, boxCustomization[i])
+        }
+    }
+
+    function definedActions(index, div, icon, box){
+        if(index == 0){
+            div.innerHTML = infosAboutUser.name
+            icon.setAttribute('mark', 'name')
+
+            icon.addEventListener('click', () => {
+
+                //Parei aqui
+                
+                const input = createInputPersonalization('name')
+                input.value = infosAboutUser.name
+
+                div.remove()
+                icon.remove()
+
+                const iconCheck = createIcon('/svg/check-solid.svg')
+
+                box.appendChild(input)
+                box.appendChild(iconCheck)
+
+                input.focus()
+            })
+        }
+        else if(index == 1){
+            div.innerHTML = infosAboutUser.description
+            icon.setAttribute('mark', 'description')
+        }
+        else if(index == 2){
+            div.innerHTML = infosAboutUser.email
+            icon.setAttribute('mark', 'email')
+        }
+        else if(index == 3){
+            div.innerHTML = "**********"
+            icon.setAttribute('mark', 'password')
+        }
+    }
+
+    function createInputPersonalization(type){
+        //<input type="text" name="description" class="inputs-personalization" id="value-description-personalization"></input>
+        const input = document.createElement('input')
+
+        input.setAttribute('type', 'text')
+        input.setAttribute('name', type)
+        input.setAttribute('class', 'inputs-personalization')
+        input.setAttribute('id', `value-${type}-personalization`)
+
+        return input
+    }
+
+    function createIcon(type){
+
+        const icon = document.createElement('img')
+        icon.setAttribute('src', type)
+
+        return icon
     }
 
     function viewStatistic() {
