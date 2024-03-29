@@ -567,20 +567,63 @@ body {
                     }
                 }
 
-                #btn-save-user {
+                /*#btn-save-user {
                     //position: absolute;
                     //bottom: 10px;
                     width: 8rem;
                     min-height: 6vh;
-                }
+                }*/
             }
 
-            .container-personalization-infos-user{
+            .container-personalization-infos-user {
                 @include container;
                 flex-direction: column;
                 justify-content: space-between;
                 width: 100%;
                 height: 100%;
+
+                .container-personalizations {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 1rem;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 14px;
+                    padding: 1em;
+                    overflow: auto;
+
+                    .box-customization {
+                        @include container;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        width: 100%;
+                        height: 100%;
+                        padding: 1em;
+
+
+                        .title-input-personalization {
+                            font-size: 1.2rem;
+                            color: #D9D9D9;
+                            font-weight: 900;
+                        }
+
+                        .inputs-personalization {
+                            background-color: transparent;
+                            width: 100%;
+                            height: 4vh;
+                            border-style: none;
+                            outline: none;
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                            border-bottom: solid 2px #0487D9;
+                            color: #D9D9D9;
+                            padding: 0.2em;
+                            transition: 0.2s;
+                        }
+                    }
+                }
             }
 
             //Container para a página de estatísticas
@@ -742,8 +785,9 @@ body {
             .container-config {
                 @include container;
                 flex-direction: column;
+                justify-content: space-around;
                 width: 100%;
-                height: 90%;
+                height: 100%;
                 animation: slideBoxStatistic .5s ease;
 
                 .box-configs {
@@ -832,8 +876,8 @@ body {
                 @include container;
                 justify-content: center;
                 width: 8rem;
-                height: 8vh;
-                margin-top: 2.5rem;
+                min-height: 8vh;
+                margin-top: 5px;
                 background: linear-gradient(to right, $details, $priority);
                 border-radius: 1rem;
                 color: $white;
@@ -1479,8 +1523,7 @@ body {
         }
 
         footer {
-            //margin-top: 15rem;
-
+            margin-top: 20%;
         }
     }
 }
@@ -1719,7 +1762,7 @@ body {
             #main-profile {
                 height: 100%;
                 border-radius: 1rem;
-                width: 95%;
+                width: 90%;
 
                 .select-page {
                     box-shadow: unset;
@@ -1978,6 +2021,10 @@ body {
                 }
             }
         }
+
+        footer {
+            margin-top: 15rem;
+        }
     }
 }
 
@@ -2049,13 +2096,13 @@ body {
     }
 }
 
-@media screen and (max-height: 900px){
+@media screen and (max-height: 900px) {
 
-    @media screen and (max-width: 600px){
+    @media screen and (max-width: 600px) {
 
         body {
             #main-profile {
-    
+
                 #container-profile {
                     height: 700px;
                 }
@@ -2086,15 +2133,15 @@ body {
             }
         }
 
-        .modal{
+        .modal {
             height: 40vh;
             top: 21%;
-            
-            .content-btn{
+
+            .content-btn {
                 height: 13vh;
             }
 
-            .content-modal{
+            .content-modal {
                 height: 11vh;
             }
 
@@ -2104,7 +2151,7 @@ body {
             }
         }
 
-        footer{
+        footer {
             margin-top: 20%;
         }
 
@@ -2114,13 +2161,13 @@ body {
                 width: 1000px;
                 //margin-top: 13rem;
 
-              #container{
-                margin-top: 4rem;
-              }
+                #container {
+                    margin-top: 4rem;
+                }
 
-              #container-profile{
-                margin-top: 1rem;
-              }
+                #container-profile {
+                    margin-top: 1rem;
+                }
             }
 
         }

@@ -359,6 +359,12 @@ body #main-profile .view-infos .container-profile-user {
   width: 100%;
   min-height: 50vh;
   animation: slideBoxStatistic 0.5s ease;
+  /*#btn-save-user {
+      //position: absolute;
+      //bottom: 10px;
+      width: 8rem;
+      min-height: 6vh;
+  }*/
 }
 body #main-profile .view-infos .container-profile-user .container-infos-user {
   display: flex;
@@ -547,10 +553,6 @@ body #main-profile .view-infos .container-profile-user .container-infos-user .co
   background-color: #05DBF2;
   border-radius: 20px;
 }
-body #main-profile .view-infos .container-profile-user #btn-save-user {
-  width: 8rem;
-  min-height: 6vh;
-}
 body #main-profile .view-infos .container-personalization-infos-user {
   display: flex;
   flex-direction: row;
@@ -560,6 +562,50 @@ body #main-profile .view-infos .container-personalization-infos-user {
   justify-content: space-between;
   width: 100%;
   height: 100%;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 14px;
+  padding: 1em;
+  overflow: auto;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .title-input-personalization {
+  font-size: 1.2rem;
+  color: #D9D9D9;
+  font-weight: 900;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .inputs-personalization {
+  background-color: transparent;
+  width: 100%;
+  height: 4vh;
+  border-style: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: solid 2px #0487D9;
+  color: #D9D9D9;
+  padding: 0.2em;
+  transition: 0.2s;
 }
 body #main-profile .view-infos .container-statistic {
   display: flex;
@@ -731,8 +777,9 @@ body #main-profile .view-infos .container-config {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
   width: 100%;
-  height: 90%;
+  height: 100%;
   animation: slideBoxStatistic 0.5s ease;
 }
 body #main-profile .view-infos .container-config .box-configs {
@@ -826,8 +873,8 @@ body #main-profile .view-infos .btn-configs {
   align-items: center;
   justify-content: center;
   width: 8rem;
-  height: 8vh;
-  margin-top: 2.5rem;
+  min-height: 8vh;
+  margin-top: 5px;
   background: linear-gradient(to right, #034AA6, #0487D9);
   border-radius: 1rem;
   color: #D9D9D9;
@@ -1431,6 +1478,9 @@ body footer p {
     width: 18px;
     height: 18px;
   }
+  body footer {
+    margin-top: 20%;
+  }
 }
 @media screen and (max-width: 1000px) {
   body {
@@ -1590,7 +1640,7 @@ body footer p {
   body main #main-profile {
     height: 100%;
     border-radius: 1rem;
-    width: 95%;
+    width: 90%;
   }
   body main #main-profile .select-page {
     box-shadow: unset;
@@ -1770,6 +1820,9 @@ body footer p {
   }
   body #main-profile .view-infos .container-config .style-to-name-config {
     text-align: center;
+  }
+  body footer {
+    margin-top: 15rem;
   }
 }
 @media screen and (max-width: 400px) {
