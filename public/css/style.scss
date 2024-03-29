@@ -585,17 +585,17 @@ body {
                 .container-personalizations::-webkit-scrollbar {
                     width: 8px;
                 }
-                
+
                 .container-personalizations::-webkit-scrollbar-track {
                     margin-bottom: 1.2rem;
                     margin-top: 0.5vw;
                 }
-                
+
                 .container-personalizations::-webkit-scrollbar-thumb {
                     background-color: $color-light;
                     border-radius: 20px;
                 }
-                
+
                 .container-personalizations {
                     @include container;
                     flex-direction: column;
@@ -625,12 +625,12 @@ body {
                             font-weight: 900;
                         }
 
-                        
-                        .box-view-info-icon{
+
+                        .box-view-info-icon {
                             @include container;
                             justify-content: space-between;
                             width: 100%;
-                            
+
                             .inputs-personalization {
                                 background-color: transparent;
                                 width: 90%;
@@ -645,22 +645,26 @@ body {
                                 transition: 0.2s;
                             }
 
-                            .box-info-to-edit{
+                            .box-info-to-edit {
                                 @include container;
                                 width: 90%;
                                 min-height: 6vh;
                                 padding: 0.2em;
                                 color: $white;
                                 border-bottom: solid 2px #0487D9;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                             }
 
-                            img{
+                            img {
+                                width: 20%;
                                 height: 18px;
                                 position: relative;
                                 bottom: 0;
                             }
 
-                            img:hover{
+                            img:hover {
                                 cursor: pointer;
                             }
                         }
@@ -2059,6 +2063,28 @@ body {
 
                     .style-to-name-config {
                         text-align: center;
+                    }
+                }
+
+                .container-personalization-infos-user{
+
+                    .container-personalizations{
+                        width: 100%;
+                        background-color: unset;
+                        box-shadow: unset;
+
+                        .box-customization{
+                            justify-content: flex-start;
+                            width: 100%;
+                            padding: .5em;
+
+                            .box-view-info-icon{
+
+                                img{
+                                    height: 20px;
+                                }
+                            }
+                        }
                     }
                 }
             }
