@@ -574,6 +574,11 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
   background-color: #05DBF2;
   border-radius: 20px;
 }
+body #main-profile .view-infos .container-personalization-infos-user #icon-back {
+  position: absolute;
+  align-self: flex-end;
+  height: 30px;
+}
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations {
   display: flex;
   flex-direction: row;
@@ -1566,7 +1571,6 @@ body footer p {
   body #main-profile .view-infos {
     width: 100%;
     height: 85%;
-    padding-top: 2rem;
   }
   body #main-profile .view-infos .container-statistic {
     min-height: 60vh;
