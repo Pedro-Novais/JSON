@@ -46,10 +46,6 @@ export function interactorResponsive() {
         div.setAttribute('id', 'bar-options')
         div.setAttribute('class', 'style-bar-options')
 
-        //header.style.display = "none";
-        //main.style.display = "none";
-        //footer.style.display = "none";
-
         div.style.animation = "slideBar .3s ease-out"
         div.innerHTML = viewBarsCode;
 

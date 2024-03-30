@@ -94,7 +94,21 @@ export async function interactorProfile() {
     }
 
     async function updateUser(){
-        console.log('foi')
+
+        const boxIcons = document.querySelectorAll('[mark]')
+        let verifiedCheck = []
+
+        for(let i = 0; i < boxIcons.length; i++){
+
+            verifiedCheck = boxIcons[i].getAttribute('id')
+
+            if(verifiedCheck){
+
+                const alert = document.querySelector(`#value-${verifiedCheck}-personalization`)
+                alert.style.borderBottomColor = 'red'
+                
+            }
+        }
     }
 
     function insertProfilePersonalization(){
@@ -117,50 +131,57 @@ export async function interactorProfile() {
 
     function definedActions(index, div, icon, box){
 
+        let valuesFromUser = {}
+
         if(index == 0){
 
             div.innerHTML = infosAboutUser.name
 
-            actionIcon(icon, div, box, 'name')
+            actionIcon(icon, div, box, 'name', valuesFromUser)
 
         }
         else if(index == 1){
 
             div.innerHTML = infosAboutUser.description
-            icon.setAttribute('mark', 'description')
 
-            actionIcon(icon, div, box, 'description')
+            actionIcon(icon, div, box, 'description', valuesFromUser)
 
         }
         else if(index == 2){
 
             div.innerHTML = infosAboutUser.email
-            icon.setAttribute('mark', 'email')
 
-            actionIcon(icon, div, box, 'email')
+            actionIcon(icon, div, box, 'email', valuesFromUser)
 
         }
         else if(index == 3){
 
             div.innerHTML = "**********"
-            icon.setAttribute('mark', 'password')
 
-            actionIcon(icon, div, box, 'password')
+            actionIcon(icon, div, box, 'password', valuesFromUser)
 
         }
     }
 
-    function actionIcon(icon, div, box, type){
+    function actionIcon(icon, div, box, type, newValues){
 
         icon.addEventListener('click', () => {
 
             const input = createInputPersonalization(type)
-            input.value = infosAboutUser[type]
+
+            if(newValues[type]){
+                input.value = newValues[type]
+
+            }else{
+
+                input.value = infosAboutUser[type]
+            }
+
 
             div.style.display = "none"
             icon.style.display = "none"
 
-            const iconCheck = createIcon('/svg/check-solid.svg')
+            const iconCheck = createIcon('/svg/check-solid.svg', 1)
             iconCheck.setAttribute('id', type)
 
             box.appendChild(input)
@@ -173,6 +194,8 @@ export async function interactorProfile() {
                 const newValue = input.value
 
                 if(newValue == ""){
+                    const alert = document.querySelector(`#value-${type}-personalization`)
+                    alert.style.borderBottomColor = 'red'
                     return false
                 }
                 
@@ -183,6 +206,7 @@ export async function interactorProfile() {
                 icon.style.display = "flex"
 
                 div.innerHTML = newValue
+                newValues[type] = newValue
 
                 if(type == "password"){
                     div.innerHTML = "************"
@@ -204,11 +228,14 @@ export async function interactorProfile() {
         return input
     }
 
-    function createIcon(type){
+    function createIcon(type, determinate = null){
 
         const icon = document.createElement('img')
         icon.setAttribute('src', type)
-        icon.setAttribute('mark', 'active')
+
+        if(determinate == 1){
+            icon.setAttribute('mark', 'active')
+        }
 
         return icon
     }
