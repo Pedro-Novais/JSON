@@ -113,39 +113,67 @@ export async function interactorProfile() {
 
     function definedActions(index, div, icon, box){
         if(index == 0){
+
             div.innerHTML = infosAboutUser.name
-            icon.setAttribute('mark', 'name')
 
-            icon.addEventListener('click', () => {
+            actionIcon(icon, div, box, 'name')
 
-                //Parei aqui
-                
-                const input = createInputPersonalization('name')
-                input.value = infosAboutUser.name
-
-                div.remove()
-                icon.remove()
-
-                const iconCheck = createIcon('/svg/check-solid.svg')
-
-                box.appendChild(input)
-                box.appendChild(iconCheck)
-
-                input.focus()
-            })
         }
         else if(index == 1){
+
             div.innerHTML = infosAboutUser.description
             icon.setAttribute('mark', 'description')
+
+            actionIcon(icon, div, box, 'description')
+
         }
         else if(index == 2){
+
             div.innerHTML = infosAboutUser.email
             icon.setAttribute('mark', 'email')
+
+            actionIcon(icon, div, box, 'email')
+
         }
         else if(index == 3){
+
             div.innerHTML = "**********"
             icon.setAttribute('mark', 'password')
+
+            actionIcon(icon, div, box, 'password')
+            
         }
+    }
+
+    function actionIcon(icon, div, box, type){
+        icon.addEventListener('click', () => {
+
+            const input = createInputPersonalization(type)
+            input.value = infosAboutUser[type]
+
+            div.style.display = "none"
+            icon.style.display = "none"
+
+            const iconCheck = createIcon('/svg/check-solid.svg')
+
+            box.appendChild(input)
+            box.appendChild(iconCheck)
+
+            input.focus()
+
+            iconCheck.addEventListener('click', () =>{
+
+                const newValue = input.value
+                
+                input.remove()
+                iconCheck.remove()
+
+                div.style.display = "flex"
+                icon.style.display = "flex"
+
+                div.innerHTML = newValue
+            })
+        })
     }
 
     function createInputPersonalization(type){
