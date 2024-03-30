@@ -596,16 +596,16 @@ body {
                     background-color: $color-light;
                     border-radius: 20px;
                 }
-                
-                #icon-back{
+
+                #icon-back {
                     position: absolute;
                     align-self: flex-end;
                     //margin-right: 50px;
                     height: 30px
                 }
 
-                #icon-back:hover{
-                    cursor:pointer;
+                #icon-back:hover {
+                    cursor: pointer;
                 }
 
                 .container-personalizations {
@@ -657,8 +657,8 @@ body {
                                 transition: 0.2s;
                             }
 
-                            .inputs-personalization:focus{
-                                border-bottom-color: $white; 
+                            .inputs-personalization:focus {
+                                border-bottom-color: $white;
                             }
 
                             .box-info-to-edit {
@@ -686,6 +686,67 @@ body {
                             }
                         }
                     }
+                }
+            }
+
+            //Modal para troca de email e senha
+
+            .container-personalization-modal {
+                @include container;
+                flex-direction: column;
+                //justify-content: space-between;
+                width: 100%;
+                height: 100%;
+
+                .modal-personalizations {
+                    @include container;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: $details;
+                    width: 50%;
+                    height: 90%;
+                    border-radius: 1rem;
+                    padding: 1em;
+                    margin-top: 1em;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+                    .box-customization-security {
+                        width: 100%;
+                        color: $white;
+                        margin-bottom: 2em;
+
+                        .title-input-personalization {
+                            font-weight: 600;
+                        }
+
+                        .div-personalization-modal{
+                            width: 100%;
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                            border-bottom: solid 2px $priority;
+                            color: $white;
+                            padding: 0.2em;
+                            transition: 0.2s;
+                        }
+
+                        .inputs-personalization-modal {
+                            width: 100%;
+                            background-color: transparent;
+                            border-style: none;
+                            outline: none;
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                            border-bottom: solid 2px $priority;
+                            color: $white;
+                            padding: 0.2em;
+                            transition: 0.2s;
+                        }
+                    }
+                }
+
+                #btn-customization-security{
+                    position: relative;
+                    top: 5%;
                 }
             }
 
@@ -1431,7 +1492,7 @@ body {
         font-weight: 900;
         letter-spacing: 0.1rem;
         width: 50%;
-        white-space: nowrap;
+        //white-space: nowrap;
         text-transform: capitalize;
     }
 
@@ -2083,21 +2144,21 @@ body {
                     }
                 }
 
-                .container-personalization-infos-user{
+                .container-personalization-infos-user {
 
-                    .container-personalizations{
+                    .container-personalizations {
                         width: 100%;
                         background-color: unset;
                         box-shadow: unset;
 
-                        .box-customization{
+                        .box-customization {
                             justify-content: flex-start;
                             width: 100%;
                             padding: .5em;
 
-                            .box-view-info-icon{
+                            .box-view-info-icon {
 
-                                img{
+                                img {
                                     height: 20px;
                                 }
                             }

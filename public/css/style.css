@@ -663,6 +663,63 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .box-view-info-icon img:hover {
   cursor: pointer;
 }
+body #main-profile .view-infos .container-personalization-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #034AA6;
+  width: 50%;
+  height: 90%;
+  border-radius: 1rem;
+  padding: 1em;
+  margin-top: 1em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security {
+  width: 100%;
+  color: #D9D9D9;
+  margin-bottom: 2em;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security .title-input-personalization {
+  font-weight: 600;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security .div-personalization-modal {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: solid 2px #0487D9;
+  color: #D9D9D9;
+  padding: 0.2em;
+  transition: 0.2s;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security .inputs-personalization-modal {
+  width: 100%;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: solid 2px #0487D9;
+  color: #D9D9D9;
+  padding: 0.2em;
+  transition: 0.2s;
+}
+body #main-profile .view-infos .container-personalization-modal #btn-customization-security {
+  position: relative;
+  top: 5%;
+}
 body #main-profile .view-infos .container-statistic {
   display: flex;
   flex-direction: row;
@@ -1428,7 +1485,6 @@ body .task-puted {
   font-weight: 900;
   letter-spacing: 0.1rem;
   width: 50%;
-  white-space: nowrap;
   text-transform: capitalize;
 }
 body .choose-priority {
