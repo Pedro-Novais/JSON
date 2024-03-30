@@ -75,7 +75,10 @@ export async function interactorProfile() {
         pageConfig.addEventListener('click', viewConfig)
     }
 
+    let valuesFromUser = {}
+
     function viewProfilePersonalization(){
+        valuesFromUser = {}
         div.remove()
         
         div.setAttribute('class', 'container-personalization-infos-user')
@@ -87,31 +90,51 @@ export async function interactorProfile() {
         const btnBack = document.querySelector('#icon-back')
         const btnSave = document.querySelector('#btn-customization')
 
+        
+
         btnBack.addEventListener('click', viewProfile)
         btnSave.addEventListener('click', updateUser)
 
-        insertProfilePersonalization()
+        insertProfilePersonalization(valuesFromUser)
     }
 
     async function updateUser(){
-
+        
+        console.log(valuesFromUser)
+        
         const boxIcons = document.querySelectorAll('[mark]')
-        let verifiedCheck = []
+        let invalid;
 
         for(let i = 0; i < boxIcons.length; i++){
 
-            verifiedCheck = boxIcons[i].getAttribute('id')
+            let verifiedCheck = boxIcons[i].getAttribute('id')
 
             if(verifiedCheck){
 
                 const alert = document.querySelector(`#value-${verifiedCheck}-personalization`)
                 alert.style.borderBottomColor = 'red'
+
+                invalid = 1
                 
             }
         }
+
+        if(invalid == 1){
+
+            console.log('Finalize a edição das informações')
+            return false
+        }
+
+        if(Object.keys(valuesFromUser).length == 0){
+
+            console.log('Nenhuma alteração foi realizada')
+            return false
+
+        }
+
     }
 
-    function insertProfilePersonalization(){
+    function insertProfilePersonalization(valuesFromUser){
         const boxCustomization = document.querySelectorAll('.box-view-info-icon')
         
         for(let i = 0; i < boxCustomization.length; i++){
@@ -125,13 +148,11 @@ export async function interactorProfile() {
             boxCustomization[i].appendChild(div)
             boxCustomization[i].appendChild(icon)
 
-            definedActions(i, div, icon, boxCustomization[i])
+            definedActions(i, div, icon, boxCustomization[i], valuesFromUser)
         }
     }
 
-    function definedActions(index, div, icon, box){
-
-        let valuesFromUser = {}
+    function definedActions(index, div, icon, box, valuesFromUser){
 
         if(index == 0){
 
@@ -206,7 +227,10 @@ export async function interactorProfile() {
                 icon.style.display = "flex"
 
                 div.innerHTML = newValue
-                newValues[type] = newValue
+
+                if(newValue !== infosAboutUser[type]){
+                    newValues[type] = newValue
+                }
 
                 if(type == "password"){
                     div.innerHTML = "************"

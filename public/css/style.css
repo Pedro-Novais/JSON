@@ -653,7 +653,6 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: capitalize;
 }
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .box-view-info-icon img {
   width: 20%;
