@@ -85,10 +85,16 @@ export async function interactorProfile() {
         viewPage.appendChild(div)
 
         const btnBack = document.querySelector('#icon-back')
+        const btnSave = document.querySelector('#btn-customization')
 
         btnBack.addEventListener('click', viewProfile)
+        btnSave.addEventListener('click', updateUser)
 
         insertProfilePersonalization()
+    }
+
+    async function updateUser(){
+        console.log('foi')
     }
 
     function insertProfilePersonalization(){
@@ -97,12 +103,10 @@ export async function interactorProfile() {
         for(let i = 0; i < boxCustomization.length; i++){
 
             const div = document.createElement('div')
-            //const icon = document.createElement('img')
 
             div.setAttribute('class', 'box-info-to-edit')
 
             const icon = createIcon('svg/pen-to-square-solid.svg')
-            //icon.setAttribute('src', 'svg/pen-to-square-solid.svg')
 
             boxCustomization[i].appendChild(div)
             boxCustomization[i].appendChild(icon)
@@ -112,6 +116,7 @@ export async function interactorProfile() {
     }
 
     function definedActions(index, div, icon, box){
+
         if(index == 0){
 
             div.innerHTML = infosAboutUser.name
@@ -141,11 +146,12 @@ export async function interactorProfile() {
             icon.setAttribute('mark', 'password')
 
             actionIcon(icon, div, box, 'password')
-            
+
         }
     }
 
     function actionIcon(icon, div, box, type){
+
         icon.addEventListener('click', () => {
 
             const input = createInputPersonalization(type)
@@ -155,6 +161,7 @@ export async function interactorProfile() {
             icon.style.display = "none"
 
             const iconCheck = createIcon('/svg/check-solid.svg')
+            iconCheck.setAttribute('id', type)
 
             box.appendChild(input)
             box.appendChild(iconCheck)
@@ -164,6 +171,10 @@ export async function interactorProfile() {
             iconCheck.addEventListener('click', () =>{
 
                 const newValue = input.value
+
+                if(newValue == ""){
+                    return false
+                }
                 
                 input.remove()
                 iconCheck.remove()
@@ -172,12 +183,17 @@ export async function interactorProfile() {
                 icon.style.display = "flex"
 
                 div.innerHTML = newValue
+
+                if(type == "password"){
+                    div.innerHTML = "************"
+                }
+
             })
         })
     }
 
     function createInputPersonalization(type){
-        //<input type="text" name="description" class="inputs-personalization" id="value-description-personalization"></input>
+     
         const input = document.createElement('input')
 
         input.setAttribute('type', 'text')
@@ -192,6 +208,7 @@ export async function interactorProfile() {
 
         const icon = document.createElement('img')
         icon.setAttribute('src', type)
+        icon.setAttribute('mark', 'active')
 
         return icon
     }

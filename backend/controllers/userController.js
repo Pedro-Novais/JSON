@@ -99,7 +99,7 @@ const userController = {
                 }
 
             }
-
+ 
             const deleteUser = await UserModel.findByIdAndDelete(id)
 
             res

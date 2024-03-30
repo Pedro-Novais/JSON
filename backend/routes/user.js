@@ -20,7 +20,7 @@ router
 
 // Requisição PATCH para dos usúarios
 router
-    .route('/user')
+    .route('/user') 
     .patch(checkToken, (req, res) => userController.update(req, res))
 
 module.exports = router;
