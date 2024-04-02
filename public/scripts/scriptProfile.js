@@ -1,5 +1,5 @@
-import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity } from "./utils/modals.js"
-import { boxAlerts } from "./utils/utilsInitial.js"
+import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity, pageProfileCustomizationSecurityTwo } from "./utils/modals.js"
+import { boxAlerts, validEmail } from "./utils/utilsInitial.js"
 import { updateTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
@@ -44,7 +44,7 @@ export async function interactorProfile() {
 
     async function getUserInfo() {
         responseVerificationUser = await verifyUser()
-    
+
         infosAboutUser.name = responseVerificationUser.responseData.name
         infosAboutUser.email = responseVerificationUser.responseData.email
         infosAboutUser.statistic = responseVerificationUser.responseData.persistStatistic
@@ -77,15 +77,15 @@ export async function interactorProfile() {
 
     let valuesFromUser = {}
 
-    function viewProfilePersonalization(determinate = null){
+    function viewProfilePersonalization(determinate = null) {
 
-        if(determinate != 1){
+        if (determinate != 1) {
 
             valuesFromUser = {}
         }
 
         div.remove()
-        
+
         div.setAttribute('class', 'container-personalization-infos-user')
 
 
@@ -95,7 +95,7 @@ export async function interactorProfile() {
         const btnBack = document.querySelector('#icon-back')
         const btnSave = document.querySelector('#btn-customization')
 
-        
+
 
         btnBack.addEventListener('click', viewProfile)
         btnSave.addEventListener('click', updateUser)
@@ -103,18 +103,18 @@ export async function interactorProfile() {
         insertProfilePersonalization(valuesFromUser)
     }
 
-    async function updateUser(){
-        
+    async function updateUser() {
+
         console.log(valuesFromUser)
 
         verifyModifiedOpen()
 
     }
 
-    function insertProfilePersonalization(valuesFromUser){
+    function insertProfilePersonalization(valuesFromUser) {
         const boxCustomization = document.querySelectorAll('.box-view-info-icon')
-        
-        for(let i = 0; i < boxCustomization.length; i++){
+
+        for (let i = 0; i < boxCustomization.length; i++) {
 
             const div = document.createElement('div')
 
@@ -129,15 +129,15 @@ export async function interactorProfile() {
         }
     }
 
-    function definedActions(index, div, icon, box, valuesFromUser){
+    function definedActions(index, div, icon, box, valuesFromUser) {
 
-        if(index == 0){
+        if (index == 0) {
 
-            if(valuesFromUser.name){
+            if (valuesFromUser.name) {
 
                 div.innerHTML = valuesFromUser.name
             }
-            else{
+            else {
 
                 div.innerHTML = infosAboutUser.name
 
@@ -146,13 +146,13 @@ export async function interactorProfile() {
             actionIcon(icon, div, box, 'name', valuesFromUser)
 
         }
-        else if(index == 1){
+        else if (index == 1) {
 
-            if(valuesFromUser.description){
-                
+            if (valuesFromUser.description) {
+
                 div.innerHTML = valuesFromUser.description
             }
-            else{
+            else {
 
                 div.innerHTML = infosAboutUser.description
 
@@ -161,13 +161,13 @@ export async function interactorProfile() {
             actionIcon(icon, div, box, 'description', valuesFromUser)
 
         }
-        else if(index == 2){
+        else if (index == 2) {
 
-            if(valuesFromUser.email){
-                
+            if (valuesFromUser.email) {
+
                 div.innerHTML = valuesFromUser.email
             }
-            else{
+            else {
 
                 div.innerHTML = infosAboutUser.email
 
@@ -176,7 +176,7 @@ export async function interactorProfile() {
             actionIcon(icon, div, box, 'email', valuesFromUser)
 
         }
-        else if(index == 3){
+        else if (index == 3) {
 
             div.innerHTML = "**********"
 
@@ -185,133 +185,164 @@ export async function interactorProfile() {
         }
     }
 
-    function actionIcon(icon, divParams, box, type, newValues){
+    function actionIcon(icon, divParams, box, type, newValues) {
 
-        if(type == "name" || type == "description"){
+        if (type == "name" || type == "description") {
 
             icon.addEventListener('click', () => {
 
 
                 const input = createInputPersonalization(type)
-                
-                if(newValues[type]){
+
+                if (newValues[type]) {
                     input.value = newValues[type]
-                    
-                }else{
-                    
+
+                } else {
+
                     input.value = infosAboutUser[type]
                 }
-                
-                
+
+
                 divParams.style.display = "none"
                 icon.style.display = "none"
-                
+
                 const iconCheck = createIcon('/svg/check-solid.svg', 1)
                 iconCheck.setAttribute('id', type)
-                
+
                 box.appendChild(input)
                 box.appendChild(iconCheck)
-                
+
                 input.focus()
-                
-                iconCheck.addEventListener('click', () =>{
+
+                iconCheck.addEventListener('click', () => {
 
                     const newValue = input.value
-                    
-                    if(newValue == ""){
+
+                    if (newValue == "") {
                         const alert = document.querySelector(`#value-${type}-personalization`)
                         alert.style.borderBottomColor = 'red'
                         return false
                     }
-                    
+
                     input.remove()
                     iconCheck.remove()
-                    
+
                     divParams.style.display = "flex"
                     icon.style.display = "flex"
-                    
+
                     divParams.innerHTML = newValue
-                    
-                    if(newValue !== infosAboutUser[type]){
+
+                    if (newValue !== infosAboutUser[type]) {
                         newValues[type] = newValue
                     }
-                    
-                    if(type == "password"){
+
+                    if (type == "password") {
                         divParams.innerHTML = "************"
                     }
-                    
+
                 })
             })
 
-        }else if(type == "email" || type == "password"){
+        } else if (type == "email" || type == "password") {
 
-            icon.addEventListener('click', () =>{
+            icon.addEventListener('click', () => {
 
                 const verify = verifyModifiedOpen()
 
-                if(verify == "invalid"){
+                if (verify == "invalid") {
 
                     return false
 
                 }
-                
+
                 div.remove()
-                
+
                 div.setAttribute('class', 'container-personalization-modal')
-                
-                div.innerHTML = pageProfileCustomizationSecurity
+
+                div.innerHTML = pageProfileCustomizationSecurityTwo
                 viewPage.appendChild(div)
-                
-                const title = document.querySelector('.style-to-title')
-                title.innerHTML = (`Personalização ${type}`)
-                
-                definedActionSecurity()
-                
+
+                definedTitleSecurity(type)
+
+                definedActionSecurity(type)
+
             })
         }
     }
 
-    function verifyModifiedOpen(){
+    function verifyModifiedOpen() {
 
         const boxIcons = document.querySelectorAll('[mark]')
         let invalid;
 
-        for(let i = 0; i < boxIcons.length; i++){
+        for (let i = 0; i < boxIcons.length; i++) {
 
             let verifiedCheck = boxIcons[i].getAttribute('id')
 
-            if(verifiedCheck){
+            if (verifiedCheck) {
 
                 const alert = document.querySelector(`#value-${verifiedCheck}-personalization`)
                 alert.style.borderBottomColor = 'red'
 
                 invalid = 1
-                
+
             }
         }
 
-        if(invalid == 1){
+        if (invalid == 1) {
 
             console.log('Finalize a edição das informações')
             return "invalid"
 
-        }else if(Object.keys(valuesFromUser).length == 0){
+        } else if (Object.keys(valuesFromUser).length == 0) {
 
             console.log('Nenhuma alteração foi realizada')
             return false
-    
+
         }
-            return true
+        return true
     }
 
-    function definedActionSecurity(){
+    function definedTitleSecurity(type) {
+
+        const titleInputs = document.querySelectorAll('.title-input-personalization')
+
+        const titleContainer = document.querySelector('.style-to-title')
+
+        if (type == "email") {
+            titleContainer.innerHTML = `Alteração do email`
+
+            titleInputs[0].innerHTML = "Email atual:"
+            titleInputs[1].innerHTML = "Novo email:"
+            titleInputs[2].innerHTML = "Confirme o email:"
+
+        }
+        else if (type == "password") {
+
+            titleContainer.innerHTML = `Alteração da senha`
+
+            titleInputs[0].innerHTML = "Senha atual:"
+            titleInputs[1].innerHTML = "Nova senha:"
+            titleInputs[2].innerHTML = "Confirme a senha:"
+        }
+    }
+
+    function definedActionSecurity(type) {
 
         const btnUpdateSecurity = document.querySelector('#btn-customization-security')
         const btnBack = document.querySelector('#icon-back')
 
         btnUpdateSecurity.addEventListener('click', () => {
 
-            console.log('aoba')
+            /*const actualInfoInput = document.querySelector('#actual')
+            const newInput = document.querySelector('#new')
+            const newInputConfirmation = document.querySelector('#confirmation')
+
+            console.log(actualInfoInput.value)
+            console.log(newInput.value)
+            console.log(newInputConfirmation.value)*/
+
+            verifyNewInfoSecurity(type)
 
         })
 
@@ -319,11 +350,86 @@ export async function interactorProfile() {
 
             viewProfilePersonalization(1)
 
-         })
+        })
     }
 
-    function createInputPersonalization(type){
-     
+    async function verifyNewInfoSecurity(type) {
+
+        focusInput()
+
+        let invalid = 0
+
+        const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
+
+        for (let i = 0; i < listElement.length; i++) {
+
+            if (listElement[i].value == "") {
+
+                listElement[i].style.borderBottomColor = "red"
+
+                invalid = -1
+            }
+        }
+
+        if (invalid !== 0) {
+
+            return boxAlerts("É necessário preencher todos os campos", ".box-alert-personalization", 5000)
+
+        }
+
+        if (type == "email") {
+
+            for (let i = 0; i < listElement.length; i++) {
+
+                const verify = validEmail(listElement[i].value)
+
+                if (!verify) {
+                    listElement[i].style.borderBottomColor = "red"
+
+                    invalid = -1
+                }
+            }
+
+            if (invalid !== 0) {
+
+                return boxAlerts("O formato de email inserido está incorreto", ".box-alert-personalization", 5000)
+
+            }
+
+
+            if (listElement[0].value !== infosAboutUser.email) {
+
+                listElement[0].style.borderBottomColor = "red"
+
+                return boxAlerts("Email atual está incorreto", ".box-alert-personalization", 5000)
+            }
+
+            if (listElement[1].value !== listElement[2].value) {
+
+                listElement[1].style.borderBottomColor = "red"
+                listElement[2].style.borderBottomColor = "red"
+
+                return boxAlerts("Email's digitados não coincidem", ".box-alert-personalization", 5000)
+            }
+        }
+
+    }
+
+    function focusInput() {
+        const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
+
+        for (let i = 0; i < listElement.length; i++) {
+
+            listElement[i].addEventListener('focus', () => {
+
+                listElement[i].style.borderBottomColor = "#0487D9"
+
+            })
+        }
+    }
+
+    function createInputPersonalization(type) {
+
         const input = document.createElement('input')
 
         input.setAttribute('type', 'text')
@@ -334,12 +440,12 @@ export async function interactorProfile() {
         return input
     }
 
-    function createIcon(type, determinate = null){
+    function createIcon(type, determinate = null) {
 
         const icon = document.createElement('img')
         icon.setAttribute('src', type)
 
-        if(determinate == 1){
+        if (determinate == 1) {
             icon.setAttribute('mark', 'active')
         }
 
@@ -441,9 +547,9 @@ export async function interactorProfile() {
             descriptionValue = " Adicione uma descrição ao seu perfil! "
 
         } else {
-            
+
             descriptionValue = infosAboutUser.description
-            
+
         }
 
         description.innerHTML = descriptionValue
@@ -591,7 +697,7 @@ export async function interactorProfile() {
         } catch (err) {
 
             return boxAlerts("Ocorreu um erro ao salvar sua configurações", ".container-config", 5000)
-          
+
         }
     }
 
