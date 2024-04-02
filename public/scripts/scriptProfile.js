@@ -106,36 +106,8 @@ export async function interactorProfile() {
     async function updateUser(){
         
         console.log(valuesFromUser)
-        
-        const boxIcons = document.querySelectorAll('[mark]')
-        let invalid;
 
-        for(let i = 0; i < boxIcons.length; i++){
-
-            let verifiedCheck = boxIcons[i].getAttribute('id')
-
-            if(verifiedCheck){
-
-                const alert = document.querySelector(`#value-${verifiedCheck}-personalization`)
-                alert.style.borderBottomColor = 'red'
-
-                invalid = 1
-                
-            }
-        }
-
-        if(invalid == 1){
-
-            console.log('Finalize a edição das informações')
-            return false
-        }
-
-        if(Object.keys(valuesFromUser).length == 0){
-
-            console.log('Nenhuma alteração foi realizada')
-            return false
-
-        }
+        verifyModifiedOpen()
 
     }
 
@@ -168,7 +140,7 @@ export async function interactorProfile() {
             else{
 
                 div.innerHTML = infosAboutUser.name
-                
+
             }
 
             actionIcon(icon, div, box, 'name', valuesFromUser)
@@ -216,6 +188,7 @@ export async function interactorProfile() {
     function actionIcon(icon, divParams, box, type, newValues){
 
         if(type == "name" || type == "description"){
+
             icon.addEventListener('click', () => {
 
 
@@ -242,6 +215,7 @@ export async function interactorProfile() {
                 input.focus()
                 
                 iconCheck.addEventListener('click', () =>{
+
                     const newValue = input.value
                     
                     if(newValue == ""){
@@ -268,14 +242,21 @@ export async function interactorProfile() {
                     
                 })
             })
+
         }else if(type == "email" || type == "password"){
+
             icon.addEventListener('click', () =>{
 
-                const containerPersonalization = document.querySelector('.container-personalization-infos-user')
+                const verify = verifyModifiedOpen()
+
+                if(verify == "invalid"){
+
+                    return false
+
+                }
                 
                 div.remove()
                 
-                //const container = document.createElement('div')
                 div.setAttribute('class', 'container-personalization-modal')
                 
                 div.innerHTML = pageProfileCustomizationSecurity
@@ -284,14 +265,61 @@ export async function interactorProfile() {
                 const title = document.querySelector('.style-to-title')
                 title.innerHTML = (`Personalização ${type}`)
                 
-                const btnBack = document.querySelector('#icon-back')
-
-                btnBack.addEventListener('click', () => {
-                   viewProfilePersonalization(1)
-                })
+                definedActionSecurity()
                 
             })
         }
+    }
+
+    function verifyModifiedOpen(){
+
+        const boxIcons = document.querySelectorAll('[mark]')
+        let invalid;
+
+        for(let i = 0; i < boxIcons.length; i++){
+
+            let verifiedCheck = boxIcons[i].getAttribute('id')
+
+            if(verifiedCheck){
+
+                const alert = document.querySelector(`#value-${verifiedCheck}-personalization`)
+                alert.style.borderBottomColor = 'red'
+
+                invalid = 1
+                
+            }
+        }
+
+        if(invalid == 1){
+
+            console.log('Finalize a edição das informações')
+            return "invalid"
+
+        }else if(Object.keys(valuesFromUser).length == 0){
+
+            console.log('Nenhuma alteração foi realizada')
+            return false
+    
+        }
+            return true
+    }
+
+    function definedActionSecurity(){
+
+        const btnUpdateSecurity = document.querySelector('#btn-customization-security')
+        const btnBack = document.querySelector('#icon-back')
+
+        btnUpdateSecurity.addEventListener('click', () => {
+
+            console.log('aoba')
+
+        })
+
+        btnBack.addEventListener('click', () => {
+
+            viewProfilePersonalization(1)
+
+         })
     }
 
     function createInputPersonalization(type){
