@@ -77,8 +77,13 @@ export async function interactorProfile() {
 
     let valuesFromUser = {}
 
-    function viewProfilePersonalization(){
-        valuesFromUser = {}
+    function viewProfilePersonalization(determinate = null){
+
+        if(determinate != 1){
+
+            valuesFromUser = {}
+        }
+
         div.remove()
         
         div.setAttribute('class', 'container-personalization-infos-user')
@@ -156,21 +161,45 @@ export async function interactorProfile() {
 
         if(index == 0){
 
-            div.innerHTML = infosAboutUser.name
+            if(valuesFromUser.name){
+
+                div.innerHTML = valuesFromUser.name
+            }
+            else{
+
+                div.innerHTML = infosAboutUser.name
+                
+            }
 
             actionIcon(icon, div, box, 'name', valuesFromUser)
 
         }
         else if(index == 1){
 
-            div.innerHTML = infosAboutUser.description
+            if(valuesFromUser.description){
+                
+                div.innerHTML = valuesFromUser.description
+            }
+            else{
+
+                div.innerHTML = infosAboutUser.description
+
+            }
 
             actionIcon(icon, div, box, 'description', valuesFromUser)
 
         }
         else if(index == 2){
 
-            div.innerHTML = infosAboutUser.email
+            if(valuesFromUser.email){
+                
+                div.innerHTML = valuesFromUser.email
+            }
+            else{
+
+                div.innerHTML = infosAboutUser.email
+
+            }
 
             actionIcon(icon, div, box, 'email', valuesFromUser)
 
@@ -184,7 +213,7 @@ export async function interactorProfile() {
         }
     }
 
-    function actionIcon(icon, div, box, type, newValues){
+    function actionIcon(icon, divParams, box, type, newValues){
 
         if(type == "name" || type == "description"){
             icon.addEventListener('click', () => {
@@ -201,7 +230,7 @@ export async function interactorProfile() {
                 }
                 
                 
-                div.style.display = "none"
+                divParams.style.display = "none"
                 icon.style.display = "none"
                 
                 const iconCheck = createIcon('/svg/check-solid.svg', 1)
@@ -213,7 +242,6 @@ export async function interactorProfile() {
                 input.focus()
                 
                 iconCheck.addEventListener('click', () =>{
-                    
                     const newValue = input.value
                     
                     if(newValue == ""){
@@ -225,17 +253,17 @@ export async function interactorProfile() {
                     input.remove()
                     iconCheck.remove()
                     
-                    div.style.display = "flex"
+                    divParams.style.display = "flex"
                     icon.style.display = "flex"
                     
-                    div.innerHTML = newValue
+                    divParams.innerHTML = newValue
                     
                     if(newValue !== infosAboutUser[type]){
                         newValues[type] = newValue
                     }
                     
                     if(type == "password"){
-                        div.innerHTML = "************"
+                        divParams.innerHTML = "************"
                     }
                     
                 })
@@ -244,17 +272,23 @@ export async function interactorProfile() {
             icon.addEventListener('click', () =>{
 
                 const containerPersonalization = document.querySelector('.container-personalization-infos-user')
-
-                containerPersonalization.remove()
-
-                const container = document.createElement('div')
-                container.setAttribute('class', 'container-personalization-modal')
-
-                container.innerHTML = pageProfileCustomizationSecurity
-                viewPage.appendChild(container)
-
+                
+                div.remove()
+                
+                //const container = document.createElement('div')
+                div.setAttribute('class', 'container-personalization-modal')
+                
+                div.innerHTML = pageProfileCustomizationSecurity
+                viewPage.appendChild(div)
+                
                 const title = document.querySelector('.style-to-title')
                 title.innerHTML = (`Personalização ${type}`)
+                
+                const btnBack = document.querySelector('#icon-back')
+
+                btnBack.addEventListener('click', () => {
+                   viewProfilePersonalization(1)
+                })
                 
             })
         }
