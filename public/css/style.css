@@ -339,6 +339,7 @@ body #main-profile .view-infos .style-to-title {
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 2px;
+  text-align: center;
 }
 body #main-profile .view-infos .container-profile {
   display: flex;
@@ -553,6 +554,14 @@ body #main-profile .view-infos .container-profile-user .container-infos-user .co
   background-color: #05DBF2;
   border-radius: 20px;
 }
+body #main-profile .view-infos #icon-back {
+  position: absolute;
+  align-self: flex-end;
+  height: 30px;
+}
+body #main-profile .view-infos #icon-back:hover {
+  cursor: pointer;
+}
 body #main-profile .view-infos .container-personalization-infos-user {
   display: flex;
   flex-direction: row;
@@ -563,6 +572,16 @@ body #main-profile .view-infos .container-personalization-infos-user {
   width: 100%;
   height: 100%;
   animation: slideBoxStatistic 0.5s ease;
+  /*#icon-back {
+      position: absolute;
+      align-self: flex-end;
+      //margin-right: 50px;
+      height: 30px
+  }
+
+  #icon-back:hover {
+      cursor: pointer;
+  }*/
 }
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations::-webkit-scrollbar {
   width: 8px;
@@ -574,14 +593,6 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations::-webkit-scrollbar-thumb {
   background-color: #05DBF2;
   border-radius: 20px;
-}
-body #main-profile .view-infos .container-personalization-infos-user #icon-back {
-  position: absolute;
-  align-self: flex-end;
-  height: 30px;
-}
-body #main-profile .view-infos .container-personalization-infos-user #icon-back:hover {
-  cursor: pointer;
 }
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations {
   display: flex;
@@ -672,6 +683,17 @@ body #main-profile .view-infos .container-personalization-modal {
   width: 100%;
   height: 100%;
 }
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations::-webkit-scrollbar {
+  width: 8px;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations::-webkit-scrollbar-track {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations::-webkit-scrollbar-thumb {
+  background-color: #05DBF2;
+  border-radius: 20px;
+}
 body #main-profile .view-infos .container-personalization-modal .modal-personalizations {
   display: flex;
   flex-direction: row;
@@ -681,18 +703,21 @@ body #main-profile .view-infos .container-personalization-modal .modal-personali
   align-items: center;
   background-color: #034AA6;
   width: 50%;
-  height: 90%;
+  min-height: 82%;
   border-radius: 1rem;
   padding: 1em;
   margin-top: 1em;
+  margin-bottom: 1em;
+  overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security {
   width: 100%;
   color: #D9D9D9;
-  margin-bottom: 2em;
+  margin-bottom: 2.5em;
 }
 body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security .title-input-personalization {
+  font-size: 1.2rem;
   font-weight: 600;
 }
 body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security .div-personalization-modal {
@@ -716,9 +741,14 @@ body #main-profile .view-infos .container-personalization-modal .modal-personali
   padding: 0.2em;
   transition: 0.2s;
 }
-body #main-profile .view-infos .container-personalization-modal #btn-customization-security {
-  position: relative;
-  top: 5%;
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-alert-personalization div {
+  border: solid 1px #05DBF2;
+  background-color: rgba(5, 219, 242, 0.2509803922);
+  border-radius: 0.5rem;
+  padding: 0.2em;
+  color: #D9D9D9;
+  text-align: center;
+  margin-bottom: 1em;
 }
 body #main-profile .view-infos .container-statistic {
   display: flex;

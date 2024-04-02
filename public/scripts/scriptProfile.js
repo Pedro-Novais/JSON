@@ -1,4 +1,4 @@
-import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization } from "./utils/modals.js"
+import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity } from "./utils/modals.js"
 import { boxAlerts } from "./utils/utilsInitial.js"
 import { updateTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
@@ -186,58 +186,78 @@ export async function interactorProfile() {
 
     function actionIcon(icon, div, box, type, newValues){
 
-        icon.addEventListener('click', () => {
-
-            const input = createInputPersonalization(type)
-
-            if(newValues[type]){
-                input.value = newValues[type]
-
-            }else{
-
-                input.value = infosAboutUser[type]
-            }
+        if(type == "name" || type == "description"){
+            icon.addEventListener('click', () => {
 
 
-            div.style.display = "none"
-            icon.style.display = "none"
-
-            const iconCheck = createIcon('/svg/check-solid.svg', 1)
-            iconCheck.setAttribute('id', type)
-
-            box.appendChild(input)
-            box.appendChild(iconCheck)
-
-            input.focus()
-
-            iconCheck.addEventListener('click', () =>{
-
-                const newValue = input.value
-
-                if(newValue == ""){
-                    const alert = document.querySelector(`#value-${type}-personalization`)
-                    alert.style.borderBottomColor = 'red'
-                    return false
+                const input = createInputPersonalization(type)
+                
+                if(newValues[type]){
+                    input.value = newValues[type]
+                    
+                }else{
+                    
+                    input.value = infosAboutUser[type]
                 }
                 
-                input.remove()
-                iconCheck.remove()
-
-                div.style.display = "flex"
-                icon.style.display = "flex"
-
-                div.innerHTML = newValue
-
-                if(newValue !== infosAboutUser[type]){
-                    newValues[type] = newValue
-                }
-
-                if(type == "password"){
-                    div.innerHTML = "************"
-                }
-
+                
+                div.style.display = "none"
+                icon.style.display = "none"
+                
+                const iconCheck = createIcon('/svg/check-solid.svg', 1)
+                iconCheck.setAttribute('id', type)
+                
+                box.appendChild(input)
+                box.appendChild(iconCheck)
+                
+                input.focus()
+                
+                iconCheck.addEventListener('click', () =>{
+                    
+                    const newValue = input.value
+                    
+                    if(newValue == ""){
+                        const alert = document.querySelector(`#value-${type}-personalization`)
+                        alert.style.borderBottomColor = 'red'
+                        return false
+                    }
+                    
+                    input.remove()
+                    iconCheck.remove()
+                    
+                    div.style.display = "flex"
+                    icon.style.display = "flex"
+                    
+                    div.innerHTML = newValue
+                    
+                    if(newValue !== infosAboutUser[type]){
+                        newValues[type] = newValue
+                    }
+                    
+                    if(type == "password"){
+                        div.innerHTML = "************"
+                    }
+                    
+                })
             })
-        })
+        }else if(type == "email" || type == "password"){
+            icon.addEventListener('click', () =>{
+
+                const containerPersonalization = document.querySelector('.container-personalization-infos-user')
+
+                containerPersonalization.remove()
+
+                const container = document.createElement('div')
+                container.setAttribute('class', 'container-personalization-modal')
+
+                container.innerHTML = pageProfileCustomizationSecurity
+                viewPage.appendChild(container)
+
+                const title = document.querySelector('.style-to-title')
+                title.innerHTML = (`Personalização ${type}`)
+                
+            })
+        }
     }
 
     function createInputPersonalization(type){

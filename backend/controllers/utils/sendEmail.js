@@ -13,7 +13,7 @@ async function send(code, req){
     });
     
     const mailOptions = {
-        from: 'phnovais7@gmail.com',
+        from: process.env.EMAIL,
         to: req.body.email,
         subject: 'Código de Confirmação',
         text: `Seu código de confirmação é: ${code}`

@@ -370,6 +370,7 @@ body {
                 //font-size: 2.5rem;
                 font-weight: 900;
                 letter-spacing: 2px;
+                text-align: center;
             }
 
             .container-profile {
@@ -575,6 +576,17 @@ body {
                 }*/
             }
 
+            #icon-back {
+                position: absolute;
+                align-self: flex-end;
+                //margin-right: 50px;
+                height: 30px
+            }
+
+            #icon-back:hover {
+                cursor: pointer;
+            }
+
             .container-personalization-infos-user {
                 @include container;
                 flex-direction: column;
@@ -597,7 +609,7 @@ body {
                     border-radius: 20px;
                 }
 
-                #icon-back {
+                /*#icon-back {
                     position: absolute;
                     align-self: flex-end;
                     //margin-right: 50px;
@@ -606,7 +618,7 @@ body {
 
                 #icon-back:hover {
                     cursor: pointer;
-                }
+                }*/
 
                 .container-personalizations {
                     @include container;
@@ -698,28 +710,45 @@ body {
                 width: 100%;
                 height: 100%;
 
+                .modal-personalizations::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                .modal-personalizations::-webkit-scrollbar-track {
+                    margin-bottom: 1rem;
+                    margin-top: 1rem;
+                }
+
+                .modal-personalizations::-webkit-scrollbar-thumb {
+                    background-color: $color-light;
+                    border-radius: 20px;
+                }
+
                 .modal-personalizations {
                     @include container;
                     flex-direction: column;
                     align-items: center;
                     background-color: $details;
                     width: 50%;
-                    height: 90%;
+                    min-height: 82%;
                     border-radius: 1rem;
                     padding: 1em;
                     margin-top: 1em;
+                    margin-bottom: 1em;
+                    overflow: auto;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
                     .box-customization-security {
                         width: 100%;
                         color: $white;
-                        margin-bottom: 2em;
+                        margin-bottom: 2.5em;
 
                         .title-input-personalization {
+                            font-size: 1.2rem;
                             font-weight: 600;
                         }
 
-                        .div-personalization-modal{
+                        .div-personalization-modal {
                             width: 100%;
                             font-size: 1.1rem;
                             font-weight: 500;
@@ -741,12 +770,21 @@ body {
                             padding: 0.2em;
                             transition: 0.2s;
                         }
-                    }
-                }
 
-                #btn-customization-security{
-                    position: relative;
-                    top: 5%;
+                    }
+
+                    .box-alert-personalization {
+
+                        div {
+                            border: solid 1px $color-light;
+                            background-color: $color-light-opacity;
+                            border-radius: .5rem;
+                            padding: .2em;
+                            color: $white;
+                            text-align: center;
+                            margin-bottom: 1em
+                        }
+                    }
                 }
             }
 
