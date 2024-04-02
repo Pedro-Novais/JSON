@@ -710,6 +710,7 @@ body #main-profile .view-infos .container-personalization-modal .modal-personali
   margin-bottom: 1em;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  animation: msgAddTask 0.8s ease;
 }
 body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security {
   width: 100%;
@@ -1984,6 +1985,11 @@ body footer p {
   }
   body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .box-view-info-icon img {
     height: 20px;
+  }
+  body #main-profile .view-infos .container-personalization-modal .modal-personalizations {
+    width: 100%;
+    background-color: unset;
+    box-shadow: unset;
   }
   body footer {
     margin-top: 15rem;
