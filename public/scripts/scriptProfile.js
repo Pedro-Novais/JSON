@@ -337,14 +337,6 @@ export async function interactorProfile() {
 
         btnUpdateSecurity.addEventListener('click', () => {
 
-            /*const actualInfoInput = document.querySelector('#actual')
-            const newInput = document.querySelector('#new')
-            const newInputConfirmation = document.querySelector('#confirmation')
-
-            console.log(actualInfoInput.value)
-            console.log(newInput.value)
-            console.log(newInputConfirmation.value)*/
-
             verifyNewInfoSecurity(type)
 
         })
@@ -363,10 +355,6 @@ export async function interactorProfile() {
         let invalid = 0
 
         const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
-
-        listElement[0].value = "phnovais7@gmail.com"
-        listElement[1].value = "pedro2@gmail.com"
-        //listElement[2].value = "teste@gmail.com"
 
         for (let i = 0; i < listElement.length; i++) {
 
@@ -403,8 +391,19 @@ export async function interactorProfile() {
 
             }
 
+            let emailActual;
 
-            if (listElement[0].value !== infosAboutUser.email) {
+            if (valuesFromUser.email) {
+
+                emailActual = valuesFromUser.email
+
+            } else {
+
+                emailActual = infosAboutUser.email
+                
+            }
+
+            if (listElement[0].value !== emailActual) {
 
                 listElement[0].style.borderBottomColor = "red"
 
@@ -427,11 +426,14 @@ export async function interactorProfile() {
 
             const response = await post(apiCreateCode, data)
 
-            if(!response.ok){
+            if (!response.ok) {
+
+                listElement[1].style.borderBottomColor = "red"
+                listElement[2].style.borderBottomColor = "red"
 
                 return boxAlerts(response.responseData.msg, ".box-alert-personalization", 10000)
 
-            }else if(response.ok){
+            } else if (response.ok) {
 
                 viewModalCode(data)
 
@@ -441,7 +443,7 @@ export async function interactorProfile() {
 
     }
 
-    function viewModalCode(data){
+    function viewModalCode(data) {
 
         const container = document.querySelector('.modal-personalizations')
         const boxToOut = document.querySelectorAll('.box-customization-security')
@@ -449,24 +451,40 @@ export async function interactorProfile() {
 
         btnSendEmail.style.display = "none"
 
-        for(let i = 0; i < boxToOut.length; i++){
+        for (let i = 0; i < boxToOut.length; i++) {
 
             boxToOut[i].style.display = "none"
 
         }
 
 
-        container.insertAdjacentHTML('afterbegin', pageProfileCustomizationCode)  
-        
+        container.insertAdjacentHTML('afterbegin', pageProfileCustomizationCode)
+
         boxAlerts(`O código de confirmação foi enviado ao email: ${data.email}`, "#alert-code", 100000)
 
         const btnSendCode = document.querySelector('#btn-verify-code-personalization')
         const btnBackToEmail = document.querySelector('#back-page-email')
+        const reSendCode = document.querySelector('#send-code-again')
 
         focusInput()
 
         btnSendCode.addEventListener('click', () => {
             verifyCode(data)
+        })
+
+        reSendCode.addEventListener('click', async () => {
+
+            const response = await post(apiCreateCode, data)
+
+            if (!response.ok) {
+
+                return boxAlerts(response.responseData.msg, ".box-alert-personalization", 10000)
+
+            } else if (response.ok) {
+
+                return boxAlerts(`Um novo código de confirmação foi enviado ao email: ${data.email}`, ".box-alert-personalization", 10000)
+
+            }
         })
 
         btnBackToEmail.addEventListener('click', () => {
@@ -476,18 +494,18 @@ export async function interactorProfile() {
 
             btnSendEmail.style.display = "flex"
 
-            for(let i = 0; i < boxToOut.length; i++){
+            for (let i = 0; i < boxToOut.length; i++) {
 
                 boxToOut[i].style.display = "flex"
-    
+
             }
         })
     }
 
-    async function verifyCode(data){
+    async function verifyCode(data) {
         const code = document.querySelector('#code')
 
-        if(code.value == ""){
+        if (code.value == "") {
 
             code.style.borderBottomColor = "red"
             return boxAlerts(`Insira o código que foi enviado ao email: ${data.email}`, "#alert-code", 100000)
@@ -496,7 +514,7 @@ export async function interactorProfile() {
 
         const verifyCode = validOnlyNumber(code.value)
 
-        if(!verifyCode){
+        if (!verifyCode) {
 
             code.style.borderBottomColor = "red"
             return boxAlerts(`O código inserido está incorreto`, "#alert-code", 10000)
@@ -510,21 +528,21 @@ export async function interactorProfile() {
 
         const response = await post(apiVeirfyCode, dataCode)
 
-        if(!response.ok){
+        if (!response.ok) {
 
             return boxAlerts(response.responseData.msg, "#alert-code", 10000)
 
-        }else if(response.ok){
+        } else if (response.ok) {
 
             const token = localStorage.getItem('token')
-        
+
             const response = await updateTaskBack(apiChangeUser, null, data, 2, token)
 
-            if(!response.ok){
+            if (!response.ok) {
 
                 boxAlerts("Ocorreu um erro inesperado ao atualizar seu email", "#alert-code", 10000)
 
-            }else if(response.ok){
+            } else if (response.ok) {
 
                 boxAlerts("Email alterado com sucesso", "#alert-code", 10000)
 
@@ -545,12 +563,12 @@ export async function interactorProfile() {
 
         for (let i = 0; i < listElement.length; i++) {
 
-            if(listElement[i]){
+            if (listElement[i]) {
 
                 listElement[i].addEventListener('focus', () => {
-    
+
                     listElement[i].style.borderBottomColor = "#0487D9"
-    
+
                 })
 
             }
