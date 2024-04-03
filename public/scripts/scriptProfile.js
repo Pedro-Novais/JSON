@@ -1,12 +1,15 @@
-import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity, pageProfileCustomizationSecurityTwo } from "./utils/modals.js"
-import { boxAlerts, validEmail } from "./utils/utilsInitial.js"
-import { updateTaskBack } from "./utils/functionsReq.js"
+import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity, pageProfileCustomizationSecurityTwo, pageProfileCustomizationCode } from "./utils/modals.js"
+import { boxAlerts, validEmail, validOnlyNumber } from "./utils/utilsInitial.js"
+import { updateTaskBack, post } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
 //não esquecer de tirar esse código, apenas para teste da page config 
 //interactorProfile()
 
 const apiConfig = "/api/user/config"
+const apiCreateCode = "/api/confirmation"
+const apiVeirfyCode = "/api/verify"
+const apiChangeUser = "/api/user"
 
 export async function interactorProfile() {
 
@@ -361,6 +364,10 @@ export async function interactorProfile() {
 
         const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
 
+        listElement[0].value = "phnovais7@gmail.com"
+        listElement[1].value = "pedro2@gmail.com"
+        //listElement[2].value = "teste@gmail.com"
+
         for (let i = 0; i < listElement.length; i++) {
 
             if (listElement[i].value == "") {
@@ -411,20 +418,142 @@ export async function interactorProfile() {
 
                 return boxAlerts("Email's digitados não coincidem", ".box-alert-personalization", 5000)
             }
+
+            const data = {
+                email: listElement[1].value
+            }
+
+            console.log(data)
+
+            const response = await post(apiCreateCode, data)
+
+            if(!response.ok){
+
+                return boxAlerts(response.responseData.msg, ".box-alert-personalization", 10000)
+
+            }else if(response.ok){
+
+                viewModalCode(data)
+
+            }
+
+        }
+
+    }
+
+    function viewModalCode(data){
+
+        const container = document.querySelector('.modal-personalizations')
+        const boxToOut = document.querySelectorAll('.box-customization-security')
+        const btnSendEmail = document.querySelector('#btn-customization-security')
+
+        btnSendEmail.style.display = "none"
+
+        for(let i = 0; i < boxToOut.length; i++){
+
+            boxToOut[i].style.display = "none"
+
+        }
+
+
+        container.insertAdjacentHTML('afterbegin', pageProfileCustomizationCode)  
+        
+        boxAlerts(`O código de confirmação foi enviado ao email: ${data.email}`, "#alert-code", 100000)
+
+        const btnSendCode = document.querySelector('#btn-verify-code-personalization')
+        const btnBackToEmail = document.querySelector('#back-page-email')
+
+        focusInput()
+
+        btnSendCode.addEventListener('click', () => {
+            verifyCode(data)
+        })
+
+        btnBackToEmail.addEventListener('click', () => {
+
+            const modalRemove = document.querySelector('#modal-code')
+            modalRemove.remove()
+
+            btnSendEmail.style.display = "flex"
+
+            for(let i = 0; i < boxToOut.length; i++){
+
+                boxToOut[i].style.display = "flex"
+    
+            }
+        })
+    }
+
+    async function verifyCode(data){
+        const code = document.querySelector('#code')
+
+        if(code.value == ""){
+
+            code.style.borderBottomColor = "red"
+            return boxAlerts(`Insira o código que foi enviado ao email: ${data.email}`, "#alert-code", 100000)
+
+        }
+
+        const verifyCode = validOnlyNumber(code.value)
+
+        if(!verifyCode){
+
+            code.style.borderBottomColor = "red"
+            return boxAlerts(`O código inserido está incorreto`, "#alert-code", 10000)
+
+        }
+
+        const dataCode = {
+            email: data.email,
+            code: code.value
+        }
+
+        const response = await post(apiVeirfyCode, dataCode)
+
+        if(!response.ok){
+
+            return boxAlerts(response.responseData.msg, "#alert-code", 10000)
+
+        }else if(response.ok){
+
+            const token = localStorage.getItem('token')
+        
+            const response = await updateTaskBack(apiChangeUser, null, data, 2, token)
+
+            if(!response.ok){
+
+                boxAlerts("Ocorreu um erro inesperado ao atualizar seu email", "#alert-code", 10000)
+
+            }else if(response.ok){
+
+                boxAlerts("Email alterado com sucesso", "#alert-code", 10000)
+
+                valuesFromUser.email = data.email
+
+                setTimeout(() => {
+                    viewProfilePersonalization(1)
+                }, 1000)
+
+            }
+
         }
 
     }
 
     function focusInput() {
-        const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
+        const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation'), document.querySelector('#code')]
 
         for (let i = 0; i < listElement.length; i++) {
 
-            listElement[i].addEventListener('focus', () => {
+            if(listElement[i]){
 
-                listElement[i].style.borderBottomColor = "#0487D9"
+                listElement[i].addEventListener('focus', () => {
+    
+                    listElement[i].style.borderBottomColor = "#0487D9"
+    
+                })
 
-            })
+            }
         }
     }
 

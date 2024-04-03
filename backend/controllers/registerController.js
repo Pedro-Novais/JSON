@@ -85,7 +85,7 @@ const registerController = {
         }
     },
 
-    createCode: async (req, res) => {
+    createCode: async (req, res) => { 
         try{
 
             const email = req.body.email
@@ -113,7 +113,7 @@ const registerController = {
 
                 return res
                         .status(201)
-                        .json({code: code, msg: "Código de confirmação criado com sucesso" })
+                        .json({msg: "Código de confirmação criado com sucesso" })
             }
     
             send(code, req)

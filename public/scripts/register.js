@@ -59,7 +59,6 @@ export async function interectorRegister() {
         const response = await post(apiCreateCode, data)
 
         if (response.status !== 201) {
-
             return boxAlerts(response.responseData.msg, '#container-register', 5000)
 
         } else {

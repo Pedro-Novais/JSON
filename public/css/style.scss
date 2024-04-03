@@ -740,6 +740,9 @@ body {
                     animation: msgAddTask .8s ease;
 
                     .box-customization-security {
+                        @include container;
+                        flex-direction: column;
+                        align-items: flex-start;
                         width: 100%;
                         color: $white;
                         margin-bottom: 2.5em;
@@ -772,9 +775,35 @@ body {
                             transition: 0.2s;
                         }
 
+                        #send-code-again{
+                            align-self: center;
+                            margin-top: 1em;
+                        }
+
+                        #send-code-again:hover{
+                            color: $color-light;
+                            cursor: pointer;
+                        }
+
+                        #back-page-email{
+                            align-self: center;
+                            margin-top: 1em;
+                            margin-bottom: 1em;
+                            transition: 0.3s;
+                        }
+
+                        #back-page-email:hover{
+                            color: $color-light;
+                            cursor: pointer;
+                        }
+
+                        #btn-verify-code-personalization{
+                            align-self: center;
+                        }
                     }
 
                     .box-alert-personalization {
+                        align-self: center;
                         @include container;
                         justify-content: center;
 
@@ -2131,8 +2160,9 @@ body {
                 .style-to-title {
                     color: $white;
                     text-transform: uppercase;
-                    font-size: 2rem;
+                    font-size: 1.8rem;
                     font-weight: 900;
+                    max-width: 390px;
                 }
 
                 .container-statistic {
@@ -2216,6 +2246,10 @@ body {
                         width: 100%;
                         background-color: unset;
                         box-shadow: unset;
+
+                        #modal-code{
+                            margin-top: 2.5em;
+                        }
                     }
                 }
             }
