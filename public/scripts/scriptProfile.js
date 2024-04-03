@@ -1,6 +1,6 @@
 import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity, pageProfileCustomizationSecurityTwo, pageProfileCustomizationCode } from "./utils/modals.js"
 import { boxAlerts, validEmail, validOnlyNumber } from "./utils/utilsInitial.js"
-import { updateTaskBack, post } from "./utils/functionsReq.js"
+import { updateTaskBack, post, addTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
 //não esquecer de tirar esse código, apenas para teste da page config 
@@ -10,6 +10,7 @@ const apiConfig = "/api/user/config"
 const apiCreateCode = "/api/confirmation"
 const apiVeirfyCode = "/api/verify"
 const apiChangeUser = "/api/user"
+const apiChangeUserSecurity = "/api/user/security"
 
 export async function interactorProfile() {
 
@@ -356,6 +357,8 @@ export async function interactorProfile() {
 
         const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
 
+        clearBorderRed(listElement)
+
         for (let i = 0; i < listElement.length; i++) {
 
             if (listElement[i].value == "") {
@@ -400,7 +403,7 @@ export async function interactorProfile() {
             } else {
 
                 emailActual = infosAboutUser.email
-                
+
             }
 
             if (listElement[0].value !== emailActual) {
@@ -422,8 +425,6 @@ export async function interactorProfile() {
                 email: listElement[1].value
             }
 
-            console.log(data)
-
             const response = await post(apiCreateCode, data)
 
             if (!response.ok) {
@@ -441,6 +442,63 @@ export async function interactorProfile() {
 
         }
 
+        if (type == "password") {
+
+            if (listElement[1].value !== listElement[2].value) {
+
+                listElement[1].style.borderBottomColor = "red"
+                listElement[2].style.borderBottomColor = "red"
+
+                return boxAlerts("Senhas digitadas não coincidem", ".box-alert-personalization", 5000)
+            }
+
+            const passwordSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(listElement[1].value)
+            const passwordNumber = /\d/.test(listElement[1].value);
+
+            if (listElement[1].value.length < 7) {
+
+                listElement[1].style.borderBottomColor = "red"
+                listElement[2].style.borderBottomColor = "red"
+
+                return boxAlerts("Sua senha precisa conter mais de 7 caracteres", '.box-alert-personalization', 5000)
+            }
+
+            if (!passwordSymbol || !passwordNumber) {
+
+                listElement[1].style.borderBottomColor = "red"
+                listElement[2].style.borderBottomColor = "red"
+
+                return boxAlerts("Sua senha precisa conter números e símbolos", '.box-alert-personalization', 5000)
+            }
+
+            const data = {
+                password: listElement[0].value
+            }
+
+            const token = localStorage.getItem('token')
+
+            const response = await addTaskBack(apiChangeUserSecurity, data, token)
+         
+            if(!response.ok){
+
+                return boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
+
+            }else if(response.ok){
+
+                return boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
+
+            }
+
+        }
+
+    }
+
+    function clearBorderRed(element){
+
+        for(let i = 0; i < element.length; i++){
+
+            element[i].style.borderBottomColor = "#0487D9"
+        }
     }
 
     function viewModalCode(data) {

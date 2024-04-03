@@ -35,12 +35,13 @@ async function addTaskBack(url, data, token) {
             body: JSON.stringify(data)
         })
        
-        if (!response.ok) {
+        /*if (!response.ok) {
+
             return {
                 status: response.status, 
-                ok: response.ok
+                ok: response.ok,
             }
-        }
+        }*/
 
         const responseData = await response.json()
         

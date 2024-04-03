@@ -1,5 +1,7 @@
 const { User: UserModel } = require('../models/user')
 const { Task: TaskModel } = require('../models/tasks')
+const bcrypt = require('bcrypt');
+
 const jwt = require('jsonwebtoken')
 
 const userController = {
@@ -140,6 +142,38 @@ const userController = {
             res
                 .status(200)
                 .json({ updatePatch, msg: "Atualização feita com sucesso" })
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    verifyPassword: async (req, res) => {
+        try {
+            const id = req.userId
+            const password = req.body.password
+            
+            const user = await UserModel.findById(id).select('+password')
+            
+            
+            if(!user){
+                
+                return res.status(404).json({msg: "Úsuario não encontrado"})
+            }
+            
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            console.log(req.body.password)
+            
+            if(!isPasswordValid){
+                
+                return res.status(404).json({msg: "A senha inserida está incorreta"})
+
+            }
+
+            res
+                .status(200)
+                .json({msg: "Senha inserida corretamente"})
+
 
         } catch (error) {
             console.log(error)

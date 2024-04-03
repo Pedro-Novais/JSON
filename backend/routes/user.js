@@ -23,4 +23,8 @@ router
     .route('/user') 
     .patch(checkToken, (req, res) => userController.update(req, res))
 
+router 
+    .route('/user/security')
+    .post(checkToken, (req, res) => userController.verifyPassword(req, res))
+
 module.exports = router;
