@@ -1964,7 +1964,7 @@ body footer p {
     text-transform: uppercase;
     font-size: 1.8rem;
     font-weight: 900;
-    max-width: 390px;
+    max-width: 330px;
   }
   body #main-profile .view-infos .container-statistic .container-statistic-bar {
     height: 23vh;
@@ -2035,7 +2035,7 @@ body footer p {
     width: 100%;
   }
   body main #container #container-info {
-    height: 35vh;
+    height: 15rem;
   }
   body main #container #container-info #task-add {
     text-align: center;
@@ -2053,7 +2053,7 @@ body footer p {
     margin-bottom: 1rem;
   }
   body main #container #task-made .container-actions .actions {
-    height: 2.7vh;
+    height: 1.2rem;
   }
   body main #container .task-puted {
     font-size: 1rem;

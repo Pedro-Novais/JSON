@@ -358,7 +358,7 @@ export async function interactorProfile() {
         const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
 
         clearBorderRed(listElement)
-
+        
         for (let i = 0; i < listElement.length; i++) {
 
             if (listElement[i].value == "") {
@@ -384,7 +384,7 @@ export async function interactorProfile() {
                 if (!verify) {
                     listElement[i].style.borderBottomColor = "red"
 
-                    invalid = -1
+                    invalid = 1
                 }
             }
 
@@ -481,12 +481,33 @@ export async function interactorProfile() {
          
             if(!response.ok){
 
+                listElement[0].style.borderBottomColor = "red"
                 return boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
 
             }else if(response.ok){
 
-                return boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
+                const newData = {
+                    password: listElement[1].value
+                }
+                const response = await updateTaskBack(apiChangeUser, null, newData, 2, token)
 
+                if(!response.ok){
+                    
+                    boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
+
+                    return setTimeout(() => {
+                        viewProfilePersonalization(1)
+                    }, 5000)
+
+                }else{
+
+                    boxAlerts("Senha alterada com sucesso", '.box-alert-personalization', 5000)
+    
+                    return setTimeout(() => {
+                        viewProfilePersonalization(1)
+                    }, 1000)
+
+                }
             }
 
         }

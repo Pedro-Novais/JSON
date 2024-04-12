@@ -126,7 +126,11 @@ const userController = {
                 updatePatch.email = req.body.email
             }
             if (req.body.password) {
-                updatePatch.password = req.body.password
+                const salt = await bcrypt.genSalt(10);
+
+                const password = await bcrypt.hash(req.body.password, salt);
+
+                updatePatch.password = password
             }
             if (req.body.description) {
                 updatePatch.description = req.body.description
@@ -162,7 +166,6 @@ const userController = {
             }
             
             const isPasswordValid = await bcrypt.compare(password, user.password);
-            console.log(req.body.password)
             
             if(!isPasswordValid){
                 

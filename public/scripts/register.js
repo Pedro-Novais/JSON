@@ -25,9 +25,9 @@ export async function interectorRegister() {
 
     async function registerFun() {
 
-        name.value = "Teste"
+        /*name.value = "Teste"
         email.value = "teste@gmail.com"
-        password.value = "teste123$"
+        password.value = "teste123$"*/
 
         if (email.value == "" || password.value == "" || name.value == "") {
 
@@ -56,6 +56,7 @@ export async function interectorRegister() {
         const data = {
             email: email.value,
         }
+        
         const response = await post(apiCreateCode, data)
 
         if (response.status !== 201) {

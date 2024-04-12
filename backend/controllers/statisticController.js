@@ -45,7 +45,7 @@ const statisticController = {
 
             res
                 .status(200)
-                .json( { msg: "estatística alterada com sucesso" })
+                .json( { msg: "Estatística alterada com sucesso" })
 
         } catch (error) {
             console.log(error)
