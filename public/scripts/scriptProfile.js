@@ -111,7 +111,35 @@ export async function interactorProfile() {
 
         console.log(valuesFromUser)
 
-        verifyModifiedOpen()
+        const verifyDatas = verifyModifiedOpen()
+
+        console.log(verifyDatas)
+
+        if(verifyDatas == "updated"){
+
+            const data = {
+                name: valuesFromUser.name,
+                description: valuesFromUser.description
+            }
+
+            const token = localStorage.getItem('token')
+
+            const response = await updateTaskBack(apiChangeUser, null, data, 2, token)
+
+            if(!response.ok){
+
+                boxAlerts(response.responseData.msg, '.box-alert-personalization-initial', 1000)
+
+            }else if(response.ok){
+
+                await getUserInfo()
+                boxAlerts(response.responseData.msg, '.box-alert-personalization-initial', 1000)
+
+                setTimeout(() =>{
+                    viewProfile()
+                }, 1000)
+            }
+        }
 
     }
 
@@ -301,10 +329,12 @@ export async function interactorProfile() {
         } else if (Object.keys(valuesFromUser).length == 0) {
 
             console.log('Nenhuma alteração foi realizada')
+            viewProfile()
             return false
 
         }
-        return true
+
+        return "updated"
     }
 
     function definedTitleSecurity(type) {
@@ -509,9 +539,7 @@ export async function interactorProfile() {
 
                 }
             }
-
         }
-
     }
 
     function clearBorderRed(element){
@@ -662,6 +690,7 @@ export async function interactorProfile() {
         input.setAttribute('name', type)
         input.setAttribute('class', 'inputs-personalization')
         input.setAttribute('id', `value-${type}-personalization`)
+        input.setAttribute('maxlength', 50)
 
         return input
     }

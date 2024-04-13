@@ -699,6 +699,26 @@ body {
                         }
                     }
                 }
+
+                .box-alert-personalization-initial {
+                    align-self: center;
+                    @include container;
+                    justify-content: center;
+
+                    p {
+                        text-align: center;
+                        border: solid 1px $color-light;
+                        background-color: $color-light-opacity;
+                        border-radius: .5rem;
+                        padding: .5em;
+                        width: 100%;
+                        min-height: 7vh;
+                        margin-top: 1.5em;
+                        margin-bottom: 1.5em;
+                        color: $white;
+                        animation: slideIn 1s ease;
+                    }
+                }
             }
 
             //Modal para troca de email e senha
@@ -821,6 +841,7 @@ body {
                         }
                     }
                 }
+                
             }
 
             //Container para a página de estatísticas
