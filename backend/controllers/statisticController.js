@@ -1,5 +1,6 @@
 const { User: UserModel } = require('../models/user')
 const { Statistic: StatisticModel } = require('../models/statistic')
+const { rankingController } = require('./rankingController')
 
 const statisticController = {
     get: async (req, res) => {
@@ -40,8 +41,10 @@ const statisticController = {
             user.statistic[priority] = newStatistic
 
             changePersistStatistic(req.body, user.persistStatistic)
-
+            
             await user.save()
+
+            rankingController.verifyTasksFromUser(user)
 
             res
                 .status(200)

@@ -886,13 +886,16 @@ export async function interactorProfile() {
         let changeStateConfig = document.querySelectorAll('.ball-option')
 
         for (let i = 0; i < 2; i++) {
+
             let idConfig = changeStateConfig[i].getAttribute('id')
+
             if (configJson[nameConfig[i]] == true) {
                 changeStateConfig[i].setAttribute('state', '0')
 
             } else if (configJson[nameConfig[i]] == false) {
                 changeStateConfig[i].setAttribute('state', '1')
             }
+            
             activeConfig(idConfig)
         }
     }

@@ -17,7 +17,7 @@ export async function interactorList() {
   let configJson = responseVerificationUser.responseData.configurations
   let statistic = responseVerificationUser.responseData.statistic
 
-  const arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
+  let arrayStatistic = [statistic.priorityOne, statistic.priorityTwo, statistic.priorityThree]
 
   loadingTask(0)
 
@@ -604,11 +604,13 @@ export async function interactorList() {
 
         const endStatistic = priorityName(priorityId)
 
+        changeArrayStatistic(priorityId, 'created')
+
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
 
         let dataStatistic = {
           [endStatistic]: {
-            created: responseUpdateStatistic.created + 1,
+            created: responseUpdateStatistic.created,
             finished: responseUpdateStatistic.finished,
             canceled: responseUpdateStatistic.canceled
           },
@@ -624,18 +626,18 @@ export async function interactorList() {
       else if (determinate == 1) {
         const endStatistic = priorityName(priorityId)
 
+        changeArrayStatistic(priorityId, 'finished')
+
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
 
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created,
-            finished: responseUpdateStatistic.finished + 1,
+            finished: responseUpdateStatistic.finished,
             canceled: responseUpdateStatistic.canceled
           },
           taskFinished: 1
         }
-
-        console.log(dataStatistic)
 
         const responseUpdate = await updateTaskBack(apiStatistic, endStatistic, dataStatistic, 1, token)
 
@@ -647,13 +649,15 @@ export async function interactorList() {
       else if (determinate == 2) {
         const endStatistic = priorityName(priorityId)
 
+        changeArrayStatistic(priorityId, 'canceled')
+
         responseUpdateStatistic = arrayStatistic[priorityId - 1]
 
         let dataStatistic = {
           [endStatistic]: {
             created: responseUpdateStatistic.created,
             finished: responseUpdateStatistic.finished,
-            canceled: responseUpdateStatistic.canceled + 1
+            canceled: responseUpdateStatistic.canceled
           },
           taskCanceled: 1
         }
@@ -667,6 +671,12 @@ export async function interactorList() {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  function changeArrayStatistic(priority, mode){
+
+    arrayStatistic[priority - 1][mode] += 1 
+
   }
 
   function priorityName(priority) {
