@@ -390,6 +390,7 @@ export async function interactorList() {
     let modalDiv = document.createElement('div');
     modalDiv.setAttribute('class', 'modal')
     modalDiv.setAttribute('id', 'modal-edit')
+
     const levelPiority = document.querySelectorAll('.choose-priority')
 
     let posDiv = modalDiv.offsetTop
@@ -441,14 +442,18 @@ export async function interactorList() {
         event.preventDefault()
 
         if (inputTask == "") {
+
           inputTaskElement.style.boxShadow = "rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset"
+          
           inputTaskElement.addEventListener("click", () => {
             inputTaskElement.style.boxShadow = "none"
 
           })
 
         } else {
+
           updateTask(id, inputTask)
+
           if (determinate == 0) {
             let priority = ["priority-one", "priority-two", "priority-three"]
             const levelPiority = document.querySelectorAll('[mark]')

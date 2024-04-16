@@ -5,15 +5,18 @@ const mongoose = require('mongoose');
 const rankingController = {
     verifyTasksFromUser: async (user, operation) => {
 
-        if(operation !== "finished"){
+        if (operation !== "finished") {
 
             return false
 
         }
-      
+
+        const insert = "insert"
+        const update = "update"
+
         const usersFromRanking = await RankingModel.find()
 
-        if(usersFromRanking.length == 0){
+        if (usersFromRanking.length == 0) {
 
             const newUserRanking = new UserRanking(user, 1)
 
@@ -24,119 +27,150 @@ const rankingController = {
 
         const userId = user._id
 
-        if(usersFromRanking.length > 0 ){ 
+        const beInRanking = await RankingModel.findOne({ userId });
 
-            const beInRanking = await RankingModel.findOne({ userId });
+        if (beInRanking) {
 
-            if(beInRanking){
-              
-                const position = beInRanking.position
-                const updateUserRanking = new UserRanking(user, position)
+            const position = beInRanking.position
+            const updateUserRanking = new UserRanking(user, position)
 
-                //await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
+            if (position == 1) {
 
-                const response = reorganizeRanking(usersFromRanking, updateUserRanking, true)
+                await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
 
-                if(response == "first"){
+                return true
 
-                    await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
+            } else {
 
-                }
+                await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
+
+                reorganizeRanking(usersFromRanking, beInRanking, update)
+
+                return true
             }
+        }
 
-            if(!beInRanking){
+        if (!beInRanking) {
 
-                const newUserRanking = new UserRanking(user)
+            reorganizeRanking(usersFromRanking, user, insert)
 
-                reorganizeRanking(usersFromRanking, newUserRanking)
-                
-            }   
         }
     }
 }
 
-async function reorganizeRanking(allUser, userMoment, exist = false ){
+async function reorganizeRanking(allUser, userMoment, operation) {
 
-    const sizeUsers = allUser.length
-    let lastUserinranking = null
+    if (operation == "insert") {
 
-    if(exist){
-        
-        if(userMoment.position == 1){
+        const numberPosition = allUser.length
+        const newPosition = numberPosition + 1
 
-            console.log('Já está na primeira posição')
-
-            return "first"
-
-        }else{
-
-            console.log('não está na primeira posição e está atrás de ')
-
-            const position = userMoment.position - 1
-            //lastUserinranking = await RankingModel.findOne({ position: position });
-
-            console.log(lastUserinranking)
-
-        }
-
-    }else{
-
-        lastUserinranking = await RankingModel.findOne({ position: sizeUsers });
-
-        console.log('não existe na tabela, está atrás de:')
-        console.log(lastUserinranking)
-
-
-    }
+        const user = new UserRanking(userMoment, newPosition)
    
-    /*if(!lastUserinranking){
+        await RankingModel.create(user)
+
+        return true
+    }
+
+    else if(operation == "update"){
+        
+        //const position = userMoment.position
+        verifyPosition(userMoment)
+    }
+
+}
+
+function getUserHigh(ranking, position){
+
+    let searchPosition = position - 1
+    for(let i = 0; i < ranking.length; i++){
+
+        if(ranking[i].position == searchPosition){
+            
+            return i
+        }
+    }
+}
+
+async function verifyPosition(userUpdated){
+
+    const ranking = await RankingModel.find()
+    console.log(ranking[0].position)
+
+    return true
+    if(userUpdated.position == 1){
 
         return false
 
     }
 
-    if(lastUserinranking.tasksFinished > userMoment.tasksFinished){
-        console.log('aqui 1')
-        //userMoment.position = sizeUsers + 1
+    console.log('atualização')
 
-        await RankingModel.findByIdAndUpdate(userMoment._id, userMoment)
+    let index = userUpdated.position
+    console.log(index)
 
-        return true
-        
-    }else if(lastUserinranking.tasksFinished < userMoment.tasksFinished){
-        console.log('aqui 2')
-        userMoment.position = sizeUsers
-        lastUserinranking.position = sizeUsers + 1
+    for(let i = index; i > 1; i--){
 
-        //await lastUserinranking.save()
+        const userHigh = ranking[index - 1]
 
-        //definedPositions(allUser, userMoment)
+        console.log(userHigh)
 
-        return true
-        
-    }else if(lastUserinranking.tasksFinished == userMoment.tasksFinished){
+        /*if(userHigh.tasksFinished > userUpdated.taskFinished){
 
-        console.log('igual')
+            console.log('permanece na posição')
+            break
 
-        return true
+        }else if(userHigh.tasksFinished > userUpdated.taskFinished){
 
-    }*/
-}
+            break
 
-async function definedPositions(allUser, userMoment){
+        }
+        else if(userHigh.tasksFinished < userUpdated.taskFinished){
 
-    if(userMoment.position == 1){
-
-        await RankingModel.create(userMoment)
-        console.log('criou')
+            break
+            
+        }*/
 
     }
+}
+
+/*if(!lastUserinranking){
+
+    return false
 
 }
 
-class UserRanking{
+if(lastUserinranking.tasksFinished > userMoment.tasksFinished){
+    console.log('aqui 1')
+    //userMoment.position = sizeUsers + 1
 
-    constructor(user,  positionRanking = 0){
+    await RankingModel.findByIdAndUpdate(userMoment._id, userMoment)
+
+    return true
+    
+}else if(lastUserinranking.tasksFinished < userMoment.tasksFinished){
+    console.log('aqui 2')
+    userMoment.position = sizeUsers
+    lastUserinranking.position = sizeUsers + 1
+
+    //await lastUserinranking.save()
+
+    //definedPositions(allUser, userMoment)
+
+    return true
+    
+}else if(lastUserinranking.tasksFinished == userMoment.tasksFinished){
+
+    console.log('igual')
+
+    return true
+
+}
+}*/
+
+class UserRanking {
+
+    constructor(user, positionRanking = 0) {
 
         this.userId = user._id;
         this.position = positionRanking;
