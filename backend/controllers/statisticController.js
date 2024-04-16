@@ -40,11 +40,11 @@ const statisticController = {
 
             user.statistic[priority] = newStatistic
 
-            changePersistStatistic(req.body, user.persistStatistic)
+            const operation = changePersistStatistic(req.body, user.persistStatistic)
             
             await user.save()
 
-            rankingController.verifyTasksFromUser(user)
+            rankingController.verifyTasksFromUser(user, operation)
 
             res
                 .status(200)
@@ -59,13 +59,19 @@ const statisticController = {
 function changePersistStatistic(body, persist){
     
     if(body.taskCreated > 0){
-        persist.taskCreated ++ 
+        persist.taskCreated ++
+        
+        return "created"
     }
     else if(body.taskFinished > 0){
-        persist.taskFinished ++ 
+        persist.taskFinished ++
+        
+        return "finished"
     }
     else if(body.taskCanceled > 0){
         persist.taskCanceled ++ 
+
+        return "canceled"
     }
 }
 
