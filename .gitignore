@@ -4,3 +4,4 @@ data/
 keep/
 img/
 .env
+launch.json

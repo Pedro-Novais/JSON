@@ -27,22 +27,20 @@ const rankingController = {
 
         const userId = user._id
 
-        const beInRanking = await RankingModel.findOne({ userId });
+        let beInRanking = await RankingModel.findOne({ userId });
 
         if (beInRanking) {
 
             const position = beInRanking.position
             const updateUserRanking = new UserRanking(user, position)
 
-            if (position == 1) {
+            await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
 
-                await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
+            if (position == 1) {
 
                 return true
 
             } else {
-
-                await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
 
                 reorganizeRanking(usersFromRanking, beInRanking, update)
 
@@ -66,107 +64,123 @@ async function reorganizeRanking(allUser, userMoment, operation) {
         const newPosition = numberPosition + 1
 
         const user = new UserRanking(userMoment, newPosition)
-   
+
         await RankingModel.create(user)
 
         return true
     }
 
-    else if(operation == "update"){
-        
-        //const position = userMoment.position
+    else if (operation == "update") {
+
         verifyPosition(userMoment)
     }
 
 }
 
-function getUserHigh(ranking, position){
+function getUserHigh(ranking, position) {
 
     let searchPosition = position - 1
-    for(let i = 0; i < ranking.length; i++){
+    for (let i = 0; i < ranking.length; i++) {
 
-        if(ranking[i].position == searchPosition){
-            
+        if (ranking[i].position == searchPosition) {
+
             return i
         }
     }
 }
 
-async function verifyPosition(userUpdated){
+async function verifyPosition(userUpdated) {
 
-    const ranking = await RankingModel.find()
-    console.log(ranking[0].position)
+    const rankingQuery = RankingModel.find().sort({ position: 1 });
+    const ranking = await rankingQuery.exec();
 
-    return true
-    if(userUpdated.position == 1){
+    if (userUpdated.position == 1) {
 
         return false
 
     }
 
-    console.log('atualização')
+    const positionUser = userUpdated.position
 
-    let index = userUpdated.position
-    console.log(index)
+    const userHigh = ranking[positionUser - 2]
 
-    for(let i = index; i > 1; i--){
+    let stop = 0;
 
-        const userHigh = ranking[index - 1]
+    let positionsNew;
 
-        console.log(userHigh)
+    do{
+        let state;
 
-        /*if(userHigh.tasksFinished > userUpdated.taskFinished){
-
-            console.log('permanece na posição')
-            break
-
-        }else if(userHigh.tasksFinished > userUpdated.taskFinished){
+        state = changingPosition(userHigh, userUpdated)
+        
+        if(state == 1){
 
             break
 
         }
-        else if(userHigh.tasksFinished < userUpdated.taskFinished){
 
-            break
-            
-        }*/
+        if(state == 2){ 
+
+            positionsNew = switchPosition(userHigh, userUpdated)
+
+        }
+
+        if(state == 3){
+
+            console.log('mesma quantidade')
+
+        }
+
+        stop = state
+    }
+    while(stop != 1)
+}
+
+async function switchPosition(lastUserHigh, newUserHigh){
+    try {
+        
+        const positionHigh = lastUserHigh.position
+        const positionDowm = newUserHigh.position
+
+        lastUserHigh.position = 0
+        await lastUserHigh.save()
+
+        newUserHigh.position = positionHigh
+        await newUserHigh.save()
+
+        lastUserHigh.position = positionDowm
+        await lastUserHigh.save()
+
+        return positionHigh
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+function changingPosition(userHigh, user) {
+
+    if (userHigh.tasksFinished > user.tasksFinished) {
+
+        console.log('permanece na posição')
+        return 1
+
+    } else if (userHigh.tasksFinished < user.tasksFinished) {
+
+        console.log('sobe uma posição')
+        return 2
 
     }
-}
+    else if (userHigh.tasksFinished == user.tasksFinished) {
 
-/*if(!lastUserinranking){
+        console.log('criterio de desempate')
+        return 3
 
-    return false
+    }
 
-}
-
-if(lastUserinranking.tasksFinished > userMoment.tasksFinished){
-    console.log('aqui 1')
-    //userMoment.position = sizeUsers + 1
-
-    await RankingModel.findByIdAndUpdate(userMoment._id, userMoment)
-
-    return true
-    
-}else if(lastUserinranking.tasksFinished < userMoment.tasksFinished){
-    console.log('aqui 2')
-    userMoment.position = sizeUsers
-    lastUserinranking.position = sizeUsers + 1
-
-    //await lastUserinranking.save()
-
-    //definedPositions(allUser, userMoment)
-
-    return true
-    
-}else if(lastUserinranking.tasksFinished == userMoment.tasksFinished){
-
-    console.log('igual')
-
-    return true
 
 }
-}*/
 
 class UserRanking {
 
