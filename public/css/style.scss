@@ -658,7 +658,7 @@ body {
                             .inputs-personalization {
                                 background-color: transparent;
                                 width: 80%;
-                                min-height: 6vh;
+                                min-height: 2rem;
                                 border-style: none;
                                 outline: none;
                                 font-size: 1.1rem;
@@ -676,7 +676,7 @@ body {
                             .box-info-to-edit {
                                 @include container;
                                 width: 80%;
-                                min-height: 6vh;
+                                min-height: 2rem;
                                 padding: 0.2em;
                                 color: $white;
                                 border-bottom: solid 2px #0487D9;
@@ -1094,7 +1094,7 @@ body {
                 @include container;
                 justify-content: center;
                 width: 8rem;
-                min-height: 10vh;
+                min-height: 5rem;
                 margin-top: 5px;
                 background: linear-gradient(to right, $details, $priority);
                 border-radius: .7rem;
