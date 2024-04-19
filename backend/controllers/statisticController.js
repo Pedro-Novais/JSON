@@ -1,6 +1,7 @@
 const { User: UserModel } = require('../models/user')
 const { Statistic: StatisticModel } = require('../models/statistic')
 const { rankingController } = require('./rankingController')
+const { verifyTasksFromUser } = require('./rankingController')
 
 const statisticController = {
     get: async (req, res) => {
@@ -44,7 +45,7 @@ const statisticController = {
             
             await user.save()
 
-            rankingController.verifyTasksFromUser(user, operation)
+            verifyTasksFromUser(user, operation)
 
             res
                 .status(200)

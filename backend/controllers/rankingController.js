@@ -56,6 +56,60 @@ const rankingController = {
     }
 }
 
+async function verifyTasksFromUser(user, operation) {
+
+    if (operation !== "finished") {
+
+        return false
+
+    }
+
+    const insert = "insert"
+    const update = "update"
+
+    const usersFromRanking = await RankingModel.find()
+
+    if (usersFromRanking.length == 0) {
+
+        const newUserRanking = new UserRanking(user, 1)
+
+        await RankingModel.create(newUserRanking)
+
+        return true
+    }
+
+    const userId = user._id
+
+    let beInRanking = await RankingModel.findOne({ userId });
+
+    if (beInRanking) {
+
+        const position = beInRanking.position
+        const updateUserRanking = new UserRanking(user, position)
+
+        await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
+
+        const userUpdatedFinished = await RankingModel.findOne({ userId });
+
+        if (position == 1) {
+
+            return true
+
+        } else {
+
+            reorganizeRanking(usersFromRanking, userUpdatedFinished, update)
+
+            return true
+        }
+    }
+
+    if (!beInRanking) {
+
+        reorganizeRanking(usersFromRanking, user, insert)
+
+    }
+}
+
 async function reorganizeRanking(allUser, userMoment, operation) {
 
     if (operation == "insert") {
@@ -77,18 +131,6 @@ async function reorganizeRanking(allUser, userMoment, operation) {
 
 }
 
-function getUserHigh(ranking, position) {
-
-    let searchPosition = position - 1
-    for (let i = 0; i < ranking.length; i++) {
-
-        if (ranking[i].position == searchPosition) {
-
-            return i
-        }
-    }
-}
-
 async function verifyPosition(userUpdated) {
 
     const rankingQuery = RankingModel.find().sort({ position: 1 });
@@ -100,43 +142,64 @@ async function verifyPosition(userUpdated) {
 
     }
 
-    const positionUser = userUpdated.position
-
-    const userHigh = ranking[positionUser - 2]
-
     let stop = 0;
 
-    let positionsNew;
+    let state = null;
+    let positionsNew = null;
 
-    do{
-        let state;
+    let userHigh
 
-        state = changingPosition(userHigh, userUpdated)
-        
-        if(state == 1){
+    do {
+
+        if (state == 2) {
+
+            userHigh = ranking[positionsNew.positionHigh - 2]
+            state = changingPosition(userHigh, positionsNew.newUserHigh)
+
+        }else{
+
+            const positionUser = userUpdated.position
+            userHigh = ranking[positionUser - 2]
+    
+            state = changingPosition(userHigh, userUpdated)
+        }
+
+        /*const positionUser = userUpdated.position
+        const userHigh = ranking[positionUser - 2]
+
+        state = changingPosition(userHigh, userUpdated)*/
+
+        if (state == 1) {
 
             break
 
         }
 
-        if(state == 2){ 
+        if (state == 2) {
 
-            positionsNew = switchPosition(userHigh, userUpdated)
+            positionsNew = await switchPosition(userHigh, userUpdated)
+            console.log(positionsNew)
+
+            if (positionsNew.positionHigh == 1) {
+
+                break
+            }
 
         }
 
-        if(state == 3){
+        if (state == 3) {
 
             console.log('mesma quantidade')
+            break
 
         }
 
         stop = state
     }
-    while(stop != 1)
+    while (stop != 1)
 }
 
-async function switchPosition(lastUserHigh, newUserHigh){
+async function switchPosition(lastUserHigh, newUserHigh) {
     try {
         
         const positionHigh = lastUserHigh.position
@@ -150,8 +213,8 @@ async function switchPosition(lastUserHigh, newUserHigh){
 
         lastUserHigh.position = positionDowm
         await lastUserHigh.save()
-
-        return positionHigh
+        
+        return { positionHigh, newUserHigh }
 
     } catch (error) {
         console.log(error)
@@ -196,4 +259,4 @@ class UserRanking {
     }
 }
 
-module.exports = { rankingController }
+module.exports = { rankingController, verifyTasksFromUser }
