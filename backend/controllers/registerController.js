@@ -60,6 +60,7 @@ const registerController = {
                 email: email,
                 password: password,
                 description: " ",
+                ranking: " - ",
                 configurations: configurations,
                 statistic: statisticDefault,
                 persistStatistic: persistStatisticDefault

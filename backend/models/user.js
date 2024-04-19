@@ -30,6 +30,10 @@ const userSchema = new Schema({
         type: [mongoose.Schema.Types.ObjectId], 
         ref: 'Task'
     },
+    ranking: {
+        type: String,
+        required: true
+    },
     configurations: {
         type: configSchema, 
         required: true,

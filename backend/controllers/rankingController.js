@@ -37,7 +37,7 @@ const rankingController = {
             await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
 
             if (position == 1) {
-
+                
                 return true
 
             } else {
@@ -74,6 +74,11 @@ async function verifyTasksFromUser(user, operation) {
         const newUserRanking = new UserRanking(user, 1)
 
         await RankingModel.create(newUserRanking)
+
+        const data = {
+            ranking: 1
+        }
+        await UserModel.findByIdAndUpdate(newUserRanking.userId, data)
 
         return true
     }
@@ -121,6 +126,12 @@ async function reorganizeRanking(allUser, userMoment, operation) {
 
         await RankingModel.create(user)
 
+        const data = {
+            ranking: newPosition
+        }
+
+        await UserModel.findByIdAndUpdate(user.userId, data)
+            
         return true
     }
 
@@ -144,10 +155,10 @@ async function verifyPosition(userUpdated) {
 
     let stop = 0;
 
+    let userHigh;
+
     let state = null;
     let positionsNew = null;
-
-    let userHigh
 
     do {
 
@@ -164,11 +175,6 @@ async function verifyPosition(userUpdated) {
             state = changingPosition(userHigh, userUpdated)
         }
 
-        /*const positionUser = userUpdated.position
-        const userHigh = ranking[positionUser - 2]
-
-        state = changingPosition(userHigh, userUpdated)*/
-
         if (state == 1) {
 
             break
@@ -178,7 +184,6 @@ async function verifyPosition(userUpdated) {
         if (state == 2) {
 
             positionsNew = await switchPosition(userHigh, userUpdated)
-            console.log(positionsNew)
 
             if (positionsNew.positionHigh == 1) {
 
@@ -189,7 +194,6 @@ async function verifyPosition(userUpdated) {
 
         if (state == 3) {
 
-            console.log('mesma quantidade')
             break
 
         }
@@ -210,10 +214,20 @@ async function switchPosition(lastUserHigh, newUserHigh) {
 
         newUserHigh.position = positionHigh
         await newUserHigh.save()
+        
+        const dataHigh = {
+            ranking: positionHigh
+        }
+        await UserModel.findByIdAndUpdate(newUserHigh.userId, dataHigh)
 
         lastUserHigh.position = positionDowm
         await lastUserHigh.save()
-        
+
+        const dataDown = {
+            ranking: positionDowm
+        }
+        await UserModel.findByIdAndUpdate(lastUserHigh.userId, dataDown)
+
         return { positionHigh, newUserHigh }
 
     } catch (error) {
@@ -226,18 +240,15 @@ function changingPosition(userHigh, user) {
 
     if (userHigh.tasksFinished > user.tasksFinished) {
 
-        console.log('permanece na posição')
         return 1
 
     } else if (userHigh.tasksFinished < user.tasksFinished) {
 
-        console.log('sobe uma posição')
         return 2
 
     }
     else if (userHigh.tasksFinished == user.tasksFinished) {
 
-        console.log('criterio de desempate')
         return 3
 
     }

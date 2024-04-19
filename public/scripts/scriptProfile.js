@@ -53,6 +53,7 @@ export async function interactorProfile() {
         infosAboutUser.email = responseVerificationUser.responseData.email
         infosAboutUser.statistic = responseVerificationUser.responseData.persistStatistic
         infosAboutUser.description = responseVerificationUser.responseData.description
+        infosAboutUser.ranking = responseVerificationUser.responseData.ranking
         infosAboutUser.dateCreation = responseVerificationUser.responseData.createdAt
 
         statisticJson = responseVerificationUser.responseData.statistic
@@ -115,7 +116,7 @@ export async function interactorProfile() {
 
         console.log(verifyDatas)
 
-        if(verifyDatas == "updated"){
+        if (verifyDatas == "updated") {
 
             const data = {
                 name: valuesFromUser.name,
@@ -126,16 +127,16 @@ export async function interactorProfile() {
 
             const response = await updateTaskBack(apiChangeUser, null, data, 2, token)
 
-            if(!response.ok){
+            if (!response.ok) {
 
                 boxAlerts(response.responseData.msg, '.box-alert-personalization-initial', 1000)
 
-            }else if(response.ok){
+            } else if (response.ok) {
 
                 await getUserInfo()
                 boxAlerts(response.responseData.msg, '.box-alert-personalization-initial', 1000)
 
-                setTimeout(() =>{
+                setTimeout(() => {
                     viewProfile()
                 }, 1000)
             }
@@ -388,7 +389,7 @@ export async function interactorProfile() {
         const listElement = [document.querySelector('#actual'), document.querySelector('#new'), document.querySelector('#confirmation')]
 
         clearBorderRed(listElement)
-        
+
         for (let i = 0; i < listElement.length; i++) {
 
             if (listElement[i].value == "") {
@@ -508,31 +509,31 @@ export async function interactorProfile() {
             const token = localStorage.getItem('token')
 
             const response = await addTaskBack(apiChangeUserSecurity, data, token)
-         
-            if(!response.ok){
+
+            if (!response.ok) {
 
                 listElement[0].style.borderBottomColor = "red"
                 return boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
 
-            }else if(response.ok){
+            } else if (response.ok) {
 
                 const newData = {
                     password: listElement[1].value
                 }
                 const response = await updateTaskBack(apiChangeUser, null, newData, 2, token)
 
-                if(!response.ok){
-                    
+                if (!response.ok) {
+
                     boxAlerts(response.responseData.msg, '.box-alert-personalization', 5000)
 
                     return setTimeout(() => {
                         viewProfilePersonalization(1)
                     }, 5000)
 
-                }else{
+                } else {
 
                     boxAlerts("Senha alterada com sucesso", '.box-alert-personalization', 5000)
-    
+
                     return setTimeout(() => {
                         viewProfilePersonalization(1)
                     }, 1000)
@@ -542,9 +543,9 @@ export async function interactorProfile() {
         }
     }
 
-    function clearBorderRed(element){
+    function clearBorderRed(element) {
 
-        for(let i = 0; i < element.length; i++){
+        for (let i = 0; i < element.length; i++) {
 
             element[i].style.borderBottomColor = "#0487D9"
         }
@@ -772,6 +773,7 @@ export async function interactorProfile() {
     }
 
     function insertInfosUser() {
+
         const name = document.querySelector('#user-name')
 
         const dateCreated = document.querySelector('#info-since')
@@ -789,7 +791,6 @@ export async function interactorProfile() {
         const date = formatedDate(infosAboutUser.dateCreation)
         dateCreated.innerHTML = date
         conexion.innerHTML = " - "
-        ranking.innerHTML = " - "
 
         taskCreated.innerHTML = infosAboutUser.statistic.taskCreated
         taskFinished.innerHTML = infosAboutUser.statistic.taskFinished
@@ -808,6 +809,26 @@ export async function interactorProfile() {
         }
 
         description.innerHTML = descriptionValue
+
+        const positionRanking = parseInt(infosAboutUser.ranking)
+
+        if(isNaN(infosAboutUser.ranking)){
+
+            ranking.innerHTML = "-"
+
+        }else{
+    
+            if (positionRanking > 9) {
+    
+                ranking.innerHTML = "+10º"
+    
+            } else {
+    
+                ranking.innerHTML = `${positionRanking}º`
+    
+            }
+        }
+
     }
 
     function formatedDate(dateNum) {
@@ -895,7 +916,7 @@ export async function interactorProfile() {
             } else if (configJson[nameConfig[i]] == false) {
                 changeStateConfig[i].setAttribute('state', '1')
             }
-            
+
             activeConfig(idConfig)
         }
     }
