@@ -234,7 +234,7 @@ body {
         }
 
         nav {
-            width: 40%;
+            width: 45%;
             height: 80%;
 
             ul {
@@ -246,7 +246,7 @@ body {
                 .li-visits {
                     @include container;
                     justify-content: center;
-                    min-width: 30%;
+                    min-width: 24%;
                     height: 100%;
                     text-transform: uppercase;
                     background-color: $details;
@@ -259,7 +259,7 @@ body {
                 li {
                     @include container;
                     justify-content: center;
-                    min-width: 30%;
+                    min-width: 24%;
                     height: 100%;
                     text-transform: uppercase;
                     border-radius: 0.5rem;
@@ -795,29 +795,29 @@ body {
                             transition: 0.2s;
                         }
 
-                        #send-code-again{
+                        #send-code-again {
                             align-self: center;
                             margin-top: 1em;
                         }
 
-                        #send-code-again:hover{
+                        #send-code-again:hover {
                             color: $color-light;
                             cursor: pointer;
                         }
 
-                        #back-page-email{
+                        #back-page-email {
                             align-self: center;
                             margin-top: 1em;
                             margin-bottom: 1em;
                             transition: 0.3s;
                         }
 
-                        #back-page-email:hover{
+                        #back-page-email:hover {
                             color: $color-light;
                             cursor: pointer;
                         }
 
-                        #btn-verify-code-personalization{
+                        #btn-verify-code-personalization {
                             align-self: center;
                         }
                     }
@@ -841,7 +841,7 @@ body {
                         }
                     }
                 }
-                
+
             }
 
             //Container para a página de estatísticas
@@ -1531,6 +1531,119 @@ body {
                     }
                 }
             }
+        }
+
+        //Modal de ranking
+
+        #container-ranking {
+            justify-self: center;
+            @include container;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 80%;
+            padding: 1vw;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            animation: slideBoxStatistic .5s ease;
+            overflow: hidden;
+            color: $white;
+            //background-color: red;
+
+            .users-ranking {
+                @include container;
+                flex-direction: column;
+                width: 100%;
+                min-height: 85%;
+                height: 55vh;
+                padding: .5em;
+                overflow: auto;
+                margin-top: 2rem;
+                border-radius: 1rem;
+
+                .position-users{
+                    @include container;
+                    justify-content: space-between;
+                    width: 100%;
+                    min-height: 30%;
+                    margin-top: .1em;
+                    margin-bottom: 1em;
+                    padding: 1em;
+                    border-radius: 1rem;
+                    background-color: $details;
+                    transition: .3s;
+
+                    .box-position{
+                        @include container;
+                        justify-content: center;
+                        width: 19%;
+                        height: 100%;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        //background-color: #4ab41f;
+                    }
+
+                    .box-name{
+                        @include container;
+                        justify-content: flex-start;
+                        width: 60%;
+                        height: 100%;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        //text-transform: capitalize
+                        //background-color: #4ab41f;
+                    }
+
+                    .box-points{
+                        @include container;
+                        justify-content: center;
+                        width: 19%;
+                        height: 100%;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                     
+                    }
+                }
+
+                .position-users[position = "1"]{
+                    background-image: linear-gradient(to bottom, #D9A443,#A65F08);
+                }
+
+                /*.position-users[position = "2"]{
+                    background-image: linear-gradient(to bottom, #6093BF,#3B6D8C);
+                    //border: solid 2px #A4A4A1;
+                    //background-color: #D9A443;
+                }
+
+                .position-users[position = "3"]{
+                    background-image: linear-gradient(to bottom, #F2B077,#774c33);
+                    //border: solid 2px #BF834E;
+                    //background-color: #D9A443;
+                }*/
+
+                .position-users:hover{
+                    background-color: $priority;
+                    cursor: pointer;
+                }
+            }
+
+            .users-ranking::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            .users-ranking::-webkit-scrollbar-track {
+                margin-bottom: 1.2rem;
+                margin-top: 0.5vw;
+            }
+            
+            .users-ranking::-webkit-scrollbar-thumb {
+                background-color: $color-light;
+                border-radius: 20px;
+            }
+
         }
     }
 
@@ -2261,14 +2374,14 @@ body {
                     }
                 }
 
-                .container-personalization-modal{
+                .container-personalization-modal {
 
-                    .modal-personalizations{
+                    .modal-personalizations {
                         width: 100%;
                         background-color: unset;
                         box-shadow: unset;
 
-                        #modal-code{
+                        #modal-code {
                             margin-top: 2.5em;
                         }
                     }
@@ -2419,6 +2532,14 @@ body {
                     margin-top: 4rem;
                 }
 
+                .container-ranking{
+                    margin-top: 4rem;
+
+                    .users-ranking{
+                        height: 50vh;
+                    }
+                }
+
                 #container-profile {
                     margin-top: 1rem;
                 }
@@ -2456,6 +2577,11 @@ body {
                     .task-puted {
                         font-size: 1.2rem;
                     }
+                }
+
+                .container-ranking{
+                    min-height: 0;
+                    height: 80%;
                 }
             }
         }
