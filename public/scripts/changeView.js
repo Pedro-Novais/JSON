@@ -1,72 +1,96 @@
-import { profile, listToDo } from "./utils/modals.js"
+import { profile, listToDo, ranking } from "./utils/modals.js"
 import { interactorProfile } from "./scriptProfile.js"
 import { interactorList } from "./script.js"
+import { interactorRanking } from "./ranking.js"
 import { interactorResponsive } from "./responsive/responsiveInternal.js"
 
 const div = document.createElement('div')
 
 const linkToDo = document.querySelector('#visit-list')
 const linkProfile = document.querySelector('#visit-profile')
-const linkAbout = document.querySelector('#logout')
+const linkRanking = document.querySelector('#visit-ranking')
+const linkOut = document.querySelector('#logout')
 
 const header = document.querySelector('header')
 const main = document.querySelector('main')
 const footer = document.querySelector('footer')
 
 linkProfile.addEventListener('click', callPageProfile)
-linkAbout.addEventListener('click', logout)
+linkRanking.addEventListener('click', callPageRanking)
+linkOut.addEventListener('click', logout)
 
 initial()
 interactorResponsive(1)
 
-function logout(){
+function logout() {
     localStorage.removeItem('token')
     window.location.href = "/login"
 }
 
 function callPageList() {
-     
-    let width = window.innerWidth 
 
-    if (width <= 800) { 
+    let width = window.innerWidth
 
-    header.style.display = "flex";
-    main.style.display = "flex";
-    footer.style.display = "flex";
+    if (width <= 800) {
 
-    let divOptions = document.querySelector('#bar-options')
-    divOptions.remove()
+        header.style.display = "flex";
+        main.style.display = "flex";
+        footer.style.display = "flex";
+
+        let divOptions = document.querySelector('#bar-options')
+        divOptions.remove()
 
     }
 
-if (linkProfile.className == 'li-visits') {
+    removeMark()
 
-    linkProfile.removeAttribute('class', 'li-visits')
+    linkToDo.setAttribute('class', 'li-visits')
+
+    div.remove()
+    div.setAttribute('id', 'container')
+
+    div.innerHTML = listToDo
+    main.appendChild(div)
+
+    interactorList()
+
+    linkToDo.removeEventListener('click', callPageList)
+    linkProfile.addEventListener('click', callPageProfile)
+
 }
 
-linkToDo.setAttribute('class', 'li-visits')
+function callPageRanking() {
 
-div.remove()
-div.setAttribute('id', 'container')
+    let width = window.innerWidth
 
-div.innerHTML = listToDo
-main.appendChild(div)
+    if (width <= 800) {
 
-interactorList()
+        header.style.display = "flex";
+        main.style.display = "flex";
+        footer.style.display = "flex";
 
-linkToDo.removeEventListener('click', callPageList)
-linkProfile.addEventListener('click', callPageProfile)
+        let divOptions = document.querySelector('#bar-options')
+        divOptions.remove()
 
-/*const modalDiv = document.querySelector('#container')
+    }
 
-    let posDiv = modalDiv.offsetTop
+    removeMark()
 
-    console.log(posDiv)
+    linkRanking.setAttribute('class', 'li-visits')
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });*/
+    div.remove()
+    div.setAttribute('id', 'container-ranking')
+
+    div.innerHTML = ranking
+
+    main.appendChild(div)
+
+    interactorRanking()
+
+    linkRanking.removeEventListener('click', callPageRanking)
+
+    linkProfile.addEventListener('click', callPageProfile)
+    linkToDo.addEventListener('click', callPageList)
 
 }
 
@@ -85,13 +109,10 @@ function callPageProfile() {
 
     }
 
-    if (linkToDo.className == 'li-visits') {
-
-        linkToDo.removeAttribute('class', 'li-visits')
-    }
-
+    removeMark()
     linkProfile.setAttribute('class', 'li-visits')
 
+    div.remove()
     div.setAttribute('id', 'main-profile')
 
     div.innerHTML = profile
@@ -101,6 +122,20 @@ function callPageProfile() {
 
     linkProfile.removeEventListener('click', callPageProfile)
     linkToDo.addEventListener('click', callPageList)
+    linkRanking.addEventListener('click', callPageRanking)
+}
+
+function removeMark() {
+
+    const arrayHeader = [linkProfile, linkToDo, linkRanking]
+
+    for (let i = 0; i < 3; i++) {
+
+        if (arrayHeader[i].className == 'li-visits') {
+
+            arrayHeader[i].removeAttribute('class', 'li-visits')
+        }
+    }
 }
 
 function initial() {
@@ -114,4 +149,4 @@ function initial() {
     interactorList()
 }
 
-export { callPageList, callPageProfile, logout }
+export { callPageList, callPageProfile, callPageRanking, logout }

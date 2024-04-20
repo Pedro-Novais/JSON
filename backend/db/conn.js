@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 async function main(){
     try{
         mongoose.set('strictQuery', true)
 
         await mongoose.connect(
-            "mongodb+srv://phnovais7:A6oRezjahsWtMSBD@cluster0.oyxlugg.mongodb.net/?retryWrites=true&w=majority"
+            process.env.CONEXION
             )
 
         console.log('Conectado ao Banco')

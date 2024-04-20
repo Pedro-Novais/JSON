@@ -3,9 +3,6 @@ import { boxAlerts, validEmail, validOnlyNumber } from "./utils/utilsInitial.js"
 import { updateTaskBack, post, addTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
-//não esquecer de tirar esse código, apenas para teste da page config 
-//interactorProfile()
-
 const apiConfig = "/api/user/config"
 const apiCreateCode = "/api/confirmation"
 const apiVeirfyCode = "/api/verify"
@@ -13,9 +10,6 @@ const apiChangeUser = "/api/user"
 const apiChangeUserSecurity = "/api/user/security"
 
 export async function interactorProfile() {
-
-    //const responseVerificationUser = await verifyUser()
-    //console.log(responseVerificationUser)
 
     let activeHover = null;
 
@@ -109,8 +103,6 @@ export async function interactorProfile() {
     }
 
     async function updateUser() {
-
-        console.log(valuesFromUser)
 
         const verifyDatas = verifyModifiedOpen()
 

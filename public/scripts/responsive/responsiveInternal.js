@@ -1,5 +1,5 @@
 import { viewBarsCode } from "../utils/modals.js"
-import { callPageList, callPageProfile, logout } from "../changeView.js";
+import { callPageList, callPageProfile, callPageRanking, logout } from "../changeView.js";
 
 export function interactorResponsive() {
 
@@ -53,13 +53,15 @@ export function interactorResponsive() {
 
         const linkToDoResponsive = document.querySelector('#visit-list-responsive')
         const linkProfileResponsive = document.querySelector('#visit-profile-responsive')
-        const linkAbout = document.querySelector('#visit-about-responsive')
+        const linkRankingResponsive = document.querySelector('#visit-ranking-responsive')
+        const linkOut = document.querySelector('#visit-about-responsive')
 
         linkToDoResponsive.addEventListener('click', () => {
             div.style.animation = "closeBar .3s ease-out"
 
             setTimeout(callPageList, 250)
         })
+
         linkProfileResponsive.addEventListener('click', () => {
 
             div.style.animation = "closeBar .3s ease-out"
@@ -67,7 +69,14 @@ export function interactorResponsive() {
             setTimeout(callPageProfile, 250)
         })
 
-        linkAbout.addEventListener('click', logout)
+        linkRankingResponsive.addEventListener('click', () => {
+            
+            div.style.animation = "closeBar .3s ease-out"
+
+            setTimeout(callPageRanking, 250);
+        })
+
+        linkOut.addEventListener('click', logout)
 
         const cancelBar = document.querySelector('#cancel-bar')
         if (cancelBar != null) {
