@@ -435,23 +435,6 @@ body #main-profile .view-infos .container-profile-user .container-infos-user .co
   font-size: 100%;
   letter-spacing: 1px;
 }
-body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .box-user-image {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  justify-content: center;
-  background-color: #738000;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 20%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-}
-body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .box-user-image #user-image {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .box-description {
   display: flex;
   flex-direction: row;
@@ -1990,22 +1973,6 @@ body footer p {
     margin-top: 8rem;
     width: 100%;
   }
-  body #main-enter .conatiner-credentials {
-    /*.box-credentials {
-
-        .title-input {
-            font-size: 1rem;
-        }
-
-        .inputs-credentials {
-            font-size: .9rem;
-        }
-
-        #forget-password {
-            font-size: .9rem;
-        }
-    }*/
-  }
   body #main-enter .conatiner-credentials .box-watch-out {
     min-width: 90%;
     max-width: 90%;
@@ -2259,12 +2226,6 @@ body footer p {
 @media screen and (max-height: 899px) {
   body {
     height: 140vh;
-    /*#modal-remove {
-        height: 60vh;
-    }*/
-    /*.content-priority {
-        height: 45%;
-    }*/
   }
   body main {
     height: 110vh;
@@ -2290,11 +2251,6 @@ body footer p {
   }
 }
 @media screen and (max-height: 899px) {
-  body #main-profile .view-infos .container-statistic {
-    /*.container-statistic-bar {
-        //height: 25vh;
-    }*/
-  }
   body #main-profile .view-infos .container-statistic .choose-priority-view .select-priority {
     height: 9vh;
   }

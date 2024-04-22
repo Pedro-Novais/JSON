@@ -126,7 +126,6 @@ body {
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(to right, $background-one, $details);
-    //background-color: red;
 
     .style-bar-options {
         align-self: flex-start;
@@ -135,7 +134,6 @@ body {
         width: 90%;
         height: 100vh;
         padding: 1rem;
-        //transition: 2s;
         overflow: hidden;
         background: linear-gradient(to right, $background-one, $background-one);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 7px;
@@ -345,8 +343,6 @@ body {
         }
 
         .view-infos::-webkit-scrollbar-track {
-            //background: $details;
-            //margin-top: 1rem;
             margin-bottom: 1.2rem;
             margin-top: 0.5vw;
         }
@@ -362,12 +358,10 @@ body {
             padding: 1rem;
             overflow-y: auto;
             overflow-x: hidden;
-            //animation: slidePagesProfile .5s ease;
 
             .style-to-title {
                 color: $white;
                 text-transform: uppercase;
-                //font-size: 2.5rem;
                 font-weight: 900;
                 letter-spacing: 2px;
                 text-align: center;
@@ -431,7 +425,6 @@ body {
                             justify-content: space-between;
                             width: 40%;
                             height: 100%;
-                            //background-color: green;
 
                             .box-infos {
                                 @include container;
@@ -449,27 +442,9 @@ body {
                             }
                         }
 
-                        .box-user-image {
-                            @include container;
-                            justify-content: center;
-                            background-color: #738000;
-                            width: 100%;
-                            overflow: hidden;
-                            border-radius: 20%;
-                            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
-                            #user-image {
-
-                                width: 100%;
-                                object-fit: cover;
-
-                            }
-                        }
-
                         .box-description {
                             @include container;
                             flex-direction: column;
-                            //justify-content: space-around;
                             align-items: center;
                             width: 100%;
                             height: 15rem;
@@ -541,8 +516,6 @@ body {
                             padding: 1em;
                             padding-top: .3em;
                             border-radius: 1em;
-                            //overflow: auto;
-                            //box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
                             h3 {
                                 letter-spacing: 1px;
@@ -579,7 +552,6 @@ body {
             #icon-back {
                 position: absolute;
                 align-self: flex-end;
-                //margin-right: 50px;
                 height: 30px
             }
 
@@ -623,7 +595,6 @@ body {
                 .container-personalizations {
                     @include container;
                     flex-direction: column;
-                    //justify-content: space-between;
                     align-items: flex-start;
                     width: 90%;
                     height: 70%;
@@ -683,7 +654,6 @@ body {
                                 white-space: nowrap;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
-                                //text-transform: capitalize;
                             }
 
                             img {
@@ -726,7 +696,6 @@ body {
             .container-personalization-modal {
                 @include container;
                 flex-direction: column;
-                //justify-content: space-between;
                 width: 100%;
                 height: 100%;
 
@@ -1214,8 +1183,6 @@ body {
         align-items: flex-start;
         justify-content: center;
         width: 30rem;
-        //margin-top: 12rem;
-        //height: 65%;
 
         .conatiner-credentials {
             @include container;
@@ -1239,7 +1206,6 @@ body {
             .box-credentials {
                 @include container;
                 flex-direction: column;
-                //align-items: flex-start;
                 justify-content: space-around;
                 width: 90%;
                 min-height: 50%;
@@ -1262,7 +1228,6 @@ body {
                     flex-direction: column;
                     align-items: flex-start;
                     justify-content: space-around;
-                    //background-color: #4ab41f;
                     width: 100%;
                     height: 35%;
                 }
@@ -1270,7 +1235,6 @@ body {
                 .title-input {
                     font-size: 1.2rem;
                     color: $white;
-                    //text-transform: uppercase;
                     font-weight: 900;
                 }
 
@@ -1367,7 +1331,6 @@ body {
         @include container;
         align-items: flex-start;
         justify-content: center;
-        //width: 50%;
         width: 750px;
         min-height: 35rem;
         margin-top: 8rem;
@@ -1549,7 +1512,6 @@ body {
             animation: slideBoxStatistic .5s ease;
             overflow: hidden;
             color: $white;
-            //background-color: red;
 
             .users-ranking {
                 @include container;
@@ -1581,7 +1543,6 @@ body {
                         height: 100%;
                         font-size: 1.5rem;
                         font-weight: 600;
-                        //background-color: #4ab41f;
                     }
 
                     .box-name{
@@ -1594,8 +1555,6 @@ body {
                         overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
-                        //text-transform: capitalize
-                        //background-color: #4ab41f;
                     }
 
                     .box-points{
@@ -1700,7 +1659,6 @@ body {
         font-weight: 900;
         letter-spacing: 0.1rem;
         width: 50%;
-        //white-space: nowrap;
         text-transform: capitalize;
     }
 
@@ -1797,7 +1755,6 @@ body {
 
         main {
             width: 700px;
-            //height: 70vh;
 
             #container {
                 justify-content: space-around;
@@ -1913,7 +1870,6 @@ body {
             .view-infos {
                 width: 100%;
                 height: 85%;
-                //padding-top: 2rem;
 
                 .container-statistic {
                     min-height: 60vh;
@@ -2108,7 +2064,6 @@ body {
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
 
                 #task-made {
-                    //height: 60vh;
                     padding-top: 1vw;
 
                     .priority-action {
@@ -2150,21 +2105,6 @@ body {
             width: 100%;
 
             .conatiner-credentials {
-
-                /*.box-credentials {
-
-                    .title-input {
-                        font-size: 1rem;
-                    }
-
-                    .inputs-credentials {
-                        font-size: .9rem;
-                    }
-
-                    #forget-password {
-                        font-size: .9rem;
-                    }
-                }*/
 
                 .box-watch-out {
                     min-width: 90%;
@@ -2314,7 +2254,6 @@ body {
                     }
 
                     .choose-priority-view {
-                        //margin: 2em 0 1em 0;
                         width: 50vw;
                         min-height: 10vh;
                     }
@@ -2427,7 +2366,6 @@ body {
                 }
 
                 #task-made {
-                    //padding-top: 1rem;
                     margin-bottom: 1rem;
 
                     .container-actions {
@@ -2527,7 +2465,6 @@ body {
 
             main {
                 width: 1000px;
-                //margin-top: 13rem;
 
                 #container {
                     margin-top: 4rem; 
@@ -2595,29 +2532,16 @@ body {
                             height: 9vh;
                         }
                     }
-
-                    /*.container-statistic-bar {
-                        //height: 25vh;
-                    }*/
                 }
             }
         }
 
-        /*#modal-remove {
-            height: 60vh;
-        }*/
-
         .modal {
-            //min-height: 60vh;
 
             .content-btn {
                 height: 15vh;
             }
         }
-
-        /*.content-priority {
-            height: 45%;
-        }*/
 
         .priority-level {
             width: 20px;
