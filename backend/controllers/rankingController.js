@@ -13,6 +13,14 @@ const rankingController = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    post: async (req, res) => {
+        try {
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

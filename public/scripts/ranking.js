@@ -18,7 +18,9 @@ export async function interactorRanking(){
 
     const ranking = response.responseData
   
-    createUsersInRanking(ranking)
+    const rankingFormated = createUsersInRanking(ranking)
+
+    clickOfUsers(rankingFormated)
 
     async function getRanking(){
 
@@ -37,13 +39,17 @@ export async function interactorRanking(){
     }
 
     function createUsersInRanking(ranking){
-
+        let rankingData = [];
         for(let i = 0; i < ranking.length; i++){
 
             const user = new Ranking(ranking[i])
-
+ 
             insertPositionUsers(user)
+
+            rankingData.push(user)
         }
+     
+        return rankingData
     }
 
     function insertPositionUsers(user){
@@ -56,7 +62,7 @@ export async function interactorRanking(){
         div.setAttribute('position', user.position)
 
         const classBox = ["box-position", "box-name", "box-points"]
-        const valueBox = [user.position, user.name, user.points]
+        const valueBox = [`${user.position}º`, user.name, `${user.points} pts`]
 
         for(let i = 0; i < 3; i++){
 
@@ -75,6 +81,7 @@ export async function interactorRanking(){
         const div = document.createElement('div')
 
         div.setAttribute('class', nameClass[index])
+        div.setAttribute('title', 'Visualizar Perfil')
 
         div.innerHTML = valueBox[index]
 
@@ -90,5 +97,29 @@ export async function interactorRanking(){
             div[i].textContent = div[i].textContent.slice(0, maxLenght)
     
         }
+    }
+
+    function clickOfUsers(ranking){
+        
+        const positionsElements = document.querySelectorAll('.position-users')
+
+        positionsElements.forEach((element) => {
+
+            element.addEventListener('click', () => {
+
+                const position = element.getAttribute('position')
+                const posInt = parseInt(position)
+              
+                getInfosFromUserToSeeProfile(ranking, posInt)
+
+            })
+
+        })
+    }
+
+    async function getInfosFromUserToSeeProfile(ranking, position){
+
+        console.log(ranking[position-1])
+        console.log(position)
     }
 }
