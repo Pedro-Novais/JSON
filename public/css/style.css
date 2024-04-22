@@ -1132,6 +1132,7 @@ body .modal .content-modal .input {
   color: white;
   font-weight: 900;
   letter-spacing: 0.1rem;
+  text-transform: capitalize;
 }
 body .modal .content-modal .input::-moz-placeholder {
   color: white;

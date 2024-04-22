@@ -319,7 +319,7 @@ export async function interactorList() {
     })
 
     i_edit.addEventListener('click', () => {
-      modalChange()
+      modalChange(json[i])
       validUpdate(idTask, 0)
     })
   }
@@ -385,7 +385,7 @@ export async function interactorList() {
     }
   }
 
-  function modalChange() {
+  function modalChange(task) {
 
     let modalDiv = document.createElement('div');
     modalDiv.setAttribute('class', 'modal')
@@ -414,7 +414,11 @@ export async function interactorList() {
 
     modalDiv.innerHTML = modalEdit;
 
+    
     main.appendChild(modalDiv)
+
+    const valueInput = document.querySelector('#input-edit')
+    valueInput.value = task.task
    
     if (activeHover !== null) {
       activeHover = null

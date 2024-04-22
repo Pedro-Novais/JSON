@@ -1163,6 +1163,7 @@ body {
                 color: $text;
                 font-weight: 900;
                 letter-spacing: 0.1rem;
+                text-transform: capitalize;
             }
 
             .input::placeholder {
