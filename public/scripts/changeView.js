@@ -56,6 +56,7 @@ function callPageList() {
 
     linkToDo.removeEventListener('click', callPageList)
     linkProfile.addEventListener('click', callPageProfile)
+    linkRanking.addEventListener('click', callPageRanking)
 
 }
 

@@ -3,55 +3,15 @@ const { Ranking: RankingModel } = require('../models/ranking')
 const mongoose = require('mongoose');
 
 const rankingController = {
-    verifyTasksFromUser: async (user, operation) => {
+    get: async (req, res) => {
+        try {
+            
+            const ranking = await RankingModel.find().limit(9).sort({position: 1}).select('-userId')
 
-        if (operation !== "finished") {
+            res.status(201).json(ranking)
 
-            return false
-
-        }
-
-        const insert = "insert"
-        const update = "update"
-
-        const usersFromRanking = await RankingModel.find()
-
-        if (usersFromRanking.length == 0) {
-
-            const newUserRanking = new UserRanking(user, 1)
-
-            await RankingModel.create(newUserRanking)
-
-            return true
-        }
-
-        const userId = user._id
-
-        let beInRanking = await RankingModel.findOne({ userId });
-
-        if (beInRanking) {
-
-            const position = beInRanking.position
-            const updateUserRanking = new UserRanking(user, position)
-
-            await RankingModel.findByIdAndUpdate(beInRanking._id, updateUserRanking)
-
-            if (position == 1) {
-                
-                return true
-
-            } else {
-
-                reorganizeRanking(usersFromRanking, beInRanking, update)
-
-                return true
-            }
-        }
-
-        if (!beInRanking) {
-
-            reorganizeRanking(usersFromRanking, user, insert)
-
+        } catch (error) {
+            console.log(error)
         }
     }
 }

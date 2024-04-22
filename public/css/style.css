@@ -2245,10 +2245,10 @@ body footer p {
   body main #container {
     margin-top: 4rem;
   }
-  body main .container-ranking {
+  body main #container-ranking {
     margin-top: 4rem;
   }
-  body main .container-ranking .users-ranking {
+  body main #container-ranking .users-ranking {
     height: 50vh;
   }
   body main #container-profile {

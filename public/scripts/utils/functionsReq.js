@@ -63,7 +63,9 @@ async function get(url, token){
             }
         })
 
-        return response
+        const responseData = await response.json()
+
+        return {responseData, status: response.status, ok: response.ok}
 
     } catch (error) {
         console.log(error)
