@@ -377,7 +377,7 @@ body {
 
             //Container para a página de Perfil
 
-            .container-profile-user {
+            /*.container-profile-user {
                 @include container;
                 flex-direction: column;
                 width: 100%;
@@ -546,8 +546,8 @@ body {
                     //bottom: 10px;
                     width: 8rem;
                     min-height: 6vh;
-                }*/
-            }
+                }
+            }*/
 
             #icon-back {
                 position: absolute;
@@ -1079,6 +1079,178 @@ body {
         }
     }
 
+    .container-profile-user {
+        @include container;
+        flex-direction: column;
+        width: 100%;
+        min-height: 50vh;
+        animation: slideBoxStatistic .5s ease;
+
+
+        /*#btn-save-user {
+            //position: absolute;
+            //bottom: 10px;
+            width: 8rem;
+            min-height: 6vh;
+        }*/
+        .container-infos-user {
+            @include container;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            max-height: 90%;
+            border-radius: 1rem;
+            margin-top: 1em;
+            padding-bottom: 0.5em;
+            //box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
+
+            .container-primary-infos {
+                @include container;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 95%;
+                margin-top: 1em;
+                border-radius: 1rem;
+
+                #user-name {
+                    font-size: 1.3rem;
+                    font-weight: 500;
+                    margin-bottom: 1rem;
+                    color: $white;
+                    text-transform: capitalize;
+                }
+
+                .box-user-infos {
+                    @include container;
+                    justify-content: space-around;
+                    width: 100%;
+                    height: 100%;
+                    padding: .5em;
+                }
+
+                .boxs-infos-user {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 40%;
+                    height: 100%;
+
+                    .box-infos {
+                        @include container;
+                        flex-direction: column;
+                        justify-content: center;
+                        min-width: 80%;
+                        min-height: 5vh;
+                        padding: .2em;
+                        border-radius: .5em;
+                        background-color: $details;
+                        color: $white;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
+                        font-size: 100%;
+                        letter-spacing: 1px;
+                    }
+                }
+
+                .box-description {
+                    @include container;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    height: 15rem;
+                }
+
+                .box-image {
+                    align-self: flex-end;
+                    @include container;
+                    justify-content: center;
+                    width: 10rem;
+                }
+            }
+
+            .container-second-infos {
+                @include container;
+                justify-content: space-between;
+                width: 95%;
+                margin-top: 1.5em;
+
+                #user-infos-general {
+                    overflow: hidden;
+
+                    .box-infos-general {
+                        @include container;
+                        justify-content: center;
+                        width: 100%;
+                        height: 80%;
+                        overflow: auto;
+
+                        .division-info-general {
+                            @include container;
+                            flex-direction: column;
+                            justify-content: space-around;
+                            align-items: flex-start;
+                            width: 50%;
+                            height: 100%;
+
+                            .container-name-infos-general {
+                                @include container;
+                                white-space: nowrap;
+
+                            }
+
+                            .text-infos-general {
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+
+                    .box-infos-general::-webkit-scrollbar {
+                        width: 6px
+                    }
+
+                    .box-infos-general::-webkit-scrollbar-thumb {
+                        background-color: $color-light;
+                        border-radius: 20px;
+                    }
+                }
+
+                .box-user-description {
+                    @include container;
+                    flex-direction: column;
+                    width: 49%;
+                    max-height: 35vh;
+                    min-height: 30vh;
+                    background-color: $details;
+                    color: $white;
+                    margin-top: 1em;
+                    padding: 1em;
+                    padding-top: .3em;
+                    border-radius: 1em;
+
+                    h3 {
+                        letter-spacing: 1px;
+                        margin-bottom: 10px;
+                    }
+
+                    #text-user-description {
+                        font-weight: 500;
+                        word-wrap: break-word;
+                        overflow: auto;
+                        text-align: center;
+                    }
+
+                    #text-user-description::-webkit-scrollbar {
+                        width: 6px
+                    }
+
+                    #text-user-description::-webkit-scrollbar-thumb {
+                        background-color: $color-light;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+
     //Fim do estilo
 
     #modal-remove {
@@ -1524,7 +1696,7 @@ body {
                 margin-top: 2rem;
                 border-radius: 1rem;
 
-                .position-users{
+                .position-users {
                     @include container;
                     justify-content: space-between;
                     width: 100%;
@@ -1536,7 +1708,7 @@ body {
                     background-color: $details;
                     transition: .3s;
 
-                    .box-position{
+                    .box-position {
                         @include container;
                         justify-content: center;
                         width: 19%;
@@ -1545,7 +1717,7 @@ body {
                         font-weight: 600;
                     }
 
-                    .box-name{
+                    .box-name {
                         @include container;
                         justify-content: flex-start;
                         width: 60%;
@@ -1557,22 +1729,22 @@ body {
                         text-overflow: ellipsis;
                     }
 
-                    .box-points{
+                    .box-points {
                         @include container;
                         justify-content: center;
                         width: 19%;
                         height: 100%;
                         font-size: 1.5rem;
                         font-weight: 600;
-                     
+
                     }
                 }
 
-                .position-users[position = "1"]{
+                /*.position-users[position = "1"]{
                     background-image: linear-gradient(to bottom, #D9A443,#A65F08);
                 }
 
-                /*.position-users[position = "2"]{
+                .position-users[position = "2"]{
                     background-image: linear-gradient(to bottom, #6093BF,#3B6D8C);
                     //border: solid 2px #A4A4A1;
                     //background-color: #D9A443;
@@ -1584,7 +1756,7 @@ body {
                     //background-color: #D9A443;
                 }*/
 
-                .position-users:hover{
+                .position-users:hover {
                     background-color: $priority;
                     cursor: pointer;
                 }
@@ -1593,12 +1765,12 @@ body {
             .users-ranking::-webkit-scrollbar {
                 width: 8px;
             }
-            
+
             .users-ranking::-webkit-scrollbar-track {
                 margin-bottom: 1.2rem;
                 margin-top: 0.5vw;
             }
-            
+
             .users-ranking::-webkit-scrollbar-thumb {
                 background-color: $color-light;
                 border-radius: 20px;
@@ -2096,6 +2268,40 @@ body {
                     width: 100%;
                 }
             }
+
+            #container-ranking {
+
+                width: 94%;
+                animation: msgAddTask 0.5s ease;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+
+                .users-ranking {
+
+                    height: 70vh;
+
+                    .position-users {
+
+                        padding: 0;
+                        padding-right: .5em;
+
+                        .box-position {
+
+                            font-size: 1.1rem;
+                        }
+
+                        .box-name {
+
+                            width: 50%;
+                            font-size: 1.1rem;
+                        }
+
+                        .box-points {
+
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
         }
 
         //Estilo para a página de login
@@ -2467,13 +2673,13 @@ body {
                 width: 1000px;
 
                 #container {
-                    margin-top: 4rem; 
+                    margin-top: 4rem;
                 }
 
-                #container-ranking{
+                #container-ranking {
                     margin-top: 4rem;
 
-                    .users-ranking{
+                    .users-ranking {
                         height: 50vh;
                     }
                 }
@@ -2517,7 +2723,7 @@ body {
                     }
                 }
 
-                .container-ranking{
+                .container-ranking {
                     min-height: 0;
                     height: 80%;
                 }
