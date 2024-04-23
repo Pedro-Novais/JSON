@@ -41,15 +41,15 @@ export async function interactorLogin() {
         const loginResult = await post(urlLogin, data)
 
         if (loginResult.ok) {
-
-            const responseToDo = await get(urlList, loginResult.responseData.token)
-
+        
+            const responseToDo = await get(urlList, loginResult.responseData.token, 2)
+            console.log(responseToDo)
             boxAlerts(loginResult.responseData.msg, '#container-login', 5000) 
 
             localStorage.setItem('token', loginResult.responseData.token);
 
             setTimeout( () =>{
-                window.location.href = responseToDo.url
+                window.location.href = "/list-to-do"
             }, 1000)
             
         } else {

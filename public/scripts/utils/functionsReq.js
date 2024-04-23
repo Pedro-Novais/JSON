@@ -52,7 +52,7 @@ async function addTaskBack(url, data, token) {
 
 }
 
-async function get(url, token){
+async function get(url, token, determinate){
     try {
         
         const response = await fetch(url, {
@@ -62,10 +62,16 @@ async function get(url, token){
                 'Authorization': `Bearer ${token}`
             }
         })
+        console.log(response)
+        if(determinate == 1){
 
-        const responseData = await response.json()
+            const responseData = await response.json()
+            return {responseData, status: response.status, ok: response.ok}
+        }
+        else if(determinate == 2){
 
-        return {responseData, status: response.status, ok: response.ok}
+            return {response, status: response.status, ok: response.ok}
+        }
 
     } catch (error) {
         console.log(error)

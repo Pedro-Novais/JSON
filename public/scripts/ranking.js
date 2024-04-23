@@ -28,7 +28,7 @@ export async function interactorRanking(){
     async function getRanking(){
 
         const token = localStorage.getItem('token')
-        const ranking = await get(apiRanking, token)
+        const ranking = await get(apiRanking, token, 1)
 
         if(!ranking.ok){
 
