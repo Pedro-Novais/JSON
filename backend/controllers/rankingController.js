@@ -3,21 +3,71 @@ const { Ranking: RankingModel } = require('../models/ranking')
 const mongoose = require('mongoose');
 
 const rankingController = {
+    
     get: async (req, res) => {
         try {
-            
-            const ranking = await RankingModel.find().limit(9).sort({position: 1}).select('-userId')
 
-            res.status(201).json(ranking)
+            const userId = req.userId
+            let exist = false;
+
+            const rankingVerify = await RankingModel.find().limit(9).sort({ position: 1 })
+
+            for (let i = 0; i < rankingVerify.length; i++) {
+
+                if (rankingVerify[i].userId == userId) {
+
+                    exist = rankingVerify[i].position
+
+                    break
+                }
+            }
+
+            const ranking = await RankingModel.find().limit(9).sort({ position: 1 }).select('-userId')
+
+            res.status(201).json({ ranking, exist: exist })
 
         } catch (error) {
             console.log(error)
         }
     },
 
-    post: async (req, res) => {
+    viewProfile: async (req, res) => {
         try {
-            
+
+            class Profile {
+
+                constructor(user) {
+
+                    this.name = user.name
+                    this.taskCreated = user.persistStatistic.taskCreated
+                    this.taskFinished = user.persistStatistic.taskFinished
+                    this.taskCanceled = user.persistStatistic.taskCanceled
+                    this.description = user.description
+                    this.date = user.createdAt
+                    this.position = user.ranking
+                }
+
+            }
+
+            const userIdRanking = req.body.userId
+
+            const userRanking = await RankingModel.findById(userIdRanking).populate('userId')
+
+            if (!userRanking) {
+
+                res
+                    .status(401)
+                    .json({ msg: "Úsuario não existe" })
+            }
+
+            const userIdSearch = userRanking.userId
+
+            const user = new Profile(userIdSearch)
+
+            res.status(201).json({ user })
+
+
+
         } catch (error) {
             console.log(error)
         }
@@ -99,7 +149,7 @@ async function reorganizeRanking(allUser, userMoment, operation) {
         }
 
         await UserModel.findByIdAndUpdate(user.userId, data)
-            
+
         return true
     }
 
@@ -135,11 +185,11 @@ async function verifyPosition(userUpdated) {
             userHigh = ranking[positionsNew.positionHigh - 2]
             state = changingPosition(userHigh, positionsNew.newUserHigh)
 
-        }else{
+        } else {
 
             const positionUser = userUpdated.position
             userHigh = ranking[positionUser - 2]
-    
+
             state = changingPosition(userHigh, userUpdated)
         }
 
@@ -173,7 +223,7 @@ async function verifyPosition(userUpdated) {
 
 async function switchPosition(lastUserHigh, newUserHigh) {
     try {
-        
+
         const positionHigh = lastUserHigh.position
         const positionDowm = newUserHigh.position
 
@@ -182,7 +232,7 @@ async function switchPosition(lastUserHigh, newUserHigh) {
 
         newUserHigh.position = positionHigh
         await newUserHigh.save()
-        
+
         const dataHigh = {
             ranking: positionHigh
         }

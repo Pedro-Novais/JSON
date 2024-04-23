@@ -6,54 +6,10 @@ const jwt = require('jsonwebtoken')
 
 const userController = {
 
-    /*create: async (req, res) => {
-        try {
-            const statisticDefault = {
-                priorityOne: {
-                    created: 0,
-                    finished: 0,
-                    canceled: 0
-                },
-                priorityTwo: {
-                    created: 0,
-                    finished: 0,
-                    canceled: 0
-                },
-                priorityThree: {
-                    created: 0,
-                    finished: 0,
-                    canceled: 0
-                }
-            }
-
-            const configurations = {
-                orderPriority: false,
-                usersCanViewStatistic: false
-            }
-
-            const newUser = {
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-                statistic: statisticDefault,
-                configurations: configurations
-            }
-
-            const response = await UserModel.create(newUser)
-
-            res
-                .status(201)
-                .json({ response, msg: "Usúario criado com sucesso" })
-
-        } catch (error) {
-            console.log(error)
-        }
-    },*/
-
     getAll: async (req, res) => {
         try {
 
-            const users = await UserModel.find();
+            const users = await UserModel.find(); 
 
             res.json(users)
         } catch (error) {

@@ -1,6 +1,8 @@
-import { get } from "./utils/functionsReq.js"
+import { get, addTaskBack } from "./utils/functionsReq.js"
 
 const apiRanking = "/api/ranking"
+const apiViewProfile = "/api/view-profile"
+
 export async function interactorRanking(){
 
     class Ranking{
@@ -16,11 +18,12 @@ export async function interactorRanking(){
 
     const response = await getRanking()
 
-    const ranking = response.responseData
+    const ranking = response.responseData.ranking
+    const exist = response.responseData.exist
   
     const rankingFormated = createUsersInRanking(ranking)
 
-    clickOfUsers(rankingFormated)
+    clickOfUsers(rankingFormated, exist)
 
     async function getRanking(){
 
@@ -99,7 +102,7 @@ export async function interactorRanking(){
         }
     }
 
-    function clickOfUsers(ranking){
+    function clickOfUsers(ranking, userExist){
         
         const positionsElements = document.querySelectorAll('.position-users')
 
@@ -109,8 +112,11 @@ export async function interactorRanking(){
 
                 const position = element.getAttribute('position')
                 const posInt = parseInt(position)
-              
-                getInfosFromUserToSeeProfile(ranking, posInt)
+
+                if(posInt != userExist){
+
+                    getInfosFromUserToSeeProfile(ranking, posInt)
+                }
 
             })
 
@@ -119,7 +125,20 @@ export async function interactorRanking(){
 
     async function getInfosFromUserToSeeProfile(ranking, position){
 
-        console.log(ranking[position-1])
+        console.log(ranking[position - 1])
         console.log(position)
+        const userId = ranking[position - 1].userId
+
+        const data = {
+
+            userId: userId
+
+        }
+
+        const token = localStorage.getItem('token')
+
+        const response = await addTaskBack(apiViewProfile, data, token)
+
+        console.log(response)
     }
 }

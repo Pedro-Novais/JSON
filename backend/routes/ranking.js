@@ -7,4 +7,8 @@ router
     .route('/ranking')
     .get(checkToken, (req, res) => rankingController.get(req, res))
 
+router
+    .route('/view-profile')
+    .post(checkToken, (req, res) => rankingController.viewProfile(req, res))
+
 module.exports = router
