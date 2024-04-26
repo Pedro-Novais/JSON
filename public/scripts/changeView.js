@@ -29,6 +29,13 @@ function logout() {
 
 function callPageList() {
 
+    const viewProfile = document.querySelector('#container-view-profile')
+
+    if(viewProfile){
+        viewProfile.remove()
+        div.style.display = "flex"
+    }
+
     let width = window.innerWidth
 
     if (width <= 800) {
@@ -96,6 +103,13 @@ function callPageRanking() {
 }
 
 function callPageProfile() {
+
+    const viewProfile = document.querySelector('#container-view-profile')
+
+    if(viewProfile){
+        viewProfile.remove()
+        div.style.display = "flex"
+    }
 
     let width = window.innerWidth
 

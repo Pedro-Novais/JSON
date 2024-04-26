@@ -62,7 +62,7 @@ async function get(url, token, determinate){
                 'Authorization': `Bearer ${token}`
             }
         })
-        console.log(response)
+
         if(determinate == 1){
 
             const responseData = await response.json()

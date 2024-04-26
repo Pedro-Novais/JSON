@@ -1044,7 +1044,7 @@ body #main-profile .view-infos .btn-configs {
   align-items: center;
   justify-content: center;
   width: 8rem;
-  min-height: 5rem;
+  min-height: 4rem;
   margin-top: 5px;
   background: linear-gradient(to right, #034AA6, #0487D9);
   border-radius: 0.7rem;
@@ -1786,6 +1786,41 @@ body main #container-ranking .users-ranking::-webkit-scrollbar-thumb {
   background-color: #05DBF2;
   border-radius: 20px;
 }
+body main #container-view-profile {
+  position: absolute;
+  width: 80%;
+  height: 460px;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+  padding: 0.5em;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body main #container-view-profile h1 {
+  font-size: 1.7rem;
+  color: #D9D9D9;
+  text-align: center;
+  width: 80%;
+}
+body main #container-view-profile #other-icon-back {
+  position: absolute;
+  align-self: flex-end;
+  height: 30px;
+}
+body main #container-view-profile #other-icon-back:hover {
+  cursor: pointer;
+}
+body main #container-view-profile::-webkit-scrollbar {
+  width: 8px;
+}
+body main #container-view-profile::-webkit-scrollbar-track {
+  margin-bottom: 1.2rem;
+  margin-top: 0.5vw;
+}
+body main #container-view-profile::-webkit-scrollbar-thumb {
+  background-color: #05DBF2;
+  border-radius: 20px;
+}
 body .priority-level {
   width: 20px;
   height: 20px;
@@ -2045,19 +2080,31 @@ body footer p {
   body .tasks {
     border-radius: 1rem;
   }
-  body #main-profile .view-infos .container-profile-user .container-infos-user {
-    width: 110%;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos #user-name {
-    text-align: center;
-    white-space: break-spaces;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .boxs-infos-user {
-    padding: 0;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .boxs-infos-user .box-infos {
-    min-width: 32vw;
-    text-align: center;
+  body #main-profile .view-infos {
+    /*.container-profile-user {
+
+        .container-infos-user {
+            width: 110%;
+
+            .container-primary-infos {
+
+                #user-name {
+                    text-align: center;
+                    white-space: break-spaces;
+                }
+
+                .boxs-infos-user {
+
+                    padding: 0;
+
+                    .box-infos {
+                        min-width: 32vw;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }*/
   }
   body #main-profile .view-infos .container-statistic {
     min-height: 110vh;
@@ -2088,6 +2135,20 @@ body footer p {
   }
   body #main-profile .view-infos .container-config .style-to-name-config {
     font-size: 1rem;
+  }
+  body .container-profile-user .container-infos-user {
+    width: 110%;
+  }
+  body .container-profile-user .container-infos-user .container-primary-infos #user-name {
+    text-align: center;
+    white-space: break-spaces;
+  }
+  body .container-profile-user .container-infos-user .container-primary-infos .boxs-infos-user {
+    padding: 0;
+  }
+  body .container-profile-user .container-infos-user .container-primary-infos .boxs-infos-user .box-infos {
+    min-width: 32vw;
+    text-align: center;
   }
 }
 @media screen and (max-width: 600px) {
@@ -2163,6 +2224,10 @@ body footer p {
   body main #container-ranking .users-ranking .position-users .box-points {
     font-size: 1.1rem;
   }
+  body main #container-view-profile {
+    width: 90%;
+    height: 600px;
+  }
   body #main-enter {
     margin-top: 8rem;
     width: 100%;
@@ -2229,29 +2294,49 @@ body footer p {
     width: 20px;
     height: 20px;
   }
-  body #main-profile .view-infos .container-profile-user #btn-save-user {
-    margin-top: 1rem;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .box-description {
-    height: 20rem;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-primary-infos .boxs-infos-user .box-infos {
-    width: 100%;
-    height: 50%;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos {
-    flex-direction: column;
-    /*#user-infos-general {
+  body #main-profile .view-infos {
+    /*.container-profile-user {
 
-      Inserir aqui o estilo da box de desempenho
+        #btn-save-user {
+            margin-top: 1rem;
+        }
 
+        .container-infos-user {
+
+            .container-primary-infos {
+
+                .box-description {
+                    height: 20rem;
+                }
+
+                .boxs-infos-user {
+
+                    .box-infos {
+                        width: 100%;
+                        height: 50%;
+                        margin-bottom: 5px;
+                        font-size: .9rem;
+
+                    }
+                }
+            }
+
+            .container-second-infos {
+                flex-direction: column;
+
+                .box-user-description {
+                    width: 95%;
+                    height: 25vh;
+                }
+
+                /*#user-infos-general {
+
+                  Inserir aqui o estilo da box de desempenho
+
+                }
+            }
+        }
     }*/
-  }
-  body #main-profile .view-infos .container-profile-user .container-infos-user .container-second-infos .box-user-description {
-    width: 95%;
-    height: 25vh;
   }
   body #main-profile .view-infos .style-to-title {
     color: #D9D9D9;
@@ -2316,6 +2401,30 @@ body footer p {
   }
   body #main-profile .view-infos .container-personalization-modal .modal-personalizations #modal-code {
     margin-top: 2.5em;
+  }
+  body .container-profile-user #btn-save-user {
+    margin-top: 1rem;
+  }
+  body .container-profile-user .container-infos-user .container-primary-infos .box-description {
+    height: 20rem;
+  }
+  body .container-profile-user .container-infos-user .container-primary-infos .boxs-infos-user .box-infos {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  body .container-profile-user .container-infos-user .container-second-infos {
+    flex-direction: column;
+    /*#user-infos-general {
+
+      Inserir aqui o estilo da box de desempenho
+
+    }*/
+  }
+  body .container-profile-user .container-infos-user .container-second-infos .box-user-description {
+    width: 95%;
+    height: 25vh;
   }
   body footer {
     margin-top: 15rem;

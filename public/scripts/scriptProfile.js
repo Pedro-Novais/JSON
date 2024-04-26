@@ -1,5 +1,5 @@
 import { pageStatistic, pageConfigText, pageProfile, pageProfileCustomization, pageProfileCustomizationSecurity, pageProfileCustomizationSecurityTwo, pageProfileCustomizationCode } from "./utils/modals.js"
-import { boxAlerts, validEmail, validOnlyNumber } from "./utils/utilsInitial.js"
+import { boxAlerts, validEmail, validOnlyNumber, formatedDate } from "./utils/utilsInitial.js"
 import { updateTaskBack, post, addTaskBack } from "./utils/functionsReq.js"
 import { verifyUser } from "./utils/verificationUser.js"
 
@@ -80,6 +80,7 @@ export async function interactorProfile() {
 
         if (determinate != 1) {
 
+            
             valuesFromUser = {}
         }
 
@@ -820,20 +821,6 @@ export async function interactorProfile() {
     
             }
         }
-
-    }
-
-    function formatedDate(dateNum) {
-
-        const date = new Date(dateNum);
-
-        const day = String(date.getUTCDate()).padStart(2, '0');
-        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-        const year = date.getUTCFullYear();
-
-        const dateFormated = `${day}/${month}/${year}`;
-
-        return dateFormated
 
     }
 

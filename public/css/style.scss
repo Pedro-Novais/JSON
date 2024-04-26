@@ -1063,7 +1063,7 @@ body {
                 @include container;
                 justify-content: center;
                 width: 8rem;
-                min-height: 5rem;
+                min-height: 4rem;
                 margin-top: 5px;
                 background: linear-gradient(to right, $details, $priority);
                 border-radius: .7rem;
@@ -1777,6 +1777,48 @@ body {
             }
 
         }
+
+        #container-view-profile{
+            position: absolute;
+            width: 80%;
+            height: 460px;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+            padding: .5em;
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            h1{
+                font-size: 1.7rem;
+                color: $white;
+                text-align: center;
+                width: 80%;
+            }
+
+            #other-icon-back{
+                position: absolute;
+                align-self: flex-end;
+                height: 30px;
+            }
+
+            #other-icon-back:hover{
+                cursor: pointer;
+            }
+        }
+
+        #container-view-profile::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #container-view-profile::-webkit-scrollbar-track {
+            margin-bottom: 1.2rem;
+            margin-top: 0.5vw;
+        }
+
+        #container-view-profile::-webkit-scrollbar-thumb {
+            background-color: $color-light;
+            border-radius: 20px;
+        }
     }
 
     .priority-level {
@@ -2129,7 +2171,7 @@ body {
         #main-profile {
             .view-infos {
 
-                .container-profile-user {
+                /*.container-profile-user {
 
                     .container-infos-user {
                         width: 110%;
@@ -2152,7 +2194,7 @@ body {
                             }
                         }
                     }
-                }
+                }*/
 
                 .container-statistic {
                     min-height: 110vh;
@@ -2195,6 +2237,31 @@ body {
 
                     .style-to-name-config {
                         font-size: 1rem;
+                    }
+                }
+            }
+        }
+
+        .container-profile-user {
+
+            .container-infos-user {
+                width: 110%;
+
+                .container-primary-infos {
+
+                    #user-name {
+                        text-align: center;
+                        white-space: break-spaces;
+                    }
+
+                    .boxs-infos-user {
+
+                        padding: 0;
+
+                        .box-infos {
+                            min-width: 32vw;
+                            text-align: center;
+                        }
                     }
                 }
             }
@@ -2267,7 +2334,9 @@ body {
                     text-align: center;
                     width: 100%;
                 }
-            }
+            }  
+
+            // Page de ranking
 
             #container-ranking {
 
@@ -2301,6 +2370,12 @@ body {
                         }
                     }
                 }
+            }
+
+            #container-view-profile{
+
+                width: 90%;
+                height: 600px;
             }
         }
 
@@ -2395,7 +2470,7 @@ body {
         #main-profile {
             .view-infos {
 
-                .container-profile-user {
+                /*.container-profile-user {
 
                     #btn-save-user {
                         margin-top: 1rem;
@@ -2433,10 +2508,10 @@ body {
 
                               Inserir aqui o estilo da box de desempenho
 
-                            }*/
+                            }
                         }
                     }
-                }
+                }*/
 
                 .style-to-title {
                     color: $white;
@@ -2531,6 +2606,49 @@ body {
                             margin-top: 2.5em;
                         }
                     }
+                }
+            }
+        }
+
+        .container-profile-user {
+
+            #btn-save-user {
+                margin-top: 1rem;
+            }
+
+            .container-infos-user {
+
+                .container-primary-infos {
+
+                    .box-description {
+                        height: 20rem;
+                    }
+
+                    .boxs-infos-user {
+
+                        .box-infos {
+                            width: 100%;
+                            height: 50%;
+                            margin-bottom: 5px;
+                            font-size: .9rem;
+
+                        }
+                    }
+                }
+
+                .container-second-infos {
+                    flex-direction: column;
+
+                    .box-user-description {
+                        width: 95%;
+                        height: 25vh;
+                    }
+
+                    /*#user-infos-general {
+
+                      Inserir aqui o estilo da box de desempenho
+
+                    }*/
                 }
             }
         }

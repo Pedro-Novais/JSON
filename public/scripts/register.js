@@ -120,14 +120,14 @@ export async function interectorRegister() {
 
                 if (response.ok) {
 
-                    const responseToDo = await get(urlList, response.responseData.token)
+                    const responseToDo = await get(urlList, response.responseData.token, 2)
 
                     boxAlerts("Conta criada com sucesso", '#container-insert-code', 5000)
 
                     localStorage.setItem('token', response.responseData.token);
 
                     setTimeout(() => {
-                        window.location.href = responseToDo.url
+                        window.location.href = "/list-to-do"
                     }, 1000)
 
                 } else {

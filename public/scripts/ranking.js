@@ -1,4 +1,5 @@
 import { get, addTaskBack } from "./utils/functionsReq.js"
+import { viewOtherProfile } from "./viewOtherProfile.js"
 
 const apiRanking = "/api/ranking"
 const apiViewProfile = "/api/view-profile"
@@ -125,8 +126,6 @@ export async function interactorRanking(){
 
     async function getInfosFromUserToSeeProfile(ranking, position){
 
-        console.log(ranking[position - 1])
-        console.log(position)
         const userId = ranking[position - 1].userId
 
         const data = {
@@ -139,6 +138,14 @@ export async function interactorRanking(){
 
         const response = await addTaskBack(apiViewProfile, data, token)
 
-        console.log(response)
+        if(!response.ok){
+
+            console.log('ocorreu um erro')
+            return false
+
+        }
+
+        viewOtherProfile(response.responseData.user)
+
     }
 }

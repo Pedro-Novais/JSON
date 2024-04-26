@@ -3,7 +3,7 @@ let time = null;
 function boxAlerts(alert, containerId, interval) {
     const container = document.querySelector(containerId)
     const divAlert = document.querySelector('.box-watch-out')
-   
+
     if (time !== null) {
 
         clearInterval(time)
@@ -13,19 +13,19 @@ function boxAlerts(alert, containerId, interval) {
         divAlert.remove()
 
     }
-   
+
     const div = document.createElement('div')
     const p = document.createElement('p')
 
     div.setAttribute('class', 'box-watch-out')
-    
+
     p.setAttribute('id', 'msg-watch-out')
 
     p.innerHTML = alert
- 
+
     div.appendChild(p)
     container.appendChild(div)
-    
+
     time = setInterval(clearBoxAlerts, interval)
 }
 
@@ -75,6 +75,20 @@ function validEmail(email) {
 
 function validOnlyNumber(input) {
     return /^[0-9]+$/.test(input);
-  }
+}
 
-export { validEmail, boxAlerts, validOnlyNumber, removePlaceholder}
+function formatedDate(dateNum) {
+
+    const date = new Date(dateNum);
+
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+
+    const dateFormated = `${day}/${month}/${year}`;
+
+    return dateFormated
+
+}
+
+export { validEmail, boxAlerts, validOnlyNumber, removePlaceholder, formatedDate }
