@@ -37,7 +37,7 @@ export function viewOtherProfile(user){
             document.querySelector('#other-info-task-finished'),
             document.querySelector('#other-info-task-canceled'),
             document.querySelector('#other-text-user-description'),
-            document.querySelector('#other-user-infos-media'),
+            document.querySelector('#other-text-user-medias'),
         ]
 
         const date = formatedDate(user.date)
@@ -57,10 +57,10 @@ export function viewOtherProfile(user){
             user.taskFinished,
             user.taskCanceled,
             description,
-            ""
+            "Adição em breve"
         ]
 
-        for(let i = 0; i < 8; i++){
+        for(let i = 0; i < 9; i++){
 
             element[i].innerHTML = values[i]
 
