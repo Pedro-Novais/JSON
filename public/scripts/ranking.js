@@ -3,12 +3,13 @@ import { viewOtherProfile } from "./viewOtherProfile.js"
 
 const apiRanking = "/api/ranking"
 const apiViewProfile = "/api/view-profile"
+const apiSearch = "/api/search"
 
-export async function interactorRanking(){
+export async function interactorRanking(mode = null) {
 
-    class Ranking{
+    class Ranking {
 
-        constructor(user){
+        constructor(user) {
             this.userId = user._id
             this.name = user.nameUser
             this.position = user.position
@@ -17,46 +18,69 @@ export async function interactorRanking(){
 
     }
 
-    const response = await getRanking()
+    let response;
+    let ranking;
+    let exist
 
-    const ranking = response.responseData.ranking
-    const exist = response.responseData.exist
-  
+    if(mode != null){
+
+        ranking = mode
+
+    }else{
+
+        response = await getRanking()
+    
+        ranking = response.responseData.ranking
+        exist = response.responseData.exist
+    }
+
+
+    console.log(ranking)
+
     const rankingFormated = createUsersInRanking(ranking)
 
     clickOfUsers(rankingFormated, exist)
 
-    async function getRanking(){
+    const btnRecall = document.querySelector('#refresh')
+
+    btnRecall.addEventListener('click', recall)
+
+    const btnSearch = document.querySelector('#search')
+    const inputUser = document.querySelector('#input-name-search')
+
+    btnSearch.addEventListener('click', searchUsers)
+
+    async function getRanking() {
 
         const token = localStorage.getItem('token')
         const ranking = await get(apiRanking, token, 1)
 
-        if(!ranking.ok){
+        if (!ranking.ok) {
 
             console.log('ocorreu um erro ao carregar o ranking')
             return false
 
         }
-        
+
         return ranking
 
     }
 
-    function createUsersInRanking(ranking){
+    function createUsersInRanking(ranking) {
         let rankingData = [];
-        for(let i = 0; i < ranking.length; i++){
+        for (let i = 0; i < ranking.length; i++) {
 
             const user = new Ranking(ranking[i])
- 
+    
             insertPositionUsers(user)
 
             rankingData.push(user)
         }
-     
+
         return rankingData
     }
 
-    function insertPositionUsers(user){
+    function insertPositionUsers(user) {
 
         const container = document.querySelector('.users-ranking')
 
@@ -68,7 +92,7 @@ export async function interactorRanking(){
         const classBox = ["box-position", "box-name", "box-points"]
         const valueBox = [`${user.position}º`, user.name, `${user.points} pts`]
 
-        for(let i = 0; i < 3; i++){
+        for (let i = 0; i < 3; i++) {
 
             const infos = insertBoxs(classBox, valueBox, i)
 
@@ -80,7 +104,7 @@ export async function interactorRanking(){
         limitedCharacters()
     }
 
-    function insertBoxs(nameClass, valueBox, index){
+    function insertBoxs(nameClass, valueBox, index) {
 
         const div = document.createElement('div')
 
@@ -92,19 +116,19 @@ export async function interactorRanking(){
         return div
     }
 
-    function limitedCharacters(){
+    function limitedCharacters() {
         const div = document.querySelectorAll('.box-name')
         const maxLenght = 28
-        
-        for(let i = 0; i < div.length; i++){
-    
+
+        for (let i = 0; i < div.length; i++) {
+
             div[i].textContent = div[i].textContent.slice(0, maxLenght)
-    
+
         }
     }
 
-    function clickOfUsers(ranking, userExist){
-        
+    function clickOfUsers(ranking, userExist = null) {
+
         const positionsElements = document.querySelectorAll('.position-users')
 
         positionsElements.forEach((element) => {
@@ -114,9 +138,14 @@ export async function interactorRanking(){
                 const position = element.getAttribute('position')
                 const posInt = parseInt(position)
 
-                if(posInt != userExist){
+                if (posInt != userExist) {
 
-                    getInfosFromUserToSeeProfile(ranking, posInt)
+                    if(mode == null){
+
+                        getInfosFromUserToSeeProfile(ranking, posInt)
+                    }else{
+                        getInfosFromUserToSeeProfileSpecy(ranking, posInt)
+                    }
                 }
 
             })
@@ -124,7 +153,11 @@ export async function interactorRanking(){
         })
     }
 
-    async function getInfosFromUserToSeeProfile(ranking, position){
+    async function getInfosFromUserToSeeProfileSpecy(ranking, position){
+        console.log('teste')
+    }
+
+    async function getInfosFromUserToSeeProfile(ranking, position) {
 
         const userId = ranking[position - 1].userId
 
@@ -138,7 +171,7 @@ export async function interactorRanking(){
 
         const response = await addTaskBack(apiViewProfile, data, token)
 
-        if(!response.ok){
+        if (!response.ok) {
 
             console.log('ocorreu um erro')
             return false
@@ -148,4 +181,80 @@ export async function interactorRanking(){
         viewOtherProfile(response.responseData.user)
 
     }
+}
+
+async function searchUsers() {
+
+    const inputUser = document.querySelector('#input-name-search')
+    const inputUserValue = document.querySelector('#input-name-search').value
+    const lenghtInput = inputUserValue.trim()
+
+    if (inputUserValue === "" || inputUserValue === null || lenghtInput === "") {
+
+        inputUser.setAttribute('class', 'watch-out')
+
+        inputUser.addEventListener('click', () => {
+            inputUser.removeAttribute('class', 'watch-out')
+        })
+
+        return false
+    }
+
+    const token = localStorage.getItem('token')
+
+    const data = {
+        search: inputUserValue
+    }
+
+    const response = await addTaskBack(apiSearch, data, token)
+
+    console.log(response)
+
+    if(response.status == 404){
+
+        console.log(response.responseData.msg)
+        return false
+
+    }
+
+    if(!response.ok){
+
+        console.log('Algum erro inesperado ocorreu')
+        return false
+    }
+
+    const ranking = response.responseData.users
+
+    removePosition()
+
+    interactorRanking(ranking)
+}
+
+function recall() {
+
+    removePosition()
+
+    const input = document.querySelector('#input-name-search')
+
+    input.value = ""
+
+    const btnRecall = document.querySelector('#refresh')
+    const btnSearch = document.querySelector('#search')
+
+    btnRecall.removeEventListener('click', recall)
+    btnSearch.removeEventListener('click', searchUsers)
+
+    interactorRanking()
+}
+
+function removePosition(){
+    
+    const users = document.querySelectorAll('.position-users')
+
+    for (let i = 0; i < users.length; i++) {
+
+        users[i].remove()
+
+    }
+
 }

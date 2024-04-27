@@ -57,7 +57,9 @@ export async function interactorList() {
     const token = localStorage.getItem('token')
     const input = document.querySelector('#task-add').value
 
-    if (input == "" || input == null) {
+    const lenghtInput = input.trim()
+
+    if (input === "" || input === null || lenghtInput === "") {
       task_put.setAttribute('class', 'watch-out')
 
       task_put.addEventListener('click', () => {

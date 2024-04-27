@@ -1704,6 +1704,7 @@ body main #container-ranking .users-ranking {
   height: 55vh;
   padding: 0.5em;
   overflow: auto;
+  margin-top: 0.8rem;
   border-radius: 1rem;
 }
 body main #container-ranking .users-ranking .position-users {
@@ -1720,6 +1721,7 @@ body main #container-ranking .users-ranking .position-users {
   border-radius: 1rem;
   background-color: #034AA6;
   transition: 0.3s;
+  animation: slideIn 1s ease;
 }
 body main #container-ranking .users-ranking .position-users .box-position {
   display: flex;
@@ -1820,6 +1822,18 @@ body main #container-ranking .box-search .btn-search {
 body main #container-ranking .box-search .btn-search:hover {
   cursor: pointer;
   background-color: #0487D9;
+}
+body main #container-ranking #refresh {
+  position: absolute;
+  height: 20px;
+  align-self: flex-end;
+  margin-right: 1rem;
+  margin-top: 0.4rem;
+  transition: 0.2s;
+}
+body main #container-ranking #refresh:hover {
+  cursor: pointer;
+  height: 22px;
 }
 body main #container-view-profile {
   position: absolute;

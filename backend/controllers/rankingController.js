@@ -8,7 +8,7 @@ const rankingController = {
         try {
 
             const userId = req.userId
-            let exist = false;
+            let exist = false
 
             const rankingVerify = await RankingModel.find().limit(9).sort({ position: 1 })
 
@@ -75,7 +75,10 @@ const rankingController = {
 
     searchUser: async (req, res) => {
 
+        const userId = req.userId
         const search = req.body.search
+
+        let exist = false
 
         const regex = new RegExp("^" + search, "i")
 
@@ -88,7 +91,18 @@ const rankingController = {
             return true
         }
 
-        res.status(201).json(users)
+        
+        for (let i = 0; i < users.length; i++) {
+
+            if (users[i].userId == userId) {
+
+                exist = users[i].position
+
+                break
+            }
+        }
+
+        res.status(201).json({users, exist: exist})
     }
 }
 

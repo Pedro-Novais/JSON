@@ -1695,7 +1695,7 @@ body {
                 height: 55vh;
                 padding: .5em;
                 overflow: auto;
-                //margin-top: 2rem;
+                margin-top: .8rem;
                 border-radius: 1rem;
 
                 .position-users {
@@ -1709,6 +1709,7 @@ body {
                     border-radius: 1rem;
                     background-color: $details;
                     transition: .3s;
+                    animation: slideIn 1s ease;
 
                     .box-position {
                         @include container;
@@ -1804,6 +1805,20 @@ body {
                     cursor: pointer;
                     background-color: $priority;
                 }
+            }
+
+            #refresh{
+                position: absolute;
+                height: 20px;
+                align-self: flex-end;
+                margin-right: 1rem;
+                margin-top: .4rem;
+                transition: .2s;
+            }
+
+            #refresh:hover{
+                cursor:pointer;
+                height: 22px;
             }
 
         }
