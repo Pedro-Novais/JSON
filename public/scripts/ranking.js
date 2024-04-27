@@ -22,14 +22,14 @@ export async function interactorRanking(mode = null) {
     let ranking;
     let exist
 
-    if(mode != null){
+    if (mode != null) {
 
         ranking = mode
 
-    }else{
+    } else {
 
         response = await getRanking()
-    
+
         ranking = response.responseData.ranking
         exist = response.responseData.exist
     }
@@ -71,7 +71,7 @@ export async function interactorRanking(mode = null) {
         for (let i = 0; i < ranking.length; i++) {
 
             const user = new Ranking(ranking[i])
-    
+
             insertPositionUsers(user)
 
             rankingData.push(user)
@@ -140,26 +140,39 @@ export async function interactorRanking(mode = null) {
 
                 if (posInt != userExist) {
 
-                    if(mode == null){
+                    getInfosFromUserToSeeProfile(ranking, posInt)
 
-                        getInfosFromUserToSeeProfile(ranking, posInt)
-                    }else{
-                        getInfosFromUserToSeeProfileSpecy(ranking, posInt)
-                    }
                 }
-
             })
-
         })
     }
 
-    async function getInfosFromUserToSeeProfileSpecy(ranking, position){
-        console.log('teste')
+    function verifyModeRequest(ranking, position) {
+
+        let userId
+
+        if (mode != null) {
+
+            for (let i = 0; i < ranking.length; i++) {
+
+                if (ranking[i].position == position) {
+
+                    userId = ranking[i].userId
+                    break
+                }
+            }
+        } else {
+
+            userId = ranking[position - 1].userId
+
+        }
+
+        return userId
     }
 
     async function getInfosFromUserToSeeProfile(ranking, position) {
 
-        const userId = ranking[position - 1].userId
+        const userId = verifyModeRequest(ranking, position)
 
         const data = {
 
@@ -210,14 +223,14 @@ async function searchUsers() {
 
     console.log(response)
 
-    if(response.status == 404){
+    if (response.status == 404) {
 
         console.log(response.responseData.msg)
         return false
 
     }
 
-    if(!response.ok){
+    if (!response.ok) {
 
         console.log('Algum erro inesperado ocorreu')
         return false
@@ -247,8 +260,8 @@ function recall() {
     interactorRanking()
 }
 
-function removePosition(){
-    
+function removePosition() {
+
     const users = document.querySelectorAll('.position-users')
 
     for (let i = 0; i < users.length; i++) {
