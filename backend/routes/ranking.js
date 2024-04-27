@@ -11,4 +11,8 @@ router
     .route('/view-profile')
     .post(checkToken, (req, res) => rankingController.viewProfile(req, res))
 
+router
+    .route('/search')
+    .post(checkToken, (req, res) => rankingController.searchUser(req, res))
+
 module.exports = router

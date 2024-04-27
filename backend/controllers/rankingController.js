@@ -71,6 +71,24 @@ const rankingController = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    searchUser: async (req, res) => {
+
+        const search = req.body.search
+
+        const regex = new RegExp("^" + search, "i")
+
+        const users = await RankingModel.find({nameUser: regex }).sort({ position: 1 }).select('-userId')
+
+        if(users.length == 0){
+
+            res.status(404).json({msg: "Nenhum usuário encontrado"})
+            
+            return true
+        }
+
+        res.status(201).json(users)
     }
 }
 
