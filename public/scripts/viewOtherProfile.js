@@ -7,7 +7,6 @@ export function viewOtherProfile(user){
     const main = document.querySelector('main')
     const ranking = document.querySelector('#container-ranking')
 
-    console.log(user)
     viewModal()
 
     function viewModal(){

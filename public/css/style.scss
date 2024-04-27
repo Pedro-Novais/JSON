@@ -1679,6 +1679,7 @@ body {
             justify-content: flex-start;
             width: 100%;
             min-height: 80%;
+            max-height: 448px;
             padding: 1vw;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1694,7 +1695,7 @@ body {
                 height: 55vh;
                 padding: .5em;
                 overflow: auto;
-                margin-top: 2rem;
+                //margin-top: 2rem;
                 border-radius: 1rem;
 
                 .position-users {
@@ -1741,22 +1742,6 @@ body {
                     }
                 }
 
-                /*.position-users[position = "1"]{
-                    background-image: linear-gradient(to bottom, #D9A443,#A65F08);
-                }
-
-                .position-users[position = "2"]{
-                    background-image: linear-gradient(to bottom, #6093BF,#3B6D8C);
-                    //border: solid 2px #A4A4A1;
-                    //background-color: #D9A443;
-                }
-
-                .position-users[position = "3"]{
-                    background-image: linear-gradient(to bottom, #F2B077,#774c33);
-                    //border: solid 2px #BF834E;
-                    //background-color: #D9A443;
-                }*/
-
                 .position-users:hover {
                     background-color: $priority;
                     cursor: pointer;
@@ -1775,6 +1760,50 @@ body {
             .users-ranking::-webkit-scrollbar-thumb {
                 background-color: $color-light;
                 border-radius: 20px;
+            }
+
+            .box-search{
+                @include container;
+                justify-content: space-between;
+                width: 97%;
+                height: 11vh;
+                border-radius: .8rem;
+                padding: .3em;
+                margin-top: 1rem;
+
+                #input-name-search{
+                    width: 75%;
+                    height: 100%;
+                    padding: 0.5rem;
+                    background-color: $details;
+                    outline: none;
+                    border-style: none;
+                    font-size: 1rem;
+                    border-radius: 0.5rem;
+                    color: $white;
+                    font-weight: 900;
+                    letter-spacing: 0.1rem;
+                }
+
+                #input-name-search::placeholder {
+                    color: $text;
+                    opacity: 40%;
+                }
+
+                .btn-search{
+                    @include container;
+                    justify-content: center;
+                    background-color: $details;
+                    width: 20%;
+                    height: 100%;
+                    border-radius: 0.5rem;
+                    transition: .1s;
+                }
+
+                .btn-search:hover{
+                    cursor: pointer;
+                    background-color: $priority;
+                }
             }
 
         }
@@ -2342,6 +2371,7 @@ body {
 
             #container-ranking {
 
+                max-height: 550px;
                 width: 94%;
                 animation: msgAddTask 0.5s ease;
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
@@ -2372,6 +2402,8 @@ body {
                         }
                     }
                 }
+
+                
             }
 
             #container-view-profile{
