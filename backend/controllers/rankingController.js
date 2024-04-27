@@ -82,7 +82,7 @@ const rankingController = {
 
         const regex = new RegExp("^" + search, "i")
 
-        const users = await RankingModel.find({nameUser: regex }).sort({ position: 1 }).select('-userId')
+        const users = await RankingModel.find({nameUser: regex }).sort({ position: 1 })
 
         if(users.length == 0){
 
@@ -101,6 +101,8 @@ const rankingController = {
                 break
             }
         }
+
+        //const usersfinal = await RankingModel.find({nameUser: regex }).sort({ position: 1 }).select('-userId')
 
         res.status(201).json({users, exist: exist})
     }

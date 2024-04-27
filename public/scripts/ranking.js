@@ -5,7 +5,7 @@ const apiRanking = "/api/ranking"
 const apiViewProfile = "/api/view-profile"
 const apiSearch = "/api/search"
 
-export async function interactorRanking(mode = null) {
+export async function interactorRanking(mode = null, pExist = null) {
 
     class Ranking {
 
@@ -25,6 +25,7 @@ export async function interactorRanking(mode = null) {
     if (mode != null) {
 
         ranking = mode
+        exist = pExist
 
     } else {
 
@@ -237,10 +238,11 @@ async function searchUsers() {
     }
 
     const ranking = response.responseData.users
+    const exist = response.responseData.exist
 
     removePosition()
 
-    interactorRanking(ranking)
+    interactorRanking(ranking, exist)
 }
 
 function recall() {
