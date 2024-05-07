@@ -2,8 +2,6 @@ const { User: UserModel } = require('../models/user')
 const { Task: TaskModel } = require('../models/tasks')
 const bcrypt = require('bcrypt');
 
-const jwt = require('jsonwebtoken')
-
 const userController = {
 
     getAll: async (req, res) => {

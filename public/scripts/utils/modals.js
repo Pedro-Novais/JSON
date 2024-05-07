@@ -25,4 +25,27 @@ let login = " <h1>Login</h1> <div class='box-credentials'> <div class='box-input
 let register = " <h1>Cadastro</h1> <div class='box-credentials'> <div class='box-inputs'> <label for='value-name'> <p class='title-input'>Nome:</p> </label> <input type='text' name='name' class='inputs-credentials' id='value-name' placeholder='Digite seu nome' mark='0' maxlength = '35'> </div> <div class='box-inputs'> <label for='value-email'> <p class='title-input'>Email:</p> </label> <input type='email' name='email' class='inputs-credentials' id='value-email' placeholder='Digite seu Email' mark='1'> </div> <div class='box-inputs'> <label for='value-password'> <p class='title-input'>Senha:</p> </label> <input type='password' name='password' class='inputs-credentials' id='value-password' placeholder='Digite sua Senha' mark='2'> </div> </div> <button type='button' id='btn-register' class='btn-sign'>Cadastrar</button>"
 let digitCode = " <h1>Código de Confirmação</h1> <div class='box-credentials'> <div class='box-inputs'> <label for='value-code'> </label> <input type='text' name='code' class='inputs-credentials' id='value-code' placeholder='Digite o código'> </div> <button type='button' id='btn-verify-code' class='btn-sign'>Verificar</button> <p id='re-send-code'>Reenviar código</p>  <p id='back-page'>Voltar</p>"
 
-export { modalEdit, modalRemovetext, viewBarsCode, initialViewBarsCode, pageStatistic, listToDo, profile, pageConfigText, pageProfile, login, register, digitCode, alertAddTask, pageProfileCustomization, pageProfileCustomizationSecurity, pageProfileCustomizationSecurityTwo, pageProfileCustomizationCode, ranking, otherViewProfile }
+let popUpAlert = " <div id='pop-up-global' class='pop-up'> <img src='../svg/xmark-solid.svg' alt='Fehcar' class='icon' id='icon-close'> <h3 class='info-fixed' id='pop-title-alert'> </h3> <div class='info-alert' id='pop-info-alert'> </p> </div> "
+
+export {
+    modalEdit,
+    modalRemovetext,
+    viewBarsCode,
+    initialViewBarsCode,
+    pageStatistic,
+    listToDo,
+    profile,
+    pageConfigText,
+    pageProfile,
+    login,
+    register,
+    digitCode,
+    alertAddTask,
+    pageProfileCustomization,
+    pageProfileCustomizationSecurity,
+    pageProfileCustomizationSecurityTwo,
+    pageProfileCustomizationCode,
+    ranking,
+    otherViewProfile,
+    popUpAlert
+}
