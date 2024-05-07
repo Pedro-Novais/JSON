@@ -1865,6 +1865,51 @@ body {
             background-color: $color-light;
             border-radius: 20px;
         }
+
+        .pop-up{
+            @include container;
+            position: absolute;
+            flex-direction: column;
+            background-color: $details;
+            width: 20%;
+            min-width: 360px;
+            height: 12rem;
+            border-radius: .5rem;
+            padding: .5em;
+            color: $white;
+            z-index: 99;
+            margin: inherit;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+
+            .icon{
+                position: absolute;
+                align-self: flex-end;
+                height: 20px;
+                transition: .2s;
+            }
+
+            .icon:hover{
+                cursor: pointer;
+                height: 22px;
+            }
+
+            .info-fixed{
+                width: 100%;
+                height: 20%;
+                text-align: center
+            }
+
+            .info-alert{
+                @include container;
+                justify-content: center;
+                background-color: $priority;
+                width: 100%;
+                height: 80%;
+                border-radius: .5rem;
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+        }
     }
 
     .priority-level {
