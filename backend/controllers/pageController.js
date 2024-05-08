@@ -33,6 +33,38 @@ const pageController = {
             console.log(error)
         }
 
+    },
+
+    pageList: async (req, res) =>{
+        try {
+            
+            res.render('pages/list')
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    pageProfile: async (req, res) =>{
+        try {
+
+            const userId = req.userId
+            
+            res.render('pages/profile')
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    pageRanking: async (req, res) =>{
+        try {
+            
+            res.render('pages/ranking')
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 }

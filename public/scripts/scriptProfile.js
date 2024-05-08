@@ -80,7 +80,7 @@ export async function interactorProfile() {
 
         if (determinate != 1) {
 
-            
+
             valuesFromUser = {}
         }
 
@@ -805,23 +805,22 @@ export async function interactorProfile() {
 
         const positionRanking = parseInt(infosAboutUser.ranking)
 
-        if(isNaN(infosAboutUser.ranking)){
+        if (isNaN(infosAboutUser.ranking)) {
 
             ranking.innerHTML = "-"
 
-        }else{
-    
+        } else {
+
             if (positionRanking > 9) {
-    
+
                 ranking.innerHTML = "+10º"
-    
+
             } else {
-    
+
                 ranking.innerHTML = `${positionRanking}º`
-    
+
             }
         }
-
     }
 
     function insertStatistic(priority) {

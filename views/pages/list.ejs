@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header_internal'); %>
+    </header>
+
+    <main identifier = "list">
+        <div id="container">
+            <h2>Tarefas</h2>
+            <div id='container-info'> <input type='text' id='task-add' placeholder='New Task' maxlength='35'>
+                <div id='priority'>
+                    <div>
+                        <p>Prioridade</p>
+                    </div>
+                    <div id='level'>
+                        <div class='choose-priority' id='priority-one' mark='priority'></div>
+                        <div class='choose-priority' id='priority-two' mark='priority'></div>
+                        <div class='choose-priority' id='priority-three' mark='priority'></div>
+                    </div>
+                </div>
+                <div id='btn-add'><img src='svg/plus-solid.svg' alt='Adicionar task' height='25rem'></div>
+            </div>
+
+            <div id='task-made'> </div>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+    <%- include('../partials/script'); %>
+</body>
+
+</html>
