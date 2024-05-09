@@ -1,3 +1,5 @@
+let modal_task = " <div class='tasks'> <p class='task-puted'></p> <div class='priority-action'> <div class='priority-task'> <div class='priority-level'></div> <div class='priority-level'></div> <div class='priority-level'></div> </div> <div class='container-actions'> <img src='./svg/check-solid.svg' alt='Finalizar' class='actions' id='action-finish'> <img src='./svg/xmark-solid.svg' alt='Cancelar' class='actions' id='action-cancel'> <img src='./svg/pencil-solid.svg' alt='Editar' class='actions' id='action-edit'> </div> </div> </div> "
+
 let modalEdit = "         <h1>Editar Tarefa</h1>         <div class='content-modal'>             <input type='text' id='input-edit' class='input' placeholder='Nova task'>             <div class='content-priority'>                 <div>                     <p>Prioridade</p>                 </div>                 <div class='content-level'>                     <div class='choose-priority' id='priority-one'></div>                     <div class='choose-priority' id='priority-two'></div>                     <div class='choose-priority' id='priority-three'></div>                 </div>             </div>         </div>         <div class='content-btn'>             <button type='button' class='btn-edit' id='btn-edit-cancel'>                 <img src='svg/xmark-solid.svg' alt='Cancelar' height='40px'>             </button>             <button type='button' class='btn-edit' id='btn-edit-edit'>                 <img src='svg/check-solid.svg' alt='Alterar' height='40px'>             </button>         </div>     ";
 let modalRemovetext = " <h1 id='title-determinate'></h1> <div class='tasks' id='task-remove'> <p class='task-puted' id='task-remove-text'></p> <div class='content-priority'> <div class='content-level'> <div class='priority-level' level='priority'></div> <div class='priority-level' level='priority'></div> <div class='priority-level' level='priority'></div> </div> </div> </div> <div class='content-btn'> <button type='button' class='btn-edit' id='btn-edit-cancel'> <img src='svg/xmark-solid.svg' alt='Cancelar' height='40px'> </button> <button type='button' class='btn-edit' id='btn-edit-edit'> <img src='svg/check-solid.svg' alt='Alterar' height='40px'> </button>"
 
@@ -47,5 +49,6 @@ export {
     pageProfileCustomizationCode,
     ranking,
     otherViewProfile,
-    popUpAlert
+    popUpAlert,
+    modal_task
 }
