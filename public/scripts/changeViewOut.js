@@ -1,5 +1,5 @@
 import { interactorLogin } from "./scriptEnter.js"
-import { interectorRegister } from "./register.js"
+import { interectorRegister } from "../scripts-old/register.js"
 import { login, register } from "./utils/modals.js"
 import { interactorResponsive } from "./responsive/responsiveExternal.js"
 

@@ -19,6 +19,7 @@ const pageController = {
         try {
            
             res.render('index')
+
         } catch (error) {
             console.log(error)
         }
@@ -40,6 +41,7 @@ const pageController = {
             
             res.render('pages/list')
 
+
         } catch (error) {
             console.log(error)
         }
@@ -47,8 +49,6 @@ const pageController = {
 
     pageProfile: async (req, res) =>{
         try {
-
-            const userId = req.userId
             
             res.render('pages/profile')
 

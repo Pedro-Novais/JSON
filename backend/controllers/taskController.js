@@ -47,6 +47,7 @@ const taskController = {
 
     getAll: async (req, res) => {
         try {
+
             const id = req.userId
 
             const user = await UserModel.findById(id)
@@ -57,15 +58,18 @@ const taskController = {
             }
 
             const tasks = user.tasks
+
             let tasksFromUser = [];
+
+            const config = user.configurations.orderPriority
         
             for(let i = 0; i < tasks.length; i++){
 
-                tasksFromUser[i]= await TaskModel.findById(tasks[i])
+                tasksFromUser[i] = await TaskModel.findById(tasks[i])
     
             }
 
-            res.json(tasksFromUser)
+            res.json({tasksFromUser, config, })
 
         } catch (error) {
             console.log(error)

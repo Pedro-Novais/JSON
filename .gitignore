@@ -5,3 +5,4 @@ keep/
 img/
 .env
 launch.json
+scripts-old/

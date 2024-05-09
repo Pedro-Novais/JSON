@@ -1,17 +1,12 @@
 import { verifyUser } from "../utils/verificationUser.js"
 
-export class InteractorRanking {
+class InteractorRanking {
 
-    constructor(url) {
+    constructor() {
 
-        this.get_data(url)
-    }
-
-    async get_data(url) {
-
-        const response = await verifyUser()
-
-        window.location.href = url
+        console.log('aobaaaaa ranking')
 
     }
 }
+
+new InteractorRanking()

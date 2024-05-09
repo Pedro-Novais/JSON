@@ -12,6 +12,5 @@ export async function change_view(endpoint){
         return false
     }
 
-    return response.response.url 
-
+    window.location.href = response.response.url
 }

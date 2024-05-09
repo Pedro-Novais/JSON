@@ -49,7 +49,7 @@ export async function interactorLogin() {
             localStorage.setItem('token', loginResult.responseData.token);
 
             setTimeout( () =>{
-                window.location.href = "/list-to-do"
+                window.location.href = "/list"
             }, 1000)
             
         } else {

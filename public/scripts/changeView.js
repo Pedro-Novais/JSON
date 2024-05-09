@@ -1,7 +1,7 @@
 import { profile, listToDo, ranking } from "./utils/modals.js"
-import { interactorProfile } from "./scriptProfile.js"
-import { interactorList } from "./script.js"
-import { interactorRanking } from "./ranking.js"
+import { interactorProfile } from "../scripts-old/scriptProfile.js"
+import { interactorList } from "../scripts-old/script.js"
+import { interactorRanking } from "../scripts-old/ranking.js"
 import { interactorResponsive } from "./responsive/responsiveInternal.js"
 
 const div = document.createElement('div')
