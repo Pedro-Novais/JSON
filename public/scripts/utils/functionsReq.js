@@ -106,7 +106,7 @@ async function getUser(url, token){
     }
 }
 
-async function post(url, data){
+async function post(url, data, token = null){
 
     try {
 

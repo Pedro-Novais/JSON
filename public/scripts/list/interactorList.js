@@ -36,7 +36,7 @@ class InteractorList {
     }
 
     verify_tasks(tasks, config) {
-        config = true
+
         if (tasks.lenght == 0) {
 
             this.alert_insert_task("without-task")

@@ -1,4 +1,4 @@
-import { modal_task } from "../utils/modals.js"
+import { BuilderModalsFromTask } from "./builderModals.js"
 
 export class BuilderTasks {
 
@@ -82,12 +82,38 @@ export class BuilderTasks {
         container.appendChild(container_action)
 
         div.appendChild(container)
+
+        this.actions_icons(
+            icon_finish,
+            icon_del,
+            icon_edit,
+            task
+        )
     }
     
     actions_icons(finish, del, edit, task){
 
+        const container = document.querySelector('#container')
+
         finish.addEventListener('click', () => {
-            
+
+            container.style.display = 'none'
+            new BuilderModalsFromTask().finish_task(task)
+
+        })
+
+        del.addEventListener('click', () =>{
+
+            container.style.display = 'none'
+            new BuilderModalsFromTask().cancel_task(task)
+
+        })
+
+        edit.addEventListener('click', () => {
+
+            container.style.display = 'none'
+            new BuilderModalsFromTask().edit_task(task)
+
         })
     }
 }
