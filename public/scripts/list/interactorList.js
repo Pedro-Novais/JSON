@@ -28,14 +28,13 @@ class InteractorList {
 
         }
 
-        const tasks = response.responseData.tasksFromUser
-        const config = response.responseData.config
+        const tasks = response.responseData.tasks
 
-        this.verify_tasks(tasks, config)
+        this.verify_tasks(tasks)
 
     }
 
-    verify_tasks(tasks, config) {
+    verify_tasks(tasks) {
 
         if (tasks.lenght == 0) {
 
@@ -43,45 +42,9 @@ class InteractorList {
 
         } else {
 
-            if (config == false) {
+            new BuilderTasks(tasks)
 
-                new BuilderTasks(tasks)
-
-            } else {
-
-                const tasksOrganize = this.organize_tasks_in_order(tasks)
-
-                new BuilderTasks(tasksOrganize)
-            }
         }
-    }
-
-    organize_tasks_in_order(tasks) {
-
-        let tasksOrganize = []
-        let state = 3;
-
-        for (let i = 0; i <= tasks.length; i++) {
-
-            if (i == tasks.length) {
-
-                i = 0;
-                state = state - 1
-            }
-
-            if (state == 0) {
-
-                break
-            }
-
-            if (tasks[i].priority == state) {
-
-                tasksOrganize.push(tasks[i])
-
-            }
-        }
-
-        return tasksOrganize
     }
 
     alert_insert_task(type) {

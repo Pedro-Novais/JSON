@@ -60,16 +60,26 @@ const taskController = {
             const tasks = user.tasks
 
             let tasksFromUser = [];
+            let  tasks_to_front = null
 
-            const config = user.configurations.orderPriority
-        
+            let config = user.configurations.orderPriority
+
             for(let i = 0; i < tasks.length; i++){
 
                 tasksFromUser[i] = await TaskModel.findById(tasks[i])
     
             }
 
-            res.json({tasksFromUser, config, })
+            if (config == true){
+
+                tasks_to_front = organize_tasks_in_order(tasksFromUser)
+
+            }else{
+
+                tasks_to_front = tasksFromUser
+            }
+
+            res.json({tasks:tasks_to_front })
 
         } catch (error) {
             console.log(error)
@@ -135,6 +145,33 @@ const taskController = {
 
         } catch (error) {
             console.log(error)
+        }
+    }
+}
+
+function organize_tasks_in_order(tasks) {
+
+    let tasksOrganize = []
+    let state = 3;
+
+    for (let i = 0; i <= tasks.length; i++) {
+
+        if (i == tasks.length) {
+
+            i = 0;
+            state = state - 1
+        }
+
+        if (state == 0) {
+
+            return tasksOrganize
+           
+        }
+
+        if (tasks[i].priority == state) {
+
+            tasksOrganize.push(tasks[i])
+
         }
     }
 }
