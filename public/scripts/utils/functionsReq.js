@@ -9,14 +9,14 @@ async function order(url, token) {
             }
         });
         if (!response.ok) {
-            return { 
-                status: response.status, 
+            return {
+                status: response.status,
                 ok: response.ok
             }
         }
 
         const json = await response.json();
-       
+
         return json;
 
     } catch (err) {
@@ -34,7 +34,7 @@ async function addTaskBack(url, data, token) {
             },
             body: JSON.stringify(data)
         })
-       
+
         /*if (!response.ok) {
 
             return {
@@ -44,7 +44,7 @@ async function addTaskBack(url, data, token) {
         }*/
 
         const responseData = await response.json()
-        
+
         return { responseData, status: response.status, ok: response.ok }
     } catch (err) {
         throw err
@@ -52,9 +52,9 @@ async function addTaskBack(url, data, token) {
 
 }
 
-async function get_render(url, token){
+async function get_render(url, token) {
     try {
-        
+
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -63,16 +63,16 @@ async function get_render(url, token){
             }
         })
 
-        return {response, status: response.status, ok: response.ok}
-        
+        return { response, status: response.status, ok: response.ok }
+
     } catch (error) {
         console.log(error)
     }
 }
 
-async function get_json(url, token){
+async function get_json(url, token) {
     try {
-        
+
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -82,17 +82,17 @@ async function get_json(url, token){
         })
 
         const responseData = await response.json()
-        return {responseData, status: response.status, ok: response.ok}
+        return { responseData, status: response.status, ok: response.ok }
 
     } catch (error) {
         console.log(error)
     }
 }
 
-async function getUser(url, token){
+async function getUser(url, token) {
 
     try {
-        
+
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -102,37 +102,38 @@ async function getUser(url, token){
         })
 
         if (!response.ok) {
-            return { 
-                status: response.status, 
+            return {
+                status: response.status,
                 ok: response.ok
             }
         }
 
         const responseData = await response.json()
-       
+
         return { responseData, status: response.status, ok: response.ok }
 
     } catch (error) {
-        console.log(error) 
+        console.log(error)
     }
 }
 
-async function post(url, data, token = null){
+async function post(url, data, token = null) {
 
     try {
 
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
 
         const responseData = await response.json()
-    
+
         return { responseData, status: response.status, ok: response.ok }
-        
+
     } catch (error) {
         console.log(error)
     }
@@ -152,7 +153,7 @@ async function put(url, data, token) {
         })
 
         const response_data = await response.json()
-        
+
         return { response_data, status: response.status, ok: response.ok }
 
     } catch (err) {
@@ -191,14 +192,14 @@ async function updateTaskBack(url, id, data, determinate, token) {
 
         if (!response.ok) {
             return {
-                status: response.status, 
+                status: response.status,
                 ok: response.ok
             }
         }
 
         const responseData = await response.json()
-    
-        return { responseData, status: response.status, ok: response.ok}
+
+        return { responseData, status: response.status, ok: response.ok }
 
     } catch (err) {
         throw err
@@ -221,12 +222,22 @@ async function delete_req(url, token) {
         }
 
         const responseData = await response.json()
-        
-        return { responseData, status: response.status, ok: response.ok } 
+
+        return { responseData, status: response.status, ok: response.ok }
 
     } catch (err) {
         throw err
     }
 }
 
-export { delete_req, updateTaskBack, addTaskBack, order, getUser, post, get_render, put, get_json }
+export {
+    delete_req,
+    updateTaskBack,
+    addTaskBack,
+    order, 
+    getUser,
+    post,
+    get_render,
+    put,
+    get_json
+}
