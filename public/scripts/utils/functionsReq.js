@@ -52,7 +52,7 @@ async function addTaskBack(url, data, token) {
 
 }
 
-async function get(url, token, determinate){
+async function get_render(url, token){
     try {
         
         const response = await fetch(url, {
@@ -63,15 +63,26 @@ async function get(url, token, determinate){
             }
         })
 
-        if(determinate == 1){
+        return {response, status: response.status, ok: response.ok}
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-            const responseData = await response.json()
-            return {responseData, status: response.status, ok: response.ok}
-        }
-        else if(determinate == 2){
+async function get_json(url, token){
+    try {
+        
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
 
-            return {response, status: response.status, ok: response.ok}
-        }
+        const responseData = await response.json()
+        return {responseData, status: response.status, ok: response.ok}
 
     } catch (error) {
         console.log(error)
@@ -118,19 +129,34 @@ async function post(url, data, token = null){
             body: JSON.stringify(data)
         })
 
-        /*if (!response.ok) {
-            return { 
-                status: response.status, 
-                ok: response.ok
-            }
-        }*/
-
         const responseData = await response.json()
     
         return { responseData, status: response.status, ok: response.ok }
         
     } catch (error) {
         console.log(error)
+    }
+
+}
+
+async function put(url, data, token) {
+    try {
+
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        })
+
+        const response_data = await response.json()
+        
+        return { response_data, status: response.status, ok: response.ok }
+
+    } catch (err) {
+        throw err
     }
 
 }
@@ -179,10 +205,10 @@ async function updateTaskBack(url, id, data, determinate, token) {
     }
 }
 
-async function deleteTaskBack(url, id, token) {
+async function delete_req(url, token) {
     try {
-        let way = `${url}/${id}`
-        const response = await fetch(way, {
+
+        const response = await fetch(url, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -203,4 +229,4 @@ async function deleteTaskBack(url, id, token) {
     }
 }
 
-export { deleteTaskBack, updateTaskBack, addTaskBack, order, getUser, post, get }
+export { delete_req, updateTaskBack, addTaskBack, order, getUser, post, get_render, put, get_json }

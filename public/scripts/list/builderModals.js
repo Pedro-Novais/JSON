@@ -1,11 +1,17 @@
+import { InteractorList } from "./interactorList.js"
+
 import { modal_finish_cancel, modal_edit } from "../utils/modals.js"
+import { delete_req, put } from "../utils/functionsReq.js"
+import { get_token } from "../utils/getToken.js"
+
+const api_delete = 'api/user/tasks'
+const api_update_statistic = 'api/user/statistic'
 
 export class BuilderModalsFromTask{
 
     finish_task(task){
 
         this.create_modal_pattern('Finalizar', task)
-        console.log('finalizar', task)
 
     }
 
@@ -30,7 +36,6 @@ export class BuilderModalsFromTask{
         main.appendChild(modal)
 
         const title = document.querySelector('#title-determinate')
-
         title.innerHTML = `${type} Tarefa`
 
         const text_task = document.querySelector('#task-remove-text')
@@ -55,20 +60,97 @@ export class BuilderModalsFromTask{
             container.style.display = 'flex'
         })
 
-        this.action_modal_pattern(task)
+        btn_send.addEventListener('click', () =>{
+
+            this.action_modal_pattern(task, type)
+
+        })
+    }
+
+    async action_modal_pattern(task, type){
+
+        const token = get_token()
+        const response = await delete_req(`${api_delete}/${task._id}`, token)
+
+        if(!response.ok){
+
+            console.log('Algum erro ocorereu')
+            return false
+        }
+
+        const url_priority = read_priority(task.priority)
+        const type_operation = read_type(type)
+
+        const data_update = {
+            update: type_operation
+        }
+
+        const response_statistic = await put(`${api_update_statistic}/${url_priority}`, data_update, token)
+
+        if(!response_statistic.ok){
+            
+            console.log('Algum erro ocorereu')
+            return false
+
+        }
+
+        this.remove_modal()
+  
     }
 
     create_modal_edit(task){
-
-    }
-
-    action_modal_pattern(task){
-
-        console.log(task)
-  
+        
+        
     }
     
     action_modal_edit(){
+
+    }
+
+    remove_modal(){
+        
+        const modal = document.querySelector('.modal')
+        const container = document.querySelector('#container')
+        const tasks = document.querySelectorAll('.tasks')
+
+        modal.remove()
+
+        tasks.forEach(task => {
+
+             task.remove()
+        });
+
+        container.style.display = 'flex'
+
+        new InteractorList()
+    }
+}
+
+function read_type(type){
+
+    if(type == 'Finalizar'){
+        
+        return 'finished'
+    }
+    else if(type == 'Cancelar'){
+
+        return 'canceled'
+    }
+}
+
+function read_priority(priority){
+
+    if(priority == 1){
+
+        return 'priorityOne'
+    }
+    else if(priority == 2){
+
+        return 'priorityTwo'
+    }
+    else if (priority == 3){
+
+        return 'priorityThree'
 
     }
 }

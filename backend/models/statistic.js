@@ -33,15 +33,15 @@ const statisticSchema = new mongoose.Schema({
 })
 
 const persistStatistic = new mongoose.Schema({
-    taskCreated: {
+    created: {
         type: Number,
         _id: false
     },
-    taskFinished: {
+    finished: {
         type: Number,
         _id: false
     },
-    taskCanceled: {
+    canceled: {
         type: Number,
         _id: false
     }

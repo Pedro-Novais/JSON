@@ -1,10 +1,10 @@
-import { get } from "../utils/functionsReq.js";
+import { get_render } from "../utils/functionsReq.js";
 import { get_token } from "../utils/getToken.js";
 
 export async function change_view(endpoint){
 
     const token = get_token()
-    const response = await get(endpoint, token, 2)
+    const response = await get_render(endpoint, token)
  
     if(!response.ok){
 

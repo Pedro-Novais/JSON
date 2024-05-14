@@ -1,15 +1,20 @@
 import { BuilderTasks } from "./builderTasks.js"
+import { AddTask } from "./addTasks.js"
+import { AddPriority } from "./addPriority.js"
 import { verifyUser } from "../utils/verificationUser.js"
 import { alertAddTask } from "../utils/modals.js"
-import { get } from "../utils/functionsReq.js"
+import { get_json } from "../utils/functionsReq.js"
 import { get_token } from "../utils/getToken.js"
 import { mark_header } from "../utils/markHeader.js"
 
 const api = 'api/user/tasks'
 
-class InteractorList {
+export class InteractorList {
 
     constructor() {
+
+        new AddTask()
+        new AddPriority()
 
         mark_header('list')
         this.get_data()
@@ -19,7 +24,7 @@ class InteractorList {
     async get_data() {
 
         const token = get_token()
-        const response = await get(api, token, 1)
+        const response = await get_json(api, token)
 
         if (!response.ok) {
 
@@ -35,10 +40,11 @@ class InteractorList {
     }
 
     verify_tasks(tasks) {
+    
+        if (tasks.length == 0) {
 
-        if (tasks.lenght == 0) {
-
-            this.alert_insert_task("without-task")
+            const container = document.querySelector('#task-made')
+            container.innerHTML = alertAddTask
 
         } else {
 

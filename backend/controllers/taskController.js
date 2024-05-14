@@ -87,7 +87,9 @@ const taskController = {
     },
 
     delete: async (req, res) =>{
+
         try {
+
             const id = req.userId
             const taskId = req.params.taskId
 
@@ -98,9 +100,10 @@ const taskController = {
                 return
             }
 
-            const deleteTask = user.tasks
+            const deleteTask = user.tasks 
 
             for(let i = 0; i < deleteTask.length; i++){
+
                 if(deleteTask[i] == taskId){
                     
                     user.tasks.splice(i, 1)

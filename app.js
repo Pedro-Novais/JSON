@@ -17,7 +17,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-
 // DB Conection
 const conn = require('./backend/db/conn')
 
@@ -32,6 +31,6 @@ app.use('/api', routes)
 
 app.use(express.json())
 
-app.listen(3000, '0.0.0.0', ()=>{
+app.listen(3000, '0.0.0.0', () => {
     console.log('App Running...')
 })
