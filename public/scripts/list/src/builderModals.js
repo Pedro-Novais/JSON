@@ -53,10 +53,8 @@ export class BuilderModalsFromTask{
 
         btn_cancel.addEventListener('click', () => {
 
-            const container = document.querySelector('#container')
-
-            modal.remove()
-            container.style.display = 'flex'
+            this.remove_modal()
+            
         })
 
         btn_send.addEventListener('click', () =>{
