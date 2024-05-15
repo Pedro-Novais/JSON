@@ -1,6 +1,4 @@
 import { BuilderTasks } from "./builderTasks.js"
-
-import { remove_task } from "./utils/remove_tasks.js"
 import { modal_finish_cancel, modal_edit } from "../../utils/modals.js"
 import { delete_req, put, get_json } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
@@ -95,7 +93,7 @@ export class BuilderModalsFromTask{
 
         }
 
-        this.remove_modal(token)
+        this.remove_modal()
   
     }
 
@@ -108,7 +106,7 @@ export class BuilderModalsFromTask{
 
     }
 
-    async remove_modal(token){
+    async remove_modal(){
  
         const modal = document.querySelector('.modal')
         

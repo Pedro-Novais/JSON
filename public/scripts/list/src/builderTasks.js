@@ -3,6 +3,7 @@ import { get_json } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
 import { alertAddTask } from "../../utils/modals.js"
 import { remove_task } from "./utils/remove_tasks.js"
+import { reset_priority } from "./utils/reset_priority.js"
 
 const api = 'api/user/tasks'
 
@@ -10,7 +11,9 @@ export class BuilderTasks {
 
     constructor() {
 
+        reset_priority()
         remove_task()
+        
         this.get_tasks()
 
     }
