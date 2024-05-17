@@ -1,34 +1,37 @@
 import { BuilderTasks } from "./builderTasks.js"
+import { PriorityActions, PriorityHover, get_priority } from "./utils/actions_priority.js"
 import { modal_finish_cancel, modal_edit } from "../../utils/modals.js"
 import { delete_req, put, get_json } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
 
 const api_delete = 'api/user/tasks'
 const api_update_statistic = 'api/user/statistic'
+const api_edit_task = '/api/user/tasks'
 
-export class BuilderModalsFromTask{
+export class BuilderModalsFromTask {
 
-    finish_task(task){
+    finish_task(task) {
 
         this.create_modal_pattern('Finalizar', task)
 
     }
 
-    cancel_task(task){
+    cancel_task(task) {
 
         this.create_modal_pattern('Cancelar', task)
     }
 
-    edit_task(task){
-        console.log('editar', task)
+    edit_task(task) {
+
+        this.create_modal_edit(task)
     }
 
-    create_modal_pattern(type, task){
+    create_modal_pattern(type, task) {
 
         const main = document.querySelector('main')
 
         const modal = document.createElement('div')
-        
+
         modal.setAttribute('class', 'modal')
         modal.setAttribute('id', 'modal-remove')
         modal.innerHTML = modal_finish_cancel
@@ -46,7 +49,7 @@ export class BuilderModalsFromTask{
 
             priority[i].style.backgroundColor = "#05DBF2"
 
-          }
+        }
 
         const btn_send = document.querySelector('#btn-edit-edit')
         const btn_cancel = document.querySelector('#btn-edit-cancel')
@@ -54,22 +57,22 @@ export class BuilderModalsFromTask{
         btn_cancel.addEventListener('click', () => {
 
             this.remove_modal()
-            
+
         })
 
-        btn_send.addEventListener('click', () =>{
+        btn_send.addEventListener('click', () => {
 
             this.action_modal_pattern(task, type)
 
         })
     }
 
-    async action_modal_pattern(task, type){
+    async action_modal_pattern(task, type) {
 
         const token = get_token()
         const response = await delete_req(`${api_delete}/${task._id}`, token)
 
-        if(!response.ok){
+        if (!response.ok) {
 
             console.log('Algum erro ocorereu')
             return false
@@ -84,62 +87,130 @@ export class BuilderModalsFromTask{
 
         const response_statistic = await put(`${api_update_statistic}/${url_priority}`, data_update, token)
 
-        if(!response_statistic.ok){
-            
+        if (!response_statistic.ok) {
+
             console.log('Algum erro ocorereu')
             return false
 
         }
 
         this.remove_modal()
-  
-    }
-
-    create_modal_edit(task){
-        
-        
-    }
-    
-    action_modal_edit(){
 
     }
 
-    async remove_modal(){
- 
+    create_modal_edit(task) {
+
+        const main = document.querySelector('main')
+
+        const modal = document.createElement('div')
+
+        modal.setAttribute('class', 'modal')
+        modal.setAttribute('id', 'modal-edit')
+        modal.innerHTML = modal_edit
+
+        main.appendChild(modal)
+
+        const name_task_edit = document.querySelector('#input-edit')
+        name_task_edit.value = task.task
+
+        new PriorityActions("[piority-edit = 'True']")
+        new PriorityHover("[piority-edit = 'True']")
+
+        const btn_send = document.querySelector('#btn-edit-edit')
+        const btn_cancel = document.querySelector('#btn-edit-cancel')
+
+        btn_cancel.addEventListener('click', () => {
+
+            this.remove_modal()
+
+        })
+
+        btn_send.addEventListener('click', () => {
+
+            this.action_modal_edit(task)
+
+        })
+    }
+
+    async action_modal_edit(task) {
+
+        const contorn_div_edit = document.querySelector('#input-edit')
+
+        const name_task_edit = document.querySelector('#input-edit').value
+        const task_trim = name_task_edit.trim()
+
+        if (name_task_edit == "" || name_task_edit == null || task_trim == "") {
+
+            contorn_div_edit.style.boxShadow = 'rgba(216, 34, 18, 0.863) 0px 0px 0px 2px, rgba(228, 5, 5, 0.65) 0px 4px 6px -1px, rgba(153, 26, 26, 0.08) 0px 1px 0px inset'
+
+            contorn_div_edit.addEventListener("click", () => {
+
+                contorn_div_edit.style.boxShadow = "none"
+
+            })
+        }
+
+        const priority_edit = get_priority("[piority-edit = 'True']")
+
+        const data = {
+
+            taskEdit: {
+                task: name_task_edit,
+                priority: priority_edit
+            }
+        }
+
+        const token = get_token()
+
+        const response = await put(`${api_edit_task}/${task._id}`, data, token)
+
+        if(!response.ok){
+
+            console.log('Algum erro ocorreu ao editar a tarefa')
+
+            return false
+        }
+
+        this.remove_modal()
+
+    }
+
+    remove_modal() {
+
         const modal = document.querySelector('.modal')
-        
+
         modal.remove()
 
         const container = document.querySelector('#container')
         container.style.display = 'flex'
 
-        new BuilderTasks() 
+        new BuilderTasks()
     }
 }
 
-function read_type(type){
+function read_type(type) {
 
-    if(type == 'Finalizar'){
-        
+    if (type == 'Finalizar') {
+
         return 'finished'
     }
-    else if(type == 'Cancelar'){
+    else if (type == 'Cancelar') {
 
         return 'canceled'
     }
 }
 
-function read_priority(priority){
+function read_priority(priority) {
 
-    if(priority == 1){
+    if (priority == 1) {
 
         return 'priorityOne'
     }
-    else if(priority == 2){
+    else if (priority == 2) {
 
         return 'priorityTwo'
     }
-    else if (priority == 3){
+    else if (priority == 3) {
 
         return 'priorityThree'
 
