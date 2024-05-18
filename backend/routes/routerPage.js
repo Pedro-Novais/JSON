@@ -24,6 +24,14 @@ router
     .get((req, res) => pageController.pageProfile(req, res))
 
 router
+    .route('/profile/statistic')
+    .get((req, res) => pageController.pageStatistic(req, res))
+
+router
+    .route('/profile/configurations')
+    .get((req, res) => pageController.pageConfig(req, res))
+
+router
     .route('/ranking')
     .get((req, res) => pageController.pageRanking(req, res))
 

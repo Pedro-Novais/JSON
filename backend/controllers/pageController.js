@@ -58,6 +58,19 @@ const pageController = {
         }
     },
 
+    pageStatistic: async (req, res) =>{
+
+        const way = '../partials/statistic_profile'
+        res.render('pages/profile', {way: way})
+
+    },
+
+    pageConfig: async (req, res) =>{
+
+        const way = '../partials/configurations_profile'
+        res.render('pages/profile', {way: way})
+    },
+
     pageRanking: async (req, res) =>{
         try {
             

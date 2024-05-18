@@ -150,6 +150,8 @@ export class BuilderModalsFromTask {
                 contorn_div_edit.style.boxShadow = "none"
 
             })
+
+            return false
         }
 
         const priority_edit = get_priority("[piority-edit = 'True']")
@@ -197,6 +199,10 @@ export class BuilderModalsFromTask {
     }
 
     remove_modal() {
+
+        const contorn_div_task = document.querySelector('#task-add')
+        
+        contorn_div_task.removeAttribute('class', 'watch-out')
 
         const modal = document.querySelector('.modal')
 
