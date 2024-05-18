@@ -4,12 +4,37 @@
 <html lang="pt">
 
 <head>
-    <%- include('../partials/head'); %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/svg+xml" href="../svg/book-solid-blue.svg">
+    <title>Tarefas.io</title>
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <header>
-        <%- include('../partials/header_internal'); %>
+        <div class="name-symbol">
+            <img src="../svg/book-solid.svg" alt="Symbol List" class="symbol-nav" id="symbol-tasks">
+            <h1>Tarefas.io</h1>
+        </div>
+        <nav>
+            <ul>
+                <li id="visit-profile">
+                    <p>Perfil</p>
+                </li>
+                <li id="visit-list">
+                    <p>Tarefas</p>
+                </li>
+                <li id="visit-ranking">
+                    <p>Ranking</p>
+                </li>
+                <li id="logout">
+                    <p>Sair</p>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <main identifier="profile">
@@ -17,15 +42,17 @@
             <div id='container-profile'>
                 <div class='select-page'>
                     <div id='container-select'>
-                        <div class='select-box-style' id='section-profile'> <img src='./svg/user-solid.svg'
+                        <div class='select-box-style' id='section-profile'> <img src='../svg/user-solid.svg'
                                 alt='Profile' height='25rem'> </div>
-                        <div class='select-box-style' id='section-statistic'><img src='./svg/chart-simple-solid.svg'
+                        <div class='select-box-style' id='section-statistic'><img src='../svg/chart-simple-solid.svg'
                                 alt='Statistic' height='25rem'> </div>
-                        <div class='select-box-style' id='section-config'><img src='./svg/gear-solid.svg' alt='Config'
+                        <div class='select-box-style' id='section-config'><img src='../svg/gear-solid.svg' alt='Config'
                                 height='25rem'></div>
                     </div>
                 </div>
-                <div class='view-infos' id='view-infos-unique'> </div>
+                <div class='view-infos' id='view-infos-unique'>
+                    <%- include(way); %>
+                </div>
             </div>
         </div>
     </main>
@@ -34,9 +61,8 @@
         <%- include('../partials/footer'); %>
     </footer>
 
-    <%- include('../partials/script'); %>
-
-    <script src="scripts/profile/interactorProfile.js" type="module"></script>
+    <script src="../scripts/changeViewNew.js" type="module"></script>
+    <script src="../scripts/profile/interactorProfile.js" type="module"></script>
 </body>
 
 </html>

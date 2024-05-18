@@ -20,7 +20,7 @@ router
     .get((req, res) => pageController.pageList(req, res))
 
 router
-    .route('/profile')
+    .route('/profile/user')
     .get((req, res) => pageController.pageProfile(req, res))
 
 router

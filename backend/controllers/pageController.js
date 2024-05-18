@@ -50,7 +50,8 @@ const pageController = {
     pageProfile: async (req, res) =>{
         try {
             
-            res.render('pages/profile')
+            const way = '../partials/user_profile'
+            res.render('pages/profile', {way: way})
 
         } catch (error) {
             console.log(error)

@@ -1,6 +1,6 @@
 import { change_view } from "./utils/changeView.js"
 
-export class ChangeView {
+class ChangeView {
 
     constructor() {
 
@@ -22,7 +22,7 @@ export class ChangeView {
 
             LINK_PROFILE.addEventListener('click', async () => {
     
-                await change_view('/profile')
+                await change_view('/profile/user')
             }
             )
         }
