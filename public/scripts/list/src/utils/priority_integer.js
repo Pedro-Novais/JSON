@@ -10,10 +10,14 @@ export function convert_id_to_integer(priority) {
         return 2
 
     }
-    else if (priority == "priority-three" || priority == "priority-three-edit" || priority == "priorityTrhee") {
+    else if (priority == "priority-three" || priority == "priority-three-edit" || priority == "priorityThree") {
         
         return 3
 
+    }
+    else if(priority == "priority-all"){
+        
+        return 4
     }
 
 }

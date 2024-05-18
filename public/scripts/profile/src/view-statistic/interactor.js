@@ -1,5 +1,6 @@
 import { get_json } from "../../../utils/functionsReq.js"
 import { get_token } from "../../../utils/getToken.js"
+import { convert_id_to_integer } from "../../../list/src/utils/priority_integer.js"
 
 const api_statistic = "/api/user/statistic"
 
@@ -7,6 +8,8 @@ class Interactorstatistic {
 
     constructor() {
 
+        this.start_hover()
+        this.priority_statistic_hover()
         this.get_statistic()
 
     }
@@ -47,7 +50,10 @@ class Interactorstatistic {
         priority_statistic_element.forEach(element => {
 
             element.addEventListener('click', () => {
-              
+                this.reset_marked_element()
+
+                element.setAttribute('marked', 'True')
+
                 const priority_id = element.getAttribute('id')
 
                 if (priority_id != "priority-all") {
@@ -58,6 +64,17 @@ class Interactorstatistic {
                     this.builder_statistic(priority_all)
                 }
             })
+        })
+    }
+
+    reset_marked_element(){
+
+        const elements_priorities = document.querySelectorAll('.choose-priority-statistic')
+
+        elements_priorities.forEach(element => {
+
+            element.setAttribute('marked', 'False')
+
         })
     }
 
@@ -86,6 +103,52 @@ class Interactorstatistic {
 
     priority_statistic_hover(){
 
+        const element_priority_statistic = document.querySelectorAll('.choose-priority-statistic')
+
+        element_priority_statistic.forEach(element =>{
+
+            const id_element = element.getAttribute('id')
+            const priority = convert_id_to_integer(id_element)
+
+            element.addEventListener('mouseenter', ()=>{
+                
+                for(let i = 0; i < priority; i++){
+
+                    element_priority_statistic[i].style.backgroundColor = '#05DBF2'
+                }
+            })
+
+            element.addEventListener('mouseleave', this.out_hover_priority)
+        })
+    }
+
+    out_hover_priority() {
+    
+        const elements_prioritys = document.querySelectorAll(`.choose-priority-statistic`)
+
+        for (let i = 3; i >= 0; i--) {
+
+            const marked_element = elements_prioritys[i].getAttribute('marked')
+
+            if (marked_element == "False") {
+
+                elements_prioritys[i].style.backgroundColor = '#0487d9'
+
+            } else {
+
+                break
+            }
+        }
+    }
+
+    start_hover(){
+        
+        const elements_prioritys = document.querySelectorAll(`.choose-priority-statistic`)
+
+        elements_prioritys.forEach(element =>{
+
+            element.style.backgroundColor = '#05DBF2'
+        })
     }
 }
 
