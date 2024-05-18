@@ -2,6 +2,7 @@ import { BuilderTasks } from "./builderTasks.js"
 import { convert_id_to_integer } from "./utils/priority_integer.js"
 import { post } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
+import { get_priority } from "./utils/actions_priority.js"
 
 const apiTask = '/api/user/tasks'
 
@@ -33,7 +34,7 @@ export class AddTask {
             return false
         }
 
-        const priority_task = this.get_priority()
+        const priority_task = get_priority('.choose-priority')
 
         const data = {
             task: name_task,
@@ -58,25 +59,5 @@ export class AddTask {
 
         insert.value = ""
         new BuilderTasks()
-    }
-
-    get_priority() {
-
-        const priority_element = document.querySelectorAll('.choose-priority')
-
-        for (let i = 0; i < priority_element.length; i++) {
-
-            const marked = priority_element[i].getAttribute('marked')
-
-            if (marked == "True") {
-
-                const priority_name = priority_element[i].getAttribute('id')
-                const priority = convert_id_to_integer(priority_name)
-
-                return priority
-            }
-        }
-
-        return 1
     }
 }

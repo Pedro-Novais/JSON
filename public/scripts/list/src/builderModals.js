@@ -112,6 +112,8 @@ export class BuilderModalsFromTask {
 
         const name_task_edit = document.querySelector('#input-edit')
         name_task_edit.value = task.task
+        
+        this.insert_priority_from_task(task.priority)
 
         new PriorityActions("[piority-edit = 'True']")
         new PriorityHover("[piority-edit = 'True']")
@@ -164,7 +166,7 @@ export class BuilderModalsFromTask {
 
         const response = await put(`${api_edit_task}/${task._id}`, data, token)
 
-        if(!response.ok){
+        if (!response.ok) {
 
             console.log('Algum erro ocorreu ao editar a tarefa')
 
@@ -172,6 +174,25 @@ export class BuilderModalsFromTask {
         }
 
         this.remove_modal()
+
+    }
+
+    insert_priority_from_task(priority){
+
+        const element_priority = document.querySelectorAll(`[piority-edit = 'True']`)
+
+        for (let i = 0; i < priority; i++) {
+
+            element_priority[i].style.backgroundColor = '#05DBF2'
+        }
+
+        for(let i = 1; i < 4; i++){
+
+            if(i == priority){
+
+                element_priority[i-1].setAttribute('marked', 'True')
+            }
+        }
 
     }
 
