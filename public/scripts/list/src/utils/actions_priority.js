@@ -48,7 +48,7 @@ class PriorityHover {
         const elements_prioritys = document.querySelectorAll(`${selector}`)
 
         elements_prioritys.forEach(element => {
-
+     
             const id_element = element.getAttribute('id')
 
             const priority = convert_id_to_integer(id_element)

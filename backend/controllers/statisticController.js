@@ -52,7 +52,7 @@ const statisticController = {
     }
 }
 
-function change_statictic(user, priority, update){
+function change_statictic(user, priority, update){ 
 
     try{
 
