@@ -909,7 +909,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-finished {
   height: 100%;
-  width: 78%;
+  width: 50%;
   background-color: #5eeb27;
   background: linear-gradient(to right, #5eeb27, #4ab41f);
   border-top-left-radius: 0.5rem;
@@ -918,7 +918,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-canceled {
   height: 100%;
-  width: 22%;
+  width: 50%;
   background-color: #ec530c;
   background: linear-gradient(to right, #ec530c, #f06424);
   border-top-right-radius: 0.5rem;

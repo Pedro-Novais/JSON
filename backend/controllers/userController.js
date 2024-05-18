@@ -7,7 +7,7 @@ const userController = {
     getAll: async (req, res) => {
         try {
 
-            const users = await UserModel.find(); 
+            const users = await UserModel.find();
 
             res.json(users)
         } catch (error) {
@@ -19,14 +19,12 @@ const userController = {
         try {
             const id = req.userId
 
-            const user = await UserModel.findById(id).select('-_id')
+            const user = await UserModel.findById(id).select('-_id -statistic -tasks -updatedAt -__v -configurations')
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
-
-            //return res.status(404).json({ msg: "Usúario não encontrado" })
 
             res.status(201).json(user)
         } catch (error) {
@@ -55,7 +53,7 @@ const userController = {
                 }
 
             }
- 
+
             const deleteUser = await UserModel.findByIdAndDelete(id)
 
             res
@@ -110,26 +108,26 @@ const userController = {
         try {
             const id = req.userId
             const password = req.body.password
-            
+
             const user = await UserModel.findById(id).select('+password')
-            
-            
-            if(!user){
-                
-                return res.status(404).json({msg: "Úsuario não encontrado"})
+
+
+            if (!user) {
+
+                return res.status(404).json({ msg: "Úsuario não encontrado" })
             }
-            
+
             const isPasswordValid = await bcrypt.compare(password, user.password);
-            
-            if(!isPasswordValid){
-                
-                return res.status(404).json({msg: "A senha inserida está incorreta"})
+
+            if (!isPasswordValid) {
+
+                return res.status(404).json({ msg: "A senha inserida está incorreta" })
 
             }
 
             res
                 .status(200)
-                .json({msg: "Senha inserida corretamente"})
+                .json({ msg: "Senha inserida corretamente" })
 
 
         } catch (error) {

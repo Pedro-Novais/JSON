@@ -41,6 +41,8 @@ const statisticController = {
             }
 
             change_statictic(user, priority, update)
+            
+            verifyTasksFromUser(user, update)
 
             res
                 .status(200)
@@ -65,25 +67,6 @@ function change_statictic(user, priority, update){
         console.log(error)
     }
 
-}
-
-function changePersistStatistic(body, persist){
-    
-    if(body.taskCreated > 0){
-        persist.taskCreated ++
-        
-        return "created"
-    }
-    else if(body.taskFinished > 0){
-        persist.taskFinished ++
-        
-        return "finished"
-    }
-    else if(body.taskCanceled > 0){
-        persist.taskCanceled ++ 
-
-        return "canceled"
-    }
 }
 
 module.exports = statisticController 

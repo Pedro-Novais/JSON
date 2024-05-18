@@ -4,7 +4,7 @@ import { convert_id_to_integer } from "../../../list/src/utils/priority_integer.
 
 const api_statistic = "/api/user/statistic"
 
-class Interactorstatistic {
+class InteractorStatistic {
 
     constructor() {
 
@@ -174,8 +174,8 @@ class Interactorstatistic {
 
         if(info_tasks_all == 0){
 
-            porcents_finished.innerHTML = `Tarefas Concluídas: 50%`
-            porcents_canceled.innerHTML = `Tarefas Canceladas: 50%`
+            porcents_finished.innerHTML = `Tarefas Concluídas: 0%`
+            porcents_canceled.innerHTML = `Tarefas Canceladas: 0%`
 
             bar_finished.style.width = `50%`
             bar_canceled.style.width = `50%`
@@ -194,4 +194,4 @@ class Interactorstatistic {
     }
 }
 
-new Interactorstatistic()
+new InteractorStatistic()
