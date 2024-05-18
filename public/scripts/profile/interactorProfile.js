@@ -26,7 +26,6 @@ class InteractorProfile{
 
             })
         }
-
         
         if(identifier != "statistic"){
 
