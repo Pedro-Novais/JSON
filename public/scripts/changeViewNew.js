@@ -9,7 +9,6 @@ class ChangeView {
     }
 
     listenner_clicks() {
-
         const main = document.querySelector('main')
         const identifier = main.getAttribute('identifier')
 
@@ -18,28 +17,28 @@ class ChangeView {
         const LINK_RANKING = document.querySelector('#visit-ranking')
         const LINK_OUT = document.querySelector('#logout')
 
-        if(identifier !== "profile"){
+        if (identifier !== "profile") {
 
             LINK_PROFILE.addEventListener('click', async () => {
-    
-                await change_view('/profile/user')
+
+                await change_view(`/profile/user`)
             }
             )
         }
 
-        if(identifier != "list"){
+        if (identifier != "list") {
 
             LINK_LIST.addEventListener('click', async () => {
-    
+
                 await change_view('/list')
             }
             )
         }
 
-        if(identifier != "ranking"){
+        if (identifier != "ranking") {
 
             LINK_RANKING.addEventListener('click', async () => {
-    
+
                 await change_view('/ranking')
             }
             )

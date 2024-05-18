@@ -49,7 +49,7 @@ const pageController = {
 
     pageProfile: async (req, res) =>{
         try {
-            
+
             const way = '../partials/user_profile'
             res.render('pages/profile', {way: way})
 
