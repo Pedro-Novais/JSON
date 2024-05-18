@@ -29,6 +29,7 @@ class Interactorstatistic {
         const statistic_all = this.builder_all_statistic(response.responseData)
 
         this.builder_statistic(statistic_all)
+        this.statistic_bars(statistic_all)
         this.priority_action_statistic(response.responseData, statistic_all)
     }
 
@@ -59,9 +60,12 @@ class Interactorstatistic {
                 if (priority_id != "priority-all") {
 
                     this.builder_statistic(priority[priority_id])
+                    this.statistic_bars(priority[priority_id])
+
                 } else {
                 
                     this.builder_statistic(priority_all)
+                    this.statistic_bars(priority_all)
                 }
             })
         })
@@ -149,6 +153,44 @@ class Interactorstatistic {
 
             element.style.backgroundColor = '#05DBF2'
         })
+    }
+
+    statistic_bars(statistic){
+
+        const info_tasks_finished = statistic.finished
+        const info_tasks_canceled = statistic.canceled
+        const info_tasks_all = info_tasks_finished + info_tasks_canceled
+        
+        const bar_finished = document.querySelector('#bar-task-finished')
+        const bar_canceled = document.querySelector('#bar-task-canceled')
+
+        bar_finished.style.borderTopRightRadius = "0"
+        bar_finished.style.borderBottomRightRadius = "0"
+        bar_canceled.style.borderTopLeftRadius = "0"
+        bar_canceled.style.borderBottomLeftRadius = "0"
+
+        const porcents_finished = document.querySelector('#number-finished')
+        const porcents_canceled = document.querySelector('#number-canceled')
+
+        if(info_tasks_all == 0){
+
+            porcents_finished.innerHTML = `Tarefas Concluídas: 50%`
+            porcents_canceled.innerHTML = `Tarefas Canceladas: 50%`
+
+            bar_finished.style.width = `50%`
+            bar_canceled.style.width = `50%`
+
+        }else{
+
+            const porcents_bar_finished = (info_tasks_finished / info_tasks_all) * 100
+            const porcents_bar_canceled = (info_tasks_canceled / info_tasks_all) * 100
+    
+            bar_finished.style.width = `${porcents_bar_finished.toFixed(2)}%`
+            bar_canceled.style.width = `${porcents_bar_canceled.toFixed(2)}%`
+    
+            porcents_finished.innerHTML = `Tarefas Concluídas: ${porcents_bar_finished.toFixed(0)}%`
+            porcents_canceled.innerHTML = `Tarefas Canceladas: ${porcents_bar_canceled.toFixed(0)}%`
+        }
     }
 }
 
