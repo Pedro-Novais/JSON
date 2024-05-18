@@ -1,10 +1,11 @@
 import { BuilderTasks } from "./builderTasks.js"
-import { convert_id_to_integer } from "./utils/priority_integer.js"
-import { post } from "../../utils/functionsReq.js"
+import { post, put } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
 import { get_priority } from "./utils/actions_priority.js"
+import { read_priority } from "./builderModals.js"
 
 const apiTask = '/api/user/tasks'
+const api_update_statistic = 'api/user/statistic'
 
 export class AddTask {
 
@@ -41,10 +42,10 @@ export class AddTask {
             priority: priority_task
         }
 
-        this.insert_new_task(data, contorn_div_task)
+        this.insert_new_task(data, contorn_div_task, priority_task)
     }
 
-    async insert_new_task(data, insert){
+    async insert_new_task(data, insert, priority){
 
         const token = get_token()
 
@@ -57,7 +58,30 @@ export class AddTask {
             return false
         }
 
+        this.update_statistic(priority)
+
         insert.value = ""
         new BuilderTasks()
+    }
+
+    async update_statistic(priority){
+
+        const data_update = {
+            update: 'created'
+        }
+
+        const url_priority = read_priority(priority)
+
+        const token = get_token()
+        const response_statistic = await put(`${api_update_statistic}/${url_priority}`, data_update, token)
+
+        if(!response_statistic.ok){
+
+            console.log('ocorreu um erro ao atualizar suas estatísticas de created')
+
+            return false
+        }
+   
+        return true
     }
 }

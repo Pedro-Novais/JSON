@@ -227,7 +227,7 @@ function read_type(type) {
     }
 }
 
-function read_priority(priority) {
+export function read_priority(priority) {
 
     if (priority == 1) {
 
