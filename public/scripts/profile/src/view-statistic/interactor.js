@@ -1,8 +1,7 @@
 import { get_json } from "../../../utils/functionsReq.js"
 import { get_token } from "../../../utils/getToken.js"
 import { convert_id_to_integer } from "../../../list/src/utils/priority_integer.js"
-
-const api_statistic = "/api/user/statistic"
+import { API } from "../../../utils/endPoints.js"
 
 class InteractorStatistic {
 
@@ -17,7 +16,7 @@ class InteractorStatistic {
     async get_statistic() {
 
         const token = get_token()
-        const response = await get_json(api_statistic, token)
+        const response = await get_json(API.url_statistic, token)
 
         if (!response.ok) {
 

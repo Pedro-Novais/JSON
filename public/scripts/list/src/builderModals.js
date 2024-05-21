@@ -3,10 +3,7 @@ import { PriorityActions, PriorityHover, get_priority } from "./utils/actions_pr
 import { modal_finish_cancel, modal_edit } from "../../utils/modals.js"
 import { delete_req, put, get_json } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
-
-const api_delete = 'api/user/tasks'
-const api_update_statistic = 'api/user/statistic'
-const api_edit_task = '/api/user/tasks'
+import { API } from "../../utils/endPoints.js"
 
 export class BuilderModalsFromTask {
 
@@ -70,7 +67,7 @@ export class BuilderModalsFromTask {
     async action_modal_pattern(task, type) {
 
         const token = get_token()
-        const response = await delete_req(`${api_delete}/${task._id}`, token)
+        const response = await delete_req(`${API.url_get_task}/${task._id}`, token)
 
         if (!response.ok) {
 
@@ -85,7 +82,7 @@ export class BuilderModalsFromTask {
             update: type_operation
         }
 
-        const response_statistic = await put(`${api_update_statistic}/${url_priority}`, data_update, token)
+        const response_statistic = await put(`${API.url_statistic}/${url_priority}`, data_update, token)
 
         if (!response_statistic.ok) {
 
@@ -166,7 +163,7 @@ export class BuilderModalsFromTask {
 
         const token = get_token()
 
-        const response = await put(`${api_edit_task}/${task._id}`, data, token)
+        const response = await put(`${API.url_get_task}/${task._id}`, data, token)
 
         if (!response.ok) {
 

@@ -1,5 +1,6 @@
 import { change_view } from "../utils/changeView.js"
 import { mark_header } from "../utils/markHeader.js"
+import { API } from "../utils/endPoints.js"
 
 class InteractorProfile{
 
@@ -22,7 +23,7 @@ class InteractorProfile{
 
             SECTION_PROFILE.addEventListener('click', async () => {
 
-                await change_view(`/profile/user`)
+                await change_view(API.url_view_profile)
 
             })
         }
@@ -31,7 +32,7 @@ class InteractorProfile{
 
             SECTION_STATISTIC.addEventListener('click', async () => {
 
-                await change_view(`/profile/statistic`)
+                await change_view(API.url_view_profile_statistic)
 
             })
         }
@@ -40,7 +41,7 @@ class InteractorProfile{
 
             SECTION_CONFIG.addEventListener('click', async () => {
 
-                await change_view(`/profile/configurations`)
+                await change_view(API.url_view_profile_config)
 
             })
         }

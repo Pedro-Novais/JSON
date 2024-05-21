@@ -6,7 +6,6 @@ import { mark_header } from "../utils/markHeader.js"
 export class InteractorList {
 
     constructor() {
-
         mark_header('list')
 
         new AddTask()

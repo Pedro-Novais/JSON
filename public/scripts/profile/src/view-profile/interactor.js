@@ -1,8 +1,7 @@
 import { get_json } from "../../../utils/functionsReq.js"
 import { get_token } from "../../../utils/getToken.js"
 import { formatedDate } from "../../../utils/utilsInitial.js"
-
-const api_info_user = "/api/user"
+import { API } from "../../../utils/endPoints.js"
 
 class InteractorProfileUser {
     constructor() {
@@ -14,7 +13,7 @@ class InteractorProfileUser {
     async get_infos_from_user() {
 
         const token = get_token()
-        const response = await get_json(api_info_user, token)
+        const response = await get_json(API.url_get_user, token)
 
         if (!response.ok) {
             console.log('Ocorreu algum erro ao pegar as informações do usuário')

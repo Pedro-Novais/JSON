@@ -3,9 +3,7 @@ import { post, put } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
 import { get_priority } from "./utils/actions_priority.js"
 import { read_priority } from "./builderModals.js"
-
-const apiTask = '/api/user/tasks'
-const api_update_statistic = 'api/user/statistic'
+import { API } from "../../utils/endPoints.js"
 
 export class AddTask {
 
@@ -49,7 +47,7 @@ export class AddTask {
 
         const token = get_token()
 
-        const response = await post(apiTask, data, token)
+        const response = await post(API.url_get_task, data, token)
 
         if(!response.ok){
 
@@ -73,7 +71,7 @@ export class AddTask {
         const url_priority = read_priority(priority)
 
         const token = get_token()
-        const response_statistic = await put(`${api_update_statistic}/${url_priority}`, data_update, token)
+        const response_statistic = await put(`${API.url_statistic}/${url_priority}`, data_update, token)
 
         if(!response_statistic.ok){
 

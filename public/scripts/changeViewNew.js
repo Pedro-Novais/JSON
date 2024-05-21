@@ -1,4 +1,5 @@
 import { change_view } from "./utils/changeView.js"
+import { API } from "./utils/endPoints.js"
 
 class ChangeView {
 
@@ -21,7 +22,7 @@ class ChangeView {
 
             LINK_PROFILE.addEventListener('click', async () => {
 
-                await change_view(`/profile/user`)
+                await change_view(API.url_view_profile)
             }
             )
         }
@@ -30,7 +31,7 @@ class ChangeView {
 
             LINK_LIST.addEventListener('click', async () => {
 
-                await change_view('/list')
+                await change_view(API.url_view_list)
             }
             )
         }
@@ -39,7 +40,7 @@ class ChangeView {
 
             LINK_RANKING.addEventListener('click', async () => {
 
-                await change_view('/ranking')
+                await change_view(API.url_view_ranking)
             }
             )
         }

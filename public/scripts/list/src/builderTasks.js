@@ -4,8 +4,7 @@ import { get_token } from "../../utils/getToken.js"
 import { alertAddTask } from "../../utils/modals.js"
 import { remove_task } from "./utils/remove_tasks.js"
 import { reset_priority } from "./utils/reset_priority.js"
-
-const api = 'api/user/tasks'
+import { API } from "../../utils/endPoints.js"
 
 export class BuilderTasks {
 
@@ -21,7 +20,7 @@ export class BuilderTasks {
     async get_tasks() {
 
         const token = get_token()
-        const response = await get_json(api, token)
+        const response = await get_json(API.url_get_task, token)
 
         if (!response.ok) {
 
