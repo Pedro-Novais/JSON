@@ -34,13 +34,15 @@ const configController = {
                 return
             }
 
-            const newConfig = {
-                orderPriority: req.body.orderPriority,
-                usersCanViewStatistic: req.body.usersCanViewStatistic
+            const newConfig = req.body.new_configs
+
+            const configs = Object.getOwnPropertyNames(newConfig)
+
+            for(let i = 0; i < configs.length; i++){
+
+                user.configurations[configs[i]] = newConfig[configs[i]]
             }
-
-            user.configurations = newConfig
-
+       
             await user.save();
 
             res

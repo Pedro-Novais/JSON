@@ -9,7 +9,7 @@ router
 
 router
     .route('/user/config')
-    .put(checkToken, (req, res) => configController.update(req, res))
+    .patch(checkToken, (req, res) => configController.update(req, res))
 
 
 module.exports = router;

@@ -55,7 +55,6 @@ export async function interactorLogin() {
         } else {
 
             return boxAlerts(loginResult.responseData.msg, '#container-login', 5000) 
-            console.log(loginResult)
         }
 
     }

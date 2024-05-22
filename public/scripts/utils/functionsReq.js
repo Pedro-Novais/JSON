@@ -35,14 +35,6 @@ async function addTaskBack(url, data, token) {
             body: JSON.stringify(data)
         })
 
-        /*if (!response.ok) {
-
-            return {
-                status: response.status, 
-                ok: response.ok,
-            }
-        }*/
-
         const responseData = await response.json()
 
         return { responseData, status: response.status, ok: response.ok }
@@ -162,6 +154,28 @@ async function put(url, data, token) {
 
 }
 
+async function patch(url, data, token) {
+    try {
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        })
+
+        const response_data = await response.json()
+
+        return { response_data, status: response.status, ok: response.ok }
+
+    } catch (err) {
+        throw err
+    }
+
+}
+
 async function updateTaskBack(url, id, data, determinate, token) {
     try {
         let methodUpdate;
@@ -239,5 +253,6 @@ export {
     post,
     get_render,
     put,
-    get_json
+    get_json,
+    patch
 }
