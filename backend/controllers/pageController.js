@@ -60,6 +60,19 @@ const pageController = {
         }
     },
 
+    pagePersonalization: async (req, res) =>{
+        try {
+            
+            const way = '../partials/personalization_profile'
+            const script_way = "../scripts/profile/src/view-personalization/interactor.js"
+
+            res.render('pages/profile', {way: way, script_way: script_way})
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
     pageStatistic: async (req, res) =>{
 
         const way = '../partials/statistic_profile'

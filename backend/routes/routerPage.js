@@ -24,6 +24,10 @@ router
     .get((req, res) => pageController.pageProfile(req, res))
 
 router
+    .route('/profile/personalization')
+    .get((req, res) => pageController.pagePersonalization(req, res))
+
+router
     .route('/profile/statistic')
     .get((req, res) => pageController.pageStatistic(req, res))
 

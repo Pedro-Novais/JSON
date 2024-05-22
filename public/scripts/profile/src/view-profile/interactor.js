@@ -1,5 +1,6 @@
 import { get_json } from "../../../utils/functionsReq.js"
 import { get_token } from "../../../utils/getToken.js"
+import { change_view } from "../../../utils/changeView.js"
 import { formatedDate } from "../../../utils/utilsInitial.js"
 import { API } from "../../../utils/endPoints.js"
 
@@ -7,6 +8,7 @@ class InteractorProfileUser {
     constructor() {
 
         this.get_infos_from_user()
+        this.view_page_personalization()
 
     }
 
@@ -60,6 +62,17 @@ class InteractorProfileUser {
         task_canceled.innerHTML = infos.persistStatistic.canceled
 
         description.innerHTML = description_pattern
+    }
+
+    view_page_personalization(){
+        
+        const btn = document.querySelector('#btn-save-user')
+
+        btn.addEventListener('click', () =>{
+
+            change_view(API.url_view_personalization)
+
+        })
     }
 }
 

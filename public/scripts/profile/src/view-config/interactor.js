@@ -124,9 +124,7 @@ class InteractorConfiguration {
             if(configs[config_name] != boolean_config){
 
                 new_patchs_config[config_name] = boolean_config
-                console.log('diferente')
-            }else{
-                console.log('igual')
+        
             }
         }
 
