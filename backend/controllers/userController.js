@@ -32,6 +32,25 @@ const userController = {
         }
     },
 
+    get_infos_personalization: async (req, res) =>{
+        try {
+            
+            const id = req.userId
+
+            const user = await UserModel.findById(id).select('-_id name description email')
+
+            if(!user){
+                res.status(404).json({msg: 'Úsario não encontrado'})
+            }
+
+            user.password = '**********'
+            res.status(201).json(user)
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
     delete: async (req, res) => {
         try {
             const id = req.userId

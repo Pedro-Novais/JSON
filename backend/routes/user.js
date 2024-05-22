@@ -13,6 +13,10 @@ router
     .route('/user') 
     .get(checkToken, (req, res) => userController.get(req, res))
 
+router
+    .route('/user/personalization')
+    .get(checkToken, (req, res) => userController.get_infos_personalization(req, res))
+    
 // Requisição DELETE para dos usúarios
 router
     .route('/user')

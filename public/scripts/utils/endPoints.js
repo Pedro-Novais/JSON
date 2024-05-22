@@ -13,6 +13,7 @@ const API = {
     url_view_profile_config: '/profile/configurations', 
 
     url_get_user: '/api/user',
+    url_get_user_personalization: '/api/user/personalization',
     url_get_task: '/api/user/tasks',
     url_statistic: '/api/user/statistic',
     url_config: '/api/user/config',

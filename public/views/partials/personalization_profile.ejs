@@ -1,4 +1,4 @@
-<div class="container-personalization-infos-user" identifier-profile = "profile">
+<div class="container-personalization-infos-user" identifier-profile="profile">
 
     <h1 class='style-to-title'>Personalizar</h1>
     <img src="../svg/xmark-solid.svg" alt="back" id="icon-back">
@@ -12,10 +12,16 @@
                 <p class="title-input-personalization">Nome:</p>
             </label>
             <div class="box-view-info-icon">
-                <div class="box-info-to-edit">
-        
+                <div class="box-info-to-edit" identifier="name">
+
                 </div>
-                <img src="../svg/pen-to-square-solid.svg" alt="">
+                <img src="../svg/pen-to-square-solid.svg" alt="Editar" class='actions-icon-div' identifier-icon='name'>
+
+                <input type="text" name="name" class="inputs-personalization" id="value-name-personalization"
+                    style='display: none;'>
+                <img src="../svg/check-solid.svg" alt="Editar" class='actions-icon-check' style='display: none;'
+                    identifier-icon-check='name'>
+
             </div>
         </div>
 
@@ -25,9 +31,16 @@
                 <p class="title-input-personalization">Descrição:</p>
             </label>
             <div class="box-view-info-icon">
+                <div class="box-info-to-edit" identifier="description">
+
+                </div>
+                <img src="../svg/pen-to-square-solid.svg" alt="Editar" class='actions-icon-div'
+                    identifier-icon='description'>
+
                 <input type="text" name="description" class="inputs-personalization"
-                    id="value-description-personalization">
-                <img src="../svg/pen-to-square-solid.svg" alt="">
+                    id="value-description-personalization" style='display: none;'>
+                <img src="../svg/check-solid.svg" alt="Editar" class='actions-icon-check' style='display: none;'
+                    identifier-icon-check='description'>
             </div>
         </div>
 
@@ -37,8 +50,15 @@
                 <p class="title-input-personalization">Email:</p>
             </label>
             <div class="box-view-info-icon">
-                <input type="email" name="email" class="inputs-personalization" id="value-email-personalization">
-                <img src="../svg/pen-to-square-solid.svg" alt="">
+                <div class="box-info-to-edit" identifier="email">
+
+                </div>
+                <img src="../svg/pen-to-square-solid.svg" alt="Editar" class='actions-icon-div' identifier-icon='email'>
+
+                <input type="email" name="email" class="inputs-personalization" id="value-email-personalization"
+                    style='display: none;'>
+                <img src="../svg/check-solid.svg" alt="Editar" class='actions-icon-check' style='display: none;'
+                    identifier-icon-check='email'>
             </div>
         </div>
 
@@ -47,13 +67,21 @@
             <label for="value-password-personalization">
                 <p class="title-input-personalization">Senha:</p>
             </label>
-            <div class="box-view-info-icon" mark="password">
-                <input type="text" name="password" class="inputs-personalization" id="value-passsword-personalization">
-                <img src="../svg/pen-to-square-solid.svg" alt="">
+            <div class="box-view-info-icon">
+                <div class="box-info-to-edit" identifier="password">
+
+                </div>
+                <img src="../svg/pen-to-square-solid.svg" alt="Editar" class='actions-icon-div'
+                    identifier-icon='password'>
+
+                <input type="text" name="password" class="inputs-personalization" id="value-password-personalization"
+                    style='display: none;'>
+                <img src="../svg/check-solid.svg" alt="Editar" class='actions-icon-check' style='display: none;'
+                    identifier-icon-check='password'>
             </div>
         </div>
 
     </div>
 
-    <div id="btn-customization" class="btn-configs">Salvar</div>
+    <!-- <div id="btn-customization" class="btn-configs">Salvar</div> -->
 </div>
