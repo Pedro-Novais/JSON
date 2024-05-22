@@ -39,7 +39,7 @@ export class AddTask {
             task: name_task,
             priority: priority_task
         }
-
+      
         this.insert_new_task(data, contorn_div_task, priority_task)
     }
 

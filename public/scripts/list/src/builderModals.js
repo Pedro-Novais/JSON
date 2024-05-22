@@ -81,7 +81,7 @@ export class BuilderModalsFromTask {
         const data_update = {
             update: type_operation
         }
-
+   
         const response_statistic = await put(`${API.url_statistic}/${url_priority}`, data_update, token)
 
         if (!response_statistic.ok) {

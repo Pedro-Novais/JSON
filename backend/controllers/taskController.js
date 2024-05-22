@@ -157,6 +157,12 @@ function organize_tasks_in_order(tasks) {
     let tasksOrganize = []
     let state = 3;
 
+    if(tasks.length == 0){
+
+        return tasks
+
+    }
+
     for (let i = 0; i <= tasks.length; i++) {
 
         if (i == tasks.length) {
