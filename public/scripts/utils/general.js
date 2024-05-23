@@ -68,7 +68,7 @@ function removePlaceholder() {
     })
 }
 
-function validEmail(email) {
+function valid_email(email) {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regexEmail.test(email);
 }
@@ -91,4 +91,4 @@ function formatedDate(dateNum) {
 
 }
 
-export { validEmail, boxAlerts, validOnlyNumber, removePlaceholder, formatedDate }
+export { valid_email, boxAlerts, validOnlyNumber, removePlaceholder, formatedDate }

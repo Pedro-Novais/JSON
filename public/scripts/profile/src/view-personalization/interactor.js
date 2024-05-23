@@ -71,7 +71,12 @@ class InteractorPersonalization {
                 })
             }
             else if (type_personalziation == 'email' || type_personalziation == 'password') {
-                console.log('modals')
+
+                element.addEventListener('click', () => {
+
+                    change_view(`?type=${type_personalziation}`)
+
+                })
             }
         })
     }
@@ -85,7 +90,7 @@ class InteractorPersonalization {
 
         const new_value = document.querySelector(`#value-${type}-personalization`)
         const new_value_trim = new_value.value.trim()
-
+  
         if (new_value.value == "" || new_value_trim == "") {
 
             new_value.style.borderBottomColor = 'red'
@@ -98,8 +103,8 @@ class InteractorPersonalization {
         new_value.style.display = 'none'
         icon_check.style.display = 'none'
 
-        if(info_div.textContent === new_value.value){
-          
+        if (info_div.textContent === new_value.value) {
+
             return true
 
         }
@@ -111,19 +116,15 @@ class InteractorPersonalization {
         const token = get_token()
         const response = await patch(API.url_get_user, data, token)
 
-        if(!response.ok){
+        if (!response.ok) {
 
             console.error('Erro ao atualizar as informações do perfil')
-        
-        }else{
+
+        } else {
 
             info_div.innerHTML = new_value.value
 
         }
-
-    }
-
-    builder_click_convert_div() {
 
     }
 

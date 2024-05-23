@@ -1,7 +1,7 @@
 import { get_json } from "../../../utils/functionsReq.js"
 import { get_token } from "../../../utils/getToken.js"
 import { change_view } from "../../../utils/changeView.js"
-import { formatedDate } from "../../../utils/utilsInitial.js"
+import { formatedDate } from "../../../utils/general.js"
 import { API } from "../../../utils/endPoints.js"
 
 class InteractorProfileUser {
