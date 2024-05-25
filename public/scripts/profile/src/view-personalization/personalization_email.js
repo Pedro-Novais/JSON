@@ -1,6 +1,7 @@
 import { ButtonsActionsPersonalizationsInternal } from "./utils/btn_actions.js";
 import { get_json } from "../../../utils/functionsReq.js";
 import { get_token } from "../../../utils/getToken.js";
+import { PopUpGlobal } from "../../../utils/popup_global.js";
 import { API } from "../../../utils/endPoints.js";
 
 class PersonalizationEmail{
@@ -40,8 +41,20 @@ class PersonalizationEmail{
                 'email'
             )
 
-            console.log(status)
+            this.validation_personalization(status)
         })
+    }
+
+    validation_personalization(status){
+
+        if(status.status == false){
+
+            new PopUpGlobal('#main-profile', 'Informação', status.msg)
+            return false
+        }
+
+        console.log('passou')
+
     }
 }
 

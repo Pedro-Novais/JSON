@@ -27,6 +27,8 @@ let digitCode = " <h1>Código de Confirmação</h1> <div class='box-credentials'
 
 let popUpAlert = " <div id='pop-up-global' class='pop-up'> <img src='../svg/xmark-solid.svg' alt='Fehcar' class='icon' id='icon-close'> <h3 class='info-fixed' id='pop-title-alert'> </h3> <div class='info-alert' id='pop-info-alert'> </p> </div> "
 
+let popup_global = " <img src='../svg/xmark-solid.svg' id='close-popup' class='icon-close'> <div class='title'> <p id='type' class='style-title'></p> </div> <div class='container-alert'> <p id='info' class='style-container'></p> </div> "
+
 export {
     modal_edit,
     modal_finish_cancel,
@@ -47,5 +49,6 @@ export {
     pageProfileCustomizationCode,
     ranking,
     otherViewProfile,
-    popUpAlert
+    popUpAlert,
+    popup_global,
 }

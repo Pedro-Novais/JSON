@@ -102,6 +102,56 @@ body {
   align-items: center;
   background: linear-gradient(to right, #011140, #034AA6);
 }
+body .popup {
+  position: absolute;
+  margin-top: calc(50vh - 6rem);
+  z-index: 50;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #0487D9;
+  border-radius: 1em;
+  color: #D9D9D9;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+}
+body .popup .icon-close {
+  position: absolute;
+  align-self: flex-end;
+  margin-top: 8px;
+  margin-right: 10px;
+  height: 22px;
+}
+body .popup .icon-close:hover {
+  cursor: pointer;
+}
+body .popup .title {
+  background-color: #034AA6;
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+body .popup .title .style-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+body .popup .container-alert {
+  background-color: #0487D9;
+  width: 100%;
+  height: 75%;
+  text-align: center;
+}
+body .popup .container-alert .style-container {
+  font-size: 1.1rem;
+  margin-top: 15%;
+}
 body .style-bar-options {
   align-self: flex-start;
   display: flex;

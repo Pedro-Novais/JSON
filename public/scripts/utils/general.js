@@ -73,7 +73,7 @@ function valid_email(email) {
     return regexEmail.test(email);
 }
 
-function validOnlyNumber(input) {
+function valid_only_number(input) {
     return /^[0-9]+$/.test(input);
 }
 
@@ -91,4 +91,4 @@ function formatedDate(dateNum) {
 
 }
 
-export { valid_email, boxAlerts, validOnlyNumber, removePlaceholder, formatedDate }
+export { valid_email, boxAlerts, valid_only_number, removePlaceholder, formatedDate }

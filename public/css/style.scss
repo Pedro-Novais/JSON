@@ -127,6 +127,63 @@ body {
     align-items: center;
     background: linear-gradient(to right, $background-one, $details);
 
+    .popup{
+        position: absolute;
+        //margin: 20% auto;
+        margin-top: calc(100vh/2 - 6rem);
+        z-index: 50;
+        width: 400px;
+        height: 200px;
+        @include container;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: $priority;
+        border-radius: 1em;
+        color: $white;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+
+        .icon-close{
+            position: absolute;
+            align-self: flex-end;
+            margin-top: 8px;
+            margin-right: 10px;
+            height: 22px;
+        }
+
+        .icon-close:hover{
+            cursor: pointer;
+        }
+
+        .title{
+            background-color: $details;
+            width: 100%;
+            height: 20%;
+            text-align: center;
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+
+            .style-title{
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-top: 8px;
+            }
+        }
+
+        .container-alert{
+            background-color: $priority;
+            width: 100%;
+            height: 75%;
+            text-align: center;
+
+            .style-container{
+                font-size: 1.1rem;
+                // font-weight: 600;
+                margin-top: calc(15%);
+            }
+        }
+        
+    }
+
     .style-bar-options {
         align-self: flex-start;
         @include container;
@@ -1509,6 +1566,65 @@ body {
         min-height: 35rem;
         margin-top: 8rem;
 
+        // .container-popup{
+        //     @include container;
+        //     flex-direction: column;
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 100vh;
+        //     z-index: 1000;
+
+        //     .pop-up{
+
+        //         @include container;
+        //         flex-direction: column;
+        //         justify-content: space-between;
+        //         background-color: $priority;
+        //         min-width: 400px;
+        //         max-width: 400px;
+        //         height: 180px;
+        //         border-radius: 1em;
+        //         color: $white;
+        //         margin-top: 10%;
+        //         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+
+        //         .icon{
+        //             position: absolute;
+        //             align-self: flex-end;
+        //             height: 25px;
+        //             margin-right: 15px
+        //         }
+
+        //         .icon:hover{
+        //             cursor: pointer;
+        //         }
+
+        //         .info-fixed{
+        //             @include container;
+        //             justify-content: center;
+        //             background-color: $details;
+        //             width: 100%;
+        //             height: 20%;
+        //             text-align: center;
+        //             border-top-right-radius: .5em;
+        //             border-top-left-radius: .5em;
+        //         }
+
+        //         .info-alert{
+        //             @include container;
+        //             justify-content: center;
+        //             width: 100%;
+        //             height: 80%;
+        //             border-bottom-right-radius: .5em;
+        //             border-bottom-left-radius: .5em;
+        //             padding: .8rem;
+        //             text-align: center;
+        //             font-size: 1.1rem;
+        //             font-weight: 600;
+        //         }
+        //     }
+        // }
+
         #container {
             justify-self: center;
             @include container;
@@ -1765,7 +1881,7 @@ body {
                 border-radius: 20px;
             }
 
-            .box-search{
+            .box-search {
                 @include container;
                 justify-content: space-between;
                 width: 97%;
@@ -1774,7 +1890,7 @@ body {
                 padding: .3em;
                 margin-top: 1rem;
 
-                #input-name-search{
+                #input-name-search {
                     width: 75%;
                     height: 100%;
                     padding: 0.5rem;
@@ -1793,7 +1909,7 @@ body {
                     opacity: 40%;
                 }
 
-                .btn-search{
+                .btn-search {
                     @include container;
                     justify-content: center;
                     background-color: $details;
@@ -1803,13 +1919,13 @@ body {
                     transition: .1s;
                 }
 
-                .btn-search:hover{
+                .btn-search:hover {
                     cursor: pointer;
                     background-color: $priority;
                 }
             }
 
-            #refresh{
+            #refresh {
                 position: absolute;
                 height: 20px;
                 align-self: flex-end;
@@ -1818,14 +1934,14 @@ body {
                 transition: .2s;
             }
 
-            #refresh:hover{
-                cursor:pointer;
+            #refresh:hover {
+                cursor: pointer;
                 height: 22px;
             }
 
         }
 
-        #container-view-profile{
+        #container-view-profile {
             position: absolute;
             width: 80%;
             height: 460px;
@@ -1835,20 +1951,20 @@ body {
             overflow-x: hidden;
             overflow-y: auto;
 
-            h1{
+            h1 {
                 font-size: 1.7rem;
                 color: $white;
                 text-align: center;
                 width: 80%;
             }
 
-            #other-icon-back{
+            #other-icon-back {
                 position: absolute;
                 align-self: flex-end;
                 height: 30px;
             }
 
-            #other-icon-back:hover{
+            #other-icon-back:hover {
                 cursor: pointer;
             }
         }
@@ -2382,7 +2498,7 @@ body {
                     text-align: center;
                     width: 100%;
                 }
-            }  
+            }
 
             // Page de ranking
 
@@ -2420,10 +2536,10 @@ body {
                     }
                 }
 
-                
+
             }
 
-            #container-view-profile{
+            #container-view-profile {
 
                 width: 90%;
                 height: 600px;
@@ -2856,7 +2972,8 @@ body {
                 #container-profile {
                     margin-top: 1rem;
                 }
-                #container-view-profile{
+
+                #container-view-profile {
                     height: 73%;
                 }
             }
