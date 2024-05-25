@@ -2,11 +2,12 @@ import { popup_global } from "./modals.js";
 
 export class PopUpGlobal{
     
-    constructor(element_father, type, info){
+    constructor(element_father, type, info, time = null, redirect = null){
 
         this.builder_popup(element_father)
         this.infos_from_popup(type, info)
         this.close_popup(element_father)
+        this.redirect_page(time, redirect)
     }
 
     builder_popup(element_father){
@@ -50,5 +51,18 @@ export class PopUpGlobal{
             father.style.opacity = '1'
             body.style.pointerEvents = 'auto'
         })
+    }
+
+    redirect_page(time, redirect){
+
+        if(time !== null || redirect !== null ){
+
+            setTimeout(()=>{
+
+                window.location.href =  redirect
+
+            }, time)
+        }
+
     }
 }

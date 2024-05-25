@@ -17,6 +17,8 @@ const API = {
     url_get_task: '/api/user/tasks',
     url_statistic: '/api/user/statistic',
     url_config: '/api/user/config',
+
+    url_verify_password: '/api/user/security',
 }
 
 export { API }

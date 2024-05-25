@@ -140,7 +140,7 @@ const userController = {
 
             if (!isPasswordValid) {
 
-                return res.status(404).json({ msg: "A senha inserida está incorreta" })
+                return res.status(401).json({ msg: "Senha atual está incorreta!" })
 
             }
 

@@ -106,7 +106,7 @@ export class ButtonsActionsPersonalizationsInternal {
             }
         }
 
-        return true
+        return {status: true, password: element_password.value, new_password: new_element.value}
     }
 
 
