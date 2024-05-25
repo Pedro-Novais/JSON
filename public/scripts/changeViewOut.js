@@ -1,7 +1,7 @@
 import { interactorLogin } from "./scriptEnter.js"
 import { interectorRegister } from "../scripts-old/register.js"
 import { login, register } from "./utils/modals.js"
-import { interactorResponsive } from "./responsive/responsiveExternal.js"
+import { interactorResponsive } from "./responsive/.js"
 
 const linkWelcome = document.querySelector('#visit-welcome')
 const linkLogin = document.querySelector('#visit-login')

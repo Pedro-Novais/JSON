@@ -102,8 +102,6 @@ const rankingController = {
             }
         }
 
-        //const usersfinal = await RankingModel.find({nameUser: regex }).sort({ position: 1 }).select('-userId')
-
         res.status(201).json({users, exist: exist})
     }
 }
@@ -314,9 +312,9 @@ class UserRanking {
         this.userId = user._id;
         this.position = positionRanking;
         this.nameUser = user.name;
-        this.tasksCreated = user.persistStatistic.taskCreated;
-        this.tasksFinished = user.persistStatistic.taskFinished;
-        this.tasksCanceled = user.persistStatistic.taskCanceled;
+        this.tasksCreated = user.persistStatistic.created;
+        this.tasksFinished = user.persistStatistic.finished;
+        this.tasksCanceled = user.persistStatistic.canceled;
 
     }
 }

@@ -45,9 +45,9 @@ const registerController = {
             }
 
             const persistStatisticDefault = {
-                taskCreated: 0,
-                taskFinished: 0,
-                taskCanceled: 0
+                created: 0,
+                finished: 0,
+                canceled: 0
             }
 
             const configurations = {
