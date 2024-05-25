@@ -33,7 +33,7 @@ class PersonalizationPassword {
 
         if(status.status == false){
 
-            new PopUpGlobal('#main-profile', 'Informação', status.msg)
+            new PopUpGlobal('#main-profile', 'Informação!', status.msg)
             return false
         }
 
@@ -47,7 +47,7 @@ class PersonalizationPassword {
 
         if(response.status === 401){
 
-            new PopUpGlobal('#main-profile', 'Informação', response.responseData.msg)
+            new PopUpGlobal('#main-profile', 'Informação!', response.responseData.msg)
             return false
         }
 
@@ -61,12 +61,12 @@ class PersonalizationPassword {
 
             if(!response_modification.ok){
 
-                new PopUpGlobal('#main-profile', 'Informação', response_modification.responseData.msg)
+                new PopUpGlobal('#main-profile', 'Informação!', response_modification.responseData.msg)
                 return false
                 
             }
 
-            new PopUpGlobal('#main-profile', 'Informação', 'Senha alterada com sucesso!', 2000, API.url_view_personalization)
+            new PopUpGlobal('#main-profile', 'Informação!', 'Senha alterada com sucesso!', 2000, API.url_view_personalization)
 
         }
     }
