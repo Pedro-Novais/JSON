@@ -1,8 +1,8 @@
 import { popup_global } from "./modals.js";
 
-export class PopUpGlobal{
-    
-    constructor(element_father, type, info, time = null, redirect = null){
+export class PopUpGlobal {
+
+    constructor(element_father, type, info, time = null, redirect = null) {
 
         this.builder_popup(element_father)
         this.infos_from_popup(type, info)
@@ -10,7 +10,7 @@ export class PopUpGlobal{
         this.redirect_page(time, redirect)
     }
 
-    builder_popup(element_father){
+    builder_popup(element_father) {
 
         const father = document.querySelector(element_father)
         father.style.opacity = '.4'
@@ -23,12 +23,12 @@ export class PopUpGlobal{
         div.setAttribute('class', 'popup')
         div.innerHTML = popup_global
         div.style.pointerEvents = 'auto'
-        
+
         body.appendChild(div)
 
     }
 
-    infos_from_popup(type, info){
+    infos_from_popup(type, info) {
 
         const title = document.querySelector('#type')
         title.innerHTML = type
@@ -38,8 +38,8 @@ export class PopUpGlobal{
 
     }
 
-    close_popup(element_father){
-        
+    close_popup(element_father) {
+
         const btn = document.querySelector('#close-popup')
         const popup = document.querySelector('.popup')
         const body = document.querySelector('body')
@@ -53,13 +53,13 @@ export class PopUpGlobal{
         })
     }
 
-    redirect_page(time, redirect){
+    redirect_page(time, redirect) {
 
-        if(time !== null || redirect !== null ){
+        if (time !== null || redirect !== null) {
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
-                window.location.href =  redirect
+                window.location.href = redirect
 
             }, time)
         }

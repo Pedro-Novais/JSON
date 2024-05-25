@@ -174,6 +174,7 @@ body {
             width: 100%;
             height: 75%;
             text-align: center;
+            padding: .5em;
 
             .style-container{
                 font-size: 1.1rem;
@@ -832,40 +833,17 @@ body {
                             cursor: pointer;
                         }
 
-                        #back-page-email {
-                            align-self: center;
-                            margin-top: 1em;
-                            margin-bottom: 1em;
-                            transition: 0.3s;
-                        }
-
-                        #back-page-email:hover {
-                            color: $color-light;
-                            cursor: pointer;
-                        }
-
                         #btn-verify-code-personalization {
                             align-self: center;
                         }
                     }
 
-                    .box-alert-personalization {
-                        align-self: center;
-                        @include container;
-                        justify-content: center;
+                    .style-info-email-send{
 
-                        p {
-                            text-align: center;
-                            border: solid 1px $color-light;
-                            background-color: $color-light-opacity;
-                            border-radius: .5rem;
-                            padding: .5em;
-                            width: 100%;
-                            min-height: 7vh;
-                            margin-bottom: 1.5em;
-                            color: $white;
-                            animation: slideIn 1s ease;
-                        }
+                        font-size: 1.1rem;
+                        color: $white;
+                        margin-top: 10%;
+                        text-align: center;
                     }
                 }
 

@@ -19,6 +19,8 @@ const API = {
     url_config: '/api/user/config',
 
     url_verify_password: '/api/user/security',
+    url_create_code: '/api/confirmation',
+    url_verify_code: '/api/verify',
 }
 
 export { API }

@@ -140,7 +140,7 @@ const registerController = {
 
             const email = req.body.email
             const code = req.body.code
-    
+            
             const user = await ConfirmationUser.findOne({ email });
 
             if (!user) {
@@ -148,7 +148,7 @@ const registerController = {
             }
 
             if(user.code !== code){
-                return res.status(400).json({ msg: 'Código de confirmação incorreto' });
+                return res.status(401).json({ msg: 'Código de confirmação incorreto!' });
             }
 
             const response = await ConfirmationUser.deleteOne({ email })

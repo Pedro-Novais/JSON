@@ -18,7 +18,7 @@ export class ButtonsActionsPersonalizationsInternal {
 
         const trim = new_element.value.trim()
         const confirmation_trim = new_confirmation_element.value.trim()
-
+        
         if (element_password) {
 
 
@@ -59,12 +59,12 @@ export class ButtonsActionsPersonalizationsInternal {
             return { status: false, msg: `É necessário preencher todos os campos!` }
         }
 
-        if (type == 'password'){
+        if (type == 'password') {
 
             const password_symbol = /[!@#$%^&*?]/.test(new_element.value)
             const password_number = /\d/.test(new_confirmation_element.value);
 
-            if(new_element.value.length < 7 || new_confirmation_element.value.length < 7){
+            if (new_element.value.length < 7 || new_confirmation_element.value.length < 7) {
 
                 console.warn(`Sua nova senha precisa conter no minímo 7 caracteres!`)
                 return { status: false, msg: `Sua nova senha precisa conter no minímo 7 caracteres!` }
@@ -78,7 +78,7 @@ export class ButtonsActionsPersonalizationsInternal {
 
             }
 
-            if(!password_number || !password_symbol){
+            if (!password_number || !password_symbol) {
 
                 console.warn(`Sua nova senha precisa conter caracteres alfanúmericos e símbolos, ex: !@#$%^&*?`)
                 return { status: false, msg: `Sua nova senha precisa conter caracteres alfanúmericos e símbolos, ex: !@#$%^&*?` }
@@ -95,7 +95,7 @@ export class ButtonsActionsPersonalizationsInternal {
             if (new_element.value !== new_confirmation_element.value) {
 
                 console.warn('Os emails digitados não coincidem')
-                return { status: false, msg: `Emails digitados possuem diferença, verifique e tente novamente!!` }
+                return { status: false, msg: `Emails digitados possuem diferença, verifique e tente novamente!` }
 
             }
 
@@ -104,13 +104,30 @@ export class ButtonsActionsPersonalizationsInternal {
                 console.warn(`Insira um email que seja valido`)
                 return { status: false, msg: `Email inválido, insira um novo email!` }
             }
+
+            const actual_email = document.querySelector('#value-actual-email-personalization').textContent
+
+            if (actual_email == new_element.value) {
+
+                console.warn('Novo email igual ao email atual!')
+                return { status: false, msg: `Novo email digitado já é igual ao seu email atual!` }
+
+            }
         }
 
-        return {status: true, password: element_password.value, new_password: new_element.value}
+        if (type == 'password') {
+
+            return { status: true, password: element_password.value, new_password: new_element.value }
+        }
+
+        if (type == 'email') {
+
+            return { status: true, new_email: new_element.value }
+        }
     }
 
 
-    btn_back() {
+    btn_back(url = null) {
 
         const btn = document.querySelector('#icon-back')
 
@@ -118,7 +135,13 @@ export class ButtonsActionsPersonalizationsInternal {
 
             const token = get_token()
 
-            await change_view(API.url_view_personalization, token)
+            if (url == null) {
+
+                await change_view(API.url_view_personalization, token)
+
+            } else {
+                change_view(url)
+            }
         })
     }
 }
