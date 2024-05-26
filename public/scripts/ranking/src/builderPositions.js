@@ -30,8 +30,6 @@ export class BuilderPositions {
 
     verify_users(users){
 
-        console.log(users)
-
         if (users.ranking.length === 0){
 
             console.warn('Nenhum usuário está no ranking')
@@ -77,6 +75,5 @@ export class BuilderPositions {
         div.innerHTML = value[index]
 
         return div
-
     }
 }
