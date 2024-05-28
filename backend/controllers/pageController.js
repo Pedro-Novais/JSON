@@ -42,7 +42,7 @@ const pageController = {
     pageList: async (req, res) => {
         try {
 
-            res.render('pages/list')
+            res.render('pages/pattern_intern')
 
 
         } catch (error) {
@@ -107,35 +107,12 @@ const pageController = {
     pageRanking: async (req, res) => {
         try {
 
-            res.render('pages/ranking')
+            res.render('pages/pattern_intern')
 
         } catch (error) {
             console.log(error)
         }
     }
-}
-
-async function read_template(url, way, script_way) {
-    try {
-         
-        const filePath = path.join(__dirname, '..', '..', 'views', 'partials', 'configurations_profile.ejs');
-
-        fs.readFile(filePath, 'utf-8', async (err, data)=>{
-
-             if (err) {
-            console.log(err)
-        }
-
-        const html = ejs.render(filePath);
-
-        console.log('html', html)
-
-        })
-
-    } catch (error) {
-        console.log(error)
-    }
-
 }
 
 module.exports = pageController

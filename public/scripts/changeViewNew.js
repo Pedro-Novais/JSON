@@ -1,17 +1,16 @@
 import { change_view } from "./utils/changeView.js"
 import { API } from "./utils/endPoints.js"
 
-class ChangeView {
+export class ChangeView {
 
-    constructor() {
+    constructor(identifier, container) {
 
-        this.listenner_clicks()
+        const element = document.querySelector(container)
+        this.listenner_clicks(identifier, element)
 
     }
 
-    listenner_clicks() {
-        const main = document.querySelector('main')
-        const identifier = main.getAttribute('identifier')
+    listenner_clicks(identifier, container) { 
 
         const LINK_PROFILE = document.querySelector('#visit-profile')
         const LINK_LIST = document.querySelector('#visit-list')
@@ -22,25 +21,42 @@ class ChangeView {
 
             LINK_PROFILE.addEventListener('click', async () => {
 
-                await change_view(API.url_view_profile)
+                const tasks = document.querySelectorAll('.tasks')
+
+                tasks.forEach(element => {
+
+                    element.remove()
+                })
+
+                container.remove()
+                change_view(API.url_view_profile)
             }
             )
         }
 
-        if (identifier != "list") {
+        if (identifier !== "list") {
 
             LINK_LIST.addEventListener('click', async () => {
 
-                await change_view(API.url_view_list)
+                container.remove()
+                change_view(API.url_view_list)
             }
             )
         }
 
-        if (identifier != "ranking") {
+        if (identifier !== "ranking") {
 
             LINK_RANKING.addEventListener('click', async () => {
 
-                await change_view(API.url_view_ranking)
+                const ranking = document.querySelectorAll('.position-users')
+
+                ranking.forEach(element => {
+
+                    element.remove()
+                })
+
+                container.remove()
+                change_view(API.url_view_ranking)
             }
             )
         }
@@ -51,5 +67,3 @@ class ChangeView {
         )
     }
 }
-
-new ChangeView()

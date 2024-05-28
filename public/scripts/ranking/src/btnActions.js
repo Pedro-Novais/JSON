@@ -1,5 +1,5 @@
 import { BuilderPositions } from "./builderPositions.js"
-import { InteractorRanking } from "../interactorRanking.js"
+import { InteractorRanking } from "../interactor.js"
 
 export class ButtonsActionsRanking {
 
