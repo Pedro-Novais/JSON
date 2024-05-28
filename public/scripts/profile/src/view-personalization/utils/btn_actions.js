@@ -3,6 +3,8 @@ import { get_token } from "../../../../utils/getToken.js"
 import { change_view } from "../../../../utils/changeView.js"
 import { API } from "../../../../utils/endPoints.js"
 import { InteractorProfile } from "../../../interactor.js"
+import { PersonalizationEmail } from "../personalization_email.js"
+import { modal } from "../../../../utils/modals_views.js"
 
 export class ButtonsActionsPersonalizationsInternal {
 
@@ -132,20 +134,26 @@ export class ButtonsActionsPersonalizationsInternal {
 
         const btn = document.querySelector('#icon-back')
 
-        if(url == '?type=email'){
+        if (url == '?type=email') {
 
             btn.addEventListener('click', async () => {
-            
+
+                history.pushState({}, '', url)
+
+                const container = document.querySelector('#view-infos-unique')
+                container.innerHTML = modal['email']
+
+                new PersonalizationEmail()
+
+            })
+
+        }else{
+
+            btn.addEventListener('click', async () => {
+    
                 new InteractorProfile()
     
             })
-            
         }
-
-        btn.addEventListener('click', async () => {
-            
-            new InteractorProfile()
-
-        })
     }
 }

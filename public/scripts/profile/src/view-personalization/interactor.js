@@ -4,6 +4,7 @@ import { get_token } from "../../../utils/getToken.js"
 import { modal } from "../../../utils/modals_views.js"
 import { API } from "../../../utils/endPoints.js"
 import { PersonalizationEmail } from "./personalization_email.js"
+import { PersonalizationPassword } from "./personalization_password.js"
 
 export class InteractorPersonalization {
 
@@ -84,6 +85,10 @@ export class InteractorPersonalization {
                     if(type_personalziation == 'email'){
 
                         new PersonalizationEmail()
+                    }
+                    else if(type_personalziation == 'password'){
+
+                        new PersonalizationPassword()
                     }
                 })
             }

@@ -4,7 +4,7 @@ import { ButtonsActionsPersonalizationsInternal } from "./utils/btn_actions.js";
 import { PopUpGlobal } from "../../../utils/popup_global.js";
 import { API } from "../../../utils/endPoints.js";
 
-class PersonalizationPassword {
+export class PersonalizationPassword {
 
     constructor() {
         new ButtonsActionsPersonalizationsInternal().btn_back()
@@ -72,5 +72,3 @@ class PersonalizationPassword {
     }
 
 }
-
-new PersonalizationPassword()
