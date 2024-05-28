@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuração do mecanismo de template
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public/views'));
+app.set('views', path.join(__dirname, 'views'));
 
 // DB Conection
 const conn = require('./backend/db/conn')

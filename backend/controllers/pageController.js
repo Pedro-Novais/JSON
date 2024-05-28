@@ -1,3 +1,6 @@
+const fs = require('fs')
+const ejs = require('ejs');
+const path = require('path');
 const { User: UserModel } = require('../models/user')
 
 require('dotenv').config()
@@ -9,7 +12,7 @@ const pageController = {
     verification: async (req, res) => {
         try {
 
-            res.redirect('login')
+            res.render('pages/pattern.ejs')
 
         } catch (error) {
             console.log(error)
@@ -63,7 +66,7 @@ const pageController = {
     pagePersonalization: async (req, res) => {
         try {
 
-            if(req.query.type){
+            if (req.query.type) {
 
                 const way = `../partials/personalization_${req.query.type}`
                 const script_way = `../scripts/profile/src/view-personalization/personalization_${req.query.type}.js`
@@ -71,11 +74,11 @@ const pageController = {
                 res.render('pages/profile', { way: way, script_way: script_way })
 
             }
-            else{
+            else {
 
                 const way = '../partials/personalization_profile'
                 const script_way = "../scripts/profile/src/view-personalization/interactor.js"
-    
+
                 res.render('pages/profile', { way: way, script_way: script_way })
             }
 
@@ -109,6 +112,28 @@ const pageController = {
         } catch (error) {
             console.log(error)
         }
+    }
+}
+
+async function read_template(url, way, script_way) {
+    try {
+         
+        const filePath = path.join(__dirname, '..', '..', 'views', 'partials', 'configurations_profile.ejs');
+
+        fs.readFile(filePath, 'utf-8', async (err, data)=>{
+
+             if (err) {
+            console.log(err)
+        }
+
+        const html = ejs.render(filePath);
+
+        console.log('html', html)
+
+        })
+
+    } catch (error) {
+        console.log(error)
     }
 
 }

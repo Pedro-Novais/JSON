@@ -57,12 +57,9 @@
         </div>
     </main>
 
-    <footer>
-        <%- include('../partials/footer'); %>
-    </footer>
     <script src="../scripts/changeViewNew.js" type="module"></script>
-    <script src="../scripts/profile/interactorProfile.js" type="module"></script>
-    <script src="<%= script_way %>" type="module"></script>
+    <script src="../scripts/profile/interactorProfile.js" type="module" external = "true"></script>
+    <script src="<%= script_way %>" type="module" internal = "true"></script>
 
 </body>
 

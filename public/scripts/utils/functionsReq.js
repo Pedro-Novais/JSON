@@ -72,7 +72,6 @@ async function get_json(url, token) {
                 'Authorization': `Bearer ${token}`
             }
         })
-
         const responseData = await response.json()
         return { responseData, status: response.status, ok: response.ok }
 
