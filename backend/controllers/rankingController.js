@@ -39,9 +39,9 @@ const rankingController = {
                 constructor(user) {
 
                     this.name = user.name
-                    this.taskCreated = user.persistStatistic.taskCreated
-                    this.taskFinished = user.persistStatistic.taskFinished
-                    this.taskCanceled = user.persistStatistic.taskCanceled
+                    this.taskCreated = user.persistStatistic.created
+                    this.taskFinished = user.persistStatistic.finished
+                    this.taskCanceled = user.persistStatistic.canceled
                     this.description = user.description
                     this.date = user.createdAt
                     this.position = user.ranking
@@ -49,18 +49,19 @@ const rankingController = {
 
             }
 
-            const userIdRanking = req.body.userId
+            const name_user = req.body.name
+            const position = req.body.position
 
-            const userRanking = await RankingModel.findById(userIdRanking).populate('userId')
+            const userRanking = await RankingModel.find({position: {$in: [position, position + 1, position - 1]}, nameUser: name_user}).populate('userId')
 
             if (!userRanking) {
 
                 res
                     .status(401)
-                    .json({ msg: "Úsuario não existe" })
+                    .json({ msg: "Úsuario não foi encontrado" })
             }
 
-            const userIdSearch = userRanking.userId
+            const userIdSearch = userRanking[0].userId
 
             const user = new Profile(userIdSearch)
 

@@ -18,6 +18,7 @@ export class ButtonsActionsRanking {
 
         btn_recall.addEventListener('click', this.recall_ranking)
         btn_search.addEventListener('click', this.search_user)
+
     }
 
     async search_user() {
@@ -49,7 +50,7 @@ export class ButtonsActionsRanking {
             search: user_to_search.value
         }
 
-        const response = await post(API.utl_search_ranking, data, token)
+        const response = await post(API.url_search_ranking, data, token)
 
         if (response.status == 404) {
 
@@ -71,6 +72,44 @@ export class ButtonsActionsRanking {
    
         new InteractorRanking(response.responseData)
 
+    }
+
+    get_data(){
+        
+        const positions_elements = document.querySelectorAll('.position-users')
+
+        positions_elements.forEach(element => {
+
+            element.addEventListener('click', () => {
+
+                const name = element.getAttribute('name')
+                const position = element.getAttribute('position')
+
+                this.view_profile(name, position)
+            })
+        })
+    }
+
+    async view_profile(name, position){
+
+        const token = get_token()
+
+        const data = {
+            name: name,
+            position: position
+        }  
+
+        console.log(data)
+
+        const response = await post(API.url_view_profile_ranking, data, token)
+
+        if(!response.ok){
+
+            new PopUpGlobal('#container-ranking', 'Erro!', `Algum erro ocorreu ao visualizar o perfil do usuário ${name}!`)
+            return false
+        }
+
+        console.log(response)
     }
 
     recall_ranking() {
