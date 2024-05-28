@@ -3,7 +3,6 @@ import { get_json, post } from "../../../utils/functionsReq.js";
 import { get_token } from "../../../utils/getToken.js";
 import { PopUpGlobal } from "../../../utils/popup_global.js";
 import { API } from "../../../utils/endPoints.js";
-import { change_view } from "../../../utils/changeView.js";
 import { modal } from "../../../utils/modals_views.js";
 import { PersonalizationCode } from "./personalization_code.js";
 

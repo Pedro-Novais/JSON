@@ -5,27 +5,35 @@ import { PopUpGlobal } from '../../utils/popup_global.js'
 
 export class BuilderPositions {
 
-    constructor() {
+    constructor(users) {
 
-        this.get_data()
+        this.get_data(users)
 
     }
 
-    async get_data() {
+    async get_data(positions) {
+        
+        if(positions == null){
 
-        const token = get_token()
+            const token = get_token()
+    
+            const response = await get_json(API.url_ranking, token)
+    
+            if(!response.ok){
+    
+                console.error('Algum erro ocorreu ao carregar o ranking')
+                new PopUpGlobal('#container-ranking', 'Erro!', 'Algum erro ocorreu ao carregar o ranking!')
+    
+                return false
+            }
+    
+            this.verify_users(response.responseData)
 
-        const response = await get_json(API.url_ranking, token)
-
-        if(!response.ok){
-
-            console.error('Algum erro ocorreu ao carregar o ranking')
-            new PopUpGlobal('#container-ranking', 'Erro!', 'Algum erro ocorreu ao carregar o ranking!')
-
-            return false
         }
+        else{
 
-        this.verify_users(response.responseData)
+            this.verify_users(positions)
+        }
     }
 
     verify_users(users){

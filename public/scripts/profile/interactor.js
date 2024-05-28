@@ -1,6 +1,5 @@
 import { mark_header } from "../utils/markHeader.js"
 import { modal } from "../utils/modals_views.js"
-import { API } from "../utils/endPoints.js"
 import { InteractorProfileUser } from "./src/view-profile/interactor.js"
 import { InteractorPersonalization } from "./src/view-personalization/interactor.js"
 import { InteractorStatistic } from "./src/view-statistic/interactor.js"

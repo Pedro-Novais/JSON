@@ -18,6 +18,7 @@ const API = {
     url_statistic: '/api/user/statistic',
     url_config: '/api/user/config',
     url_ranking: '/api/ranking',
+    utl_search_ranking: '/api/search',
 
     url_verify_password: '/api/user/security',
     url_create_code: '/api/confirmation',

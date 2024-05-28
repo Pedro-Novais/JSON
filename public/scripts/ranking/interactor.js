@@ -5,9 +5,9 @@ import { ButtonsActionsRanking } from "./src/btnActions.js"
 
 export class InteractorRanking {
 
-    constructor() {
+    constructor(positions = null) {
         mark_header('ranking')
-        new BuilderPositions()
+        new BuilderPositions(positions)
         new ButtonsActionsRanking()
     }
 }

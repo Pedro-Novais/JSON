@@ -7,7 +7,7 @@ import { modal } from "./utils/modals_views.js"
 class Relocated {
 
     builder_page() {
-      
+   
         const dir = window.location.pathname
 
         const dir_name = convert_url_to_params(dir)
@@ -24,7 +24,7 @@ class Relocated {
 
         }
 
-        if (dir_name == 'ranking') {
+        else if (dir_name == 'ranking') {
     
             main.setAttribute('identifier', dir_name)
             main.innerHTML = modal[dir_name]
@@ -34,7 +34,7 @@ class Relocated {
 
         }
    
-        if (dir_name == 'profile' || dir_name == 'statistic' || dir_name == 'config' || dir_name == 'personalizations') {
+        else if (dir_name == 'profile' || dir_name == 'statistic' || dir_name == 'config' || dir_name == 'personalizations') {
             
             main.setAttribute('identifier', 'profile')
             main.innerHTML = modal['profile']

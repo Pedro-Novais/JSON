@@ -102,7 +102,7 @@ const rankingController = {
             }
         }
 
-        res.status(201).json({users, exist: exist})
+        res.status(201).json({ranking: users, exist: exist})
     }
 }
 

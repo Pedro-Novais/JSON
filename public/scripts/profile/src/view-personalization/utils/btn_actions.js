@@ -1,7 +1,4 @@
 import { valid_email } from "../../../../utils/general.js"
-import { get_token } from "../../../../utils/getToken.js"
-import { change_view } from "../../../../utils/changeView.js"
-import { API } from "../../../../utils/endPoints.js"
 import { InteractorProfile } from "../../../interactor.js"
 import { PersonalizationEmail } from "../personalization_email.js"
 import { modal } from "../../../../utils/modals_views.js"
