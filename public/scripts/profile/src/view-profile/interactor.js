@@ -4,7 +4,7 @@ import { change_view } from "../../../utils/changeView.js"
 import { formatedDate } from "../../../utils/general.js"
 import { API } from "../../../utils/endPoints.js"
 
-class InteractorProfileUser {
+export class InteractorProfileUser {
     constructor() {
 
         this.get_infos_from_user()
@@ -75,5 +75,3 @@ class InteractorProfileUser {
         })
     }
 }
-
-new InteractorProfileUser()

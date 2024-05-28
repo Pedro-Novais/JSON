@@ -53,10 +53,7 @@ const pageController = {
     pageProfile: async (req, res) => {
         try {
 
-            const way = '../partials/user_profile'
-            const script_way = "../scripts/profile/src/view-profile/interactor.js"
-
-            res.render('pages/profile', { way: way, script_way: script_way })
+            res.render('pages/pattern_intern')
 
         } catch (error) {
             console.log(error)
@@ -89,19 +86,13 @@ const pageController = {
 
     pageStatistic: async (req, res) => {
 
-        const way = '../partials/statistic_profile'
-        const script_way = "../scripts/profile/src/view-statistic/interactor.js"
-
-        res.render('pages/profile', { way: way, script_way: script_way })
+        res.render('pages/pattern_intern')
 
     },
 
     pageConfig: async (req, res) => {
 
-        const way = '../partials/configurations_profile'
-        const script_way = "../scripts/profile/src/view-config/interactor.js"
-
-        res.render('pages/profile', { way: way, script_way: script_way })
+        res.render('pages/pattern_intern')
     },
 
     pageRanking: async (req, res) => {

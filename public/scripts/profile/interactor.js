@@ -1,51 +1,99 @@
-import { change_view } from "../utils/changeView.js"
 import { mark_header } from "../utils/markHeader.js"
+import { modal } from "../utils/modals_views.js"
 import { API } from "../utils/endPoints.js"
+import { InteractorProfileUser } from "./src/view-profile/interactor.js"
+import { InteractorStatistic } from "./src/view-statistic/interactor.js"
+import { InteractorConfiguration } from "./src/view-config/interactor.js"
 
-class InteractorProfile{
+export class InteractorProfile {
 
-    constructor(){
+    constructor() {
 
         mark_header('profile')
+        this.insert_view()
         this.listenner_clicks()
     }
 
-    listenner_clicks(){
+    listenner_clicks() {
 
-        const element = document.querySelector('[identifier-profile]')
-        const identifier = element.getAttribute('identifier-profile')
+       
 
-        const SECTION_PROFILE = document.querySelector('#section-profile')
-        const SECTION_STATISTIC = document.querySelector('#section-statistic')
-        const SECTION_CONFIG = document.querySelector('#section-config')
+            const SECTION_PROFILE = document.querySelector('#section-profile')
+            const SECTION_STATISTIC = document.querySelector('#section-statistic')
+            const SECTION_CONFIG = document.querySelector('#section-config')
 
-        if(identifier != "profile"){
 
             SECTION_PROFILE.addEventListener('click', async () => {
+                const element = document.querySelector('[identifier-profile]')
+                const identifier = element.getAttribute('identifier-profile')
 
-                await change_view(API.url_view_profile)
+                if (identifier !== 'profile') {
 
+                    history.pushState({}, '', 'profile')
+
+                    this.insert_view()
+                }
             })
-        }
-        
-        if(identifier != "statistic"){
+
+
 
             SECTION_STATISTIC.addEventListener('click', async () => {
 
-                await change_view(API.url_view_profile_statistic)
+                const element = document.querySelector('[identifier-profile]')
+                const identifier = element.getAttribute('identifier-profile')
 
+                if (identifier !== 'statistic') {
+
+                    history.pushState({}, '', 'statistic')
+
+                    this.insert_view()
+                }
             })
-        }
-        
-        if(identifier != "config"){
+
+
 
             SECTION_CONFIG.addEventListener('click', async () => {
 
-                await change_view(API.url_view_profile_config)
+                const element = document.querySelector('[identifier-profile]')
+                const identifier = element.getAttribute('identifier-profile')
 
+                if (identifier !== 'config') {
+
+                    history.pushState({}, '', 'configurations')
+
+                    this.insert_view()
+                }
             })
+        
+    }
+
+    verify_page(page) {
+
+    }
+
+    insert_view() {
+
+        const dir = window.location.pathname
+        const container = document.querySelector('#view-infos-unique')
+
+        if (container) {
+
+            if (dir == '/profile') {
+
+                container.innerHTML = modal['user']
+                new InteractorProfileUser()
+
+            }
+            else if (dir == '/statistic') {
+
+                container.innerHTML = modal['statistic']
+                new InteractorStatistic()
+            }
+            else if (dir == '/configurations') {
+
+                container.innerHTML = modal['config']
+                new InteractorConfiguration()
+            }
         }
     }
 }
-
-new InteractorProfile()

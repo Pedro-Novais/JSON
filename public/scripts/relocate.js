@@ -1,11 +1,13 @@
 import { InteractorList } from "./list/interactor.js"
 import { InteractorRanking } from "./ranking/interactor.js"
-import { ChangeView } from "./changeViewNew.js"
+import { InteractorProfile } from "./profile/interactor.js"
+import { ChangeView } from "./nChangeView.js"
 import { modal } from "./utils/modals_views.js"
 
 class Relocated {
 
     builder_page() {
+      
         const dir = window.location.pathname
 
         const dir_name = convert_url_to_params(dir)
@@ -31,6 +33,16 @@ class Relocated {
             new InteractorRanking()
 
         }
+   
+        if (dir_name == 'profile' || dir_name == 'statistic' || dir_name == 'config') {
+            
+            main.setAttribute('identifier', 'profile')
+            main.innerHTML = modal['profile']
+
+            new ChangeView(dir_name, '#container-profile')
+            new InteractorProfile()
+
+        }
     }
 }
 
@@ -46,17 +58,17 @@ function convert_url_to_params(url) {
         return 'ranking'
     }
 
-    else if (url == '/profile/user') {
+    else if (url == '/profile') {
 
         return 'profile'
     }
 
-    else if (url == '/profile/statistic') {
+    else if (url == '/statistic') {
 
         return 'statistic'
     }
 
-    else if (url == '/profile/configurations') {
+    else if (url == '/configurations') {
 
         return 'config'
     }

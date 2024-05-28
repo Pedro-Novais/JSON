@@ -20,7 +20,7 @@ router
     .get((req, res) => pageController.pageList(req, res))
 
 router
-    .route('/profile/user')
+    .route('/profile')
     .get((req, res) => pageController.pageProfile(req, res))
 
 router
@@ -28,11 +28,11 @@ router
     .get((req, res) => pageController.pagePersonalization(req, res))
 
 router
-    .route('/profile/statistic')
+    .route('/statistic')
     .get((req, res) => pageController.pageStatistic(req, res))
 
 router
-    .route('/profile/configurations')
+    .route('/configurations')
     .get((req, res) => pageController.pageConfig(req, res))
 
 router

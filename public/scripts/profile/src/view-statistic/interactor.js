@@ -3,7 +3,7 @@ import { get_token } from "../../../utils/getToken.js"
 import { convert_id_to_integer } from "../../../list/src/utils/priority_integer.js"
 import { API } from "../../../utils/endPoints.js"
 
-class InteractorStatistic {
+export class InteractorStatistic {
 
     constructor() {
 
@@ -192,5 +192,3 @@ class InteractorStatistic {
         }
     }
 }
-
-new InteractorStatistic()

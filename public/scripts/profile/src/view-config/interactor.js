@@ -3,7 +3,7 @@ import { get_token } from "../../../utils/getToken.js"
 import { API } from "../../../utils/endPoints.js"
 import { PopUpGlobal } from "../../../utils/popup_global.js"
 
-class InteractorConfiguration {
+export class InteractorConfiguration {
 
     constructor() {
 
@@ -169,5 +169,3 @@ class InteractorConfiguration {
         return false
     }
 }
-
-new InteractorConfiguration()
