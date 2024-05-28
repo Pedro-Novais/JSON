@@ -34,7 +34,7 @@ class Relocated {
 
         }
    
-        if (dir_name == 'profile' || dir_name == 'statistic' || dir_name == 'config') {
+        if (dir_name == 'profile' || dir_name == 'statistic' || dir_name == 'config' || dir_name == 'personalizations') {
             
             main.setAttribute('identifier', 'profile')
             main.innerHTML = modal['profile']
@@ -71,6 +71,10 @@ function convert_url_to_params(url) {
     else if (url == '/configurations') {
 
         return 'config'
+    }
+    else if(url == '/personalizations' || url == '/personalizations?type=email' || url == '/personalizations?type=password'){
+
+        return 'personalizations'
     }
 }
 

@@ -1,9 +1,11 @@
 import { get_json, patch } from "../../../utils/functionsReq.js"
 import { change_view } from "../../../utils/changeView.js"
 import { get_token } from "../../../utils/getToken.js"
+import { modal } from "../../../utils/modals_views.js"
 import { API } from "../../../utils/endPoints.js"
+import { PersonalizationEmail } from "./personalization_email.js"
 
-class InteractorPersonalization {
+export class InteractorPersonalization {
 
     constructor() {
 
@@ -74,8 +76,15 @@ class InteractorPersonalization {
 
                 element.addEventListener('click', () => {
 
-                    change_view(`?type=${type_personalziation}`)
+                    history.pushState({}, '', `?type=${type_personalziation}`)
+                    
+                    const container = document.querySelector('#view-infos-unique')
+                    container.innerHTML = modal[type_personalziation]
 
+                    if(type_personalziation == 'email'){
+
+                        new PersonalizationEmail()
+                    }
                 })
             }
         })
@@ -138,5 +147,3 @@ class InteractorPersonalization {
         })
     }
 }
-
-new InteractorPersonalization()

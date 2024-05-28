@@ -5,7 +5,7 @@ import { PopUpGlobal } from "../../../utils/popup_global.js";
 import { API } from "../../../utils/endPoints.js";
 import { valid_only_number } from "../../../utils/general.js";
 
-class PersonalizationCode {
+export class PersonalizationCode {
 
     constructor() {
 
@@ -136,5 +136,3 @@ class PersonalizationCode {
         return {status: true}
     }
 }
-
-new PersonalizationCode()

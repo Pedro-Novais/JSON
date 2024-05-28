@@ -4,8 +4,10 @@ import { get_token } from "../../../utils/getToken.js";
 import { PopUpGlobal } from "../../../utils/popup_global.js";
 import { API } from "../../../utils/endPoints.js";
 import { change_view } from "../../../utils/changeView.js";
+import { modal } from "../../../utils/modals_views.js";
+import { PersonalizationCode } from "./personalization_code.js";
 
-class PersonalizationEmail {
+export class PersonalizationEmail {
 
     constructor() {
 
@@ -70,10 +72,14 @@ class PersonalizationEmail {
         if(response.status === 201){
 
             localStorage.setItem('new_email', status.new_email)
-            change_view(`?type=code`)
+
+            history.pushState({}, '', `?type=code`) 
+
+            const container = document.querySelector('#view-infos-unique')
+            container.innerHTML = modal['code']
+
+            new PersonalizationCode()
 
         }
     }
 }
-
-new PersonalizationEmail()

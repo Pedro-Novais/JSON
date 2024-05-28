@@ -21,8 +21,7 @@ export function change_view(endpoint) {
       
         script_puted.parentNode.removeChild(script_puted)
     }
-   
-    const body = document.querySelector('body')
+
     const new_script = document.createElement('script')
 
     const view = convert_url_to_params(endpoint)

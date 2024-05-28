@@ -2,6 +2,7 @@ import { mark_header } from "../utils/markHeader.js"
 import { modal } from "../utils/modals_views.js"
 import { API } from "../utils/endPoints.js"
 import { InteractorProfileUser } from "./src/view-profile/interactor.js"
+import { InteractorPersonalization } from "./src/view-personalization/interactor.js"
 import { InteractorStatistic } from "./src/view-statistic/interactor.js"
 import { InteractorConfiguration } from "./src/view-config/interactor.js"
 
@@ -16,58 +17,52 @@ export class InteractorProfile {
 
     listenner_clicks() {
 
-       
-
-            const SECTION_PROFILE = document.querySelector('#section-profile')
-            const SECTION_STATISTIC = document.querySelector('#section-statistic')
-            const SECTION_CONFIG = document.querySelector('#section-config')
+        const SECTION_PROFILE = document.querySelector('#section-profile')
+        const SECTION_STATISTIC = document.querySelector('#section-statistic')
+        const SECTION_CONFIG = document.querySelector('#section-config')
 
 
-            SECTION_PROFILE.addEventListener('click', async () => {
-                const element = document.querySelector('[identifier-profile]')
-                const identifier = element.getAttribute('identifier-profile')
+        SECTION_PROFILE.addEventListener('click', async () => {
+            const element = document.querySelector('[identifier-profile]')
+            const identifier = element.getAttribute('identifier-profile')
 
-                if (identifier !== 'profile') {
+            if (identifier !== 'profile') {
 
-                    history.pushState({}, '', 'profile')
+                history.pushState({}, '', 'profile')
 
-                    this.insert_view()
-                }
-            })
+                this.insert_view()
+            }
+        })
 
 
 
-            SECTION_STATISTIC.addEventListener('click', async () => {
+        SECTION_STATISTIC.addEventListener('click', async () => {
 
-                const element = document.querySelector('[identifier-profile]')
-                const identifier = element.getAttribute('identifier-profile')
+            const element = document.querySelector('[identifier-profile]')
+            const identifier = element.getAttribute('identifier-profile')
 
-                if (identifier !== 'statistic') {
+            if (identifier !== 'statistic') {
 
-                    history.pushState({}, '', 'statistic')
+                history.pushState({}, '', 'statistic')
 
-                    this.insert_view()
-                }
-            })
+                this.insert_view()
+            }
+        })
 
 
 
-            SECTION_CONFIG.addEventListener('click', async () => {
+        SECTION_CONFIG.addEventListener('click', async () => {
 
-                const element = document.querySelector('[identifier-profile]')
-                const identifier = element.getAttribute('identifier-profile')
+            const element = document.querySelector('[identifier-profile]')
+            const identifier = element.getAttribute('identifier-profile')
 
-                if (identifier !== 'config') {
+            if (identifier !== 'config') {
 
-                    history.pushState({}, '', 'configurations')
+                history.pushState({}, '', 'configurations')
 
-                    this.insert_view()
-                }
-            })
-        
-    }
-
-    verify_page(page) {
+                this.insert_view()
+            }
+        })
 
     }
 
@@ -93,6 +88,13 @@ export class InteractorProfile {
 
                 container.innerHTML = modal['config']
                 new InteractorConfiguration()
+            }
+            else if (dir == '/personalizations') {
+
+                history.pushState({}, '', dir)
+
+                container.innerHTML = modal['personalizations']
+                new InteractorPersonalization()
             }
         }
     }

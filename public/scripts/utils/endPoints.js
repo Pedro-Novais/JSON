@@ -2,7 +2,7 @@ const API = {
 
     // Endpoints de views
     url_view_profile: `/profile`,
-    url_view_personalization: '/profile/personalization',
+    url_view_personalization: '/personalizations',
     url_view_list: '/list',
     url_view_ranking: '/ranking',
     url_singout: '/sign-out',

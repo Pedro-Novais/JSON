@@ -2,9 +2,12 @@ import { get_json } from "../../../utils/functionsReq.js"
 import { get_token } from "../../../utils/getToken.js"
 import { change_view } from "../../../utils/changeView.js"
 import { formatedDate } from "../../../utils/general.js"
+import { InteractorPersonalization } from "../view-personalization/interactor.js"
 import { API } from "../../../utils/endPoints.js"
+import { modal } from "../../../utils/modals_views.js"
 
 export class InteractorProfileUser {
+
     constructor() {
 
         this.get_infos_from_user()
@@ -64,13 +67,18 @@ export class InteractorProfileUser {
         description.innerHTML = description_pattern
     }
 
-    view_page_personalization(){
-        
+    view_page_personalization() {
+
         const btn = document.querySelector('#btn-save-user')
 
-        btn.addEventListener('click', () =>{
+        btn.addEventListener('click', () => {
 
-            change_view(API.url_view_personalization)
+            history.pushState({}, '', '/personalizations')
+
+            const container = document.querySelector('#view-infos-unique')
+            container.innerHTML = modal['personalizations']
+
+            new InteractorPersonalization()
 
         })
     }

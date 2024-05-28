@@ -24,7 +24,7 @@ router
     .get((req, res) => pageController.pageProfile(req, res))
 
 router
-    .route('/profile/personalization')
+    .route('/personalizations')
     .get((req, res) => pageController.pagePersonalization(req, res))
 
 router

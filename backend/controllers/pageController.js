@@ -63,21 +63,7 @@ const pageController = {
     pagePersonalization: async (req, res) => {
         try {
 
-            if (req.query.type) {
-
-                const way = `../partials/personalization_${req.query.type}`
-                const script_way = `../scripts/profile/src/view-personalization/personalization_${req.query.type}.js`
-
-                res.render('pages/profile', { way: way, script_way: script_way })
-
-            }
-            else {
-
-                const way = '../partials/personalization_profile'
-                const script_way = "../scripts/profile/src/view-personalization/interactor.js"
-
-                res.render('pages/profile', { way: way, script_way: script_way })
-            }
+            res.render('pages/pattern_intern')
 
         } catch (error) {
             console.log(error)

@@ -2,6 +2,7 @@ import { valid_email } from "../../../../utils/general.js"
 import { get_token } from "../../../../utils/getToken.js"
 import { change_view } from "../../../../utils/changeView.js"
 import { API } from "../../../../utils/endPoints.js"
+import { InteractorProfile } from "../../../interactor.js"
 
 export class ButtonsActionsPersonalizationsInternal {
 
@@ -18,7 +19,7 @@ export class ButtonsActionsPersonalizationsInternal {
 
         const trim = new_element.value.trim()
         const confirmation_trim = new_confirmation_element.value.trim()
-        
+
         if (element_password) {
 
 
@@ -127,21 +128,24 @@ export class ButtonsActionsPersonalizationsInternal {
     }
 
 
-    btn_back(url = null) {
+    btn_back(url) {
 
         const btn = document.querySelector('#icon-back')
 
+        if(url == '?type=email'){
+
+            btn.addEventListener('click', async () => {
+            
+                new InteractorProfile()
+    
+            })
+            
+        }
+
         btn.addEventListener('click', async () => {
+            
+            new InteractorProfile()
 
-            const token = get_token()
-
-            if (url == null) {
-
-                await change_view(API.url_view_personalization, token)
-
-            } else {
-                change_view(url)
-            }
         })
     }
 }

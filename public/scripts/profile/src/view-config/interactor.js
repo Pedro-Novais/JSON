@@ -12,7 +12,7 @@ export class InteractorConfiguration {
     }
 
     async get_config() {
-
+        
         const token = get_token()
 
         const response = await get_json(API.url_config, token)
