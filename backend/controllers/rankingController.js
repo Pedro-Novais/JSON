@@ -49,10 +49,9 @@ const rankingController = {
 
             }
 
-            const name_user = req.body.name
-            const position = req.body.position
+            const id_user = req.body.id
 
-            const userRanking = await RankingModel.find({position: {$in: [position, position + 1, position - 1]}, nameUser: name_user}).populate('userId')
+            const userRanking = await RankingModel.findById(id_user).populate('userId')
 
             if (!userRanking) {
 
@@ -61,7 +60,7 @@ const rankingController = {
                     .json({ msg: "Úsuario não foi encontrado" })
             }
 
-            const userIdSearch = userRanking[0].userId
+            const userIdSearch = userRanking.userId
 
             const user = new Profile(userIdSearch)
 

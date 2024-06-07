@@ -61,6 +61,7 @@ export class BuilderPositions {
         const position = document.createElement('div')
         position.setAttribute('class', 'position-users')
         position.setAttribute('position', user.position)
+        position.setAttribute('id', user._id)
 
         const classBox = ["box-position", "box-name", "box-points"]
         const valueBox = [`${user.position}º`, user.nameUser, `${user.tasksFinished} pts`]

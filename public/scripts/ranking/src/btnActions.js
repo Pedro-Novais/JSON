@@ -1,5 +1,6 @@
 import { InteractorRanking } from "../interactor.js"
 import { PopUpGlobal } from "../../utils/popup_global.js"
+import { ViewProfileFromUser } from "./viewProfileFromUsers.js"
 import { get_token } from "../../utils/getToken.js"
 import { post } from "../../utils/functionsReq.js"
 import { API } from "../../utils/endPoints.js"
@@ -28,8 +29,6 @@ export class ButtonsActionsRanking {
         const trim = user_to_search.value.trim()
 
         if (user_to_search.value == "" || trim == "") {
-
-            new PopUpGlobal('#container-ranking', 'Informação!', 'É necessário inserir algum nome para realizar a busca!')
 
             user_to_search.setAttribute('class', 'watch-out')
 
@@ -84,22 +83,22 @@ export class ButtonsActionsRanking {
 
                 const name = element.getAttribute('name')
                 const position = element.getAttribute('position')
+                const id = element.getAttribute('id')
 
-                this.view_profile(name, position)
+                this.view_profile(name, position, id)
             })
         })
     }
 
-    async view_profile(name, position){
+    async view_profile(name, position, id){
 
         const token = get_token()
 
         const data = {
             name: name,
-            position: position
+            position: position,
+            id: id
         }  
-
-        console.log(data)
 
         const response = await post(API.url_view_profile_ranking, data, token)
 
@@ -109,7 +108,7 @@ export class ButtonsActionsRanking {
             return false
         }
 
-        console.log(response)
+        new ViewProfileFromUser(response.responseData)
     }
 
     recall_ranking() {
@@ -128,6 +127,8 @@ export class ButtonsActionsRanking {
         const user_to_search = document.querySelector('#input-name-search')
 
         user_to_search.value = ""
+
+        user_to_search.removeAttribute('class', 'watch-out')
         new InteractorRanking()
 
     }
