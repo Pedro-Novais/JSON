@@ -5,8 +5,7 @@ import { ChangeView } from "../nChangeView.js";
 import { InteractorList } from "../list/interactor.js";
 import { InteractorRanking } from "../ranking/interactor.js";
 
-export function change_view(endpoint) {
-   
+export function change_view(endpoint) { 
     history.pushState({}, '', endpoint)
 
     const script = document.querySelector('[scripttag=true]')
