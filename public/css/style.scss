@@ -264,6 +264,7 @@ body {
         background: linear-gradient(to right, $background-one, $details);
 
         #bar-view-options {
+            display: none;
             position: absolute;
             left: 15px;
         }
@@ -2281,6 +2282,12 @@ body {
 
             .name-symbol {
                 margin: 0;
+            }
+
+            #bar-view-options {
+                display: flex;
+                position: absolute;
+                left: 15px;
             }
         }
 

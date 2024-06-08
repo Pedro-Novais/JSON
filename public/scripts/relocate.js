@@ -2,6 +2,7 @@ import { InteractorList } from "./list/interactor.js"
 import { InteractorRanking } from "./ranking/interactor.js"
 import { InteractorProfile } from "./profile/interactor.js"
 import { ChangeView } from "./nChangeView.js"
+import { Responsive } from "./responsive/responsive.js"
 import { modal } from "./utils/modals_views.js"
 
 class Relocated {
@@ -44,6 +45,16 @@ class Relocated {
 
         }
     }
+
+    get_width(){
+
+        const width = window.innerWidth
+
+        if(width < 800){
+
+            new Responsive()
+        }
+    }
 }
 
 function convert_url_to_params(url) {
@@ -83,4 +94,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const instance = new Relocated();
 
     instance.builder_page()
+    instance.get_width()
 });

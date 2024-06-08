@@ -235,6 +235,7 @@ body header {
   background: linear-gradient(to right, #011140, #034AA6);
 }
 body header #bar-view-options {
+  display: none;
   position: absolute;
   left: 15px;
 }
@@ -2139,6 +2140,11 @@ body footer p {
   }
   body header .name-symbol {
     margin: 0;
+  }
+  body header #bar-view-options {
+    display: flex;
+    position: absolute;
+    left: 15px;
   }
   body main {
     width: 90vw;

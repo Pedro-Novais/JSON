@@ -1,0 +1,3 @@
+export const MODAL = {
+    bar: "<div class='container-name-symbol'> <h1>List-To-Do</h1> <img src='./svg/xmark-solid.svg' alt='Cancelar' height='20px' id='cancel-bar' class='actions'> </div> <div class='container-bars'> <div class='seeing-options-bar' id='visit-profile-responsive'><p>Perfil</p></div> <div class='seeing-options-bar' id='visit-list-responsive'><p>Tarefas</p></div> <div class='seeing-options-bar' id='visit-ranking-responsive'><p>Ranking</p></div> <div class='seeing-options-bar' id='logout-responsive'><p>Sair</p></div> </div>"
+}

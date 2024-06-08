@@ -4,7 +4,7 @@ import { API } from "./utils/endPoints.js"
 export class ChangeView {
 
     constructor(identifier) {
-
+     
         this.enabled_events()
         this.listenner_clicks(identifier)
 
