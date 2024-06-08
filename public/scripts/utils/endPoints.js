@@ -6,6 +6,9 @@ const API = {
     url_view_list: '/list',
     url_view_ranking: '/ranking',
     url_singout: '/sign-out',
+    url_welcome: '/welcome',
+    url_login: '/login',
+    url_register: '/register',
 
     //Endpoint das views do profile
     url_view_profile_user: '/profile',

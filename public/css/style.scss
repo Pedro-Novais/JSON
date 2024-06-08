@@ -1392,8 +1392,9 @@ body {
         align-items: flex-start;
         justify-content: center;
         width: 30rem;
+        height: 100%;
 
-        .conatiner-credentials {
+        .container-credentials {
             @include container;
             flex-direction: column;
             width: 85%;
@@ -2540,7 +2541,7 @@ body {
             margin-top: 8rem;
             width: 100%;
 
-            .conatiner-credentials {
+            .container-credentials {
 
                 .box-watch-out {
                     min-width: 90%;

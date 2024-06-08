@@ -28,7 +28,29 @@ const pageController = {
         }
     },
 
+    pageWelcome: async (req, res) => {
+        try {
+
+            res.render('pages/pattern_extern')
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    },
+
     pageLogin: async (req, res) => {
+        try {
+
+            res.render('pages/pattern_extern')
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    },
+
+    pageRegister: async (req, res) => {
         try {
 
             res.render('pages/pattern_extern')

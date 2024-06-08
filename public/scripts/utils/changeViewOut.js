@@ -1,7 +1,8 @@
 import { modal } from "./modals_views.js";
-import { ChangeView } from "../nChangeView.js";
+import { ChangeViewOut } from "../nChangeViewOut.js";
 
 export function change_view(endpoint) { 
+    
     history.pushState({}, '', endpoint)
 
     const script = document.querySelector('[scripttag=true]')
@@ -35,51 +36,41 @@ export function change_view(endpoint) {
 
     document.body.appendChild(new_script)
 
-    new ChangeView(view, element_actual)
+    new ChangeViewOut(view, element_actual)
 }
 
 function convert_url_to_params(url) {
 
-    if (url == '/list') {
+    if (url == '/welcome') {
 
-        return 'list'
+        return 'welcome'
     }
 
-    else if (url == '/ranking') {
+    else if (url == '/login') {
 
-        return 'ranking'
+        return 'login'
     }
 
-    else if (url == '/profile') {
+    else if (url == '/register') {
 
-        return 'profile'
-    }
-
-    else if (url == '/statistic') {
-
-        return 'statistic'
-    }
-
-    else if (url == '/configurations') {
-
-        return 'config'
+        return 'register'
     }
 }
 
 function convert_params_id(params){
 
-    if(params == 'list'){
+    if(params == 'welcome'){
 
-        return '#container'
+        return '#welcome'
     }
 
-    if(params == 'ranking'){
+    if(params == 'login'){
 
-        return '#container-ranking'
+        return '#main-enter'
     }
 
-    if(params == 'profile'){
+    if(params == 'register'){
 
-        return '#main-profile'
+        return '#main-enter'
     }
 }

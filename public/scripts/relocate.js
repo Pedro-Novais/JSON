@@ -2,13 +2,14 @@ import { InteractorList } from "./list/interactor.js"
 import { InteractorRanking } from "./ranking/interactor.js"
 import { InteractorProfile } from "./profile/interactor.js"
 import { ChangeView } from "./nChangeView.js"
+import { ChangeViewOut } from "./nChangeViewOut.js"
 import { Responsive } from "./responsive/responsive.js"
 import { modal } from "./utils/modals_views.js"
 
 class Relocated {
 
     builder_page() {
-   
+     
         const dir = window.location.pathname
 
         const dir_name = convert_url_to_params(dir)
@@ -20,7 +21,7 @@ class Relocated {
             main.setAttribute('identifier', dir_name)
             main.innerHTML = modal[dir_name]
 
-            new ChangeView(dir_name, '#container')
+            new ChangeView(dir_name)
             new InteractorList()
 
         }
@@ -30,7 +31,7 @@ class Relocated {
             main.setAttribute('identifier', dir_name)
             main.innerHTML = modal[dir_name]
 
-            new ChangeView(dir_name, '#container-ranking')
+            new ChangeView(dir_name)
             new InteractorRanking()
 
         }
@@ -40,15 +41,35 @@ class Relocated {
             main.setAttribute('identifier', 'profile')
             main.innerHTML = modal['profile']
 
-            new ChangeView(dir_name, '#container-profile')
+            new ChangeView(dir_name)
             new InteractorProfile()
+
+        }
+
+        else if(dir_name == 'welcome'){
+            
+            main.setAttribute('identifier', 'welcome')
+            main.innerHTML = modal[dir_name]
+
+            new ChangeViewOut(dir_name)
 
         }
 
         else if(dir_name == 'login'){
 
             main.setAttribute('identifier', 'login')
-            main.innerHTML = modal['login']
+            main.innerHTML = modal[dir_name]
+
+            new ChangeViewOut(dir_name)
+
+        }
+
+        else if(dir_name == 'register'){
+
+            main.setAttribute('identifier', 'register')
+            main.innerHTML = modal[dir_name]
+
+            new ChangeViewOut(dir_name)
 
         }
     }
@@ -94,9 +115,18 @@ function convert_url_to_params(url) {
 
         return 'personalizations'
     }
+    else if(url == '/welcome'){
+
+        return 'welcome'
+    }
     else if(url == '/login'){
 
         return 'login'
+    }
+
+    else if(url == '/register'){
+
+        return 'register'
     }
 }
 
