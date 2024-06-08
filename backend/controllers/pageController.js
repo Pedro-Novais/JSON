@@ -31,7 +31,7 @@ const pageController = {
     pageLogin: async (req, res) => {
         try {
 
-            res.render('initial')
+            res.render('pages/pattern_extern')
 
         } catch (error) {
             console.log(error)

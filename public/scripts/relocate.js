@@ -44,6 +44,13 @@ class Relocated {
             new InteractorProfile()
 
         }
+
+        else if(dir_name == 'login'){
+
+            main.setAttribute('identifier', 'login')
+            main.innerHTML = modal['login']
+
+        }
     }
 
     get_width(){
@@ -86,6 +93,10 @@ function convert_url_to_params(url) {
     else if(url == '/personalizations' || url == '/personalizations?type=email' || url == '/personalizations?type=password'){
 
         return 'personalizations'
+    }
+    else if(url == '/login'){
+
+        return 'login'
     }
 }
 

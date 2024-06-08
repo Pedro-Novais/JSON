@@ -2235,6 +2235,9 @@ body footer p {
     min-width: 32vw;
     text-align: center;
   }
+  body .popup {
+    width: 80%;
+  }
 }
 @media screen and (max-width: 600px) {
   body {
@@ -2288,7 +2291,7 @@ body footer p {
     width: 100%;
   }
   body main #container-ranking {
-    max-height: 550px;
+    max-height: 600px;
     width: 94%;
     animation: msgAddTask 0.5s ease;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
