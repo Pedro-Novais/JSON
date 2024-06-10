@@ -14,13 +14,13 @@ const loginController = {
             const user = await UserModel.findOne({ email }).select('+password');
 
             if (!user) {
-                return res.status(404).json({ msg: 'Email e/ou senha inseridos estão incorretos' });
+                return res.status(401).json({ msg: 'Email e/ou senha inseridos estão incorretos!' });
             }
 
             const isPasswordValid = await bcrypt.compare(password, user.password);
-     
+
             if (!isPasswordValid) {
-                return res.status(401).json({ msg: 'Email e/ou senha inseridos estão incorretos' });
+                return res.status(401).json({ msg: 'Email e/ou senha inseridos estão incorretos!' });
             }
 
             const secret = process.env.SECRET
@@ -31,9 +31,9 @@ const loginController = {
                 },
                 secret
             )
-            
+
             res.status(200).json({ token: token, msg: 'Login bem-sucedido' });
-            
+
         } catch (error) {
             console.log(error)
         }

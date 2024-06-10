@@ -1,3 +1,4 @@
+import { InteractorLogin } from "./login/interactor.js"
 import { InteractorList } from "./list/interactor.js"
 import { InteractorRanking } from "./ranking/interactor.js"
 import { InteractorProfile } from "./profile/interactor.js"
@@ -61,6 +62,7 @@ class Relocated {
             main.innerHTML = modal[dir_name]
 
             new ChangeViewOut(dir_name)
+            new InteractorLogin()
 
         }
 

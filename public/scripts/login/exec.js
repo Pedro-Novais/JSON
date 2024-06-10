@@ -1,3 +1,3 @@
-import { Login } from "./interactor.js";
+import { InteractorLogin } from "./interactor.js";
 
-new Login()
+new InteractorLogin()
