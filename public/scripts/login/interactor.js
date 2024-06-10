@@ -48,7 +48,7 @@ export class InteractorLogin {
             return false
         }
 
-        const token = get_token()
+        const token = get_token(true)
         const data = {
             email: email.value,
             password: password.value
@@ -64,9 +64,9 @@ export class InteractorLogin {
         }
 
         if(response.status == 200){
-
+        
             localStorage.setItem('token', response.responseData.token)
-            new PopUpGlobal('#main-enter', 'Informação!', `${response.responseData.msg}`, 750, API.url_view_list)
+            new PopUpGlobal('#main-enter', 'Informação!', `${response.responseData.msg}`, 1000, API.url_view_list)
         
         }
     }

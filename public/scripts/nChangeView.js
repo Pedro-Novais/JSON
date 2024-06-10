@@ -1,4 +1,5 @@
 import { change_view } from "./utils/changeView.js"
+import { SignOut } from "./singn-out/interactor.js"
 import { API } from "./utils/endPoints.js"
 
 export class ChangeView {
@@ -35,10 +36,7 @@ export class ChangeView {
             
         }
 
-        LINK_OUT.addEventListener('click', async () => {
-            //change_view('/sign-out')
-        }
-        )
+        LINK_OUT.addEventListener('click', this.change_page_out)
     }
 
     enabled_events(){
@@ -69,6 +67,12 @@ export class ChangeView {
     change_page_ranking(){
 
         change_view(API.url_view_ranking)
+
+    }
+
+    change_page_out(){
+
+        new SignOut()
 
     }
 }

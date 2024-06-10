@@ -140,6 +140,7 @@ body {
         border-radius: 1em;
         color: $white;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+        padding-bottom: .7em;
 
         .icon-close{
             position: absolute;
@@ -179,6 +180,45 @@ body {
                 font-size: 1.1rem;
                 // font-weight: 600;
                 margin-top: calc(15%);
+            }
+        }
+
+        .container-buttons{
+            width: 100%;
+            height: 25%;
+            @include container;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .btn-popup{
+                @include container;
+                justify-content: center;
+                text-align: center;
+                width: 40%;
+                height: 100%;
+                border-radius: .5em;
+                background-color: $details;
+            }
+
+            .btn-popup:hover{
+
+                cursor: pointer;
+            }
+
+            #btn-cancel{
+                background-color: #ff0000d5;
+            }
+
+            #btn-confirm{
+                background-color: #2aa72ab2;
+            }
+
+            #btn-cancel:hover{
+                background-color: #ff0000;
+            }
+
+            #btn-confirm:hover{
+                background-color: #2aa72a;
             }
         }
         
