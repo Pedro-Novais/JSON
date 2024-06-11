@@ -1,10 +1,10 @@
 import { BuilderModalsFromTask } from "./builderModals.js"
 import { get_json } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
-import { alertAddTask } from "../../utils/modals.js"
 import { remove_task } from "./utils/remove_tasks.js"
 import { reset_priority } from "./utils/reset_priority.js"
 import { API } from "../../utils/endPoints.js"
+import { modal as modal_alert } from "./utils/modals.js"
 
 export class BuilderTasks {
 
@@ -34,7 +34,7 @@ export class BuilderTasks {
         if (tasks.length == 0) {
 
             const container = document.querySelector('#task-made')
-            container.innerHTML = alertAddTask
+            container.innerHTML = modal_alert.alert_add_task
 
         } else {
 

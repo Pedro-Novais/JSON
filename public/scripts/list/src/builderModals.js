@@ -1,11 +1,11 @@
 import { BuilderTasks } from "./builderTasks.js"
 import { PriorityActions, PriorityHover, get_priority } from "./utils/actions_priority.js"
-import { modal_finish_cancel, modal_edit } from "../../utils/modals.js"
 import { delete_req, put, get_json } from "../../utils/functionsReq.js"
 import { get_token } from "../../utils/getToken.js"
 import { API } from "../../utils/endPoints.js"
+import { modal as modals_actions } from "./utils/modals.js"
 
-export class BuilderModalsFromTask {
+export class BuilderModalsFromTask { 
 
     finish_task(task) {
 
@@ -31,7 +31,7 @@ export class BuilderModalsFromTask {
 
         modal.setAttribute('class', 'modal')
         modal.setAttribute('id', 'modal-remove')
-        modal.innerHTML = modal_finish_cancel
+        modal.innerHTML = modals_actions.modal_finish_cancel
         main.appendChild(modal)
 
         const title = document.querySelector('#title-determinate')
@@ -103,7 +103,7 @@ export class BuilderModalsFromTask {
 
         modal.setAttribute('class', 'modal')
         modal.setAttribute('id', 'modal-edit')
-        modal.innerHTML = modal_edit
+        modal.innerHTML = modals_actions.modal_edit
 
         main.appendChild(modal)
 
