@@ -37,7 +37,6 @@ export class ViewProfileFromUser{
             document.querySelector('#other-info-task-finished'),
             document.querySelector('#other-info-task-canceled'),
             document.querySelector('#other-text-user-description'),
-            document.querySelector('#other-text-user-medias'),
         ]
 
         const date = formatedDate(user.date)
@@ -57,10 +56,9 @@ export class ViewProfileFromUser{
             user.taskFinished,
             user.taskCanceled,
             description,
-            "Adição em breve"
         ]
 
-        for(let i = 0; i < 9; i++){
+        for(let i = 0; i < element.length; i++){
 
             element[i].innerHTML = values[i]
 

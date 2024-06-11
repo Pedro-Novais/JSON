@@ -1243,31 +1243,57 @@ body .container-profile-user .container-infos-user .container-second-infos #user
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
-  height: 80%;
+  height: 90vh;
+  padding: 0.2em;
   overflow: auto;
 }
-body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general {
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
   width: 50%;
   height: 100%;
 }
-body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general .container-name-infos-general {
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  justify-content: space-between;
+  border: solid 1.5px rgba(255, 255, 255, 0.3764705882);
+  border-radius: 1em;
+  padding: 0.5em;
+  width: 90%;
+  height: 30%;
   white-space: nowrap;
+  overflow: hidden;
+  transition: 0.2s;
+  text-decoration: none;
 }
-body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general .text-infos-general {
-  margin-left: 5px;
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .icons {
+  height: 20px;
+}
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .box-name-socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  padding: 1px;
+}
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .name-socials {
+  color: #D9D9D9;
+}
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social:hover {
+  background-color: rgba(255, 255, 255, 0.2549019608);
+  border: none;
+  cursor: pointer;
 }
 body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general::-webkit-scrollbar {
   width: 6px;
@@ -1283,7 +1309,7 @@ body .container-profile-user .container-infos-user .container-second-infos .box-
   align-items: center;
   flex-direction: column;
   width: 49%;
-  max-height: 35vh;
+  max-height: 30vh;
   min-height: 30vh;
   background-color: #034AA6;
   color: #D9D9D9;
