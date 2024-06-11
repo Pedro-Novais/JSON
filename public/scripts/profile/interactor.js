@@ -66,7 +66,7 @@ export class InteractorProfile {
     }
 
     insert_view() {
-
+        
         const dir = window.location.pathname
         const container = document.querySelector('#view-infos-unique')
 

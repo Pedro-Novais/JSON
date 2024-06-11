@@ -107,7 +107,14 @@ export class Responsive {
         })
 
         LINK_OUT.addEventListener('click', async () => {
-            console.log('teste')
+            
+            div_bar.style.animation = "closeBar .3s ease-out"
+
+                setTimeout(() => {
+                    new ChangeView().change_page_out()
+                    div_bar.remove()
+                }, 250)
+
         }
         )
     }

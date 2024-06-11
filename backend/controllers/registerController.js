@@ -114,7 +114,7 @@ const registerController = {
 
                 return res
                         .status(201)
-                        .json({msg: "Código de confirmação criado com sucesso" })
+                        .json({msg: `Um novo código de confirmação foi enviado ao seu email: ${existingUserConfirmation.email}` })
             }
     
             send(code, req)

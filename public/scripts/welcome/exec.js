@@ -1,3 +1,3 @@
-import { Welcome } from "./interactor.js";
+import { InteractorWelcome } from "./interactor.js";
 
-new Welcome()
+new InteractorWelcome()

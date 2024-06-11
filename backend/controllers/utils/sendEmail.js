@@ -19,11 +19,11 @@ async function send(code, req){
         text: `Seu código de confirmação é: ${code}`
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //         return console.log(error);
+    //     }
+    // });
 }
 
 module.exports = {send}

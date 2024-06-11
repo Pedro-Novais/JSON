@@ -60,7 +60,7 @@ export class ChangeViewOut{
     }
 
     change_page_register(){
-
+        
         change_view(API.url_register)
 
     }

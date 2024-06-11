@@ -1,4 +1,6 @@
+import { InteractorWelcome } from "./welcome/interactor.js"
 import { InteractorLogin } from "./login/interactor.js"
+import { InteractorRegister } from "./register/interactor.js"
 import { InteractorList } from "./list/interactor.js"
 import { InteractorRanking } from "./ranking/interactor.js"
 import { InteractorProfile } from "./profile/interactor.js"
@@ -53,6 +55,7 @@ class Relocated {
             main.innerHTML = modal[dir_name]
 
             new ChangeViewOut(dir_name)
+            new InteractorWelcome()
 
         }
 
@@ -72,12 +75,13 @@ class Relocated {
             main.innerHTML = modal[dir_name]
 
             new ChangeViewOut(dir_name)
+            new InteractorRegister()
 
         }
     }
 
     get_width(){
-
+        
         const width = window.innerWidth
 
         if(width < 800){
@@ -126,14 +130,14 @@ function convert_url_to_params(url) {
         return 'login'
     }
 
-    else if(url == '/register'){
-
+    else if(url == '/register' || url == '/register?insert_code=true'){
+        
         return 'register'
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
- 
+    
     const instance = new Relocated();
 
     instance.builder_page()

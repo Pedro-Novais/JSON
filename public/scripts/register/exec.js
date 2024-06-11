@@ -1,3 +1,3 @@
-import { Register } from "./interactor.js";
+import { InteractorRegister } from "./interactor.js";
 
-new Register()
+new InteractorRegister()

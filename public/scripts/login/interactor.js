@@ -3,11 +3,13 @@ import { valid_email } from "../utils/general.js"
 import { API } from "../utils/endPoints.js"
 import { post } from "../utils/functionsReq.js"
 import { get_token } from "../utils/getToken.js"
+import { mark_header } from "../utils/markHeader.js"
 
 export class InteractorLogin {
 
     constructor() {
 
+        mark_header('login')
         this.action_buttons()
     }
 
