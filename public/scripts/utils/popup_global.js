@@ -1,4 +1,4 @@
-import { popup_global } from "./modals.js";
+import { modal } from "./modals_views.js";
 import { API } from "./endPoints.js";
 
 export class PopUpGlobal {
@@ -23,7 +23,7 @@ export class PopUpGlobal {
         const div = document.createElement('div')
 
         div.setAttribute('class', 'popup')
-        div.innerHTML = popup_global
+        div.innerHTML = modal.popup_g
         div.style.pointerEvents = 'auto'
 
         body.appendChild(div)
