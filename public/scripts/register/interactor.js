@@ -26,8 +26,8 @@ export class InteractorRegister {
         const email = document.querySelector('#value-email')
         const password = document.querySelector('#value-password')
 
-        name.value = "Teste"
-        email.value = "test@gmail.com"
+        name.value = "novo"
+        email.value = "novo@gmail.com"
         password.value = "teste123$"
 
         const name_trim = name.value.trim()
