@@ -4,7 +4,7 @@ const { Schema } = mongoose
 
 const statisticSchemaDefault = new mongoose.Schema({
     created: {
-        type: Number,
+        type: Number, 
         required: true
     },
     finished: {

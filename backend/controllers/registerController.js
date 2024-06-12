@@ -30,29 +30,42 @@ const registerController = {
                 priorityOne: {
                     created: 0,
                     finished: 0,
-                    canceled: 0
+                    canceled: 0,
                 },
                 priorityTwo: {
                     created: 0,
                     finished: 0,
-                    canceled: 0
+                    canceled: 0,
                 },
                 priorityThree: {
                     created: 0,
                     finished: 0,
-                    canceled: 0
+                    canceled: 0,
                 }
             }
 
             const persistStatisticDefault = {
                 created: 0,
                 finished: 0,
-                canceled: 0
+                canceled: 0,
             }
 
             const configurations = {
                 orderPriority: false,
-                usersCanViewStatistic: false
+                usersCanViewStatistic: false,
+            }
+
+            const socialMidiaDefault = {
+                nameSocialMidia: '-',
+                urlSocialMidia: '',
+                state: false,
+            }
+
+            const socialMidias = {
+                instagram: socialMidiaDefault,
+                facebook: socialMidiaDefault,
+                linkedin: socialMidiaDefault,
+                twitter: socialMidiaDefault,
             }
 
             const newUser = {
@@ -60,10 +73,11 @@ const registerController = {
                 email: email,
                 password: password,
                 description: " ",
-                ranking: " - ",
+                ranking: " 0 ",
                 configurations: configurations,
                 statistic: statisticDefault,
-                persistStatistic: persistStatisticDefault
+                persistStatistic: persistStatisticDefault,
+                socialMidias: socialMidias
             }
 
             const response = await UserModel.create(newUser)

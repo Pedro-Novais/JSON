@@ -106,6 +106,9 @@ const userController = {
             if (req.body.description) {
                 updatePatch.description = req.body.description
             }
+            if(req.body.socialMidia){
+                updatePatch.socialMidias = req.body.socialMidia
+            }
 
             const updateUser = await UserModel.findByIdAndUpdate(id, updatePatch)
 
