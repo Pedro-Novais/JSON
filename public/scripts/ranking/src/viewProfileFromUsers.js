@@ -4,7 +4,7 @@ import { formatedDate } from "../../utils/general.js";
 export class ViewProfileFromUser{
 
     constructor(user){
-        console.log(user)
+    
         this.create_base_view(user)
         
     }
@@ -64,7 +64,10 @@ export class ViewProfileFromUser{
 
         }
 
-        this.builder_social_midias(user.socialMidias)
+        if(user.socialMidias){
+
+            this.builder_social_midias(user.socialMidias)
+        }
     }
 
     builder_social_midias(midias){
