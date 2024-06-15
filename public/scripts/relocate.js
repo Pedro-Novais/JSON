@@ -121,7 +121,12 @@ function convert_url_to_params(url) {
 
         return 'personalizations'
     }
-    else if(url == '/welcome'){
+    else if(url == '/welcome' || url == '/'){
+
+        if(url == '/'){
+            
+            history.pushState({}, '', 'welcome')
+        }
 
         return 'welcome'
     }

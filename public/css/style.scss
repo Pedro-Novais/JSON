@@ -127,7 +127,7 @@ body {
     align-items: center;
     background: linear-gradient(to right, $background-one, $details);
 
-    .popup{
+    .popup {
         position: absolute;
         margin-top: calc(100vh/2 - 6rem);
         z-index: 50;
@@ -142,7 +142,7 @@ body {
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
         padding-bottom: .7em;
 
-        .icon-close{
+        .icon-close {
             position: absolute;
             align-self: flex-end;
             margin-top: 8px;
@@ -150,11 +150,11 @@ body {
             height: 22px;
         }
 
-        .icon-close:hover{
+        .icon-close:hover {
             cursor: pointer;
         }
 
-        .title{
+        .title {
             background-color: $details;
             width: 100%;
             height: 20%;
@@ -162,35 +162,35 @@ body {
             border-top-left-radius: 1em;
             border-top-right-radius: 1em;
 
-            .style-title{
+            .style-title {
                 font-size: 1.1rem;
                 font-weight: 600;
                 margin-top: 8px;
             }
         }
 
-        .container-alert{
+        .container-alert {
             background-color: $priority;
             width: 100%;
             height: 75%;
             text-align: center;
             padding: .5em;
 
-            .style-container{
+            .style-container {
                 font-size: 1.1rem;
                 // font-weight: 600;
                 margin-top: calc(15%);
             }
         }
 
-        .container-buttons{
+        .container-buttons {
             width: 100%;
             height: 25%;
             @include container;
             flex-direction: row;
             justify-content: space-around;
 
-            .btn-popup{
+            .btn-popup {
                 @include container;
                 justify-content: center;
                 text-align: center;
@@ -200,28 +200,28 @@ body {
                 background-color: $details;
             }
 
-            .btn-popup:hover{
+            .btn-popup:hover {
 
                 cursor: pointer;
             }
 
-            #btn-cancel{
+            #btn-cancel {
                 background-color: #ff0000d5;
             }
 
-            #btn-confirm{
+            #btn-confirm {
                 background-color: #2aa72ab2;
             }
 
-            #btn-cancel:hover{
+            #btn-cancel:hover {
                 background-color: #ff0000;
             }
 
-            #btn-confirm:hover{
+            #btn-confirm:hover {
                 background-color: #2aa72a;
             }
         }
-        
+
     }
 
     .style-bar-options {
@@ -766,6 +766,130 @@ body {
                                 cursor: pointer;
                             }
                         }
+
+                        .container-personalization-midias {
+                            @include container;
+                            justify-content: space-around;
+                            align-items: flex-end;
+                            // background-color: #2aa72a;
+                            width: 80%;
+
+                            .icon-midias {
+                                margin-top: 10px;
+                                height: 30px;
+                                border: solid 1px #ffffff60;
+                                width: 20%;
+                                border-radius: 5px;
+                                padding: 4px;
+                                transition: .2s;
+                            }
+
+                            .icon-midias:hover {
+                                cursor: pointer;
+                                border: none;
+                                background-color: #ffffff41;
+                            }
+                        }
+                    }
+
+                }
+
+                .popup-personalization-midias {
+                    position: absolute;
+                    width: 63%;
+                    height: 90%;
+                    @include container;
+                    justify-content: center;
+
+                    .container-popup-midias {
+                        @include container;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: flex-start;
+                        background-color: $details;
+                        width: 45%;
+                        min-height: 65%;
+                        padding: .5em;
+                        border-radius: 1em;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                    }
+
+                    .title-popup {
+                        align-self: center;
+                        font-size: 1.2rem;
+                        color: $white;
+                        font-weight: 600;
+                        letter-spacing: 2px;
+                    }
+
+                    .title-input-personalization{
+                        font-size: 1.1rem;
+                        color: #D9D9D9;
+                        font-weight: 900;
+                        letter-spacing: 2px;
+                    }
+                    
+                    .inputs-personalization {
+                        background-color: transparent;
+                        width: 80%;
+                        min-height: 2rem;
+                        border-style: none;
+                        outline: none;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        border-bottom: solid 2px #0487D9;
+                        color: #D9D9D9;
+                        padding: 0.2em;
+                        transition: 0.2s;
+                        margin-bottom: 20px;
+                    }
+
+                    .inputs-personalization::placeholder{
+                        opacity: .4;
+                        color: $white;
+                    }
+
+                    .box-customization[type='midias'] {
+                        width: 120%;
+                    }
+
+                    .container-btn {
+                        align-self: center;
+                        @include container;
+                        justify-content: space-around;
+                        width: 100%;
+                        height: 50px;
+
+                        .btn {
+                            @include container;
+                            justify-content: center;
+                            background-color: #ec530c;
+                            width: 45%;
+                            height: 100%;
+                            border-radius: .5em;
+
+                        }
+
+                        #btn-cancel {
+                            background-color: $hover-btn-cancel;
+                            opacity: .8;
+                        }
+
+                        #btn-confirm {
+                            background-color: $hover-btn-ok;
+                            opacity: .8;
+                        }
+
+                        #btn-cancel:hover {
+                            cursor: pointer;
+                            opacity: 1;
+
+                        }
+
+                        #btn-confirm:hover {
+                            cursor: pointer;
+                            opacity: 1;
+                        }
                     }
                 }
 
@@ -878,7 +1002,7 @@ body {
                         }
                     }
 
-                    .style-info-email-send{
+                    .style-info-email-send {
 
                         font-size: 1.1rem;
                         color: $white;
@@ -1261,17 +1385,18 @@ body {
                         padding: .2em;
                         overflow: auto;
 
-                        .box-intern{
+                        .box-intern {
                             @include container;
                             flex-direction: column;
                             justify-content: space-around;
                             width: 50%;
                             height: 100%;
 
-                            .line-social{
+                            .line-social {
                                 @include container;
                                 justify-content: space-between;
-                                border: solid 1.5px #ffffff60;;
+                                border: solid 1.5px #ffffff60;
+                                ;
                                 border-radius: 1em;
                                 padding: .5em;
                                 width: 90%;
@@ -1281,25 +1406,26 @@ body {
                                 transition: .2s;
                                 text-decoration: none;
 
-                                .icons{
+                                .icons {
                                     height: 20px;
                                 }
 
-                                .box-name-socials{
+                                .box-name-socials {
                                     @include container;
                                     width: 80%;
                                     padding: 1px;
                                     text-transform: capitalize;
                                 }
-                                .name-socials{
+
+                                .name-socials {
                                     color: $white;
                                 }
                             }
 
-                            .line-social:hover{
+                            .line-social:hover {
                                 background-color: #ffffff41;
                                 border: none;
-                                cursor:pointer;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -2481,9 +2607,9 @@ body {
             }
         }
 
-        .popup{
+        .popup {
             width: 80%;
-            
+
         }
     }
 }

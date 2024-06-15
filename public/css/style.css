@@ -733,6 +733,129 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .box-view-info-icon img:hover {
   cursor: pointer;
 }
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .container-personalization-midias {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 80%;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .container-personalization-midias .icon-midias {
+  margin-top: 10px;
+  height: 30px;
+  border: solid 1px rgba(255, 255, 255, 0.3764705882);
+  width: 20%;
+  border-radius: 5px;
+  padding: 4px;
+  transition: 0.2s;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .container-personalization-midias .icon-midias:hover {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2549019608);
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias {
+  position: absolute;
+  width: 63%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-popup-midias {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #034AA6;
+  width: 45%;
+  min-height: 65%;
+  padding: 0.5em;
+  border-radius: 1em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .title-popup {
+  align-self: center;
+  font-size: 1.2rem;
+  color: #D9D9D9;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .title-input-personalization {
+  font-size: 1.1rem;
+  color: #D9D9D9;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .inputs-personalization {
+  background-color: transparent;
+  width: 80%;
+  min-height: 2rem;
+  border-style: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: solid 2px #0487D9;
+  color: #D9D9D9;
+  padding: 0.2em;
+  transition: 0.2s;
+  margin-bottom: 20px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .inputs-personalization::-moz-placeholder {
+  opacity: 0.4;
+  color: #D9D9D9;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .inputs-personalization::placeholder {
+  opacity: 0.4;
+  color: #D9D9D9;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .box-customization[type=midias] {
+  width: 120%;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  background-color: #ec530c;
+  width: 45%;
+  height: 100%;
+  border-radius: 0.5em;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-cancel {
+  background-color: #e63e3e;
+  opacity: 0.8;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-confirm {
+  background-color: #0487D9;
+  opacity: 0.8;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-cancel:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-confirm:hover {
+  cursor: pointer;
+  opacity: 1;
+}
 body #main-profile .view-infos .container-personalization-infos-user .box-alert-personalization-initial {
   align-self: center;
   display: flex;
