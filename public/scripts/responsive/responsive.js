@@ -14,7 +14,7 @@ export class Responsive {
         const bar = document.querySelector('#bar-view-options')
 
         bar.addEventListener('click', () => {
-
+            
             const div_bar = document.createElement('div')
 
             div_bar.setAttribute('id', 'bar-options')

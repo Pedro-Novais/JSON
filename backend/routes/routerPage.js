@@ -5,7 +5,7 @@ const pageController = require('../controllers/pageController')
 
 router
     .route('/')
-    .get((req, res) => pageController.verification(req, res))
+    .get((req, res) => pageController.pageWelcome(req, res))
 
 router
     .route('/login')

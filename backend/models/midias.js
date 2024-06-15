@@ -14,7 +14,8 @@ const midiaInfoSchema = new Schema({
         type: Boolean,
     }
 }, {
-    required: true
+    required: true,
+    _id: false
 })
 
 const midiaSchema = new Schema({
@@ -31,7 +32,8 @@ const midiaSchema = new Schema({
         type: midiaInfoSchema,
     }
 }, {
-    required: false
+    required: false,
+    _id: false
 }
 )
 

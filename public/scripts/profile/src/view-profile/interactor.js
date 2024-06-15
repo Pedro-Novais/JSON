@@ -25,7 +25,6 @@ export class InteractorProfileUser {
             return false
         }
 
-
         this.builder_profile(response.responseData)
     }
 
@@ -64,6 +63,34 @@ export class InteractorProfileUser {
         task_canceled.innerHTML = infos.persistStatistic.canceled
 
         description.innerHTML = description_pattern
+
+        this.builder_social_midias(infos.socialMidias)
+    }
+
+    builder_social_midias(midias){
+        const midias_elements = ['instagram', 'facebook', 'linkedin', 'twitter']
+
+        midias_elements.forEach(element => {
+
+            if(midias[element].state){
+
+                const data = midias[element]
+                
+                const line_element = document.querySelector(`[midia = ${element}]`)
+                const text_element = document.querySelector(`#user-${element}`)
+                
+                text_element.innerHTML = data.nameSocialMidia
+                
+                if(data.urlSocialMidia !== ""){
+
+                    line_element.setAttribute('href', data.urlSocialMidia)
+                    line_element.setAttribute('target', '_blank')
+                    line_element.setAttribute('rel', 'noopener noreferrer')
+
+                }
+
+            }
+        })
     }
 
     view_page_personalization() {
