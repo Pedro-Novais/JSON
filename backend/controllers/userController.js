@@ -32,15 +32,15 @@ const userController = {
         }
     },
 
-    get_infos_personalization: async (req, res) =>{
+    get_infos_personalization: async (req, res) => {
         try {
-            
+
             const id = req.userId
 
-            const user = await UserModel.findById(id).select('-_id name description email')
+            const user = await UserModel.findById(id).select('-_id name description email socialMidias')
 
-            if(!user){
-                res.status(404).json({msg: 'Úsario não encontrado'})
+            if (!user) {
+                res.status(404).json({ msg: 'Úsario não encontrado' })
             }
 
             user.password = '**********'
@@ -106,8 +106,25 @@ const userController = {
             if (req.body.description) {
                 updatePatch.description = req.body.description
             }
-            if(req.body.socialMidia){
-                updatePatch.socialMidias = req.body.socialMidia
+            if (req.body.socialMidia) {
+                const user = await UserModel.findById(id)
+
+                user.socialMidias[req.body.socialMidia] = req.body.update
+                console.log(user.socialMidias)
+
+                try {
+
+                    user.save()
+
+                    res
+                        .status(200)
+                        .json({ updatePatch, msg: "Atualização feita com sucesso" })
+
+                } catch(error){
+
+                    console.log(error)
+                }
+
             }
 
             const updateUser = await UserModel.findByIdAndUpdate(id, updatePatch)

@@ -787,6 +787,7 @@ body #main-profile .view-infos .container-personalization-infos-user .popup-pers
   color: #D9D9D9;
   font-weight: 600;
   letter-spacing: 2px;
+  text-transform: capitalize;
 }
 body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .title-input-personalization {
   font-size: 1.1rem;

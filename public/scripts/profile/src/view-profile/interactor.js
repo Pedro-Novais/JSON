@@ -68,6 +68,11 @@ export class InteractorProfileUser {
     }
 
     builder_social_midias(midias){
+
+        if(!midias){
+            return false
+        }
+
         const midias_elements = ['instagram', 'facebook', 'linkedin', 'twitter']
 
         midias_elements.forEach(element => {

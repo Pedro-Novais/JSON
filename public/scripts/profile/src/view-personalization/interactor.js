@@ -5,6 +5,7 @@ import { modal } from "../../../utils/modals_views.js"
 import { API } from "../../../utils/endPoints.js"
 import { PersonalizationEmail } from "./personalization_email.js"
 import { PersonalizationPassword } from "./personalization_password.js"
+import { PopUpGlobal } from "../../../utils/popup_global.js"
 
 export class InteractorPersonalization {
 
@@ -19,12 +20,15 @@ export class InteractorPersonalization {
         const token = get_token()
 
         const response = await get_json(API.url_get_user_personalization, token)
-
+   
         if (!response.ok) {
-            console.error('Algum erro ocorreu ao selecionar as infomações de personalização')
+          
+            new PopUpGlobal('#container-profile', 'Erro!', 'Algum erro desconhecido ocorreu ao carregar suas informações!')
             return false
-        }
 
+        }
+        
+        this.action_btn_social_midias(response.responseData.socialMidias)
         this.builder_infos_div(response.responseData)
         this.builder_click_convert_input()
     }
@@ -132,7 +136,8 @@ export class InteractorPersonalization {
 
         if (!response.ok) {
 
-            console.error('Erro ao atualizar as informações do perfil')
+            new PopUpGlobal('#container-profile', 'Erro!', 'Algum erro desconhecido ocorreu ao atualizar suas informações!')
+            return false
 
         } else {
 
@@ -140,6 +145,84 @@ export class InteractorPersonalization {
 
         }
 
+    }  
+
+    action_btn_social_midias(midia){
+
+        const elements = document.querySelectorAll('.icon-midias')
+
+        elements.forEach(element => {
+
+            element.addEventListener('click', () => {
+
+                const type = element.getAttribute('id')
+    
+                if(!type){
+    
+                    new PopUpGlobal('#container-profile', 'Erro!', 'Tente novamente mais tarde!')
+                    return false
+                }
+
+                this.view_popup_midias()
+                this.interactor_midias(type, midia[type])
+
+            })
+        })
+    }
+
+    view_popup_midias(){
+
+        const element_father = document.querySelector('.container-personalization-infos-user')
+        const element_out = document.querySelector('.container-personalizations')
+
+        element_out.style.opacity = '.3'
+
+        const div = document.createElement('div')
+        div.setAttribute('class', 'popup-personalization-midias')
+        div.innerHTML = modal['popup_midias']
+
+        element_father.appendChild(div)
+    
+    }
+
+    interactor_midias(type, infos){
+
+        const title = document.querySelector('#title-name')
+
+        const name = document.querySelector('#value-midia-personalization')
+        const url = document.querySelector('#value-url-personalization')
+
+        title.innerHTML = type
+
+        console.log(infos)
+      
+        if(infos && infos.state){
+
+            name.value = infos.nameSocialMidia
+            url.value = infos.urlSocialMidia
+
+        }
+
+        this.action_btn_midia(name, url)
+    }
+
+    action_btn_midia(name, url){
+
+        const btn_confirm = document.querySelector('#btn-confirm')
+        const btn_cancel = document.querySelector('#btn-cancel')
+
+        btn_confirm.addEventListener('click', async () => {
+
+        })
+
+        btn_cancel.addEventListener('click', () => {
+
+            const element = document.querySelector('.popup-personalization-midias')
+            const element_out = document.querySelector('.container-personalizations')
+            
+            element_out.style.opacity = 1
+            element.remove()
+        })
     }
 
     action_btn_back() {
