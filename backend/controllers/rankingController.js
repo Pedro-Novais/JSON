@@ -45,6 +45,7 @@ const rankingController = {
                     this.description = user.description
                     this.date = user.createdAt
                     this.position = user.ranking
+                    this.socialMidias = user.socialMidias
                 }
 
             }

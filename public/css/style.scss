@@ -1289,6 +1289,7 @@ body {
                                     @include container;
                                     width: 80%;
                                     padding: 1px;
+                                    text-transform: capitalize;
                                 }
                                 .name-socials{
                                     color: $white;

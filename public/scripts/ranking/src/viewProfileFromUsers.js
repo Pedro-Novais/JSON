@@ -4,7 +4,7 @@ import { formatedDate } from "../../utils/general.js";
 export class ViewProfileFromUser{
 
     constructor(user){
-        
+        console.log(user)
         this.create_base_view(user)
         
     }
@@ -63,6 +63,35 @@ export class ViewProfileFromUser{
             element[i].innerHTML = values[i]
 
         }
+
+        this.builder_social_midias(user.socialMidias)
+    }
+
+    builder_social_midias(midias){
+        
+        const midias_elements = ['instagram', 'facebook', 'linkedin', 'twitter']
+
+        midias_elements.forEach(element => {
+
+            if(midias[element].state){
+
+                const data = midias[element]
+                
+                const line_element = document.querySelector(`[midia = ${element}]`)
+                const text_element = document.querySelector(`#user-${element}`)
+                
+                text_element.innerHTML = data.nameSocialMidia
+                
+                if(data.urlSocialMidia !== ""){
+
+                    line_element.setAttribute('href', data.urlSocialMidia)
+                    line_element.setAttribute('target', '_blank')
+                    line_element.setAttribute('rel', 'noopener noreferrer')
+
+                }
+
+            }
+        })
     }
 
     btn_action(){

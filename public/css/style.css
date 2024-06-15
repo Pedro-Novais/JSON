@@ -1286,6 +1286,7 @@ body .container-profile-user .container-infos-user .container-second-infos #user
   align-items: center;
   width: 80%;
   padding: 1px;
+  text-transform: capitalize;
 }
 body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .name-socials {
   color: #D9D9D9;
