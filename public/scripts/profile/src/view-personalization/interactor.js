@@ -10,7 +10,7 @@ import { PopUpGlobal } from "../../../utils/popup_global.js"
 export class InteractorPersonalization {
 
     constructor() {
-        
+
         this.call_verify_name = this.call_verify_name.bind(this);
         this.call_verify_description = this.call_verify_description.bind(this);
         this.verify_updates_from_infos = this.verify_updates_from_infos.bind(this);
@@ -65,7 +65,7 @@ export class InteractorPersonalization {
 
                     const show_input = document.querySelector(`#value-${type_personalziation}-personalization`)
                     const icon_check = document.querySelector(`[identifier-icon-check = '${type_personalziation}']`)
-                    
+
                     if (type_personalziation == 'name') {
                         icon_check.removeEventListener('click', this.call_verify_name)
                     }
@@ -111,7 +111,7 @@ export class InteractorPersonalization {
     }
 
     call_verify_name() {
-        
+
         this.verify_updates_from_infos('name')
     }
 
@@ -131,7 +131,6 @@ export class InteractorPersonalization {
         const new_value = document.querySelector(`#value-${type}-personalization`)
         const new_value_trim = new_value.value.trim()
 
-        console.log(type)
         if (new_value.value == "" || new_value_trim == "") {
 
             new_value.style.borderBottomColor = 'red'
