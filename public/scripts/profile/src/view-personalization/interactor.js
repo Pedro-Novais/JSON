@@ -164,7 +164,7 @@ export class InteractorPersonalization {
                 }
 
                 this.view_popup_midias()
-                this.interactor_midias(type, midia[type])
+                this.interactor_midias(type)
 
             })
         })
@@ -185,7 +185,7 @@ export class InteractorPersonalization {
     
     }
 
-    interactor_midias(type, infos){
+    async interactor_midias(type){
 
         const title = document.querySelector('#title-name')
 
@@ -193,9 +193,20 @@ export class InteractorPersonalization {
         const url = document.querySelector('#value-url-personalization')
 
         title.innerHTML = type
+        
+        const token = get_token()
 
-        console.log(infos)
-      
+        const response = await get_json(API.url_get_user_personalization, token)
+
+        if(!response.ok){
+
+            new PopUpGlobal('#container-profile', 'Erro!', 'Erro ao carregar seus dados!')
+            return false
+
+        }
+
+        const infos = response.responseData.socialMidias[type]
+        
         if(infos && infos.state){
 
             name.value = infos.nameSocialMidia
@@ -203,26 +214,129 @@ export class InteractorPersonalization {
 
         }
 
-        this.action_btn_midia(name, url)
+        this.action_btn_midia(type, name, url)
     }
 
-    action_btn_midia(name, url){
+    action_btn_midia(type, name, url){
 
         const btn_confirm = document.querySelector('#btn-confirm')
         const btn_cancel = document.querySelector('#btn-cancel')
 
         btn_confirm.addEventListener('click', async () => {
 
+            const token = get_token()
+
+            const name_trim = name.value.trim()
+            const url_trim = url.value.trim()
+
+            let data = {}
+
+            if(name_trim == "" && url_trim == ""){
+
+                data = {
+
+                    socialMidia: type,
+                    update: {
+
+                        nameSocialMidia: "",
+                        urlSocialMidia: "",
+                        state: false
+                    }
+                }
+         
+            }
+
+            else if(name_trim !== "" && url_trim == ""){
+
+                data = {
+
+                    socialMidia: type,
+                    update: {
+
+                        nameSocialMidia: name.value,
+                        urlSocialMidia: "",
+                        state: true
+                    }
+                }
+            }
+
+            else if(name_trim == "" && url_trim !== ""){
+
+                new PopUpGlobal('#container-profile', 'Informação!', 'É necessário inserir ao realizar a inserção de um link!')
+                return false
+        
+            }
+
+            else if(name_trim !== "" && url_trim !== ""){
+
+                data = {
+
+                    socialMidia: type,
+                    update: {
+
+                        nameSocialMidia: name.value,
+                        urlSocialMidia: url.value,
+                        state: true
+                    }
+                }
+            }
+
+            if(url_trim !== ""){
+
+                const url_valid = this.validate_url(url.value, type)
+
+                if(!url_valid){
+
+                    new PopUpGlobal('#container-profile', 'Erro!', 'Link para rede social inválido!')
+                    return false
+
+                }
+            }
+
+            const response = await patch(API.url_get_user, data, token)
+
+                if(!response.ok){
+
+                    new PopUpGlobal('#container-profile', 'Erro!', 'Erro ao atualizar seus dados!')
+                    return false
+                }
+
+                this.close_popup_midia()
         })
 
-        btn_cancel.addEventListener('click', () => {
+        btn_cancel.addEventListener('click', this.close_popup_midia)
+    }
 
-            const element = document.querySelector('.popup-personalization-midias')
-            const element_out = document.querySelector('.container-personalizations')
+    validate_url(url, type){
+        try{
             
-            element_out.style.opacity = 1
-            element.remove()
-        })
+            const pare_url = new URL(url)
+    
+            const hostname = pare_url.hostname
+            
+            if (type == 'twitter'){
+
+                return hostname === `www.${type}.com` || hostname === `${type}.com` || hostname === `www.x.com` || hostname === `x.com`
+
+            }
+
+            return hostname === `www.${type}.com` || hostname === `${type}.com`
+
+        }catch(error){
+            
+            console.error(error)
+            return false
+            
+        }
+    }
+
+    close_popup_midia(){
+
+        const element = document.querySelector('.popup-personalization-midias')
+        const element_out = document.querySelector('.container-personalizations')
+        
+        element_out.style.opacity = 1
+        element.remove()
     }
 
     action_btn_back() {

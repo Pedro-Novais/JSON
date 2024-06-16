@@ -110,7 +110,6 @@ const userController = {
                 const user = await UserModel.findById(id)
 
                 user.socialMidias[req.body.socialMidia] = req.body.update
-                console.log(user.socialMidias)
 
                 try {
 
@@ -119,6 +118,8 @@ const userController = {
                     res
                         .status(200)
                         .json({ updatePatch, msg: "Atualização feita com sucesso" })
+
+                    return true
 
                 } catch(error){
 
