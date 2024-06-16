@@ -1,6 +1,7 @@
 import { BuilderTasks } from "./src/builderTasks.js"
 import { AddTask } from "./src/addTasks.js"
 import { AddPriority } from "./src/addPriority.js"
+import { ShowHideEdits } from "./src/show_hide_edits.js"
 import { mark_header } from "../utils/markHeader.js"
 
 export class InteractorList {
@@ -11,6 +12,7 @@ export class InteractorList {
         new AddTask()
         new AddPriority()
         new BuilderTasks()
+        new ShowHideEdits()
 
     }
 }

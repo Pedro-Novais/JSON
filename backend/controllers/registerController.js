@@ -125,7 +125,7 @@ const registerController = {
                 existingUserConfirmation.save()
 
                 send(code, req)
-
+                console.log(code)
                 return res
                         .status(201)
                         .json({msg: `Um novo código de confirmação foi enviado ao seu email: ${existingUserConfirmation.email}` })

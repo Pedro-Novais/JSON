@@ -473,180 +473,6 @@ body {
                 min-height: 70vh;
             }
 
-            //Container para a página de Perfil
-
-            /*.container-profile-user {
-                @include container;
-                flex-direction: column;
-                width: 100%;
-                min-height: 50vh;
-                animation: slideBoxStatistic .5s ease;
-
-                .container-infos-user {
-                    @include container;
-                    flex-direction: column;
-                    justify-content: center;
-                    width: 100%;
-                    max-height: 90%;
-                    border-radius: 1rem;
-                    margin-top: 1em;
-                    padding-bottom: 0.5em;
-                    //box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
-
-                    .container-primary-infos {
-                        @include container;
-                        justify-content: space-between;
-                        align-items: flex-start;
-                        width: 95%;
-                        margin-top: 1em;
-                        border-radius: 1rem;
-
-                        #user-name {
-                            font-size: 1.3rem;
-                            font-weight: 500;
-                            margin-bottom: 1rem;
-                            color: $white;
-                            text-transform: capitalize;
-                        }
-
-                        .box-user-infos {
-                            @include container;
-                            justify-content: space-around;
-                            width: 100%;
-                            height: 100%;
-                            padding: .5em;
-                        }
-
-                        .boxs-infos-user {
-                            @include container;
-                            flex-direction: column;
-                            justify-content: space-between;
-                            width: 40%;
-                            height: 100%;
-
-                            .box-infos {
-                                @include container;
-                                flex-direction: column;
-                                justify-content: center;
-                                min-width: 80%;
-                                min-height: 5vh;
-                                padding: .2em;
-                                border-radius: .5em;
-                                background-color: $details;
-                                color: $white;
-                                box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
-                                font-size: 100%;
-                                letter-spacing: 1px;
-                            }
-                        }
-
-                        .box-description {
-                            @include container;
-                            flex-direction: column;
-                            align-items: center;
-                            width: 100%;
-                            height: 15rem;
-                        }
-
-                        .box-image {
-                            align-self: flex-end;
-                            @include container;
-                            justify-content: center;
-                            width: 10rem;
-                        }
-                    }
-
-                    .container-second-infos {
-                        @include container;
-                        justify-content: space-between;
-                        width: 95%;
-                        margin-top: 1.5em;
-
-                        #user-infos-general {
-                            overflow: hidden;
-
-                            .box-infos-general {
-                                @include container;
-                                justify-content: center;
-                                width: 100%;
-                                height: 80%;
-                                overflow: auto;
-
-                                .division-info-general {
-                                    @include container;
-                                    flex-direction: column;
-                                    justify-content: space-around;
-                                    align-items: flex-start;
-                                    width: 50%;
-                                    height: 100%;
-
-                                    .container-name-infos-general {
-                                        @include container;
-                                        white-space: nowrap;
-
-                                    }
-
-                                    .text-infos-general {
-                                        margin-left: 5px;
-                                    }
-                                }
-                            }
-
-                            .box-infos-general::-webkit-scrollbar {
-                                width: 6px
-                            }
-
-                            .box-infos-general::-webkit-scrollbar-thumb {
-                                background-color: $color-light;
-                                border-radius: 20px;
-                            }
-                        }
-
-                        .box-user-description {
-                            @include container;
-                            flex-direction: column;
-                            width: 49%;
-                            max-height: 35vh;
-                            min-height: 30vh;
-                            background-color: $details;
-                            color: $white;
-                            margin-top: 1em;
-                            padding: 1em;
-                            padding-top: .3em;
-                            border-radius: 1em;
-
-                            h3 {
-                                letter-spacing: 1px;
-                                margin-bottom: 10px;
-                            }
-
-                            #text-user-description {
-                                font-weight: 500;
-                                word-wrap: break-word;
-                                overflow: auto;
-                                text-align: center;
-                            }
-
-                            #text-user-description::-webkit-scrollbar {
-                                width: 6px
-                            }
-
-                            #text-user-description::-webkit-scrollbar-thumb {
-                                background-color: $color-light;
-                                border-radius: 20px;
-                            }
-                        }
-                    }
-                }
-
-                /*#btn-save-user {
-                    //position: absolute;
-                    //bottom: 10px;
-                    width: 8rem;
-                    min-height: 6vh;
-                }
-            }*/
-
             #icon-back {
                 position: absolute;
                 align-self: flex-end;
@@ -678,17 +504,6 @@ body {
                     background-color: $color-light;
                     border-radius: 20px;
                 }
-
-                /*#icon-back {
-                    position: absolute;
-                    align-self: flex-end;
-                    //margin-right: 50px;
-                    height: 30px
-                }
-
-                #icon-back:hover {
-                    cursor: pointer;
-                }*/
 
                 .container-personalizations {
                     @include container;
@@ -1483,12 +1298,6 @@ body {
     //Fim do estilo
 
     #modal-remove {
-        //@include container;
-        //flex-direction: column;
-        //justify-content: space-around;
-        //height: 40vh;
-        //position: relative;
-        //top: 7%;
 
         #task-remove {
 
@@ -1737,69 +1546,11 @@ body {
         min-height: 35rem;
         margin-top: 8rem;
 
-        // .container-popup{
-        //     @include container;
-        //     flex-direction: column;
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 100vh;
-        //     z-index: 1000;
-
-        //     .pop-up{
-
-        //         @include container;
-        //         flex-direction: column;
-        //         justify-content: space-between;
-        //         background-color: $priority;
-        //         min-width: 400px;
-        //         max-width: 400px;
-        //         height: 180px;
-        //         border-radius: 1em;
-        //         color: $white;
-        //         margin-top: 10%;
-        //         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
-
-        //         .icon{
-        //             position: absolute;
-        //             align-self: flex-end;
-        //             height: 25px;
-        //             margin-right: 15px
-        //         }
-
-        //         .icon:hover{
-        //             cursor: pointer;
-        //         }
-
-        //         .info-fixed{
-        //             @include container;
-        //             justify-content: center;
-        //             background-color: $details;
-        //             width: 100%;
-        //             height: 20%;
-        //             text-align: center;
-        //             border-top-right-radius: .5em;
-        //             border-top-left-radius: .5em;
-        //         }
-
-        //         .info-alert{
-        //             @include container;
-        //             justify-content: center;
-        //             width: 100%;
-        //             height: 80%;
-        //             border-bottom-right-radius: .5em;
-        //             border-bottom-left-radius: .5em;
-        //             padding: .8rem;
-        //             text-align: center;
-        //             font-size: 1.1rem;
-        //             font-weight: 600;
-        //         }
-        //     }
-        // }
-
         #container {
             justify-self: center;
             @include container;
             flex-direction: column;
+            justify-content: flex-start;
             width: 100%;
             min-height: 90%;
             padding: 1vw;
@@ -1807,6 +1558,18 @@ body {
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
             animation: slideBoxStatistic .5s ease;
             overflow: hidden;
+
+            .icon-hide-show{
+                position: absolute;
+                align-self: flex-end;
+                // background-color: #2aa72a;
+                // margin-top: 1.5%;
+                margin-right: 2%;
+            }
+
+            .icon-hide-show:hover{
+                cursor: pointer;
+            }
 
             h2 {
                 margin-bottom: 3vw;
@@ -1896,8 +1659,8 @@ body {
                 justify-content: flex-start;
                 padding: 0.5vw;
                 width: 100%;
-                height: 37vh;
-                min-height: 21rem;
+                height: 30vh;
+                min-height: 15rem;
                 border-radius: .5rem;
                 overflow-x: hidden;
                 overflow-y: auto;
@@ -2306,7 +2069,7 @@ body {
             width: 700px;
 
             #container {
-                justify-content: space-around;
+                // justify-content: space-around;
 
                 #task-made {
                     width: 90%;
@@ -2455,6 +2218,18 @@ body {
                         }
                     }
                 }
+
+                .container-personalization-infos-user{
+
+                    .popup-personalization-midias{
+                        width: 100%;
+                        height: 60%;
+
+                        .container-popup-midias{
+                            width: 85%;
+                        }
+                    }
+                }
             }
         }
     }
@@ -2511,31 +2286,6 @@ body {
         //Style para página Profile
         #main-profile {
             .view-infos {
-
-                /*.container-profile-user {
-
-                    .container-infos-user {
-                        width: 110%;
-
-                        .container-primary-infos {
-
-                            #user-name {
-                                text-align: center;
-                                white-space: break-spaces;
-                            }
-
-                            .boxs-infos-user {
-
-                                padding: 0;
-
-                                .box-infos {
-                                    min-width: 32vw;
-                                    text-align: center;
-                                }
-                            }
-                        }
-                    }
-                }*/
 
                 .container-statistic {
                     min-height: 110vh;
@@ -2625,11 +2375,13 @@ body {
         header {
             background-image: none;
             background-color: $color-resposive;
+            height: 3rem;
         }
 
         main {
             width: 95vw;
             height: 90vh;
+            margin-top: 5rem;
 
             #main-profile {
                 height: 100%;
@@ -2685,7 +2437,7 @@ body {
 
             #container-ranking {
 
-                max-height: 600px;
+                max-height: 80vh;
                 width: 94%;
                 animation: msgAddTask 0.5s ease;
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
@@ -2818,49 +2570,6 @@ body {
         #main-profile {
             .view-infos {
 
-                /*.container-profile-user {
-
-                    #btn-save-user {
-                        margin-top: 1rem;
-                    }
-
-                    .container-infos-user {
-
-                        .container-primary-infos {
-
-                            .box-description {
-                                height: 20rem;
-                            }
-
-                            .boxs-infos-user {
-
-                                .box-infos {
-                                    width: 100%;
-                                    height: 50%;
-                                    margin-bottom: 5px;
-                                    font-size: .9rem;
-
-                                }
-                            }
-                        }
-
-                        .container-second-infos {
-                            flex-direction: column;
-
-                            .box-user-description {
-                                width: 95%;
-                                height: 25vh;
-                            }
-
-                            /*#user-infos-general {
-
-                              Inserir aqui o estilo da box de desempenho
-
-                            }
-                        }
-                    }
-                }*/
-
                 .style-to-title {
                     color: $white;
                     text-transform: uppercase;
@@ -2932,6 +2641,7 @@ body {
                             justify-content: flex-start;
                             width: 100%;
                             padding: .5em;
+                            margin-bottom: 1em;
 
                             .box-view-info-icon {
 
@@ -2991,12 +2701,6 @@ body {
                         width: 95%;
                         height: 25vh;
                     }
-
-                    /*#user-infos-general {
-
-                      Inserir aqui o estilo da box de desempenho
-
-                    }*/
                 }
             }
         }
@@ -3082,7 +2786,7 @@ body {
             #main-profile {
 
                 #container-profile {
-                    height: 700px;
+                    height: calc(80vh)
                 }
             }
         }
