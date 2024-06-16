@@ -14,8 +14,13 @@ export class PopUpGlobal {
 
     builder_popup(element_father) {
 
-        const father = document.querySelector(element_father)
-        father.style.opacity = '.4'
+        const view_profile_ranking = this.opacity_container_view_profile('open')
+
+        if(!view_profile_ranking){
+
+            const father = document.querySelector(element_father)
+            father.style.opacity = '.4'
+        }
 
         const body = document.querySelector('body')
         body.style.pointerEvents = 'none'
@@ -50,7 +55,14 @@ export class PopUpGlobal {
         btn.addEventListener('click', () => {
 
             popup.remove()
-            father.style.opacity = '1'
+
+            const view_profile_ranking = this.opacity_container_view_profile('close')
+
+            if(!view_profile_ranking){
+
+                father.style.opacity = '1'
+            }
+            
             body.style.pointerEvents = 'auto'
         })
 
@@ -105,6 +117,7 @@ export class PopUpGlobal {
 
         btn_cancel.addEventListener('click', () => {
 
+            this.opacity_container_view_profile('close')
             this.close_popup(element_father, true)
 
         })
@@ -115,5 +128,28 @@ export class PopUpGlobal {
             
             window.location.href = API.url_welcome
         })
+    }
+
+    opacity_container_view_profile(type){
+
+        const container = document.querySelector('#container-view-profile')
+
+        if(container){
+
+            if(type == 'open'){
+    
+                container.style.opacity = '.4' 
+            }
+
+            else if(type == 'close'){
+
+                container.style.opacity = '1'
+
+            }
+
+            return true
+        }
+
+        return false
     }
 }
