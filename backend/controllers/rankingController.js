@@ -3,7 +3,7 @@ const { Ranking: RankingModel } = require('../models/ranking')
 const mongoose = require('mongoose');
 
 const rankingController = {
-    
+
     get: async (req, res) => {
         try {
 
@@ -38,10 +38,25 @@ const rankingController = {
 
                 constructor(user) {
 
+                    let configAboutView = {
+                        created: user.persistStatistic.created,
+                        finished: user.persistStatistic.finished,
+                        canceled: user.persistStatistic.canceled
+                    }
+
+                    if (!user.configurations.usersCanViewStatistic) {
+                        
+                        configAboutView = {
+                            created: '**',
+                            finished: '**',
+                            canceled: '**'
+                        }
+                    }
+
                     this.name = user.name
-                    this.taskCreated = user.persistStatistic.created
-                    this.taskFinished = user.persistStatistic.finished
-                    this.taskCanceled = user.persistStatistic.canceled
+                    this.taskCreated = configAboutView.created
+                    this.taskFinished = configAboutView.finished
+                    this.taskCanceled = configAboutView.canceled
                     this.description = user.description
                     this.date = user.createdAt
                     this.position = user.ranking
@@ -83,18 +98,18 @@ const rankingController = {
 
         const regex = new RegExp("^" + search, "i")
 
-        const users = await RankingModel.find({nameUser: regex }).sort({ position: 1 })
+        const users = await RankingModel.find({ nameUser: regex }).sort({ position: 1 })
 
-        if(users.length == 0){
+        if (users.length == 0) {
 
-            res.status(404).json({msg: "Nenhum usuário encontrado"})
-            
+            res.status(404).json({ msg: "Nenhum usuário encontrado" })
+
             return true
         }
 
-        
+
         for (let i = 0; i < users.length; i++) {
-            
+
             if (users[i].userId == userId) {
 
                 exist = users[i].position
@@ -103,7 +118,7 @@ const rankingController = {
             }
         }
 
-        res.status(201).json({ranking: users, exist: exist})
+        res.status(201).json({ ranking: users, exist: exist })
     }
 }
 
