@@ -92,6 +92,42 @@
     width: 30%;
   }
 }
+@keyframes hideAddTask {
+  from {
+    height: 8vh;
+    min-height: 4.1rem;
+  }
+  to {
+    height: 0vh;
+    min-height: 0rem;
+  }
+}
+@keyframes showAddTask {
+  from {
+    height: 0vh;
+    min-height: 0rem;
+  }
+  to {
+    height: 8vh;
+    min-height: 4.1rem;
+  }
+}
+@keyframes hideAddTaskResponsive {
+  from {
+    height: 30vh;
+  }
+  to {
+    height: 10vh;
+  }
+}
+@keyframes showAddTaskResponsive {
+  from {
+    height: 0vh;
+  }
+  to {
+    height: 30vh;
+  }
+}
 body {
   width: 100%;
   height: 100vh;
@@ -1557,7 +1593,7 @@ body main #container .icon-hide-show:hover {
   cursor: pointer;
 }
 body main #container h2 {
-  margin-bottom: 3vw;
+  margin-bottom: 2vw;
   color: white;
   white-space: nowrap;
 }
@@ -1572,6 +1608,7 @@ body main #container #container-info {
   width: 100%;
   height: 8vh;
   min-height: 4.1rem;
+  transition: 0.5s;
 }
 body main #container #container-info #task-add {
   width: 60%;
@@ -1655,10 +1692,11 @@ body main #container #task-made {
   padding: 0.5vw;
   width: 100%;
   height: 30vh;
-  min-height: 15rem;
+  min-height: 17rem;
   border-radius: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
+  transition: 0.5s;
 }
 body main #container #task-made .priority-action {
   display: flex;
@@ -2474,9 +2512,6 @@ body footer p {
   }
   body {
     width: 100%;
-  }
-  body main #container #container-info {
-    height: 15rem;
   }
   body main #container #container-info #task-add {
     text-align: center;
