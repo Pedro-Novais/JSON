@@ -5,7 +5,7 @@ import { get_token } from "../../utils/getToken.js"
 import { API } from "../../utils/endPoints.js"
 import { modal as modals_actions } from "./utils/modals.js"
 
-export class BuilderModalsFromTask { 
+export class BuilderModalsFromTask {
 
     finish_task(task) {
 
@@ -33,6 +33,11 @@ export class BuilderModalsFromTask {
         modal.setAttribute('id', 'modal-remove')
         modal.innerHTML = modals_actions.modal_finish_cancel
         main.appendChild(modal)
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
 
         const title = document.querySelector('#title-determinate')
         title.innerHTML = `${type} Tarefa`
@@ -81,7 +86,7 @@ export class BuilderModalsFromTask {
         const data_update = {
             update: type_operation
         }
-   
+
         const response_statistic = await put(`${API.url_statistic}/${url_priority}`, data_update, token)
 
         if (!response_statistic.ok) {
@@ -107,9 +112,14 @@ export class BuilderModalsFromTask {
 
         main.appendChild(modal)
 
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
         const name_task_edit = document.querySelector('#input-edit')
         name_task_edit.value = task.task
-        
+
         this.insert_priority_from_task(task.priority)
 
         new PriorityActions("[piority-edit = 'True']")
@@ -176,7 +186,7 @@ export class BuilderModalsFromTask {
 
     }
 
-    insert_priority_from_task(priority){
+    insert_priority_from_task(priority) {
 
         const element_priority = document.querySelectorAll(`[piority-edit = 'True']`)
 
@@ -185,11 +195,11 @@ export class BuilderModalsFromTask {
             element_priority[i].style.backgroundColor = '#05DBF2'
         }
 
-        for(let i = 1; i < 4; i++){
+        for (let i = 1; i < 4; i++) {
 
-            if(i == priority){
+            if (i == priority) {
 
-                element_priority[i-1].setAttribute('marked', 'True')
+                element_priority[i - 1].setAttribute('marked', 'True')
             }
         }
 
@@ -198,7 +208,7 @@ export class BuilderModalsFromTask {
     remove_modal() {
 
         const contorn_div_task = document.querySelector('#task-add')
-        
+
         contorn_div_task.removeAttribute('class', 'watch-out')
 
         const modal = document.querySelector('.modal')

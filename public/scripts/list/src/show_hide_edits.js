@@ -54,7 +54,7 @@ export class ShowHideEdits {
             })
 
             container_edits.style.display = 'none'
-            container_tasks.style.minHeight = '30rem'
+            container_tasks.style.minHeight = '33rem'
             container_edits.style.animation = 'none'
         
         }, 200)
@@ -90,7 +90,7 @@ export class ShowHideEdits {
             })
 
             container_edits.style.animation = 'none'
-            container_tasks.style.minHeight = '17rem'
+            container_tasks.style.minHeight = '19rem'
         }, 200)
 
 
