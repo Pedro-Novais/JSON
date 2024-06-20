@@ -44,7 +44,7 @@ export class ViewProfileFromUser{
         let description = user.description;
 
         if(description == " "){
-            description = "Nenhuma descrição foi adicionada"
+            description = "Nenhuma descrição foi adicionada!"
         }
 
         const values = [

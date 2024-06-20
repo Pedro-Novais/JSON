@@ -284,7 +284,7 @@ export class InteractorPersonalization {
 
             else if (name_trim == "" && url_trim !== "") {
 
-                new PopUpGlobal('#container-profile', 'Informação!', 'É necessário inserir ao realizar a inserção de um link!')
+                new PopUpGlobal('#container-profile', 'Informação!', 'É necessário inserir um nome ao realizar a inserção de um link!')
                 return false
 
             }

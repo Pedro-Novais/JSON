@@ -1939,6 +1939,7 @@ body main #container-view-profile h1 {
   color: #D9D9D9;
   text-align: center;
   width: 80%;
+  text-transform: capitalize;
 }
 body main #container-view-profile #other-icon-back {
   position: absolute;
@@ -2037,14 +2038,49 @@ body footer {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  background-color: red;
+  justify-content: space-around;
+  background-color: #0487D9;
   width: 100%;
   min-height: 15rem;
   margin-top: 5%;
+  color: #D9D9D9;
+}
+body footer .container-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #034AA6;
+  border-radius: 0.5em;
+  width: 50%;
+  height: 80%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+body footer .container-footer .title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+body footer .box-midias {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+  height: 30%;
+  flex-direction: row;
+  justify-content: space-around;
+}
+body footer .box-midias img {
+  height: 22px;
 }
 body footer p {
-  color: #D9D9D9;
+  text-align: center;
 }
 
 @media screen and (max-width: 1350px) {
@@ -2120,6 +2156,10 @@ body footer p {
   }
   body footer {
     margin-top: 20%;
+  }
+  body footer .container-footer {
+    width: 95%;
+    height: 70%;
   }
 }
 @media screen and (max-width: 1000px) {

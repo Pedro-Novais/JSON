@@ -1940,6 +1940,7 @@ body {
                 color: $white;
                 text-align: center;
                 width: 80%;
+                text-transform: capitalize;
             }
 
             #other-icon-back {
@@ -2043,14 +2044,47 @@ body {
     footer {
         @include container;
         flex-direction: column;
-        justify-content: center;
-        background-color: red;
+        justify-content: space-around;
+        background-color: $priority;
         width: 100%;
         min-height: 15rem;
         margin-top: 5%;
+        color: $white;
 
-        p {
-            color: $white;
+        .container-footer{
+            @include container;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: $details;
+            border-radius: .5em;
+            width: 50%;
+            height: 80%;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+
+            .title{
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: .5em;
+                margin-top: .5em;
+            }
+        }
+
+        .box-midias{
+            @include container;
+            width: 60%;
+            height: 30%;
+            flex-direction: row;
+            justify-content: space-around;
+
+            img{
+                height: 22px;
+            }
+        }
+
+        p{
+            text-align: center;
         }
     }
 }
@@ -2175,6 +2209,11 @@ body {
 
         footer {
             margin-top: 20%;
+
+            .container-footer{
+                width: 95%;
+                height: 70%;
+            }
         }
     }
 }

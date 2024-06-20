@@ -115,7 +115,6 @@ const registerController = {
                         .json({ msg: 'E-mail já registrado' });
             }
 
-            // Gere um código de confirmação (pode ser gerado aleatoriamente)
             const code = Math.floor(100000 + Math.random() * 900000);
 
             if(existingUserConfirmation){
@@ -125,7 +124,7 @@ const registerController = {
                 existingUserConfirmation.save()
 
                 send(code, req)
-                console.log(code)
+          
                 return res
                         .status(201)
                         .json({msg: `Um novo código de confirmação foi enviado ao seu email: ${existingUserConfirmation.email}` })
