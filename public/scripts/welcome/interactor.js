@@ -17,14 +17,15 @@ export class InteractorWelcome{
         let cont = 0
 
         setInterval(() => {
-
-            if(cont > images.length){
+            
+            if(cont >= images.length){
                 cont = 0
             }
 
             img.setAttribute('src', `./img/${images[cont]}.png`)
 
             cont++
+            
         },5000)
     }
 

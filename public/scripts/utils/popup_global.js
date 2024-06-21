@@ -16,7 +16,7 @@ export class PopUpGlobal {
 
         const view_profile_ranking = this.opacity_container_view_profile('open')
 
-        if(!view_profile_ranking){
+        if (!view_profile_ranking) {
 
             const father = document.querySelector(element_father)
             father.style.opacity = '.4'
@@ -58,16 +58,16 @@ export class PopUpGlobal {
 
             const view_profile_ranking = this.opacity_container_view_profile('close')
 
-            if(!view_profile_ranking){
+            if (!view_profile_ranking) {
 
                 father.style.opacity = '1'
             }
-            
+
             body.style.pointerEvents = 'auto'
         })
 
-        if(action_btn){
-            
+        if (action_btn) {
+
             popup.remove()
             father.style.opacity = '1'
             body.style.pointerEvents = 'auto'
@@ -87,30 +87,30 @@ export class PopUpGlobal {
         }
     }
 
-    insert_buttons(btn, element_father){
+    insert_buttons(btn, element_father) {
 
-        if(btn === null){
+        if (btn === null) {
 
             return false
 
         }
 
-        if(btn){
+        if (btn) {
 
             const popup = document.querySelector('.popup')
-    
+
             const container = document.createElement('div')
-            container.setAttribute('class', 'container-buttons') 
-    
+            container.setAttribute('class', 'container-buttons')
+
             container.innerHTML = "<div class='btn-popup' id='btn-cancel'> <img src='../svg/xmark-solid.svg'> </div> <div class='btn-popup' id='btn-confirm'> <img src='../svg/check-solid.svg'> </div>"
-    
+
             popup.appendChild(container)
 
             this.action_buttons(element_father)
         }
     }
 
-    action_buttons(element_father){
+    action_buttons(element_father) {
 
         const btn_cancel = document.querySelector('#btn-cancel')
         const btn_confirm = document.querySelector('#btn-confirm')
@@ -125,23 +125,32 @@ export class PopUpGlobal {
         btn_confirm.addEventListener('click', () => {
 
             localStorage.removeItem('token')
-            
+
             window.location.href = API.url_welcome
         })
     }
 
-    opacity_container_view_profile(type){
+    opacity_container_view_profile(type) {
 
-        const container = document.querySelector('#container-view-profile')
+        let container = false;
 
-        if(container){
+        if (document.querySelector('#container-view-profile')) {
 
-            if(type == 'open'){
-    
-                container.style.opacity = '.4' 
+            container = document.querySelector('#container-view-profile')
+        }
+        else if (document.querySelector('.modal')) {
+            
+            container = document.querySelector('.modal')
+        }
+
+        if (container) {
+
+            if (type == 'open') {
+
+                container.style.opacity = '.4'
             }
 
-            else if(type == 'close'){
+            else if (type == 'close') {
 
                 container.style.opacity = '1'
 
