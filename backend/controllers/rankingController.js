@@ -122,7 +122,7 @@ const rankingController = {
     }
 }
 
-async function verifyTasksFromUser(user, operation) {
+async function verifyTasksFromUser(user, operation, priority) {
 
     if (operation !== "finished") {
 

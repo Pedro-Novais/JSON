@@ -19,8 +19,9 @@ export class InteractorConfiguration {
 
         if (!response.ok) {
 
-            console.log('Algum erro ocorreu ao selecionar as configurações')
+            new PopUpGlobal('#main-profile', 'Erro!', "Erro ao carregar suas configurações!")
             return false
+
         }
 
         this.builder_configuration(response.responseData)
@@ -124,15 +125,16 @@ export class InteractorConfiguration {
             if (configs[config_name] != boolean_config) {
 
                 new_patchs_config[config_name] = boolean_config
+                configs[config_name] = boolean_config
 
             }
         }
 
-        this.request_to_change_config(new_patchs_config)
+        this.request_to_change_config(new_patchs_config, configs)
 
     }
 
-    async request_to_change_config(new_configs) {
+    async request_to_change_config(new_configs, configs_pattern) {
 
         const length_config = Object.keys(new_configs).length
 

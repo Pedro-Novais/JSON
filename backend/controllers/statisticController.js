@@ -42,7 +42,7 @@ const statisticController = {
 
             change_statictic(user, priority, update)
             
-            verifyTasksFromUser(user, update)
+            verifyTasksFromUser(user, update, priority)
 
             res
                 .status(200)

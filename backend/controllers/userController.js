@@ -1,5 +1,6 @@
 const { User: UserModel } = require('../models/user')
 const { Task: TaskModel } = require('../models/tasks')
+const { Ranking: RankingModel} = require('../models/ranking')
 const bcrypt = require('bcrypt');
 
 const userController = {
@@ -89,9 +90,16 @@ const userController = {
 
             const id = req.userId
             let updatePatch = {};
-
+            debugger
             if (req.body.name) {
                 updatePatch.name = req.body.name
+
+                await RankingModel.findOneAndUpdate(
+                    { userId: id },
+                    {nameUser: req.body.name},
+                    {new: true, useFindAndModify: false}
+                )
+
             }
             if (req.body.email) {
                 updatePatch.email = req.body.email
@@ -103,7 +111,7 @@ const userController = {
 
                 updatePatch.password = password
             }
-            if (req.body.description) {
+            if (req.body.description || req.body.description == '') {
                 updatePatch.description = req.body.description
             }
             if (req.body.socialMidia) {

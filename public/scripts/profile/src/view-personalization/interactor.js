@@ -131,10 +131,13 @@ export class InteractorPersonalization {
         const new_value = document.querySelector(`#value-${type}-personalization`)
         const new_value_trim = new_value.value.trim()
 
-        if (new_value.value == "" || new_value_trim == "") {
+        if (type == 'name') {
 
-            new_value.style.borderBottomColor = 'red'
-            return false
+            if (new_value.value == "" || new_value_trim == "") {
+
+                new_value.style.borderBottomColor = 'red'
+                return false
+            }
         }
 
         icon_div.style.display = 'flex'

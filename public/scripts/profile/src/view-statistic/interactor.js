@@ -50,9 +50,12 @@ export class InteractorStatistic {
         priority_statistic_element.forEach(element => {
 
             element.addEventListener('click', () => {
+                
                 this.reset_marked_element()
-
+                
                 element.setAttribute('marked', 'True')
+                
+                this.out_hover_priority()
 
                 const priority_id = element.getAttribute('id')
 
