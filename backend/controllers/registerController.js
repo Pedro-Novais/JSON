@@ -1,5 +1,5 @@
 const { User: UserModel } = require('../models/user')
-const { ConfirmationUser } = require('../models/confirmation') 
+const { ConfirmationUser } = require('../models/confirmation')
 
 const bcrypt = require('bcrypt');
 require('dotenv').config()
@@ -13,7 +13,7 @@ const registerController = {
         try {
 
             const email = req.body.email
-    
+
             const existingUser = await UserModel.findOne({ email });
 
             if (existingUser) {
@@ -100,70 +100,79 @@ const registerController = {
         }
     },
 
-    createCode: async (req, res) => { 
-        try{
+    createCode: async (req, res) => {
+        try {
 
             const email = req.body.email
-    
+
             const existingUser = await UserModel.findOne({ email });
             const existingUserConfirmation = await ConfirmationUser.findOne({ email });
-            
-            if(!req.body.recall){
+
+            if (!req.body.recall) {
 
                 if (existingUser) {
-    
+
                     return res
-                            .status(409)
-                            .json({ msg: 'E-mail já registrado' });
+                        .status(409)
+                        .json({ msg: 'E-mail já registrado' });
+                }
+            }
+            else if (req.body.recall) {
+
+                if (!existingUser) {
+
+                    return res
+                        .status(400)
+                        .json({ msg: `Email ${email}, não está cadastrado!` });
                 }
             }
 
             const code = Math.floor(100000 + Math.random() * 900000);
 
-            if(existingUserConfirmation){
+            if (existingUserConfirmation) {
 
-                existingUserConfirmation.code  = code
+                existingUserConfirmation.code = code
 
                 existingUserConfirmation.save()
 
                 send(code, req)
-          
+
                 return res
-                        .status(201)
-                        .json({msg: `Um novo código de confirmação foi enviado ao seu email: ${existingUserConfirmation.email}` })
+                    .status(201)
+                    .json({ msg: `Um novo código de confirmação foi enviado ao seu email: ${existingUserConfirmation.email}` })
             }
-    
+
             send(code, req)
-    
+
             const dataConfirmation = {
                 email: req.body.email,
                 code: code
             }
-            
+
             const response = await ConfirmationUser.create(dataConfirmation)
 
             res
                 .status(201)
                 .json({ code: code, msg: "Código de confirmação criado com sucesso" })
 
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     },
 
-    verifyCode: async (req, res) =>{
+    verifyCode: async (req, res) => {
         try {
 
             const email = req.body.email
             const code = req.body.code
-            
+
             const user = await ConfirmationUser.findOne({ email });
 
             if (!user) {
                 return res.status(400).json({ msg: 'E-mail não encontrado' });
             }
 
-            if(user.code !== code){
+            if (user.code !== code) {
                 return res.status(401).json({ msg: 'Código de confirmação incorreto!' });
             }
 
@@ -177,7 +186,6 @@ const registerController = {
             console.log(error)
         }
     }
-
 }
 
 module.exports = registerController

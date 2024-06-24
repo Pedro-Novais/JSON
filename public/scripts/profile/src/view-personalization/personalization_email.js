@@ -56,7 +56,9 @@ export class PersonalizationEmail {
         }
 
         const data = {
-            email: status.new_email
+            email: status.new_email,
+            msg: 'create_code',
+            subject: 'Código de Confirmação'
         }
 
         const token = get_token()

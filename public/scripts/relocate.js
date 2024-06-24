@@ -4,6 +4,7 @@ import { InteractorRegister } from "./register/interactor.js"
 import { InteractorList } from "./list/interactor.js"
 import { InteractorRanking } from "./ranking/interactor.js"
 import { InteractorProfile } from "./profile/interactor.js"
+import { ChangePassword } from "./recall_password/interactor.js"
 import { ChangeView } from "./nChangeView.js"
 import { ChangeViewOut } from "./nChangeViewOut.js"
 import { Responsive } from "./responsive/responsive.js"
@@ -13,7 +14,7 @@ class Relocated {
 
     builder_page() {
         const dir = window.location.pathname
-
+        
         const dir_name = convert_url_to_params(dir)
 
         const main = document.querySelector('main')
@@ -65,6 +66,12 @@ class Relocated {
 
             new ChangeViewOut(dir_name)
             new InteractorLogin()
+
+        }
+
+        else if(dir_name == 'recall'){
+
+            new ChangePassword()
 
         }
 
@@ -140,6 +147,11 @@ function convert_url_to_params(url) {
     else if(url == '/login'){
 
         return 'login'
+    }
+
+    else if('/recall'){
+
+        return 'recall'
     }
 
     else if(url == '/register' || url == '/register?insert_code=true'){

@@ -37,8 +37,6 @@ const pageController = {
 
             const user = await ConfirmationUser.find({ code: code_verification })
 
-            console.log(user)
-
             if (user.length == 1) {
 
                 res.render('pages/recall')

@@ -68,7 +68,9 @@ export class InteractorRegister {
     async create_code(name, email, password) {
 
         const data = {
-            email: email
+            email: email,
+            msg: 'create_code',
+            subject: 'Código de Confirmação'
         }
 
         const response = await post(API.url_create_code, data)

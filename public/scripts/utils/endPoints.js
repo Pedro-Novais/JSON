@@ -25,6 +25,8 @@ const API = {
     url_view_profile_ranking: '/api/view-profile',
 
     url_verify_login: '/api/login',
+    url_recall_code: '/api/recall-code',
+    url_recall_password: '/api/recall-pass',
     url_make_register: '/api/register',
 
     url_verify_password: '/api/user/security',

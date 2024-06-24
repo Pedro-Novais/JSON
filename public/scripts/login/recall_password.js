@@ -39,17 +39,26 @@ export class RecallPassword{
             const data = {
                 email: email,
                 recall: true,
-                msg: 'recall'
+                msg: 'recall',
+                subject: 'Redefinir Senha'
             }
 
             const response = await post(API.url_create_code, data)
 
             if(!response.ok){
 
-                new PopUpGlobal('#main-enter', 'Erro!', `Algum erro desconhecido ocorreu, tente novamente!`)
+                if(response.status == 400){
 
-                return false
+                    new PopUpGlobal('#main-enter', 'Erro!', response.responseData.msg)
+                    return false
 
+                }
+                else{
+
+                    new PopUpGlobal('#main-enter', 'Erro!', `Algum erro desconhecido ocorreu, tente novamente!`)
+                    return false
+
+                }
             }
 
             new PopUpGlobal('#main-enter', 'Informação!', `Um email de redefinição foi enviado para: ${email}`, 10000, '/welcome')

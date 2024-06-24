@@ -90,7 +90,7 @@ const userController = {
 
             const id = req.userId
             let updatePatch = {};
-            debugger
+            
             if (req.body.name) {
                 updatePatch.name = req.body.name
 
