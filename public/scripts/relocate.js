@@ -89,6 +89,14 @@ class Relocated {
             new Responsive()
         }
     }
+
+    event_popstate(){
+        window.addEventListener('popstate', event  => {
+
+            const dir = window.location.pathname
+            window.location.href = dir
+        })
+    }
 }
 
 function convert_url_to_params(url) {
@@ -147,4 +155,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     instance.builder_page()
     instance.get_width()
+    instance. event_popstate()
 });
