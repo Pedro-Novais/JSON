@@ -1,5 +1,13 @@
+import { PopUpGlobal } from "./popup_global.js"
+
 async function get_render(url, token) {
     try {
+
+        const main = document.querySelector('main')
+
+        const child = main.children[0].id
+        
+        const popup = new PopUpGlobal(`#${child}`, 'Carregando...', null, null, null, null, true)
 
         const response = await fetch(url, {
             method: 'GET',
@@ -9,6 +17,7 @@ async function get_render(url, token) {
             }
         })
 
+        popup.close_popup_loading()
         return { response, status: response.status, ok: response.ok }
 
     } catch (error) {
@@ -17,7 +26,14 @@ async function get_render(url, token) {
 }
 
 async function get_json(url, token) {
+    
     try {
+       
+        const main = document.querySelector('main')
+
+        const child = main.children[0].id
+        
+        const popup = new PopUpGlobal(`#${child}`, 'Carregando...', null, null, null, null, true)
 
         const response = await fetch(url, {
             method: 'GET',
@@ -26,7 +42,11 @@ async function get_json(url, token) {
                 'Authorization': `Bearer ${token}`
             }
         })
+
         const responseData = await response.json()
+          
+        popup.close_popup_loading()
+
         return { responseData, status: response.status, ok: response.ok }
 
     } catch (error) {

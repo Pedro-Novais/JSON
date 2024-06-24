@@ -3,13 +3,14 @@ import { API } from "./endPoints.js";
 
 export class PopUpGlobal {
 
-    constructor(element_father, type, info, time = null, redirect = null, buttons = null) {
+    constructor(element_father, type, info, time = null, redirect = null, buttons = null, loading = null) {
 
         this.builder_popup(element_father)
         this.infos_from_popup(type, info)
         this.close_popup(element_father)
         this.redirect_page(time, redirect)
         this.insert_buttons(buttons, element_father)
+        this.popup_loading(loading)
     }
 
     builder_popup(element_father) {
@@ -17,9 +18,9 @@ export class PopUpGlobal {
         const view_profile_ranking = this.opacity_container_view_profile('open')
 
         if (!view_profile_ranking) {
-
+            
             const father = document.querySelector(element_father)
-            father.style.opacity = '.4'
+             father.style.opacity = '.4'
         }
 
         const body = document.querySelector('body')
@@ -85,6 +86,44 @@ export class PopUpGlobal {
 
             }, time)
         }
+    }
+
+    popup_loading(loading){
+
+        if(loading == null){
+
+            return false
+
+        }
+
+        const popup = document.querySelector('.popup')
+
+        const icon = document.querySelector('.icon-close')
+        const container = document.querySelector('.container-alert')
+
+        icon.remove()
+        container.remove()
+        
+        const div = document.createElement('div')
+        div.setAttribute('class', 'popup-loading')
+
+        popup.appendChild(div)
+
+    }
+
+    close_popup_loading(){
+        
+        const main = document.querySelector('main')
+
+        const child = main.children[0]
+
+        const body = document.querySelector('body')
+        // const main = document.querySelector('#main-profile')
+        const popup = document.querySelector('.popup')
+        
+        body.style.pointerEvents = 'auto'
+        child.style.opacity = '1'
+        popup.remove()
     }
 
     insert_buttons(btn, element_father) {

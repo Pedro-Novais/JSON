@@ -128,6 +128,14 @@
     height: 30vh;
   }
 }
+@keyframes loading-popup {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   width: 100%;
   height: 100vh;
@@ -226,6 +234,15 @@ body .popup .container-buttons #btn-cancel:hover {
 }
 body .popup .container-buttons #btn-confirm:hover {
   background-color: #2aa72a;
+}
+body .popup .popup-loading {
+  margin-top: 30px;
+  width: 70px;
+  height: 70px;
+  border: solid 10px #034AA6;
+  border-top-color: #D9D9D9;
+  border-radius: 50%;
+  animation: loading-popup 1s linear infinite;
 }
 body .style-bar-options {
   align-self: flex-start;

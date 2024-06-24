@@ -160,6 +160,15 @@
     }
 }
 
+@keyframes loading-popup {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 
 body {
     width: 100%;
@@ -264,6 +273,16 @@ body {
             #btn-confirm:hover {
                 background-color: #2aa72a;
             }
+        }
+
+        .popup-loading{
+            margin-top: 30px;
+            width: 70px;
+            height: 70px;
+            border: solid 10px $details;
+            border-top-color: $white;
+            border-radius: 50%;
+            animation: loading-popup 1s linear infinite;
         }
 
     }
