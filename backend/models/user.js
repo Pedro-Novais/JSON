@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose
 
-const { taskSchema } = require('./tasks')
 const { configSchema } = require('./config')
 const { statisticSchema, persistStatistic } = require('./statistic')
+const { midiaSchema } = require('./midias')
 
 const userSchema = new Schema({
     name: {
@@ -24,7 +24,7 @@ const userSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     tasks: {
         type: [mongoose.Schema.Types.ObjectId], 
@@ -47,6 +47,11 @@ const userSchema = new Schema({
     persistStatistic: {
         type: persistStatistic,
         required: true,
+        _id: false
+    },
+    socialMidias: {
+        type: midiaSchema,
+        required: false,
         _id: false
     }
 },

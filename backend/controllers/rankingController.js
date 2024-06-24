@@ -3,7 +3,7 @@ const { Ranking: RankingModel } = require('../models/ranking')
 const mongoose = require('mongoose');
 
 const rankingController = {
-    
+
     get: async (req, res) => {
         try {
 
@@ -38,26 +38,42 @@ const rankingController = {
 
                 constructor(user) {
 
+                    let configAboutView = {
+                        created: user.persistStatistic.created,
+                        finished: user.persistStatistic.finished,
+                        canceled: user.persistStatistic.canceled
+                    }
+
+                    if (!user.configurations.usersCanViewStatistic) {
+                        
+                        configAboutView = {
+                            created: '**',
+                            finished: '**',
+                            canceled: '**'
+                        }
+                    }
+
                     this.name = user.name
-                    this.taskCreated = user.persistStatistic.taskCreated
-                    this.taskFinished = user.persistStatistic.taskFinished
-                    this.taskCanceled = user.persistStatistic.taskCanceled
+                    this.taskCreated = configAboutView.created
+                    this.taskFinished = configAboutView.finished
+                    this.taskCanceled = configAboutView.canceled
                     this.description = user.description
                     this.date = user.createdAt
                     this.position = user.ranking
+                    this.socialMidias = user.socialMidias
                 }
 
             }
 
-            const userIdRanking = req.body.userId
+            const id_user = req.body.id
 
-            const userRanking = await RankingModel.findById(userIdRanking).populate('userId')
+            const userRanking = await RankingModel.findById(id_user).populate('userId')
 
             if (!userRanking) {
 
                 res
                     .status(401)
-                    .json({ msg: "Úsuario não existe" })
+                    .json({ msg: "Úsuario não foi encontrado" })
             }
 
             const userIdSearch = userRanking.userId
@@ -82,18 +98,18 @@ const rankingController = {
 
         const regex = new RegExp("^" + search, "i")
 
-        const users = await RankingModel.find({nameUser: regex }).sort({ position: 1 })
+        const users = await RankingModel.find({ nameUser: regex }).sort({ position: 1 })
 
-        if(users.length == 0){
+        if (users.length == 0) {
 
-            res.status(404).json({msg: "Nenhum usuário encontrado"})
-            
+            res.status(404).json({ msg: "Nenhum usuário encontrado" })
+
             return true
         }
 
-        
+
         for (let i = 0; i < users.length; i++) {
-            
+
             if (users[i].userId == userId) {
 
                 exist = users[i].position
@@ -102,13 +118,11 @@ const rankingController = {
             }
         }
 
-        //const usersfinal = await RankingModel.find({nameUser: regex }).sort({ position: 1 }).select('-userId')
-
-        res.status(201).json({users, exist: exist})
+        res.status(201).json({ ranking: users, exist: exist })
     }
 }
 
-async function verifyTasksFromUser(user, operation) {
+async function verifyTasksFromUser(user, operation, priority) {
 
     if (operation !== "finished") {
 
@@ -314,9 +328,9 @@ class UserRanking {
         this.userId = user._id;
         this.position = positionRanking;
         this.nameUser = user.name;
-        this.tasksCreated = user.persistStatistic.taskCreated;
-        this.tasksFinished = user.persistStatistic.taskFinished;
-        this.tasksCanceled = user.persistStatistic.taskCanceled;
+        this.tasksCreated = user.persistStatistic.created;
+        this.tasksFinished = user.persistStatistic.finished;
+        this.tasksCanceled = user.persistStatistic.canceled;
 
     }
 }

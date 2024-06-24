@@ -1,5 +1,6 @@
 const { User: UserModel } = require('../models/user')
 const { Task: TaskModel } = require('../models/tasks')
+const { Ranking: RankingModel} = require('../models/ranking')
 const bcrypt = require('bcrypt');
 
 const userController = {
@@ -7,7 +8,7 @@ const userController = {
     getAll: async (req, res) => {
         try {
 
-            const users = await UserModel.find(); 
+            const users = await UserModel.find();
 
             res.json(users)
         } catch (error) {
@@ -19,16 +20,33 @@ const userController = {
         try {
             const id = req.userId
 
-            const user = await UserModel.findById(id).select('-_id')
+            const user = await UserModel.findById(id).select('-_id -statistic -tasks -updatedAt -__v -configurations')
 
             if (!user) {
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
             }
 
-            //return res.status(404).json({ msg: "Usúario não encontrado" })
-
             res.status(201).json(user)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    get_infos_personalization: async (req, res) => {
+        try {
+
+            const id = req.userId
+
+            const user = await UserModel.findById(id).select('-_id name description email socialMidias')
+
+            if (!user) {
+                res.status(404).json({ msg: 'Úsario não encontrado' })
+            }
+
+            user.password = '**********'
+            res.status(201).json(user)
+
         } catch (error) {
             console.log(error)
         }
@@ -55,7 +73,7 @@ const userController = {
                 }
 
             }
- 
+
             const deleteUser = await UserModel.findByIdAndDelete(id)
 
             res
@@ -72,9 +90,16 @@ const userController = {
 
             const id = req.userId
             let updatePatch = {};
-
+            
             if (req.body.name) {
                 updatePatch.name = req.body.name
+
+                await RankingModel.findOneAndUpdate(
+                    { userId: id },
+                    {nameUser: req.body.name},
+                    {new: true, useFindAndModify: false}
+                )
+
             }
             if (req.body.email) {
                 updatePatch.email = req.body.email
@@ -86,8 +111,29 @@ const userController = {
 
                 updatePatch.password = password
             }
-            if (req.body.description) {
+            if (req.body.description || req.body.description == '') {
                 updatePatch.description = req.body.description
+            }
+            if (req.body.socialMidia) {
+                const user = await UserModel.findById(id)
+
+                user.socialMidias[req.body.socialMidia] = req.body.update
+
+                try {
+
+                    user.save()
+
+                    res
+                        .status(200)
+                        .json({ updatePatch, msg: "Atualização feita com sucesso" })
+
+                    return true
+
+                } catch(error){
+
+                    console.log(error)
+                }
+
             }
 
             const updateUser = await UserModel.findByIdAndUpdate(id, updatePatch)
@@ -110,26 +156,26 @@ const userController = {
         try {
             const id = req.userId
             const password = req.body.password
-            
+
             const user = await UserModel.findById(id).select('+password')
-            
-            
-            if(!user){
-                
-                return res.status(404).json({msg: "Úsuario não encontrado"})
+
+
+            if (!user) {
+
+                return res.status(404).json({ msg: "Úsuario não encontrado" })
             }
-            
+
             const isPasswordValid = await bcrypt.compare(password, user.password);
-            
-            if(!isPasswordValid){
-                
-                return res.status(404).json({msg: "A senha inserida está incorreta"})
+
+            if (!isPasswordValid) {
+
+                return res.status(401).json({ msg: "Senha atual está incorreta!" })
 
             }
 
             res
                 .status(200)
-                .json({msg: "Senha inserida corretamente"})
+                .json({ msg: "Senha inserida corretamente" })
 
 
         } catch (error) {

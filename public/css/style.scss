@@ -116,6 +116,59 @@
     }
 }
 
+@keyframes hideAddTask {
+    from {
+        height: 8vh;
+        min-height: 4.1rem;
+    }
+
+    to {
+        height: 0vh;
+        min-height: 0rem;
+    }
+}
+
+@keyframes showAddTask {
+    from {
+        height: 0vh;
+        min-height: 0rem;
+    }
+
+    to {
+        height: 8vh;
+        min-height: 4.1rem;
+    }
+}
+
+@keyframes hideAddTaskResponsive {
+    from {
+        height: 30vh;
+    }
+
+    to {
+        height: 10vh;
+    }
+}
+
+@keyframes showAddTaskResponsive {
+    from {
+        height: 0vh;
+    }
+
+    to {
+        height: 30vh;
+    }
+}
+
+@keyframes loading-popup {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 
 body {
     width: 100%;
@@ -126,6 +179,113 @@ body {
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(to right, $background-one, $details);
+
+    .popup {
+        position: absolute;
+        margin-top: calc(100vh/2 - 6rem);
+        z-index: 50;
+        width: 400px;
+        height: 200px;
+        @include container;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: $priority;
+        border-radius: 1em;
+        color: $white;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+        padding-bottom: .7em;
+
+        .icon-close {
+            position: absolute;
+            align-self: flex-end;
+            margin-top: 8px;
+            margin-right: 10px;
+            height: 22px;
+        }
+
+        .icon-close:hover {
+            cursor: pointer;
+        }
+
+        .title {
+            background-color: $details;
+            width: 100%;
+            height: 20%;
+            text-align: center;
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+
+            .style-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-top: 8px;
+            }
+        }
+
+        .container-alert {
+            background-color: $priority;
+            width: 100%;
+            height: 75%;
+            text-align: center;
+            padding: .5em;
+
+            .style-container {
+                font-size: 1.1rem;
+                // font-weight: 600;
+                margin-top: calc(15%);
+            }
+        }
+
+        .container-buttons {
+            width: 100%;
+            height: 25%;
+            @include container;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .btn-popup {
+                @include container;
+                justify-content: center;
+                text-align: center;
+                width: 40%;
+                height: 100%;
+                border-radius: .5em;
+                background-color: $details;
+            }
+
+            .btn-popup:hover {
+
+                cursor: pointer;
+            }
+
+            #btn-cancel {
+                background-color: #ff0000d5;
+            }
+
+            #btn-confirm {
+                background-color: #2aa72ab2;
+            }
+
+            #btn-cancel:hover {
+                background-color: #ff0000;
+            }
+
+            #btn-confirm:hover {
+                background-color: #2aa72a;
+            }
+        }
+
+        .popup-loading{
+            margin-top: 30px;
+            width: 70px;
+            height: 70px;
+            border: solid 10px $details;
+            border-top-color: $white;
+            border-radius: 50%;
+            animation: loading-popup 1s linear infinite;
+        }
+
+    }
 
     .style-bar-options {
         align-self: flex-start;
@@ -206,6 +366,7 @@ body {
         background: linear-gradient(to right, $background-one, $details);
 
         #bar-view-options {
+            display: none;
             position: absolute;
             left: 15px;
         }
@@ -375,180 +536,6 @@ body {
                 min-height: 70vh;
             }
 
-            //Container para a página de Perfil
-
-            /*.container-profile-user {
-                @include container;
-                flex-direction: column;
-                width: 100%;
-                min-height: 50vh;
-                animation: slideBoxStatistic .5s ease;
-
-                .container-infos-user {
-                    @include container;
-                    flex-direction: column;
-                    justify-content: center;
-                    width: 100%;
-                    max-height: 90%;
-                    border-radius: 1rem;
-                    margin-top: 1em;
-                    padding-bottom: 0.5em;
-                    //box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
-
-                    .container-primary-infos {
-                        @include container;
-                        justify-content: space-between;
-                        align-items: flex-start;
-                        width: 95%;
-                        margin-top: 1em;
-                        border-radius: 1rem;
-
-                        #user-name {
-                            font-size: 1.3rem;
-                            font-weight: 500;
-                            margin-bottom: 1rem;
-                            color: $white;
-                            text-transform: capitalize;
-                        }
-
-                        .box-user-infos {
-                            @include container;
-                            justify-content: space-around;
-                            width: 100%;
-                            height: 100%;
-                            padding: .5em;
-                        }
-
-                        .boxs-infos-user {
-                            @include container;
-                            flex-direction: column;
-                            justify-content: space-between;
-                            width: 40%;
-                            height: 100%;
-
-                            .box-infos {
-                                @include container;
-                                flex-direction: column;
-                                justify-content: center;
-                                min-width: 80%;
-                                min-height: 5vh;
-                                padding: .2em;
-                                border-radius: .5em;
-                                background-color: $details;
-                                color: $white;
-                                box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
-                                font-size: 100%;
-                                letter-spacing: 1px;
-                            }
-                        }
-
-                        .box-description {
-                            @include container;
-                            flex-direction: column;
-                            align-items: center;
-                            width: 100%;
-                            height: 15rem;
-                        }
-
-                        .box-image {
-                            align-self: flex-end;
-                            @include container;
-                            justify-content: center;
-                            width: 10rem;
-                        }
-                    }
-
-                    .container-second-infos {
-                        @include container;
-                        justify-content: space-between;
-                        width: 95%;
-                        margin-top: 1.5em;
-
-                        #user-infos-general {
-                            overflow: hidden;
-
-                            .box-infos-general {
-                                @include container;
-                                justify-content: center;
-                                width: 100%;
-                                height: 80%;
-                                overflow: auto;
-
-                                .division-info-general {
-                                    @include container;
-                                    flex-direction: column;
-                                    justify-content: space-around;
-                                    align-items: flex-start;
-                                    width: 50%;
-                                    height: 100%;
-
-                                    .container-name-infos-general {
-                                        @include container;
-                                        white-space: nowrap;
-
-                                    }
-
-                                    .text-infos-general {
-                                        margin-left: 5px;
-                                    }
-                                }
-                            }
-
-                            .box-infos-general::-webkit-scrollbar {
-                                width: 6px
-                            }
-
-                            .box-infos-general::-webkit-scrollbar-thumb {
-                                background-color: $color-light;
-                                border-radius: 20px;
-                            }
-                        }
-
-                        .box-user-description {
-                            @include container;
-                            flex-direction: column;
-                            width: 49%;
-                            max-height: 35vh;
-                            min-height: 30vh;
-                            background-color: $details;
-                            color: $white;
-                            margin-top: 1em;
-                            padding: 1em;
-                            padding-top: .3em;
-                            border-radius: 1em;
-
-                            h3 {
-                                letter-spacing: 1px;
-                                margin-bottom: 10px;
-                            }
-
-                            #text-user-description {
-                                font-weight: 500;
-                                word-wrap: break-word;
-                                overflow: auto;
-                                text-align: center;
-                            }
-
-                            #text-user-description::-webkit-scrollbar {
-                                width: 6px
-                            }
-
-                            #text-user-description::-webkit-scrollbar-thumb {
-                                background-color: $color-light;
-                                border-radius: 20px;
-                            }
-                        }
-                    }
-                }
-
-                /*#btn-save-user {
-                    //position: absolute;
-                    //bottom: 10px;
-                    width: 8rem;
-                    min-height: 6vh;
-                }
-            }*/
-
             #icon-back {
                 position: absolute;
                 align-self: flex-end;
@@ -562,7 +549,7 @@ body {
             .container-personalization-infos-user {
                 @include container;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: flex-start;
                 width: 100%;
                 height: 100%;
                 animation: slideBoxStatistic 0.5s ease;
@@ -581,28 +568,18 @@ body {
                     border-radius: 20px;
                 }
 
-                /*#icon-back {
-                    position: absolute;
-                    align-self: flex-end;
-                    //margin-right: 50px;
-                    height: 30px
-                }
-
-                #icon-back:hover {
-                    cursor: pointer;
-                }*/
-
                 .container-personalizations {
                     @include container;
                     flex-direction: column;
                     align-items: flex-start;
                     width: 90%;
-                    height: 70%;
+                    height: 85%;
                     border-radius: 1rem;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 14px;
                     padding: .5em;
                     overflow: auto;
                     background-color: $details;
+                    margin-top: 10px;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
                     .box-customization {
@@ -666,6 +643,131 @@ body {
                             img:hover {
                                 cursor: pointer;
                             }
+                        }
+
+                        .container-personalization-midias {
+                            @include container;
+                            justify-content: space-around;
+                            align-items: flex-end;
+                            // background-color: #2aa72a;
+                            width: 80%;
+
+                            .icon-midias {
+                                margin-top: 10px;
+                                height: 30px;
+                                border: solid 1px #ffffff60;
+                                width: 20%;
+                                border-radius: 5px;
+                                padding: 4px;
+                                transition: .2s;
+                            }
+
+                            .icon-midias:hover {
+                                cursor: pointer;
+                                border: none;
+                                background-color: #ffffff41;
+                            }
+                        }
+                    }
+
+                }
+
+                .popup-personalization-midias {
+                    position: absolute;
+                    width: 63%;
+                    height: 90%;
+                    @include container;
+                    justify-content: center;
+
+                    .container-popup-midias {
+                        @include container;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: flex-start;
+                        background-color: $details;
+                        width: 45%;
+                        min-height: 65%;
+                        padding: .5em;
+                        border-radius: 1em;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                    }
+
+                    .title-popup {
+                        align-self: center;
+                        font-size: 1.2rem;
+                        color: $white;
+                        font-weight: 600;
+                        letter-spacing: 2px;
+                        text-transform: capitalize;
+                    }
+
+                    .title-input-personalization {
+                        font-size: 1.1rem;
+                        color: #D9D9D9;
+                        font-weight: 900;
+                        letter-spacing: 2px;
+                    }
+
+                    .inputs-personalization {
+                        background-color: transparent;
+                        width: 80%;
+                        min-height: 2rem;
+                        border-style: none;
+                        outline: none;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        border-bottom: solid 2px #0487D9;
+                        color: #D9D9D9;
+                        padding: 0.2em;
+                        transition: 0.2s;
+                        margin-bottom: 20px;
+                    }
+
+                    .inputs-personalization::placeholder {
+                        opacity: 40%;
+                        color: $white;
+                    }
+
+                    .box-customization[type='midias'] {
+                        width: 120%;
+                    }
+
+                    .container-btn {
+                        align-self: center;
+                        @include container;
+                        justify-content: space-around;
+                        width: 100%;
+                        height: 50px;
+
+                        .btn {
+                            @include container;
+                            justify-content: center;
+                            background-color: #ec530c;
+                            width: 45%;
+                            height: 100%;
+                            border-radius: .5em;
+
+                        }
+
+                        #btn-cancel {
+                            background-color: $hover-btn-cancel;
+                            opacity: .8;
+                        }
+
+                        #btn-confirm {
+                            background-color: $hover-btn-ok;
+                            opacity: .8;
+                        }
+
+                        #btn-cancel:hover {
+                            cursor: pointer;
+                            opacity: 1;
+
+                        }
+
+                        #btn-confirm:hover {
+                            cursor: pointer;
+                            opacity: 1;
                         }
                     }
                 }
@@ -774,40 +876,17 @@ body {
                             cursor: pointer;
                         }
 
-                        #back-page-email {
-                            align-self: center;
-                            margin-top: 1em;
-                            margin-bottom: 1em;
-                            transition: 0.3s;
-                        }
-
-                        #back-page-email:hover {
-                            color: $color-light;
-                            cursor: pointer;
-                        }
-
                         #btn-verify-code-personalization {
                             align-self: center;
                         }
                     }
 
-                    .box-alert-personalization {
-                        align-self: center;
-                        @include container;
-                        justify-content: center;
+                    .style-info-email-send {
 
-                        p {
-                            text-align: center;
-                            border: solid 1px $color-light;
-                            background-color: $color-light-opacity;
-                            border-radius: .5rem;
-                            padding: .5em;
-                            width: 100%;
-                            min-height: 7vh;
-                            margin-bottom: 1.5em;
-                            color: $white;
-                            animation: slideIn 1s ease;
-                        }
+                        font-size: 1.1rem;
+                        color: $white;
+                        margin-top: 10%;
+                        text-align: center;
                     }
                 }
 
@@ -931,7 +1010,7 @@ body {
 
                         #bar-task-finished {
                             height: 100%;
-                            width: 78%;
+                            width: 50%;
                             background-color: $bar-finished;
                             background: linear-gradient(to right, #5eeb27, #4ab41f);
                             border-top-left-radius: .5rem;
@@ -941,7 +1020,7 @@ body {
 
                         #bar-task-canceled {
                             height: 100%;
-                            width: 22%;
+                            width: 50%;
                             background-color: $bar-canceled;
                             background: linear-gradient(to right, #ec530c, #f06424);
                             border-top-right-radius: .5rem;
@@ -963,6 +1042,10 @@ body {
                         text-transform: uppercase;
                         font-weight: 600;
                         transition: .8s;
+
+                        p {
+                            text-align: center
+                        }
                     }
                 }
             }
@@ -1036,26 +1119,6 @@ body {
                     font-weight: 580;
                     margin-right: 0.5em;
                     white-space: pre-wrap;
-                }
-
-                .box-watch-out {
-                    @include container;
-                    justify-content: center;
-                    position: relative;
-                    top: 6%;
-                    border: solid 1px $color-light;
-                    background-color: $color-light-opacity;
-                    border-radius: .5rem;
-                    padding: .5em;
-                    min-width: 60%;
-                    max-width: 90%;
-                    min-height: 6vh;
-                    color: $white;
-                    animation: slideIn 1s ease;
-
-                    p {
-                        text-align: center;
-                    }
                 }
             }
 
@@ -1178,27 +1241,54 @@ body {
 
                     .box-infos-general {
                         @include container;
-                        justify-content: center;
+                        flex-direction: row;
+                        justify-content: space-between;
                         width: 100%;
-                        height: 80%;
+                        height: 90vh;
+                        padding: .2em;
                         overflow: auto;
 
-                        .division-info-general {
+                        .box-intern {
                             @include container;
                             flex-direction: column;
                             justify-content: space-around;
-                            align-items: flex-start;
                             width: 50%;
                             height: 100%;
 
-                            .container-name-infos-general {
+                            .line-social {
                                 @include container;
+                                justify-content: space-between;
+                                border: solid 1.5px #ffffff60;
+                                ;
+                                border-radius: 1em;
+                                padding: .5em;
+                                width: 90%;
+                                height: 30%;
                                 white-space: nowrap;
+                                overflow: hidden;
+                                transition: .2s;
+                                text-decoration: none;
 
+                                .icons {
+                                    height: 20px;
+                                }
+
+                                .box-name-socials {
+                                    @include container;
+                                    width: 80%;
+                                    padding: 1px;
+                                    text-transform: capitalize;
+                                }
+
+                                .name-socials {
+                                    color: $white;
+                                }
                             }
 
-                            .text-infos-general {
-                                margin-left: 5px;
+                            .line-social:hover {
+                                background-color: #ffffff41;
+                                border: none;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -1217,7 +1307,7 @@ body {
                     @include container;
                     flex-direction: column;
                     width: 49%;
-                    max-height: 35vh;
+                    max-height: 30vh;
                     min-height: 30vh;
                     background-color: $details;
                     color: $white;
@@ -1255,12 +1345,6 @@ body {
     //Fim do estilo
 
     #modal-remove {
-        //@include container;
-        //flex-direction: column;
-        //justify-content: space-around;
-        //height: 40vh;
-        //position: relative;
-        //top: 7%;
 
         #task-remove {
 
@@ -1356,12 +1440,101 @@ body {
         align-items: flex-start;
         justify-content: center;
         width: 30rem;
+        height: 100%;
 
-        .conatiner-credentials {
+        .container-welcome {
+            @include container;
+            flex-direction: column;
+            justify-content: space-around;
+            position: absolute;
+            width: 100%;
+            height: 75%;
+            color: $white;
+            animation: msgAddTask 1s ease;
+
+            h2 {
+                text-align: center
+            }
+
+            .container-box {
+                @include container;
+                justify-content: space-around;
+                width: 100%;
+                height: 100%;
+
+                .boxs {
+                    @include container;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 45%;
+                    height: 95%;
+                    max-height: 350px;
+                    border-radius: .5em;
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                        border-radius: .5em;
+                        animation: msgAddTask 1s ease;
+                        transition: 1s;
+                    }
+
+                    .container-info {
+                        background-color: $details;
+                        width: 100%;
+                        height: 100%;
+                        padding-left: 2rem;
+                        padding-right: 2rem;
+                        border-radius: .5em;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+
+                        h3 {
+                            text-align: center;
+                            margin-top: 1em;
+                        }
+
+                        .box-tarefasio {
+                            margin-top: .7em;
+
+                        }
+
+                        .box-list {
+                            height: 100%;
+
+                            ul {
+
+                                @include container;
+                                flex-direction: column;
+                                justify-content: space-around;
+                                height: 100%;
+
+                            }
+                        }
+                    }
+
+                    .container-info::-webkit-scrollbar {
+                        width: 8px;
+                    }
+
+                    .container-info::-webkit-scrollbar-track {
+                        margin-bottom: 1.2rem;
+                        margin-top: 0.5vw;
+                    }
+
+                    .container-info::-webkit-scrollbar-thumb {
+                        background-color: $color-light;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+
+        .container-credentials {
             @include container;
             flex-direction: column;
             width: 85%;
-            height: 100%;
+            height: 75vh;
             padding: .7em;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1381,7 +1554,7 @@ body {
                 flex-direction: column;
                 justify-content: space-around;
                 width: 90%;
-                min-height: 50%;
+                min-height: 60%;
                 padding: .5em;
                 margin-top: 1rem;
 
@@ -1392,6 +1565,16 @@ body {
                 }
 
                 #forget-password:hover {
+                    cursor: pointer;
+                    color: $color-light;
+                }
+
+                #back-login {
+                    color: $white;
+                    transition: .3s;
+                }
+
+                #back-login:hover {
                     cursor: pointer;
                     color: $color-light;
                 }
@@ -1477,26 +1660,6 @@ body {
                 cursor: pointer;
                 opacity: 1;
             }
-
-            .box-watch-out {
-                @include container;
-                justify-content: center;
-                position: relative;
-                top: 9%;
-                border: solid 1px $color-light;
-                background-color: $color-light-opacity;
-                border-radius: .5rem;
-                padding: .2em;
-                min-width: 80%;
-                max-width: 90%;
-                min-height: 5vh;
-                color: $white;
-                animation: slideIn 1s ease;
-
-                p {
-                    text-align: center;
-                }
-            }
         }
     }
 
@@ -1512,6 +1675,7 @@ body {
             justify-self: center;
             @include container;
             flex-direction: column;
+            justify-content: flex-start;
             width: 100%;
             min-height: 90%;
             padding: 1vw;
@@ -1520,8 +1684,20 @@ body {
             animation: slideBoxStatistic .5s ease;
             overflow: hidden;
 
+            .icon-hide-show {
+                position: absolute;
+                align-self: flex-end;
+                // background-color: #2aa72a;
+                // margin-top: 1.5%;
+                margin-right: 2%;
+            }
+
+            .icon-hide-show:hover {
+                cursor: pointer;
+            }
+
             h2 {
-                margin-bottom: 3vw;
+                margin-bottom: 2vw;
                 color: $text;
                 white-space: nowrap;
             }
@@ -1534,6 +1710,7 @@ body {
                 width: 100%;
                 height: 8vh;
                 min-height: 4.1rem;
+                transition: .5s;
 
                 #task-add {
                     width: 60%;
@@ -1608,11 +1785,12 @@ body {
                 justify-content: flex-start;
                 padding: 0.5vw;
                 width: 100%;
-                height: 37vh;
-                min-height: 21rem;
+                height: 30vh;
+                min-height: 19rem;
                 border-radius: .5rem;
                 overflow-x: hidden;
                 overflow-y: auto;
+                transition: .5s;
 
                 .priority-action {
                     @include container;
@@ -1764,7 +1942,7 @@ body {
                 border-radius: 20px;
             }
 
-            .box-search{
+            .box-search {
                 @include container;
                 justify-content: space-between;
                 width: 97%;
@@ -1773,7 +1951,7 @@ body {
                 padding: .3em;
                 margin-top: 1rem;
 
-                #input-name-search{
+                #input-name-search {
                     width: 75%;
                     height: 100%;
                     padding: 0.5rem;
@@ -1792,7 +1970,7 @@ body {
                     opacity: 40%;
                 }
 
-                .btn-search{
+                .btn-search {
                     @include container;
                     justify-content: center;
                     background-color: $details;
@@ -1802,13 +1980,13 @@ body {
                     transition: .1s;
                 }
 
-                .btn-search:hover{
+                .btn-search:hover {
                     cursor: pointer;
                     background-color: $priority;
                 }
             }
 
-            #refresh{
+            #refresh {
                 position: absolute;
                 height: 20px;
                 align-self: flex-end;
@@ -1817,14 +1995,14 @@ body {
                 transition: .2s;
             }
 
-            #refresh:hover{
-                cursor:pointer;
+            #refresh:hover {
+                cursor: pointer;
                 height: 22px;
             }
 
         }
 
-        #container-view-profile{
+        #container-view-profile {
             position: absolute;
             width: 80%;
             height: 460px;
@@ -1834,20 +2012,21 @@ body {
             overflow-x: hidden;
             overflow-y: auto;
 
-            h1{
+            h1 {
                 font-size: 1.7rem;
                 color: $white;
                 text-align: center;
                 width: 80%;
+                text-transform: capitalize;
             }
 
-            #other-icon-back{
+            #other-icon-back {
                 position: absolute;
                 align-self: flex-end;
                 height: 30px;
             }
 
-            #other-icon-back:hover{
+            #other-icon-back:hover {
                 cursor: pointer;
             }
         }
@@ -1963,7 +2142,7 @@ body {
         color: $text;
         font-weight: 900;
         letter-spacing: 0.1rem;
-        width: 50%;
+        width: 65%;
         text-transform: capitalize;
     }
 
@@ -1987,14 +2166,47 @@ body {
     footer {
         @include container;
         flex-direction: column;
-        justify-content: center;
-        background-color: red;
+        justify-content: space-around;
+        background-color: $priority;
         width: 100%;
         min-height: 15rem;
         margin-top: 5%;
+        color: $white;
+
+        .container-footer {
+            @include container;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: $details;
+            border-radius: .5em;
+            width: 50%;
+            height: 80%;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+
+            .title {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: .5em;
+                margin-top: .5em;
+            }
+        }
+
+        .box-midias {
+            @include container;
+            width: 60%;
+            height: 30%;
+            flex-direction: row;
+            justify-content: space-around;
+
+            img {
+                height: 22px;
+            }
+        }
 
         p {
-            color: $white;
+            text-align: center;
         }
     }
 }
@@ -2063,7 +2275,7 @@ body {
             width: 700px;
 
             #container {
-                justify-content: space-around;
+                // justify-content: space-around;
 
                 #task-made {
                     width: 90%;
@@ -2119,6 +2331,11 @@ body {
 
         footer {
             margin-top: 20%;
+
+            .container-footer {
+                width: 95%;
+                height: 70%;
+            }
         }
     }
 }
@@ -2212,6 +2429,18 @@ body {
                         }
                     }
                 }
+
+                .container-personalization-infos-user {
+
+                    .popup-personalization-midias {
+                        width: 100%;
+                        height: 60%;
+
+                        .container-popup-midias {
+                            width: 85%;
+                        }
+                    }
+                }
             }
         }
     }
@@ -2231,6 +2460,12 @@ body {
 
             .name-symbol {
                 margin: 0;
+            }
+
+            #bar-view-options {
+                display: flex;
+                position: absolute;
+                left: 15px;
             }
         }
 
@@ -2262,31 +2497,6 @@ body {
         //Style para página Profile
         #main-profile {
             .view-infos {
-
-                /*.container-profile-user {
-
-                    .container-infos-user {
-                        width: 110%;
-
-                        .container-primary-infos {
-
-                            #user-name {
-                                text-align: center;
-                                white-space: break-spaces;
-                            }
-
-                            .boxs-infos-user {
-
-                                padding: 0;
-
-                                .box-infos {
-                                    min-width: 32vw;
-                                    text-align: center;
-                                }
-                            }
-                        }
-                    }
-                }*/
 
                 .container-statistic {
                     min-height: 110vh;
@@ -2359,6 +2569,10 @@ body {
             }
         }
 
+        .popup {
+            width: 80%;
+
+        }
     }
 }
 
@@ -2372,11 +2586,13 @@ body {
         header {
             background-image: none;
             background-color: $color-resposive;
+            height: 3rem;
         }
 
         main {
             width: 95vw;
             height: 90vh;
+            margin-top: 5rem;
 
             #main-profile {
                 height: 100%;
@@ -2426,13 +2642,13 @@ body {
                     text-align: center;
                     width: 100%;
                 }
-            }  
+            }
 
             // Page de ranking
 
             #container-ranking {
 
-                max-height: 550px;
+                max-height: 80vh;
                 width: 94%;
                 animation: msgAddTask 0.5s ease;
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
@@ -2464,10 +2680,10 @@ body {
                     }
                 }
 
-                
+
             }
 
-            #container-view-profile{
+            #container-view-profile {
 
                 width: 90%;
                 height: 600px;
@@ -2477,20 +2693,32 @@ body {
         //Estilo para a página de login
 
         #main-enter {
-            margin-top: 8rem;
             width: 100%;
 
-            .conatiner-credentials {
-
-                .box-watch-out {
-                    min-width: 90%;
-                    max-width: 90%;
-                    min-height: 5vh;
-                }
+            .container-credentials {
 
                 .btn-sign {
                     height: 7vh;
                     opacity: 1;
+                }
+            }
+
+            .container-welcome {
+                height: 100%;
+
+                h2 {
+                    margin-bottom: 2rem;
+                }
+
+                .container-box {
+
+                    flex-direction: column;
+
+                    .boxs {
+                        height: 45%;
+                        width: 95%;
+                    }
+
                 }
             }
         }
@@ -2501,7 +2729,7 @@ body {
 
                 p {
                     text-align: center;
-                    width: 100%;
+                    width: 90%;
                     font-size: 1rem;
                 }
             }
@@ -2564,49 +2792,6 @@ body {
 
         #main-profile {
             .view-infos {
-
-                /*.container-profile-user {
-
-                    #btn-save-user {
-                        margin-top: 1rem;
-                    }
-
-                    .container-infos-user {
-
-                        .container-primary-infos {
-
-                            .box-description {
-                                height: 20rem;
-                            }
-
-                            .boxs-infos-user {
-
-                                .box-infos {
-                                    width: 100%;
-                                    height: 50%;
-                                    margin-bottom: 5px;
-                                    font-size: .9rem;
-
-                                }
-                            }
-                        }
-
-                        .container-second-infos {
-                            flex-direction: column;
-
-                            .box-user-description {
-                                width: 95%;
-                                height: 25vh;
-                            }
-
-                            /*#user-infos-general {
-
-                              Inserir aqui o estilo da box de desempenho
-
-                            }
-                        }
-                    }
-                }*/
 
                 .style-to-title {
                     color: $white;
@@ -2679,6 +2864,7 @@ body {
                             justify-content: flex-start;
                             width: 100%;
                             padding: .5em;
+                            margin-bottom: 1em;
 
                             .box-view-info-icon {
 
@@ -2738,12 +2924,6 @@ body {
                         width: 95%;
                         height: 25vh;
                     }
-
-                    /*#user-infos-general {
-
-                      Inserir aqui o estilo da box de desempenho
-
-                    }*/
                 }
             }
         }
@@ -2765,7 +2945,7 @@ body {
         main {
             #container {
                 #container-info {
-                    height: 15rem;
+                    // height: 15rem;
 
                     #task-add {
                         text-align: center;
@@ -2829,7 +3009,7 @@ body {
             #main-profile {
 
                 #container-profile {
-                    height: 700px;
+                    height: calc(80vh)
                 }
             }
         }
@@ -2900,7 +3080,8 @@ body {
                 #container-profile {
                     margin-top: 1rem;
                 }
-                #container-view-profile{
+
+                #container-view-profile {
                     height: 73%;
                 }
             }

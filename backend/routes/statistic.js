@@ -9,6 +9,6 @@ router
 
 router
     .route('/user/statistic/:priority')
-    .put(checkToken, (req, res) => statisticController.update(req, res))
+    .put(checkToken, (req, res) => statisticController.new_update(req, res))
 
 module.exports = router

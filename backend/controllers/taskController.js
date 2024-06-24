@@ -47,6 +47,7 @@ const taskController = {
 
     getAll: async (req, res) => {
         try {
+
             const id = req.userId
 
             const user = await UserModel.findById(id)
@@ -57,15 +58,28 @@ const taskController = {
             }
 
             const tasks = user.tasks
+
             let tasksFromUser = [];
-        
+            let  tasks_to_front = null
+
+            let config = user.configurations.orderPriority
+
             for(let i = 0; i < tasks.length; i++){
 
-                tasksFromUser[i]= await TaskModel.findById(tasks[i])
+                tasksFromUser[i] = await TaskModel.findById(tasks[i])
     
             }
 
-            res.json(tasksFromUser)
+            if (config == true){
+
+                tasks_to_front = organize_tasks_in_order(tasksFromUser)
+
+            }else{
+
+                tasks_to_front = tasksFromUser
+            }
+
+            res.json({tasks:tasks_to_front })
 
         } catch (error) {
             console.log(error)
@@ -73,7 +87,9 @@ const taskController = {
     },
 
     delete: async (req, res) =>{
+
         try {
+
             const id = req.userId
             const taskId = req.params.taskId
 
@@ -84,9 +100,10 @@ const taskController = {
                 return
             }
 
-            const deleteTask = user.tasks
+            const deleteTask = user.tasks 
 
             for(let i = 0; i < deleteTask.length; i++){
+
                 if(deleteTask[i] == taskId){
                     
                     user.tasks.splice(i, 1)
@@ -131,6 +148,39 @@ const taskController = {
 
         } catch (error) {
             console.log(error)
+        }
+    }
+}
+
+function organize_tasks_in_order(tasks) {
+
+    let tasksOrganize = []
+    let state = 3;
+
+    if(tasks.length == 0){
+
+        return tasks
+
+    }
+
+    for (let i = 0; i <= tasks.length; i++) {
+
+        if (i == tasks.length) {
+
+            i = 0;
+            state = state - 1
+        }
+
+        if (state == 0) {
+
+            return tasksOrganize
+           
+        }
+
+        if (tasks[i].priority == state) {
+
+            tasksOrganize.push(tasks[i])
+
         }
     }
 }

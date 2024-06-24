@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {checkToken} = require('../controllers/utils/checkToken')
 
-const {rankingController} = require('../controllers/rankingController')
+const {rankingController} = require('../controllers/rankingController') 
 
 router
     .route('/ranking')

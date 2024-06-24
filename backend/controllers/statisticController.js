@@ -23,29 +23,26 @@ const statisticController = {
         }
     },
 
-    update: async (req, res) => {
+    new_update: async (req, res) => {
+
         try {
-
-            const id = req.userId
-          
+            
+            const userId = req.userId
             const priority = req.params.priority
+            const update = req.body.update
 
-            const user = await UserModel.findById(id)
+            const user = await UserModel.findById(userId)
 
             if (!user) {
+
                 res.status(404).json({ msg: "Usúario não encontrado" })
                 return
+
             }
-    
-            const newStatistic = req.body[priority]
 
-            user.statistic[priority] = newStatistic
-
-            const operation = changePersistStatistic(req.body, user.persistStatistic)
+            change_statictic(user, priority, update)
             
-            await user.save()
-
-            verifyTasksFromUser(user, operation)
+            verifyTasksFromUser(user, update, priority)
 
             res
                 .status(200)
@@ -57,23 +54,19 @@ const statisticController = {
     }
 }
 
-function changePersistStatistic(body, persist){
-    
-    if(body.taskCreated > 0){
-        persist.taskCreated ++
-        
-        return "created"
-    }
-    else if(body.taskFinished > 0){
-        persist.taskFinished ++
-        
-        return "finished"
-    }
-    else if(body.taskCanceled > 0){
-        persist.taskCanceled ++ 
+function change_statictic(user, priority, update){ 
 
-        return "canceled"
+    try{
+
+        user.statistic[priority][update] += 1
+        user.persistStatistic[update] += 1
+
+        user.save()
     }
+    catch(error){
+        console.log(error)
+    }
+
 }
 
 module.exports = statisticController 

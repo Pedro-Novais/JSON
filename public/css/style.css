@@ -92,6 +92,50 @@
     width: 30%;
   }
 }
+@keyframes hideAddTask {
+  from {
+    height: 8vh;
+    min-height: 4.1rem;
+  }
+  to {
+    height: 0vh;
+    min-height: 0rem;
+  }
+}
+@keyframes showAddTask {
+  from {
+    height: 0vh;
+    min-height: 0rem;
+  }
+  to {
+    height: 8vh;
+    min-height: 4.1rem;
+  }
+}
+@keyframes hideAddTaskResponsive {
+  from {
+    height: 30vh;
+  }
+  to {
+    height: 10vh;
+  }
+}
+@keyframes showAddTaskResponsive {
+  from {
+    height: 0vh;
+  }
+  to {
+    height: 30vh;
+  }
+}
+@keyframes loading-popup {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   width: 100%;
   height: 100vh;
@@ -101,6 +145,104 @@ body {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to right, #011140, #034AA6);
+}
+body .popup {
+  position: absolute;
+  margin-top: calc(50vh - 6rem);
+  z-index: 50;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #0487D9;
+  border-radius: 1em;
+  color: #D9D9D9;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
+  padding-bottom: 0.7em;
+}
+body .popup .icon-close {
+  position: absolute;
+  align-self: flex-end;
+  margin-top: 8px;
+  margin-right: 10px;
+  height: 22px;
+}
+body .popup .icon-close:hover {
+  cursor: pointer;
+}
+body .popup .title {
+  background-color: #034AA6;
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+body .popup .title .style-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+body .popup .container-alert {
+  background-color: #0487D9;
+  width: 100%;
+  height: 75%;
+  text-align: center;
+  padding: 0.5em;
+}
+body .popup .container-alert .style-container {
+  font-size: 1.1rem;
+  margin-top: 15%;
+}
+body .popup .container-buttons {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+body .popup .container-buttons .btn-popup {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 40%;
+  height: 100%;
+  border-radius: 0.5em;
+  background-color: #034AA6;
+}
+body .popup .container-buttons .btn-popup:hover {
+  cursor: pointer;
+}
+body .popup .container-buttons #btn-cancel {
+  background-color: rgba(255, 0, 0, 0.8352941176);
+}
+body .popup .container-buttons #btn-confirm {
+  background-color: rgba(42, 167, 42, 0.6980392157);
+}
+body .popup .container-buttons #btn-cancel:hover {
+  background-color: #ff0000;
+}
+body .popup .container-buttons #btn-confirm:hover {
+  background-color: #2aa72a;
+}
+body .popup .popup-loading {
+  margin-top: 30px;
+  width: 70px;
+  height: 70px;
+  border: solid 10px #034AA6;
+  border-top-color: #D9D9D9;
+  border-radius: 50%;
+  animation: loading-popup 1s linear infinite;
 }
 body .style-bar-options {
   align-self: flex-start;
@@ -184,6 +326,7 @@ body header {
   background: linear-gradient(to right, #011140, #034AA6);
 }
 body header #bar-view-options {
+  display: none;
   position: absolute;
   left: 15px;
 }
@@ -333,177 +476,6 @@ body #main-profile .view-infos {
   padding: 1rem;
   overflow-y: auto;
   overflow-x: hidden;
-  /*.container-profile-user {
-      @include container;
-      flex-direction: column;
-      width: 100%;
-      min-height: 50vh;
-      animation: slideBoxStatistic .5s ease;
-
-      .container-infos-user {
-          @include container;
-          flex-direction: column;
-          justify-content: center;
-          width: 100%;
-          max-height: 90%;
-          border-radius: 1rem;
-          margin-top: 1em;
-          padding-bottom: 0.5em;
-          //box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
-
-          .container-primary-infos {
-              @include container;
-              justify-content: space-between;
-              align-items: flex-start;
-              width: 95%;
-              margin-top: 1em;
-              border-radius: 1rem;
-
-              #user-name {
-                  font-size: 1.3rem;
-                  font-weight: 500;
-                  margin-bottom: 1rem;
-                  color: $white;
-                  text-transform: capitalize;
-              }
-
-              .box-user-infos {
-                  @include container;
-                  justify-content: space-around;
-                  width: 100%;
-                  height: 100%;
-                  padding: .5em;
-              }
-
-              .boxs-infos-user {
-                  @include container;
-                  flex-direction: column;
-                  justify-content: space-between;
-                  width: 40%;
-                  height: 100%;
-
-                  .box-infos {
-                      @include container;
-                      flex-direction: column;
-                      justify-content: center;
-                      min-width: 80%;
-                      min-height: 5vh;
-                      padding: .2em;
-                      border-radius: .5em;
-                      background-color: $details;
-                      color: $white;
-                      box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
-                      font-size: 100%;
-                      letter-spacing: 1px;
-                  }
-              }
-
-              .box-description {
-                  @include container;
-                  flex-direction: column;
-                  align-items: center;
-                  width: 100%;
-                  height: 15rem;
-              }
-
-              .box-image {
-                  align-self: flex-end;
-                  @include container;
-                  justify-content: center;
-                  width: 10rem;
-              }
-          }
-
-          .container-second-infos {
-              @include container;
-              justify-content: space-between;
-              width: 95%;
-              margin-top: 1.5em;
-
-              #user-infos-general {
-                  overflow: hidden;
-
-                  .box-infos-general {
-                      @include container;
-                      justify-content: center;
-                      width: 100%;
-                      height: 80%;
-                      overflow: auto;
-
-                      .division-info-general {
-                          @include container;
-                          flex-direction: column;
-                          justify-content: space-around;
-                          align-items: flex-start;
-                          width: 50%;
-                          height: 100%;
-
-                          .container-name-infos-general {
-                              @include container;
-                              white-space: nowrap;
-
-                          }
-
-                          .text-infos-general {
-                              margin-left: 5px;
-                          }
-                      }
-                  }
-
-                  .box-infos-general::-webkit-scrollbar {
-                      width: 6px
-                  }
-
-                  .box-infos-general::-webkit-scrollbar-thumb {
-                      background-color: $color-light;
-                      border-radius: 20px;
-                  }
-              }
-
-              .box-user-description {
-                  @include container;
-                  flex-direction: column;
-                  width: 49%;
-                  max-height: 35vh;
-                  min-height: 30vh;
-                  background-color: $details;
-                  color: $white;
-                  margin-top: 1em;
-                  padding: 1em;
-                  padding-top: .3em;
-                  border-radius: 1em;
-
-                  h3 {
-                      letter-spacing: 1px;
-                      margin-bottom: 10px;
-                  }
-
-                  #text-user-description {
-                      font-weight: 500;
-                      word-wrap: break-word;
-                      overflow: auto;
-                      text-align: center;
-                  }
-
-                  #text-user-description::-webkit-scrollbar {
-                      width: 6px
-                  }
-
-                  #text-user-description::-webkit-scrollbar-thumb {
-                      background-color: $color-light;
-                      border-radius: 20px;
-                  }
-              }
-          }
-      }
-
-      /*#btn-save-user {
-          //position: absolute;
-          //bottom: 10px;
-          width: 8rem;
-          min-height: 6vh;
-      }
-  }*/
 }
 body #main-profile .view-infos .style-to-title {
   color: #D9D9D9;
@@ -536,20 +508,10 @@ body #main-profile .view-infos .container-personalization-infos-user {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
   animation: slideBoxStatistic 0.5s ease;
-  /*#icon-back {
-      position: absolute;
-      align-self: flex-end;
-      //margin-right: 50px;
-      height: 30px
-  }
-
-  #icon-back:hover {
-      cursor: pointer;
-  }*/
 }
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations::-webkit-scrollbar {
   width: 8px;
@@ -570,12 +532,13 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
   flex-direction: column;
   align-items: flex-start;
   width: 90%;
-  height: 70%;
+  height: 85%;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 14px;
   padding: 0.5em;
   overflow: auto;
   background-color: #034AA6;
+  margin-top: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization {
@@ -641,6 +604,130 @@ body #main-profile .view-infos .container-personalization-infos-user .container-
 }
 body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .box-view-info-icon img:hover {
   cursor: pointer;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .container-personalization-midias {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 80%;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .container-personalization-midias .icon-midias {
+  margin-top: 10px;
+  height: 30px;
+  border: solid 1px rgba(255, 255, 255, 0.3764705882);
+  width: 20%;
+  border-radius: 5px;
+  padding: 4px;
+  transition: 0.2s;
+}
+body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .container-personalization-midias .icon-midias:hover {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2549019608);
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias {
+  position: absolute;
+  width: 63%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-popup-midias {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #034AA6;
+  width: 45%;
+  min-height: 65%;
+  padding: 0.5em;
+  border-radius: 1em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .title-popup {
+  align-self: center;
+  font-size: 1.2rem;
+  color: #D9D9D9;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .title-input-personalization {
+  font-size: 1.1rem;
+  color: #D9D9D9;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .inputs-personalization {
+  background-color: transparent;
+  width: 80%;
+  min-height: 2rem;
+  border-style: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: solid 2px #0487D9;
+  color: #D9D9D9;
+  padding: 0.2em;
+  transition: 0.2s;
+  margin-bottom: 20px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .inputs-personalization::-moz-placeholder {
+  opacity: 40%;
+  color: #D9D9D9;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .inputs-personalization::placeholder {
+  opacity: 40%;
+  color: #D9D9D9;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .box-customization[type=midias] {
+  width: 120%;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  background-color: #ec530c;
+  width: 45%;
+  height: 100%;
+  border-radius: 0.5em;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-cancel {
+  background-color: #e63e3e;
+  opacity: 0.8;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-confirm {
+  background-color: #0487D9;
+  opacity: 0.8;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-cancel:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-btn #btn-confirm:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 body #main-profile .view-infos .container-personalization-infos-user .box-alert-personalization-initial {
   align-self: center;
@@ -745,38 +832,14 @@ body #main-profile .view-infos .container-personalization-modal .modal-personali
   color: #05DBF2;
   cursor: pointer;
 }
-body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security #back-page-email {
-  align-self: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  transition: 0.3s;
-}
-body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security #back-page-email:hover {
-  color: #05DBF2;
-  cursor: pointer;
-}
 body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-customization-security #btn-verify-code-personalization {
   align-self: center;
 }
-body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-alert-personalization {
-  align-self: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  justify-content: center;
-}
-body #main-profile .view-infos .container-personalization-modal .modal-personalizations .box-alert-personalization p {
-  text-align: center;
-  border: solid 1px #05DBF2;
-  background-color: rgba(5, 219, 242, 0.2509803922);
-  border-radius: 0.5rem;
-  padding: 0.5em;
-  width: 100%;
-  min-height: 7vh;
-  margin-bottom: 1.5em;
+body #main-profile .view-infos .container-personalization-modal .modal-personalizations .style-info-email-send {
+  font-size: 1.1rem;
   color: #D9D9D9;
-  animation: slideIn 1s ease;
+  margin-top: 10%;
+  text-align: center;
 }
 body #main-profile .view-infos .container-statistic {
   display: flex;
@@ -909,7 +972,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-finished {
   height: 100%;
-  width: 78%;
+  width: 50%;
   background-color: #5eeb27;
   background: linear-gradient(to right, #5eeb27, #4ab41f);
   border-top-left-radius: 0.5rem;
@@ -918,7 +981,7 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
 }
 body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar #bar-task-canceled {
   height: 100%;
-  width: 22%;
+  width: 50%;
   background-color: #ec530c;
   background: linear-gradient(to right, #ec530c, #f06424);
   border-top-right-radius: 0.5rem;
@@ -941,6 +1004,9 @@ body #main-profile .view-infos .container-statistic .container-statistic-bar .st
   text-transform: uppercase;
   font-weight: 600;
   transition: 0.8s;
+}
+body #main-profile .view-infos .container-statistic .container-statistic-bar .statistic-bar-info p {
+  text-align: center;
 }
 body #main-profile .view-infos .container-config {
   display: flex;
@@ -1015,27 +1081,6 @@ body #main-profile .view-infos .container-config .style-to-name-config {
   font-weight: 580;
   margin-right: 0.5em;
   white-space: pre-wrap;
-}
-body #main-profile .view-infos .container-config .box-watch-out {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 6%;
-  border: solid 1px #05DBF2;
-  background-color: rgba(5, 219, 242, 0.2509803922);
-  border-radius: 0.5rem;
-  padding: 0.5em;
-  min-width: 60%;
-  max-width: 90%;
-  min-height: 6vh;
-  color: #D9D9D9;
-  animation: slideIn 1s ease;
-}
-body #main-profile .view-infos .container-config .box-watch-out p {
-  text-align: center;
 }
 body #main-profile .view-infos .btn-configs {
   display: flex;
@@ -1176,31 +1221,58 @@ body .container-profile-user .container-infos-user .container-second-infos #user
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
-  height: 80%;
+  height: 90vh;
+  padding: 0.2em;
   overflow: auto;
 }
-body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general {
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
   width: 50%;
   height: 100%;
 }
-body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general .container-name-infos-general {
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  justify-content: space-between;
+  border: solid 1.5px rgba(255, 255, 255, 0.3764705882);
+  border-radius: 1em;
+  padding: 0.5em;
+  width: 90%;
+  height: 30%;
   white-space: nowrap;
+  overflow: hidden;
+  transition: 0.2s;
+  text-decoration: none;
 }
-body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .division-info-general .text-infos-general {
-  margin-left: 5px;
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .icons {
+  height: 20px;
+}
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .box-name-socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  padding: 1px;
+  text-transform: capitalize;
+}
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social .name-socials {
+  color: #D9D9D9;
+}
+body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general .box-intern .line-social:hover {
+  background-color: rgba(255, 255, 255, 0.2549019608);
+  border: none;
+  cursor: pointer;
 }
 body .container-profile-user .container-infos-user .container-second-infos #user-infos-general .box-infos-general::-webkit-scrollbar {
   width: 6px;
@@ -1216,7 +1288,7 @@ body .container-profile-user .container-infos-user .container-second-infos .box-
   align-items: center;
   flex-direction: column;
   width: 49%;
-  max-height: 35vh;
+  max-height: 30vh;
   min-height: 30vh;
   background-color: #034AA6;
   color: #D9D9D9;
@@ -1342,21 +1414,106 @@ body #main-enter {
   align-items: flex-start;
   justify-content: center;
   width: 30rem;
+  height: 100%;
 }
-body #main-enter .conatiner-credentials {
+body #main-enter .container-welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  color: #D9D9D9;
+  animation: msgAddTask 1s ease;
+}
+body #main-enter .container-welcome h2 {
+  text-align: center;
+}
+body #main-enter .container-welcome .container-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+body #main-enter .container-welcome .container-box .boxs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 45%;
+  height: 95%;
+  max-height: 350px;
+  border-radius: 0.5em;
+}
+body #main-enter .container-welcome .container-box .boxs img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5em;
+  animation: msgAddTask 1s ease;
+  transition: 1s;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info {
+  background-color: #034AA6;
+  width: 100%;
+  height: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 0.5em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info h3 {
+  text-align: center;
+  margin-top: 1em;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info .box-tarefasio {
+  margin-top: 0.7em;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info .box-list {
+  height: 100%;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info .box-list ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info::-webkit-scrollbar {
+  width: 8px;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info::-webkit-scrollbar-track {
+  margin-bottom: 1.2rem;
+  margin-top: 0.5vw;
+}
+body #main-enter .container-welcome .container-box .boxs .container-info::-webkit-scrollbar-thumb {
+  background-color: #05DBF2;
+  border-radius: 20px;
+}
+body #main-enter .container-credentials {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   width: 85%;
-  height: 100%;
+  height: 75vh;
   padding: 0.7em;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   animation: msgAddTask 1s ease;
 }
-body #main-enter .conatiner-credentials h1 {
+body #main-enter .container-credentials h1 {
   color: #D9D9D9;
   text-transform: uppercase;
   font-weight: 700;
@@ -1364,7 +1521,7 @@ body #main-enter .conatiner-credentials h1 {
   margin-top: 1rem;
   text-align: center;
 }
-body #main-enter .conatiner-credentials .box-credentials {
+body #main-enter .container-credentials .box-credentials {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -1372,20 +1529,28 @@ body #main-enter .conatiner-credentials .box-credentials {
   flex-direction: column;
   justify-content: space-around;
   width: 90%;
-  min-height: 50%;
+  min-height: 60%;
   padding: 0.5em;
   margin-top: 1rem;
 }
-body #main-enter .conatiner-credentials .box-credentials #forget-password {
+body #main-enter .container-credentials .box-credentials #forget-password {
   color: #D9D9D9;
   align-self: flex-end;
   transition: 0.3s;
 }
-body #main-enter .conatiner-credentials .box-credentials #forget-password:hover {
+body #main-enter .container-credentials .box-credentials #forget-password:hover {
   cursor: pointer;
   color: #05DBF2;
 }
-body #main-enter .conatiner-credentials .box-credentials .box-inputs {
+body #main-enter .container-credentials .box-credentials #back-login {
+  color: #D9D9D9;
+  transition: 0.3s;
+}
+body #main-enter .container-credentials .box-credentials #back-login:hover {
+  cursor: pointer;
+  color: #05DBF2;
+}
+body #main-enter .container-credentials .box-credentials .box-inputs {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -1396,12 +1561,12 @@ body #main-enter .conatiner-credentials .box-credentials .box-inputs {
   width: 100%;
   height: 35%;
 }
-body #main-enter .conatiner-credentials .box-credentials .title-input {
+body #main-enter .container-credentials .box-credentials .title-input {
   font-size: 1.2rem;
   color: #D9D9D9;
   font-weight: 900;
 }
-body #main-enter .conatiner-credentials .box-credentials .inputs-credentials {
+body #main-enter .container-credentials .box-credentials .inputs-credentials {
   background-color: transparent;
   width: 100%;
   height: 4vh;
@@ -1414,36 +1579,36 @@ body #main-enter .conatiner-credentials .box-credentials .inputs-credentials {
   padding: 0.2em;
   transition: 0.2s;
 }
-body #main-enter .conatiner-credentials .box-credentials .inputs-credentials::-moz-placeholder {
+body #main-enter .container-credentials .box-credentials .inputs-credentials::-moz-placeholder {
   color: #D9D9D9;
   opacity: 0.9;
 }
-body #main-enter .conatiner-credentials .box-credentials .inputs-credentials::placeholder {
+body #main-enter .container-credentials .box-credentials .inputs-credentials::placeholder {
   color: #D9D9D9;
   opacity: 0.9;
 }
-body #main-enter .conatiner-credentials .box-credentials .inputs-credentials:focus {
+body #main-enter .container-credentials .box-credentials .inputs-credentials:focus {
   border-bottom: solid 2px #D9D9D9;
 }
-body #main-enter .conatiner-credentials #re-send-code {
+body #main-enter .container-credentials #re-send-code {
   text-decoration: none;
   color: #D9D9D9;
   transition: 0.2s;
 }
-body #main-enter .conatiner-credentials #re-send-code:hover {
+body #main-enter .container-credentials #re-send-code:hover {
   color: #05DBF2;
   cursor: pointer;
 }
-body #main-enter .conatiner-credentials #back-page {
+body #main-enter .container-credentials #back-page {
   text-decoration: none;
   color: #D9D9D9;
   transition: 0.2s;
 }
-body #main-enter .conatiner-credentials #back-page:hover {
+body #main-enter .container-credentials #back-page:hover {
   color: #05DBF2;
   cursor: pointer;
 }
-body #main-enter .conatiner-credentials .btn-sign {
+body #main-enter .container-credentials .btn-sign {
   margin-top: 2em;
   width: 80%;
   min-height: 45px;
@@ -1458,30 +1623,9 @@ body #main-enter .conatiner-credentials .btn-sign {
   opacity: 0.8;
   transition: 0.2s;
 }
-body #main-enter .conatiner-credentials .btn-sign:hover {
+body #main-enter .container-credentials .btn-sign:hover {
   cursor: pointer;
   opacity: 1;
-}
-body #main-enter .conatiner-credentials .box-watch-out {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 9%;
-  border: solid 1px #05DBF2;
-  background-color: rgba(5, 219, 242, 0.2509803922);
-  border-radius: 0.5rem;
-  padding: 0.2em;
-  min-width: 80%;
-  max-width: 90%;
-  min-height: 5vh;
-  color: #D9D9D9;
-  animation: slideIn 1s ease;
-}
-body #main-enter .conatiner-credentials .box-watch-out p {
-  text-align: center;
 }
 body main {
   display: flex;
@@ -1501,6 +1645,7 @@ body main #container {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  justify-content: flex-start;
   width: 100%;
   min-height: 90%;
   padding: 1vw;
@@ -1509,8 +1654,16 @@ body main #container {
   animation: slideBoxStatistic 0.5s ease;
   overflow: hidden;
 }
+body main #container .icon-hide-show {
+  position: absolute;
+  align-self: flex-end;
+  margin-right: 2%;
+}
+body main #container .icon-hide-show:hover {
+  cursor: pointer;
+}
 body main #container h2 {
-  margin-bottom: 3vw;
+  margin-bottom: 2vw;
   color: white;
   white-space: nowrap;
 }
@@ -1525,6 +1678,7 @@ body main #container #container-info {
   width: 100%;
   height: 8vh;
   min-height: 4.1rem;
+  transition: 0.5s;
 }
 body main #container #container-info #task-add {
   width: 60%;
@@ -1607,11 +1761,12 @@ body main #container #task-made {
   justify-content: flex-start;
   padding: 0.5vw;
   width: 100%;
-  height: 37vh;
-  min-height: 21rem;
+  height: 30vh;
+  min-height: 19rem;
   border-radius: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
+  transition: 0.5s;
 }
 body main #container #task-made .priority-action {
   display: flex;
@@ -1851,6 +2006,7 @@ body main #container-view-profile h1 {
   color: #D9D9D9;
   text-align: center;
   width: 80%;
+  text-transform: capitalize;
 }
 body main #container-view-profile #other-icon-back {
   position: absolute;
@@ -1972,7 +2128,7 @@ body .task-puted {
   color: white;
   font-weight: 900;
   letter-spacing: 0.1rem;
-  width: 50%;
+  width: 65%;
   text-transform: capitalize;
 }
 body .choose-priority {
@@ -1995,14 +2151,49 @@ body footer {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  background-color: red;
+  justify-content: space-around;
+  background-color: #0487D9;
   width: 100%;
   min-height: 15rem;
   margin-top: 5%;
+  color: #D9D9D9;
+}
+body footer .container-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #034AA6;
+  border-radius: 0.5em;
+  width: 50%;
+  height: 80%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+body footer .container-footer .title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+body footer .box-midias {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+  height: 30%;
+  flex-direction: row;
+  justify-content: space-around;
+}
+body footer .box-midias img {
+  height: 22px;
 }
 body footer p {
-  color: #D9D9D9;
+  text-align: center;
 }
 
 @media screen and (max-width: 1350px) {
@@ -2036,9 +2227,6 @@ body footer p {
   }
   body main {
     width: 700px;
-  }
-  body main #container {
-    justify-content: space-around;
   }
   body main #container #task-made {
     width: 90%;
@@ -2081,6 +2269,10 @@ body footer p {
   }
   body footer {
     margin-top: 20%;
+  }
+  body footer .container-footer {
+    width: 95%;
+    height: 70%;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -2143,6 +2335,13 @@ body footer p {
   body #main-profile .view-infos .container-config .box-configs .box-configurations .line-config {
     border-radius: 1rem;
   }
+  body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias {
+    width: 100%;
+    height: 60%;
+  }
+  body #main-profile .view-infos .container-personalization-infos-user .popup-personalization-midias .container-popup-midias {
+    width: 85%;
+  }
 }
 @media screen and (max-width: 800px) {
   body {
@@ -2157,6 +2356,11 @@ body footer p {
   }
   body header .name-symbol {
     margin: 0;
+  }
+  body header #bar-view-options {
+    display: flex;
+    position: absolute;
+    left: 15px;
   }
   body main {
     width: 90vw;
@@ -2176,32 +2380,6 @@ body footer p {
   }
   body .tasks {
     border-radius: 1rem;
-  }
-  body #main-profile .view-infos {
-    /*.container-profile-user {
-
-        .container-infos-user {
-            width: 110%;
-
-            .container-primary-infos {
-
-                #user-name {
-                    text-align: center;
-                    white-space: break-spaces;
-                }
-
-                .boxs-infos-user {
-
-                    padding: 0;
-
-                    .box-infos {
-                        min-width: 32vw;
-                        text-align: center;
-                    }
-                }
-            }
-        }
-    }*/
   }
   body #main-profile .view-infos .container-statistic {
     min-height: 110vh;
@@ -2247,6 +2425,9 @@ body footer p {
     min-width: 32vw;
     text-align: center;
   }
+  body .popup {
+    width: 80%;
+  }
 }
 @media screen and (max-width: 600px) {
   body {
@@ -2258,10 +2439,12 @@ body footer p {
   body header {
     background-image: none;
     background-color: #082783;
+    height: 3rem;
   }
   body main {
     width: 95vw;
     height: 90vh;
+    margin-top: 5rem;
   }
   body main #main-profile {
     height: 100%;
@@ -2300,7 +2483,7 @@ body footer p {
     width: 100%;
   }
   body main #container-ranking {
-    max-height: 550px;
+    max-height: 80vh;
     width: 94%;
     animation: msgAddTask 0.5s ease;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 0px 28px;
@@ -2327,24 +2510,31 @@ body footer p {
     height: 600px;
   }
   body #main-enter {
-    margin-top: 8rem;
     width: 100%;
   }
-  body #main-enter .conatiner-credentials .box-watch-out {
-    min-width: 90%;
-    max-width: 90%;
-    min-height: 5vh;
-  }
-  body #main-enter .conatiner-credentials .btn-sign {
+  body #main-enter .container-credentials .btn-sign {
     height: 7vh;
     opacity: 1;
+  }
+  body #main-enter .container-welcome {
+    height: 100%;
+  }
+  body #main-enter .container-welcome h2 {
+    margin-bottom: 2rem;
+  }
+  body #main-enter .container-welcome .container-box {
+    flex-direction: column;
+  }
+  body #main-enter .container-welcome .container-box .boxs {
+    height: 45%;
+    width: 95%;
   }
   body #modal-remove #task-remove {
     min-height: 35%;
   }
   body #modal-remove #task-remove p {
     text-align: center;
-    width: 100%;
+    width: 90%;
     font-size: 1rem;
   }
   body .tasks {
@@ -2391,50 +2581,6 @@ body footer p {
   body .choose-priority {
     width: 20px;
     height: 20px;
-  }
-  body #main-profile .view-infos {
-    /*.container-profile-user {
-
-        #btn-save-user {
-            margin-top: 1rem;
-        }
-
-        .container-infos-user {
-
-            .container-primary-infos {
-
-                .box-description {
-                    height: 20rem;
-                }
-
-                .boxs-infos-user {
-
-                    .box-infos {
-                        width: 100%;
-                        height: 50%;
-                        margin-bottom: 5px;
-                        font-size: .9rem;
-
-                    }
-                }
-            }
-
-            .container-second-infos {
-                flex-direction: column;
-
-                .box-user-description {
-                    width: 95%;
-                    height: 25vh;
-                }
-
-                /*#user-infos-general {
-
-                  Inserir aqui o estilo da box de desempenho
-
-                }
-            }
-        }
-    }*/
   }
   body #main-profile .view-infos .style-to-title {
     color: #D9D9D9;
@@ -2488,6 +2634,7 @@ body footer p {
     justify-content: flex-start;
     width: 100%;
     padding: 0.5em;
+    margin-bottom: 1em;
   }
   body #main-profile .view-infos .container-personalization-infos-user .container-personalizations .box-customization .box-view-info-icon img {
     height: 20px;
@@ -2514,11 +2661,6 @@ body footer p {
   }
   body .container-profile-user .container-infos-user .container-second-infos {
     flex-direction: column;
-    /*#user-infos-general {
-
-      Inserir aqui o estilo da box de desempenho
-
-    }*/
   }
   body .container-profile-user .container-infos-user .container-second-infos .box-user-description {
     width: 95%;
@@ -2534,9 +2676,6 @@ body footer p {
   }
   body {
     width: 100%;
-  }
-  body main #container #container-info {
-    height: 15rem;
   }
   body main #container #container-info #task-add {
     text-align: center;
@@ -2577,7 +2716,7 @@ body footer p {
 }
 @media screen and (max-height: 900px) and (max-width: 600px) {
   body #main-profile #container-profile {
-    height: 700px;
+    height: 80vh;
   }
 }
 @media screen and (min-height: 900px) {

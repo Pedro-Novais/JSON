@@ -4,12 +4,10 @@ const { Schema } = mongoose
 
 const configSchema = new Schema({
     orderPriority: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     usersCanViewStatistic: {
-        type: Boolean,
-        required: true
+        type: Boolean
     }
 })
 
