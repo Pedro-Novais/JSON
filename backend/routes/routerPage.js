@@ -12,16 +12,16 @@ router
     .get((req, res) => pageController.pageLogin(req, res))
 
 router
+    .route('/recall')
+    .get((req, res) => pageController.pageRecall(req, res))
+
+router
     .route('/register')
     .get((req, res) => pageController.pageRegister(req, res))
 
 router
     .route('/welcome')
     .get((req, res) => pageController.pageWelcome(req, res))
-
-router
-    .route('/list-to-do')
-    .get((req, res) => pageController.pageIndex(req, res))
 
 router
     .route('/list')

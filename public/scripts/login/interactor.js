@@ -4,6 +4,8 @@ import { API } from "../utils/endPoints.js"
 import { post } from "../utils/functionsReq.js"
 import { get_token } from "../utils/getToken.js"
 import { mark_header } from "../utils/markHeader.js"
+import { modal } from "../utils/modals_views.js"
+import { RecallPassword } from "./recall_password.js"
 
 export class InteractorLogin {
 
@@ -22,8 +24,13 @@ export class InteractorLogin {
 
         btn_forget.addEventListener('click', () => {
 
-            new PopUpGlobal('#main-enter', 'No futuro!', 'Será adicionado essa função ainda!')
-            return false
+            const main = document.querySelector('main')
+
+            main.innerHTML = modal['recall_password']
+
+            new PopUpGlobal('#main-enter', 'Informação!', 'Digite seu atual email!')
+
+            new RecallPassword()
 
         })
     }

@@ -13,7 +13,6 @@ class Relocated {
 
     builder_page() {
         const dir = window.location.pathname
-        console.log(dir)
 
         const dir_name = convert_url_to_params(dir)
 

@@ -1,32 +1,11 @@
-const fs = require('fs')
-const ejs = require('ejs');
-const path = require('path');
 const { User: UserModel } = require('../models/user')
+const { ConfirmationUser } = require('../models/confirmation')
 
 require('dotenv').config()
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
 const pageController = {
-
-    verification: async (req, res) => {
-        try {
-
-            res.render('pages/pattern.ejs')
-
-        } catch (error) {
-            console.log(error)
-        }
-    },
-    pageIndex: async (req, res) => {
-        try {
-
-            res.render('index')
-
-        } catch (error) {
-            console.log(error)
-        }
-    },
 
     pageWelcome: async (req, res) => {
         try {
@@ -48,6 +27,34 @@ const pageController = {
             console.log(error)
         }
 
+    },
+
+    pageRecall: async (req, res) => {
+
+        try {
+            
+            const code_verification = req.query.identifier
+
+            const user = await ConfirmationUser.find({ code: code_verification })
+
+            console.log(user)
+
+            if (user.length == 1) {
+
+                res.render('pages/recall')
+                
+            } else if (user.length > 1) {
+
+                console.log('algum erro ocorreu')
+                res.redirect('welcome')
+            }
+            else {
+                res.redirect('welcome')
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
     },
 
     pageRegister: async (req, res) => {

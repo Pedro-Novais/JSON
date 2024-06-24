@@ -1507,7 +1507,7 @@ body #main-enter .container-credentials {
   align-items: center;
   flex-direction: column;
   width: 85%;
-  height: 80vh;
+  height: 75vh;
   padding: 0.7em;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1529,7 +1529,7 @@ body #main-enter .container-credentials .box-credentials {
   flex-direction: column;
   justify-content: space-around;
   width: 90%;
-  min-height: 50%;
+  min-height: 60%;
   padding: 0.5em;
   margin-top: 1rem;
 }
@@ -1539,6 +1539,14 @@ body #main-enter .container-credentials .box-credentials #forget-password {
   transition: 0.3s;
 }
 body #main-enter .container-credentials .box-credentials #forget-password:hover {
+  cursor: pointer;
+  color: #05DBF2;
+}
+body #main-enter .container-credentials .box-credentials #back-login {
+  color: #D9D9D9;
+  transition: 0.3s;
+}
+body #main-enter .container-credentials .box-credentials #back-login:hover {
   cursor: pointer;
   color: #05DBF2;
 }

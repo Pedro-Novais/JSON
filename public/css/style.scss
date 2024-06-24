@@ -1534,7 +1534,7 @@ body {
             @include container;
             flex-direction: column;
             width: 85%;
-            height: 80vh;
+            height: 75vh;
             padding: .7em;
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -1554,7 +1554,7 @@ body {
                 flex-direction: column;
                 justify-content: space-around;
                 width: 90%;
-                min-height: 50%;
+                min-height: 60%;
                 padding: .5em;
                 margin-top: 1rem;
 
@@ -1565,6 +1565,16 @@ body {
                 }
 
                 #forget-password:hover {
+                    cursor: pointer;
+                    color: $color-light;
+                }
+
+                #back-login {
+                    color: $white;
+                    transition: .3s;
+                }
+
+                #back-login:hover {
                     cursor: pointer;
                     color: $color-light;
                 }

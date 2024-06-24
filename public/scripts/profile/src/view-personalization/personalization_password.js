@@ -27,31 +27,7 @@ export class PersonalizationPassword {
 
             this.validation_personalization(status)
         })
-
-        // this.hide_password(password) 
     }
-
-    // hide_password(args){
-        
-    //     let password = ''
-
-    //     args.addEventListener('input', (event) => {
-
-    //         if(event.inputType == 'deleteContentBackward'){
-
-    //             if(password.length > 0 ){
-
-    //                 const lenght = password.length
-    //             }
-    //             console.log(password[0])
-    //         }else{
-
-    //             password += event.data
-    
-    //             console.log(password)
-    //         }
-    //     })
-    // }
 
     async validation_personalization(status){
 

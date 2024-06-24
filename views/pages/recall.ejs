@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+
+    <main id="main-enter">
+        <div class="container-credentials">
+            <h1>Alterar Senha</h1>
+            <div class="box-credentials">
+                <div class="box-inputs">
+                    <label for="value-password">
+                        <p class="title-input">Senha:</p>
+                    </label>
+                    <input type="password" name="password" class="inputs-credentials" id="value-password"
+                        placeholder="Digite sua Senha">
+                </div>
+                <div class="box-inputs">
+                    <label for="value-password">
+                        <p class="title-input">Confirme a Senha:</p>
+                    </label>
+                    <input type="password" name="password" class="inputs-credentials" id="value-password"
+                        placeholder="Confirme sua Senha">
+                </div>
+
+                <button type="button" id="btn-recall" class="btn-sign">Alterar Senha</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+    <script src="scripts/relocate.js" type="module" scripttag="true"></script>
+</body>
+
+</html>

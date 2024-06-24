@@ -19,11 +19,22 @@ async function send(code, req){
         text: `Seu código de confirmação é: ${code}`
     };
 
-    // transporter.sendMail(mailOptions, (error, info) => {
-    //     if (error) {
-    //         return console.log(error);
-    //     }
-    // });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+    });
+}
+
+function messages(type, code){
+
+    const msg = {
+
+        create_code: `Seu código de confirmação é: ${code}`,
+        recall: `Acesse o link abaixo para redefinir sua senha: http://localhost:3000/welcome?identifier=${code}`
+    }
+
+    return msg[type]
 }
 
 module.exports = {send}
