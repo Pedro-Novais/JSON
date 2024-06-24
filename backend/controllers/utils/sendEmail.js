@@ -13,7 +13,7 @@ async function send(code, req){
         }
     });
     
-    const msg = messages(req.body.msg, code)
+    const msg = messages(req.body.msg, code, req.body.urlBase)
 
     const mailOptions = {
         from: process.env.EMAIL,
@@ -29,12 +29,12 @@ async function send(code, req){
     });
 }
 
-function messages(type, code){
+function messages(type, code, url = null){
 
     const msg = {
 
         create_code: `Seu código de confirmação é: ${code}`,
-        recall: `Acesse o link abaixo para redefinir sua senha: http://localhost:3000/recall?identifier=${code}`
+        recall: `Acesse o link abaixo para redefinir sua senha: ${url}/recall?identifier=${code}`
     }
 
     return msg[type]

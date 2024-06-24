@@ -11,7 +11,7 @@ const confirmationSchema = new Schema({
         type: String,
         required: true
     }
-})
+}, { timestamps: true })
 
 const ConfirmationUser = mongoose.model('Confirmation', confirmationSchema)
 

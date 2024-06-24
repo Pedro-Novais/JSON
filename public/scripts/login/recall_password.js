@@ -36,11 +36,14 @@ export class RecallPassword{
 
             }
 
+            const baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+
             const data = {
                 email: email,
                 recall: true,
                 msg: 'recall',
-                subject: 'Redefinir Senha'
+                subject: 'Redefinir Senha',
+                urlBase: baseUrl
             }
 
             const response = await post(API.url_create_code, data)

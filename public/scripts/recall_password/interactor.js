@@ -1,7 +1,6 @@
 import { PopUpGlobal } from "../utils/popup_global.js"
-import { post, patch } from "../utils/functionsReq.js"
+import { post } from "../utils/functionsReq.js"
 import { API } from "../utils/endPoints.js"
-import { valid_only_number } from "../utils/general.js"
 
 export class ChangePassword {
 
@@ -28,7 +27,6 @@ export class ChangePassword {
             identifier: identifier
         }
 
-
         const response = await post(API.url_recall_code, data)
 
         if(!response.ok){
@@ -41,8 +39,6 @@ export class ChangePassword {
     }
 
     action_btn(value_code, email){
-
-        console.log(value_code, email)
 
         const btn = document.querySelector('#btn-recall')
 
@@ -104,8 +100,6 @@ export class ChangePassword {
             } 
 
             const response_update = await post(API.url_recall_password, data_update)
-
-            console.log(response_update)
 
             if(!response_update){
 

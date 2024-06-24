@@ -29,7 +29,6 @@ export class InteractorLogin {
             main.innerHTML = modal['recall_password']
 
             new PopUpGlobal('#main-enter', 'Informação!', 'Digite seu atual email!')
-
             new RecallPassword()
 
         })
