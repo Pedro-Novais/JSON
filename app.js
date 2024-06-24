@@ -13,6 +13,8 @@ app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.json())
+
 // Configuração do mecanismo de template
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +31,10 @@ const routesPage = require('./backend/routes/routerPage')
 app.use('/', routesPage)
 app.use('/api', routes)
 
-app.use(express.json())
+app.use((req, res, next) => {
+    res.status(404).sendFile(__dirname + '/public/page/error.html');
+});
+
 
 app.listen(3000, '0.0.0.0', () => {
     console.log('App Running...')
